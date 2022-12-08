@@ -14,4 +14,4 @@ params:
     params.links:
         title: "icon"
         href: "https://twitter.com/taxfree_python"
-        icon: "https://pbs.twimg.com/profile_images/1505012518556561409/g93YcdDs_400x400.jpg"
+        icon: "https://github.com/taxfree-python/taxfree-python.github.io/blob/master/static/img/my_icon.png"
