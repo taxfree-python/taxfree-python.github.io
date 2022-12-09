@@ -7,7 +7,6 @@ params:
     author: "tax_free"
     github: "taxfree-python"
     twitter: "taxfree_python"
-    facebook: "hoge"
     url: "https://www.taxfree.dev/"
     location: "TokyoTech, Japan"
     favicon: "https://pbs.twimg.com/profile_images/1505012518556561409/g93YcdDs_400x400.jpg"
