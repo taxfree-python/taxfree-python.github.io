@@ -11,3 +11,11 @@ params:
     location: "TokyoTech, Japan"
     favicon: "https://pbs.twimg.com/profile_images/1505012518556561409/g93YcdDs_400x400.jpg"
     avatar: "https://pbs.twimg.com/profile_images/1505012518556561409/g93YcdDs_400x400.jpg"
+
+    params.links:
+        title: "link_github"
+        href: "https://github.com/taxfree-python"
+    params.links:
+        title: "link_twitter"
+        href: "https://twitter.com/taxfree_python"
+        icon: "https://pbs.twimg.com/profile_images/1505012518556561409/g93YcdDs_400x400.jpg"
