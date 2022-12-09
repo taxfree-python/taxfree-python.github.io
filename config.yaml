@@ -13,6 +13,8 @@ params:
     avatar: "https://pbs.twimg.com/profile_images/1505012518556561409/g93YcdDs_400x400.jpg"
     rss: true
 
+    params.twitter:
+        src: "https://pbs.twimg.com/profile_images/1505012518556561409/g93YcdDs_400x400.jpg"
     params.links:
         title: "link_github"
         href: "https://github.com/taxfree-python"
