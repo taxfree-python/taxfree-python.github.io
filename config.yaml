@@ -1,4 +1,4 @@
-baseURL: "https://taxfree-python.github.io/"
+baseURL: "https://taxfree.dev/"
 languageCode: "en-us"
 title: "tax_free's blog"
 theme: "github-style"
