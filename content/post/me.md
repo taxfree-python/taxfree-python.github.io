@@ -5,7 +5,7 @@ draft: False
 ---
 
 # 大学関連
-- 所属サークル_1 : ；[iGEM TokyoTech](https://www.igemtokyotech.org/)
+- 所属サークル_1 : [iGEM TokyoTech](https://www.igemtokyotech.org/)
     - サブリーダー
     - Dryリーダー
 - 所属サークル_2 : [traP](https://trap.jp/)
