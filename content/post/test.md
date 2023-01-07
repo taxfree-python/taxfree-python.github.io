@@ -26,7 +26,7 @@ $(x^{\*}_1, x^{\*}_2, \cdots, x^{\*}_k)$
 
 $x_i(t) = x^*_i + \delta x_i(t)$
 
-あああ，$x_i(t) = x^*_i + \delta x_i(t)$あああ
+あああ，$x_i(t) = x^*_i + \delta x_i(t)$あああ$x_i\delta$ああ$xx\delta$
 
 ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^*_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 
