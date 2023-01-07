@@ -21,6 +21,22 @@
     </item>
     
     <item>
+      <title>test</title>
+      <link>https://taxfree.dev/post/test/</link>
+      <pubDate>Sat, 07 Jan 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/test/</guid>
+      <description>$x^2$
+$$x^2$$
+$x^2$
+$$x^2$$
+$x*2$
+$$x*2$$
+$x^*2$
+$$x^*2$$</description>
+    </item>
+    
+    <item>
       <title>READMEの続き</title>
       <link>https://taxfree.dev/post/me/</link>
       <pubDate>Thu, 08 Dec 2022 02:22:02 +0900</pubDate>
