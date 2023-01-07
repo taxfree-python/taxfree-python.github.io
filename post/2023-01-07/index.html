@@ -309,27 +309,27 @@ $$\frac{dx_3}{dt} &amp; = rx_1 x_2 - r_d x_3$$
 <p>式\ref{eq:diagonalization}は線型なので行列$\bm{J}$を対角化して解くことができる．対角化するための変換行列を$\bm{T}$として，$\bm{\Lambda} = \bm{TJT}^{-1}$が対角行列になるとし，その固有値を$\lambda_1, \lambda_2, \cdots, \lambda_k$とする
 \footnote{固有値は縮退していないとして，変換行列$\bm{T}$を用いて対角化できるとした}．</p>
 <p>ここで，$\bm{v} = \bm{T}\delta \bm{x}$とすれば，式\ref{eq:diagonalization_vector}に左から$\bm{T}$をかけ，$\bm{J}$と$\delta \bm{x}(t)$の間に$\bm{T}^{-1}\bm{T}$を挿入して，
-\begin{eqnarray*}
+\begin{eqnarray}
 \dv{\bm{v}(t)}{t} = \Lambda \bm{v}(t)
-\end{eqnarray*}
+\end{eqnarray}
 を得る．ベクトルの成分ごとに書くと
-\begin{eqnarray*}
+\begin{eqnarray}
 \dv{v_i(t)}{t} = \lambda_i v_i
-\end{eqnarray*}
+\end{eqnarray}
 となって，これを解くと$v_i(t) = v_i(0)\exp(\lambda_i t)$となる．ここで，
-\begin{eqnarray*}
+\begin{eqnarray}
 \delta \bm{x} &amp; = \bm{T}^{-1} \cdot \bm{v} \
 &amp; = \bm{T}^{-1} \cdot (v_1(t), v_2(t), \cdots, v_k(t))^\top \
 &amp; = (\bm{T}^{-1}<em>1 \cdot \bm{v}, \bm{T}^{-1}<em>2 \cdot \bm{v}, \cdots, \bm{T}^{-1}<em>k \cdot \bm{v})^\top
-\end{eqnarray*}
+\end{eqnarray}
 であるから，$\delta \bm{x}$の各成分を見ると
-\begin{eqnarray*}
+\begin{eqnarray}
 \delta x_i(t) &amp; = \bm{T}^{-1}<em>i \cdot \bm{v} \
 &amp; = \sum_j T^{-1}</em>{ij}v_j(t) \
 &amp; = \sum_j \exp(\lambda_j t) T^{-1}</em>{ij} v_j(0) \
 &amp; = \sum_j \exp(\lambda_j t) T^{-1}</em>{ij} \sum_m T^{-1}</em>{jm} x_m(0) \
 &amp; = \sum_{j, m} \exp(\lambda_j t) T^{-1}<em>{ij} T</em>{jm} \delta x_m(0)
-\end{eqnarray*}
+\end{eqnarray}
 となる．これから，$\delta \bm{x}(t)$の時間発展は$\exp(\lambda_j t)$の重ね合わせであわらせることがわかる．
 ここで，式\ref{eq:basic}は実数であるが，一般には固有値$\lambda_j$が複素数の場合もある．そのときは，複素共役の$\lambda_j^<em>$も固有値になり，
 $\lambda_j = a + i\omega (iは虚数単位，aは\lambda_jの実部，\omega は実数)$に対して
