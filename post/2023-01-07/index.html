@@ -186,7 +186,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      3874 Words
+                      3871 Words
                     
 
                   </div>
@@ -247,13 +247,13 @@ $$\frac{dx_3}{dt} = rx_1 x_2 - r_d x_3$$
 これは，$f_i(x_1, x_2, \cdots, x_k)$で与えられる．そこで，$f_i(x_1, x_2, \cdots, x_k) = 0$となる空間(面)を定めておくことが重要で，これはヌルクライン(nullcline)と呼ばれる．</p>
 <p>これら$k$個のヌルクラインの条件を同時に満たす点を固定点という．この点から出発すると，以降の時刻でその点から移動しない．</p>
 <p>固定点では，それ以降，状態が変化しないことが分かった．では，固定点の近くではどういった振る舞いをするのだろうか．それを調べるには固定点付近の安定性について考える必要がある．
-これは，式を固定点の周りでテイラー展開して，(最低次で)線型化すれば判定できる．今，固定点を$(x_1, x_2, \cdots, x_k)$$$(x^<em>_1, x^</em>_2, \cdots, x^<em>_k)$$とし，固定点の定義より$f_j(x^</em>_1, x^<em>_2, \cdots, x^</em>_k) = 0 (j = 1, 2, \cdots, k)$を満たす．
-ここで，$x_i(t) = x^<em>_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^</em><em>i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+これは，式を固定点の周りでテイラー展開して，(最低次で)線型化すれば判定できる．今，固定点を$(x*_1, x*_2, \cdots, x*_k)$とし，固定点の定義より$f_j(x^<em>_1, x^</em>_2, \cdots, x^<em>_k) = 0 (j = 1, 2, \cdots, k)$を満たす．
+ここで，$x_i(t) = x^</em>_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^<em><em>i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 \begin{align}
-\dv{\delta x_i(t)}{t} &amp; = \dv{x_i(t)}{t}|</em>{(x_1, x_2, \cdots, x_k) = (x^<em>_1, x^</em>_2, \cdots, x^<em>_k)} \notag \
-&amp; = f_i((x^</em>_1, x^<em>_2, \cdots, x^</em>_k)) \notag \
+\dv{\delta x_i(t)}{t} &amp; = \dv{x_i(t)}{t}|</em>{(x_1, x_2, \cdots, x_k) = (x^</em>_1, x^<em>_2, \cdots, x^</em>_k)} \notag \
+&amp; = f_i((x^<em>_1, x^</em>_2, \cdots, x^<em>_k)) \notag \
 &amp; + (\delta x_1(t) \pdv{}{x_1} + \delta x_2(t) \pdv{}{x_2} + \cdots + \delta x_k(t) \pdv{}{x_k}) \notag \
-&amp; \times f(x_1, x_2, \cdots, x_k) + R(x^<em>_1, x^</em><em>2, \cdots, x^*<em>k) \notag \
+&amp; \times f(x_1, x_2, \cdots, x_k) + R(x^</em><em>1, x^<em>_2, \cdots, x^</em><em>k) \notag \
 &amp; = \sum_j J</em>{ij} \delta x_j(t)
 \label{eq:diagonalization}
 \end{align}
