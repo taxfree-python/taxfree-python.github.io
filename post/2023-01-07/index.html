@@ -247,17 +247,17 @@ $$\frac{dx_3}{dt} = rx_1 x_2 - r_d x_3$$
 これは，$f_i(x_1, x_2, \cdots, x_k)$で与えられる．そこで，$f_i(x_1, x_2, \cdots, x_k) = 0$となる空間(面)を定めておくことが重要で，これはヌルクライン(nullcline)と呼ばれる．</p>
 <p>これら$k$個のヌルクラインの条件を同時に満たす点を固定点という．この点から出発すると，以降の時刻でその点から移動しない．</p>
 <p>固定点では，それ以降，状態が変化しないことが分かった．では，固定点の近くではどういった振る舞いをするのだろうか．それを調べるには固定点付近の安定性について考える必要がある．
-これは，式を固定点の周りでテイラー展開して，(最低次で)線型化すれば判定できる．今，固定点を$(x<!-- raw HTML omitted --><em><!-- raw HTML omitted -->_1, x<!-- raw HTML omitted --></em><!-- raw HTML omitted -->_2, \cdots, x<!-- raw HTML omitted --><em><!-- raw HTML omitted -->_k)$とし，固定点の定義より$f_j(x^</em>_1, x^<em>_2, \cdots, x^</em>_k) = 0 (j = 1, 2, \cdots, k)$を満たす．
-ここで，$x_i(t) = x^<em>_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^</em><em>i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+これは，式を固定点の周りでテイラー展開して，(最低次で)線型化すれば判定できる．今，固定点を$(s_1, s_2, \cdots, s_k)$とし，固定点の定義より$f_j(s_1, s_2, \cdots, s_k) = 0 (j = 1, 2, \cdots, k)$を満たす．
+ここで，$x_i(t) = s_i + \delta x_i(t)$として，これを$f_j$に代入して，$s_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 \begin{align}
-\dv{\delta x_i(t)}{t} &amp; = \dv{x_i(t)}{t}|</em>{(x_1, x_2, \cdots, x_k) = (x^<em>_1, x^</em>_2, \cdots, x^<em>_k)} \notag \
-&amp; = f_i((x^</em>_1, x^<em>_2, \cdots, x^</em>_k)) \notag \
+\dv{\delta x_i(t)}{t} &amp; = \dv{x_i(t)}{t}|<em>{(x_1, x_2, \cdots, x_k) = (s_1, s_2, \cdots, s_k)} \notag \
+&amp; = f_i((s_1, s_2, \cdots, s_k)) \notag \
 &amp; + (\delta x_1(t) \pdv{}{x_1} + \delta x_2(t) \pdv{}{x_2} + \cdots + \delta x_k(t) \pdv{}{x_k}) \notag \
-&amp; \times f(x_1, x_2, \cdots, x_k) + R(x^<em>_1, x^</em><em>2, \cdots, x^*<em>k) \notag \
+&amp; \times f(x_1, x_2, \cdots, x_k) + R(s_1, s_2, \cdots, s_k) \notag \
 &amp; = \sum_j J</em>{ij} \delta x_j(t)
 \label{eq:diagonalization}
 \end{align}
-となる．ここで，$J</em>{ij} = \pdv{f_i}{x_j}$は固定点周りのヤコビ行列である．ベクトルで書けば
+となる．ここで，$J_{ij} = \pdv{f_i}{x_j}$は固定点周りのヤコビ行列である．ベクトルで書けば
 \begin{align}
 \dv{\delta \bm{x}(t)}{t} = \bm{J}\delta \bm{x}(t)
 \label{eq:diagonalization_vector}
@@ -322,55 +322,22 @@ $\lambda_j = a + i\omega (iは虚数単位，aは\lambda_jの実部，\omega は
 <link rel="stylesheet" href='https://taxfree.dev/css/toc.css' />
 
 
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}]
     });
+  });
 </script>
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
 </body>
 
 <script type="application/javascript" src="https://taxfree.dev/js/github-style.js"></script>
 
 
-
-<script type="text/javascript" async
-  src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\[\[', '\]\]']],
-        processEscapes: true,
-        processEnvironments: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        TeX: {
-          equationNumbers: { autoNumber: "AMS" },
-          extensions: ["AMSmath.js", "AMSsymbols.js"]
-        }
-      }
-    });
-
-    MathJax.Hub.Queue(function () {
-      
-      
-      
-      var all = MathJax.Hub.getAllJax(), i;
-      for (i = 0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-      }
-    });
-  </script>
-
-<style>
-  code.has-jax {
-    font: inherit;
-    font-size: 100%;
-    background: inherit;
-    border: inherit;
-    color: #515151;
-  }
-</style>
 
 
 </html>
