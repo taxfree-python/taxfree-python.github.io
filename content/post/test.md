@@ -24,6 +24,6 @@ $$x^*2$$
 
 $(x^{\*}_1, x^{\*}_2, \cdots, x^{\*}_k)$
 
-$x_i(t) = x^*_i +  x_i(t)$
+$x_i(t) = x^*_i + \delta x_i(t)$
 
 $\delta$
