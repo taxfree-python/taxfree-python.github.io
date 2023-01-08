@@ -101,6 +101,7 @@ $\delta x_i(t)$の1次だけを残す．
 これを$f_j$に代入して，$x^*_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 
 # test-7
-$$ \dv{\delta x_i(t)}{t} = \dv{x_i(t)}{t}|_{(x_1, x_2, \cdots, x_k) = (x^\*_1, x^\*_2, \cdots, x^\*_k)} $$
-$$ \dv{\delta x_i(t)}{t} = \dv{x_i(t)}{t} $$
+$$ \dv{\delta x_i(t)}{t} = \dv{x_i(t)}{t}|_{(x_1, x_2, \cdots, x_k) = (x^\*_1, x^\*_2, \cdots, x^\*_k)} $$  
+$$ \dv{\delta x_i(t)}{t} = \dv{x_i(t)}{t} $$  
+$$ {(x_1, x_2, \cdots, x_k) = (x^\*_1, x^\*_2, \cdots, x^\*_k)} $$  
 $$ f_i((x^\*_1, x^\*_2, \cdots, x^\*_k)) $$
