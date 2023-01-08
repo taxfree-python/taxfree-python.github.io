@@ -63,13 +63,11 @@ test-1 ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，
 これを$f_j$に代入して，$x^*_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 test-2 ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，
 $x^*_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
-test-3 ここで，$x_i(t) = x^_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^_i$
+test-3 ここで，$x_i(t) = x^_i + \delta x_i(t)$として，これを$f_j$に代入して，$ x^_i $
 の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 test-4 ここで，$x_i(t) = x^_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^_i$の周りでテイラー展開して
 $\delta x_i(t)$の1次だけを残す．
-test-5 ここで，$x_i(t) = x^_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^_i$の周りでテイラー展開して$\delta x_i(t)$
-の1次だけを残す．
-test-6 ここで，$x_i(t) = x^_i + \delta x_i(t)$として， これを$f_j$に代入して，$x^_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．</description>
+test-5 ここで，$x_i(t) = x^_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^_i$の周りでテイラー展開して$\delta x_i(t)$</description>
     </item>
     
     <item>
