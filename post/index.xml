@@ -21,6 +21,36 @@
     </item>
     
     <item>
+      <title>test_2</title>
+      <link>https://taxfree.dev/post/test_2/</link>
+      <pubDate>Sat, 07 Jan 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/test_2/</guid>
+      <description>$x^2$
+$$x^2$$
+$x^2$
+$$x^2$$
+$x*2$
+$$x*2$$
+$x^*2$
+$$x^*2$$
+$(x^{*}_1, x^{*}_2, \cdots, x^{*}_k)$
+$x_i(t) = x^*_i + \delta x_i(t)$
+あああ，$x_i(t) = x^*_i + \delta x_i(t)$あああ$x_i\delta$ああ$xx\delta$
+test-1 ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，
+これを$f_j$に代入して，$x^*_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+test-2 ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，
+$x^*_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+test-3 ここで，$x_i(t) = x^_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^_i$
+の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+test-3-1 ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，$x$
+の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+test-3-2 ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^2$
+の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+test-3-3 ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，$x_2$</description>
+    </item>
+    
+    <item>
       <title>READMEの続き</title>
       <link>https://taxfree.dev/post/me/</link>
       <pubDate>Thu, 08 Dec 2022 02:22:02 +0900</pubDate>
