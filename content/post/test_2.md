@@ -1,5 +1,5 @@
 ---
-title: test
+title: test_2
 date: 2023-01-07T00:00:00+09:00
 katex: true
 draft: False
