@@ -2,7 +2,7 @@
 title: test_2
 date: 2023-01-07T00:00:00+09:00
 math: true
-draft: false
+draft: true
 ---
 
 $x^2$
