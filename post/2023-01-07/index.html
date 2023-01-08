@@ -186,7 +186,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      3878 Words
+                      3879 Words
                     
 
                   </div>
@@ -248,12 +248,12 @@ $$\frac{dx_3}{dt} = rx_1 x_2 - r_d x_3$$
 <p>これら$k$個のヌルクラインの条件を同時に満たす点を固定点という．この点から出発すると，以降の時刻でその点から移動しない．</p>
 <p>固定点では，それ以降，状態が変化しないことが分かった．では，固定点の近くではどういった振る舞いをするのだろうか．それを調べるには固定点付近の安定性について考える必要がある．
 これは，式を固定点の周りでテイラー展開して，(最低次で)線型化すれば判定できる．今，固定点を$(x^{*}_1, x^{*}_2, \cdots, x^{*}_k)$とし，固定点の定義より$f_j(x^*_1, x^*_2, \cdots, x^*_k) = 0 (j = 1, 2, \cdots, k)$を満たす．
-ここで，$x_i(t) = x^<em>_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^</em><em>i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^*<em>i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 \begin{align}
-\dv{\delta x_i(t)}{t} &amp; = \dv{x_i(t)}{t}|</em>{(x_1, x_2, \cdots, x_k) = (x^<em>_1, x^</em>_2, \cdots, x^<em>_k)} \notag \
-&amp; = f_i((x^</em>_1, x^<em>_2, \cdots, x^</em>_k)) \notag \
+\dv{\delta x_i(t)}{t} &amp; = \dv{x_i(t)}{t}|</em>{(x_1, x_2, \cdots, x_k) = (x^*_1, x^*_2, \cdots, x^*_k)} \notag \
+&amp; = f_i((x^*_1, x^*_2, \cdots, x^*_k)) \notag \
 &amp; + (\delta x_1(t) \pdv{}{x_1} + \delta x_2(t) \pdv{}{x_2} + \cdots + \delta x_k(t) \pdv{}{x_k}) \notag \
-&amp; \times f(x_1, x_2, \cdots, x_k) + R(x^<em>_1, x^</em><em>2, \cdots, x^*<em>k) \notag \
+&amp; \times f(x_1, x_2, \cdots, x_k) + R(x^*_1, x^*<em>2, \cdots, x^*<em>k) \notag \
 &amp; = \sum_j J</em>{ij} \delta x_j(t)
 \label{eq:diagonalization}
 \end{align}
@@ -357,6 +357,14 @@ $\lambda_j = a + i\omega (iは虚数単位，aは\lambda_jの実部，\omega は
 </body>
 
 <script type="application/javascript" src="https://taxfree.dev/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://fastly.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://fastly.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
 
 
 
