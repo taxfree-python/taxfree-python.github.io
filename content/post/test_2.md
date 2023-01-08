@@ -1,7 +1,7 @@
 ---
 title: test_2
 date: 2023-01-07T00:00:00+09:00
-katex: true
+math: true
 draft: False
 ---
 
@@ -39,7 +39,17 @@ $x_i(t) = x^*_i + \delta x_i(t)$
 $x^*_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 
 # test-3
-ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，$ x^*_i $
+ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^*_i$
+
+の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+
+# test-3-1
+ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，$x$
+
+の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+
+# test-3-1
+ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，あ
 
 の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 
