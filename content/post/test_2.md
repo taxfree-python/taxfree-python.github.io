@@ -104,5 +104,6 @@ $\delta x_i(t)$の1次だけを残す．
 $$ \dv{\delta x_i(t)}{t} = \dv{x_i(t)}{t}|_{(x_1, x_2, \cdots, x_k) = (x^\*_1, x^\*_2, \cdots, x^\*_k)} $$  
 $$ \frac{\delta x_i(t)}{t} = \frac{x_i(t)}{t}|_{(x_1, x_2, \cdots, x_k) = (x^\*_1, x^\*_2, \cdots, x^\*_k)} $$  
 $$ \frac{\delta x_i(t)}{t} = \frac{x_i(t)}{t}_{(x_1, x_2, \cdots, x_k) = (x^\*_1, x^\*_2, \cdots, x^\*_k)} $$  
+$$ \frac{\delta x_i(t)}{t} = \frac{x_i(t)}{t} x_{(x_1, x_2, \cdots, x_k) = (x^\*_1, x^\*_2, \cdots, x^\*_k)} $$  
 $$ {(x_1, x_2, \cdots, x_k) = (x^\*_1, x^\*_2, \cdots, x^\*_k)} $$  
 $$ f_i((x^\*_1, x^\*_2, \cdots, x^\*_k)) $$
