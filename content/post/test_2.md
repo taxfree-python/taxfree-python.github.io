@@ -29,9 +29,7 @@ $x_i(t) = x^*_i + \delta x_i(t)$
 あああ，$x_i(t) = x^*_i + \delta x_i(t)$あああ$x_i\delta$ああ$xx\delta$
 
 # test-1
-ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，
-
-これを$f_j$に代入して，$x^*_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
+ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，$x^*_i$の周りでテイラー展開して$\delta x_i(t)$の1次だけを残す．
 
 # test-2
 ここで，$x_i(t) = x^*_i + \delta x_i(t)$として，これを$f_j$に代入して，
