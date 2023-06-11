@@ -155,7 +155,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">4</span>
+              <span class="Counter">5</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -415,7 +415,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">4</span>
+      <span class="Counter ">5</span>
     </a>
   </nav>
 </div>
@@ -589,6 +589,41 @@
             </div>
           </li>
           
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
+                  <a class="text-bold flex-auto min-width-0" href="https://taxfree.dev/post/2023-06-11/">
+                    <span class="repo" title="久しぶりにGitHub Actionsでdeployしようとしたら詰まった話">久しぶりにGitHub Actionsでdeployしようとしたら詰まった話</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  はじめに 苦しかった期末テストが終わり，やっとこさ好きなことができるようになりました．なので，blog を更新しましたが&hellip;
+久しぶりに自分のページを更新すると GtiHub Actions の deploy が毎回こけるようになりました． 今回の記事では，この問題を解決した経緯について説明します．
+方法 Actions のログを見ると
+The ubuntu-18.04 environment is deprecated, consider switching to ubuntu-20.04(ubuntu-latest), or ubuntu-22.04 instead. For more details see https://github.com/actions/virtual-environments/issues/6002
+と書いてあります．この issue を見ると「2023 年の 4 月で Actions がサポートする ubuntu のバージョンが変わった」みたいです．なので，Actions 用の yaml ファイルを修正する必要があり，.github/workflows/gh-pages.ymlを編集しました．編集内容は，
+jobs: deploy: runs-on: ubuntu-18.04 の ubuntu のバージョンをサポートしているものにします．私の場合はとりあえず最新バージョンにしました．
+jobs: deploy: runs-on: ubuntu-latest これで push すれば deploy できるようになりました．
+最後に 久しぶりに blog を更新しましたが，もっと積極的に書いていきたいです．
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                </p>
+              </div>
+            </div>
+          </li>
+          
         </ol>
       </div>
     </div>
@@ -617,6 +652,12 @@
   "title": "README%e3%81%ae%e7%b6%9a%e3%81%8d",
   "link": "https://taxfree.dev/post/me/",
   "publishDate": "2022-12-08%2002:22:02"
+},
+
+{
+  "title": "%e4%b9%85%e3%81%97%e3%81%b6%e3%82%8a%e3%81%abGitHub%20Actions%e3%81%a7deploy%e3%81%97%e3%82%88%e3%81%86%e3%81%a8%e3%81%97%e3%81%9f%e3%82%89%e8%a9%b0%e3%81%be%e3%81%a3%e3%81%9f%e8%a9%b1",
+  "link": "https://taxfree.dev/post/2023-06-11/",
+  "publishDate": "0001-01-01%2000:00:00"
 }
 ]'>
       <div class="js-yearly-contributions">
