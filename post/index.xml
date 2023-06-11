@@ -6,7 +6,19 @@
     <description>Recent content in Posts on tax_free&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jan 2023 03:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>久しぶりにGitHub Actionsでdeployしようとしたら詰まった話</title>
+      <link>https://taxfree.dev/post/2023-06-11/</link>
+      <pubDate>Sun, 11 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-06-11/</guid>
+      <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
+&lt;p&gt;苦しかった期末テストが終わり，やっとこさ好きなことができるようになりました．なので，blog を更新しましたが&amp;hellip;&lt;br&gt;
+久しぶりに自分のページを更新すると GtiHub Actions の deploy が毎回こけるようになりました．
+今回の記事では，この問題を解決した経緯について説明します．&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>OIST Science Challenge通った話</title>
       <link>https://taxfree.dev/post/2023-01-20/</link>
@@ -50,18 +62,6 @@
       
       <guid>https://taxfree.dev/post/me/</guid>
       <description>&lt;p&gt;トップページに書いてる「ざっくり」に入りきらなかった部分を書いていきます．&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>久しぶりにGitHub Actionsでdeployしようとしたら詰まった話</title>
-      <link>https://taxfree.dev/post/2023-06-11/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://taxfree.dev/post/2023-06-11/</guid>
-      <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;苦しかった期末テストが終わり，やっとこさ好きなことができるようになりました．なので，blog を更新しましたが&amp;hellip;&lt;br&gt;
-久しぶりに自分のページを更新すると GtiHub Actions の deploy が毎回こけるようになりました．
-今回の記事では，この問題を解決した経緯について説明します．&lt;/p&gt;</description>
     </item>
     
   </channel>
