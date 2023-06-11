@@ -58,14 +58,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://taxfree.dev/post/2023-06-11/</guid>
-      <description>はじめに 苦しかった期末テストが終わり，やっとこさ好きなことができるようになりました．なので，blog を更新しましたが&amp;hellip;
-久しぶりに自分のページを更新すると GtiHub Actions の deploy が毎回こけるようになりました． 今回の記事では，この問題を解決した経緯について説明します．
-方法 Actions のログを見ると
-The ubuntu-18.04 environment is deprecated, consider switching to ubuntu-20.04(ubuntu-latest), or ubuntu-22.04 instead. For more details see https://github.com/actions/virtual-environments/issues/6002
-と書いてあります．この issue を見ると「2023 年の 4 月で Actions がサポートする ubuntu のバージョンが変わった」みたいです．なので，Actions 用の yaml ファイルを修正する必要があり，.github/workflows/gh-pages.ymlを編集しました．編集内容は，
-jobs: deploy: runs-on: ubuntu-18.04 の ubuntu のバージョンをサポートしているものにします．私の場合はとりあえず最新バージョンにしました．
-jobs: deploy: runs-on: ubuntu-latest これで push すれば deploy できるようになりました．
-最後に 久しぶりに blog を更新しましたが，もっと積極的に書いていきたいです．</description>
+      <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
+&lt;p&gt;苦しかった期末テストが終わり，やっとこさ好きなことができるようになりました．なので，blog を更新しましたが&amp;hellip;&lt;br&gt;
+久しぶりに自分のページを更新すると GtiHub Actions の deploy が毎回こけるようになりました．
+今回の記事では，この問題を解決した経緯について説明します．&lt;/p&gt;</description>
     </item>
     
   </channel>

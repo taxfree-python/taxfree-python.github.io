@@ -552,14 +552,10 @@
 
             <div>
               <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                はじめに 苦しかった期末テストが終わり，やっとこさ好きなことができるようになりました．なので，blog を更新しましたが&hellip;
-久しぶりに自分のページを更新すると GtiHub Actions の deploy が毎回こけるようになりました． 今回の記事では，この問題を解決した経緯について説明します．
-方法 Actions のログを見ると
-The ubuntu-18.04 environment is deprecated, consider switching to ubuntu-20.04(ubuntu-latest), or ubuntu-22.04 instead. For more details see https://github.com/actions/virtual-environments/issues/6002
-と書いてあります．この issue を見ると「2023 年の 4 月で Actions がサポートする ubuntu のバージョンが変わった」みたいです．なので，Actions 用の yaml ファイルを修正する必要があり，.github/workflows/gh-pages.ymlを編集しました．編集内容は，
-jobs: deploy: runs-on: ubuntu-18.04 の ubuntu のバージョンをサポートしているものにします．私の場合はとりあえず最新バージョンにしました．
-jobs: deploy: runs-on: ubuntu-latest これで push すれば deploy できるようになりました．
-最後に 久しぶりに blog を更新しましたが，もっと積極的に書いていきたいです．
+                <h1 id="はじめに">はじめに</h1>
+<p>苦しかった期末テストが終わり，やっとこさ好きなことができるようになりました．なので，blog を更新しましたが&hellip;<br>
+久しぶりに自分のページを更新すると GtiHub Actions の deploy が毎回こけるようになりました．
+今回の記事では，この問題を解決した経緯について説明します．</p>
               </div>
             </div>
 
