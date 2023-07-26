@@ -1,7 +1,7 @@
 baseURL: "https://taxfree.dev"
 languageCode: "en-us"
 title: "tax_free's blog"
-theme: "github-style"
+theme: ["hugo-embed-pdf-shortcode", "github-style"]
 
 params:
     author: "tax_free"
