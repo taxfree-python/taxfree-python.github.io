@@ -12,6 +12,8 @@ draft: False
     - サブリーダー
     - Dryリーダー
 - 所属サークル_2 : [traP](https://trap.jp/)
+    - 自炊した料理の写真を上げたり
+    - たまにイベント・合宿に参加したり
     - 積極的に活動していない
 
 
@@ -22,8 +24,6 @@ draft: False
 - 量子コンピュータに関する
     - Qiskitのやつ
     - イジングも勉強したいけど数学と物理が...
-
-
 - Docker
 - Hugo
     - これを作るため
@@ -52,7 +52,8 @@ draft: False
 
 # 好きなこと
 - 自炊
-    - 最近はパスタばっかり作ってる
+    - ~~最近はパスタばっかり作ってる~~
+    - インターンを始めてから自炊しなくなった...
     - 盛り付けが上手にできるようになりたい
 - 旅行
     - 予定もないのに飛行機とかホテルを調べたりしている
@@ -75,9 +76,12 @@ draft: False
 - [PyConKyushu2019](https://kyushu.pycon.jp/2019/) 企画運営スタッフ
 - [PyConJP2019](https://pycon.jp/2019/sessions/?sessionId=302) ポスターセッション
 - [Python Beginners Okinawa](https://python-beginners-okinawa.connpass.com/) 共同オーガナイザー
-- [数理の翼](https://seminar.npo-tsubasa.jp/island2020/) オンライン参加
-- [GSC](https://gsc.skr.u-ryukyu.ac.jp/) 模型自動車の自動運転に関する研究
+- [数理の翼](https://seminar.npo-tsubasa.jp/island2020/) オンライン参加・湧源er
+- [GSC](https://gsc.skr.u-ryukyu.ac.jp/) 2年目に採択され模型自動車の自動運転に関する研究
+- [東京工業大学 情報理工学院 総合型選抜](https://taxfree-python.hatenablog.com/entry/2022/02/23/011229) 2022年度総合型選抜に合格
 - [iGEM 2022](https://jamboree.igem.org/2022/results) Dryを担当．Silver Medal
+- [OIST Science Challenge 2023](https://groups.oist.jp/ja/sciencechallenge) OISTで一週間程度のワークショップに参加
+- [量子ソフトウェア勉強会](https://qsrh.jp/seminar/) 2023年度プログラムを受講
 
 
 # 好きなアニメとかマンガ
@@ -137,3 +141,6 @@ draft: False
     - 本編，外伝，OVA
 - ノーゲーム・ノーライフ
     - アニメだけ
+- 青春ブタ野郎シリーズ
+    - アニメと映画だけ
+    - 涙が止まらなくなるアニメ
