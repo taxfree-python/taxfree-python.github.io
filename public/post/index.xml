@@ -6,17 +6,7 @@
     <description>Recent content in Posts on tax_free&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>2022年度 情報理工学基礎2のレポートで提出したやつ</title>
-      <link>https://taxfree.dev/post/2023-07-26/</link>
-      <pubDate>Wed, 26 Jul 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://taxfree.dev/post/2023-07-26/</guid>
-      <description>一年生の頃の講義で「気になる論文をいくつか集めてサーベイ論文を書きなさい」と言われて提出したレポート．iGEMで読んでたデング熱の予測システムについていくつか読んで(たしか3本だった気がする(最低ライン))書いた．
-Previous Next &amp;nbsp; &amp;nbsp; / [pdf] View the PDF file here. Previous Next &amp;nbsp; &amp;nbsp; / [pdf] View the PDF file here. </description>
-    </item>
-    
+    <lastBuildDate>Sat, 08 Jul 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>映画「遠いところ」を見て</title>
       <link>https://taxfree.dev/post/2023-07-08/</link>
@@ -32,8 +22,7 @@ Previous Next &amp;nbsp; &amp;nbsp; / [pdf] View the PDF file here. Previous Nex
       <pubDate>Tue, 27 Jun 2023 00:00:00 +0900</pubDate>
       
       <guid>https://taxfree.dev/post/2023-06-27/</guid>
-      <description>&lt;h1 id=&#34;初めに&#34;&gt;初めに&lt;/h1&gt;
-&lt;p&gt;二外でロシア語を取っていて，&lt;a href=&#34;https://www.hakusuisha.co.jp/book/b206264.html&#34;&gt;教科書&lt;/a&gt;で出てくる単語を覚えるためにChat-GPTを使って例文を作っています．&lt;/p&gt;</description>
+      <description>&lt;p&gt;二外でロシア語を取っていて，&lt;a href=&#34;https://www.hakusuisha.co.jp/book/b206264.html&#34;&gt;教科書&lt;/a&gt;で出てくる単語を覚えるためにChatGPTを使って例文を作っています．&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -51,8 +40,7 @@ Previous Next &amp;nbsp; &amp;nbsp; / [pdf] View the PDF file here. Previous Nex
       <pubDate>Sun, 11 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://taxfree.dev/post/2023-06-11/</guid>
-      <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;苦しかった期末テストが終わり，やっとこさ好きなことができるようになりました．なので，blog を更新しましたが&amp;hellip;&lt;br&gt;
+      <description>&lt;p&gt;苦しかった期末テストが終わり，やっとこさ好きなことができるようになりました．なので，blog を更新しましたが&amp;hellip;&lt;br&gt;
 久しぶりに自分のページを更新すると GtiHub Actions の deploy が毎回こけるようになりました．
 今回の記事では，この問題を解決した経緯について説明します．&lt;/p&gt;</description>
     </item>
@@ -63,8 +51,7 @@ Previous Next &amp;nbsp; &amp;nbsp; / [pdf] View the PDF file here. Previous Nex
       <pubDate>Fri, 20 Jan 2023 03:00:00 +0900</pubDate>
       
       <guid>https://taxfree.dev/post/2023-01-20/</guid>
-      <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;こんにちは．tax_freeです．書こう書こうと思っている記事が2つくらい溜まってます．期末テストの影がうっすら見え始めていますが気にしないで生活中．&lt;/p&gt;
+      <description>&lt;p&gt;こんにちは．tax_freeです．書こう書こうと思っている記事が2つくらい溜まってます．期末テストの影がうっすら見え始めていますが気にしないで生活中．&lt;/p&gt;
 &lt;p&gt;今回は，OIST Science Challenge について accept されるまでについて書きます．&lt;/p&gt;</description>
     </item>
     
@@ -74,8 +61,7 @@ Previous Next &amp;nbsp; &amp;nbsp; / [pdf] View the PDF file here. Previous Nex
       <pubDate>Tue, 10 Jan 2023 00:00:00 +0900</pubDate>
       
       <guid>https://taxfree.dev/post/2023-01-09-01/</guid>
-      <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;遅くなりましたが，あけましておめでとうございます．こっちも遅くなりましたが，この投稿では，今年の目標をまとめたいと思います．公言しておくことで引くに引けない状態を作っておく．&lt;/p&gt;
+      <description>&lt;p&gt;遅くなりましたが，あけましておめでとうございます．こっちも遅くなりましたが，この投稿では，今年の目標をまとめたいと思います．公言しておくことで引くに引けない状態を作っておく．&lt;/p&gt;
 &lt;h1 id=&#34;楽しく生きる&#34;&gt;「楽しく生きる」&lt;/h1&gt;
 &lt;p&gt;今年の目標&amp;quot;も&amp;quot;これです．毎年同じようなことを目標にしていて，去年は受験生として，その前の年はコロナ禍の中で，その前の年は&amp;hellip;と，毎年与えられた・勝ち取った環境で「楽しく」生きれるように行動して，ある程度は実現できたと思っています．2023 年は，せっかく大学生として東工大に通える環境にあるので，その環境を活かして楽しく生きていきます．&lt;/p&gt;</description>
     </item>
@@ -86,8 +72,7 @@ Previous Next &amp;nbsp; &amp;nbsp; / [pdf] View the PDF file here. Previous Nex
       <pubDate>Sun, 08 Jan 2023 23:00:00 +0900</pubDate>
       
       <guid>https://taxfree.dev/post/2023-01-08-01/</guid>
-      <description>&lt;h1 id=&#34;はじめに&#34;&gt;はじめに&lt;/h1&gt;
-&lt;p&gt;こんにちは~．tax_freeです．記念すべき自己紹介以外の初投稿です!&lt;/p&gt;
+      <description>&lt;p&gt;こんにちは~．tax_freeです．記念すべき自己紹介以外の初投稿です!&lt;/p&gt;
 &lt;p&gt;いろいろ格闘してこのページを作ってから1ヶ月以上経っていることに驚いています．
 時間が流れるの早いよ&amp;hellip;&lt;/p&gt;
 &lt;p&gt;サークルでいろいろありましたが，今回はiGEM TokyoTechで私が主導しているモデリング勉強会でやったことについてまとめたいと思います．&lt;/p&gt;</description>
