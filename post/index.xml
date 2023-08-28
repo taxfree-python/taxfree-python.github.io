@@ -6,7 +6,30 @@
     <description>Recent content in Posts on tax_free&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Jul 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Aug 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ユークリッド平面上の交差する経路が最短経路にならないことの証明</title>
+      <link>https://taxfree.dev/post/2023-08-28/</link>
+      <pubDate>Mon, 28 Aug 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-08-28/</guid>
+      <description>&lt;p&gt;証明自体は仮定からほぼほぼ自明に近いのですが，証明するのに少し考えてしまったので忘れないようにメモ．&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Numpy の sort</title>
+      <link>https://taxfree.dev/post/2023-08-17/</link>
+      <pubDate>Thu, 17 Aug 2023 03:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-08-17/</guid>
+      <description>自分用にメモ
+昇順 x→y→z の順(axis=0→axis=1→axis=2)で埋めていくには
+np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T, axis = 0).reshape(x, y, z) shape=(x, y, z) の arr を y→x→z の順(axis=1→axis=0→axis=2)で埋めていくには
+np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T.reshape(x*y, z), axis = 0).reshape(x, y, z) 降順 x→y→z の順(axis=0→axis=1→axis=2)で埋めていくには
+np.flip(np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T, axis = 0).reshape(x, y, z)) y→x→z の順(axis=1→axis=0→axis=2)で埋めていくには
+np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T.reshape(x*y, z), axis = 0).reshape(x, y, z) </description>
+    </item>
+    
     <item>
       <title>映画「遠いところ」を見て</title>
       <link>https://taxfree.dev/post/2023-07-08/</link>

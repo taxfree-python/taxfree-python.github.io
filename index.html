@@ -155,7 +155,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">8</span>
+              <span class="Counter">10</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -415,7 +415,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">8</span>
+      <span class="Counter ">10</span>
     </a>
   </nav>
 </div>
@@ -467,6 +467,67 @@
           Popular posts
         </h2>
         <ol class="d-flex flex-wrap list-style-none gutter-condensed mb-4 js-pinned-items-reorder-list">
+          
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
+                  <a class="text-bold flex-auto min-width-0" href="https://taxfree.dev/post/2023-08-28/">
+                    <span class="repo" title="ユークリッド平面上の交差する経路が最短経路にならないことの証明">ユークリッド平面上の交差する経路が最短経路にならないことの証明</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  <p>証明自体は仮定からほぼほぼ自明に近いのですが，証明するのに少し考えてしまったので忘れないようにメモ．</p>
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                </p>
+              </div>
+            </div>
+          </li>
+          
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
+                  <a class="text-bold flex-auto min-width-0" href="https://taxfree.dev/post/2023-08-17/">
+                    <span class="repo" title="Numpy の sort">Numpy の sort</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  自分用にメモ
+昇順 x→y→z の順(axis=0→axis=1→axis=2)で埋めていくには
+np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T, axis = 0).reshape(x, y, z) shape=(x, y, z) の arr を y→x→z の順(axis=1→axis=0→axis=2)で埋めていくには
+np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T.reshape(x*y, z), axis = 0).reshape(x, y, z) 降順 x→y→z の順(axis=0→axis=1→axis=2)で埋めていくには
+np.flip(np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T, axis = 0).reshape(x, y, z)) y→x→z の順(axis=1→axis=0→axis=2)で埋めていくには
+np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T.reshape(x*y, z), axis = 0).reshape(x, y, z) 
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                </p>
+              </div>
+            </div>
+          </li>
           
           <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
             <div
@@ -582,71 +643,24 @@
             </div>
           </li>
           
-          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-            <div
-              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
-              <div class="pinned-item-list-item-content">
-                <div class="d-flex width-full flex-items-center position-relative">
-                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
-                    width="16" height="16">
-                    <path fill-rule="evenodd"
-                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
-                    </path>
-                  </svg>
-                  <a class="text-bold flex-auto min-width-0" href="https://taxfree.dev/post/2023-01-20/">
-                    <span class="repo" title="OIST Science Challenge通った話">OIST Science Challenge通った話</span>
-                  </a>
-                </div>
-
-
-                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
-                  <p>こんにちは．tax_freeです．書こう書こうと思っている記事が2つくらい溜まってます．期末テストの影がうっすら見え始めていますが気にしないで生活中．</p>
-<p>今回は，OIST Science Challenge について accept されるまでについて書きます．</p>
-                </div>
-
-                <p class="mb-0 f6 text-gray">
-                  
-                </p>
-              </div>
-            </div>
-          </li>
-          
-          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-            <div
-              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
-              <div class="pinned-item-list-item-content">
-                <div class="d-flex width-full flex-items-center position-relative">
-                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
-                    width="16" height="16">
-                    <path fill-rule="evenodd"
-                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
-                    </path>
-                  </svg>
-                  <a class="text-bold flex-auto min-width-0" href="https://taxfree.dev/post/2023-01-09-01/">
-                    <span class="repo" title="2023年の目標">2023年の目標</span>
-                  </a>
-                </div>
-
-
-                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
-                  <p>遅くなりましたが，あけましておめでとうございます．こっちも遅くなりましたが，この投稿では，今年の目標をまとめたいと思います．公言しておくことで引くに引けない状態を作っておく．</p>
-<h1 id="楽しく生きる">「楽しく生きる」</h1>
-<p>今年の目標&quot;も&quot;これです．毎年同じようなことを目標にしていて，去年は受験生として，その前の年はコロナ禍の中で，その前の年は&hellip;と，毎年与えられた・勝ち取った環境で「楽しく」生きれるように行動して，ある程度は実現できたと思っています．2023 年は，せっかく大学生として東工大に通える環境にあるので，その環境を活かして楽しく生きていきます．</p>
-                </div>
-
-                <p class="mb-0 f6 text-gray">
-                  
-                </p>
-              </div>
-            </div>
-          </li>
-          
         </ol>
       </div>
     </div>
 
     
     <div class="mt-4 position-relative" id="contributions" data='[
+{
+  "title": "%e3%83%a6%e3%83%bc%e3%82%af%e3%83%aa%e3%83%83%e3%83%89%e5%b9%b3%e9%9d%a2%e4%b8%8a%e3%81%ae%e4%ba%a4%e5%b7%ae%e3%81%99%e3%82%8b%e7%b5%8c%e8%b7%af%e3%81%8c%e6%9c%80%e7%9f%ad%e7%b5%8c%e8%b7%af%e3%81%ab%e3%81%aa%e3%82%89%e3%81%aa%e3%81%84%e3%81%93%e3%81%a8%e3%81%ae%e8%a8%bc%e6%98%8e",
+  "link": "https://taxfree.dev/post/2023-08-28/",
+  "publishDate": "2023-08-28%2000:00:00"
+},
+
+{
+  "title": "Numpy%20%e3%81%ae%20sort",
+  "link": "https://taxfree.dev/post/2023-08-17/",
+  "publishDate": "2023-08-17%2003:00:00"
+},
+
 {
   "title": "%e6%98%a0%e7%94%bb%e3%80%8c%e9%81%a0%e3%81%84%e3%81%a8%e3%81%93%e3%82%8d%e3%80%8d%e3%82%92%e8%a6%8b%e3%81%a6",
   "link": "https://taxfree.dev/post/2023-07-08/",
