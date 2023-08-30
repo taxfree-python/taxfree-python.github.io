@@ -154,7 +154,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">10</span>
+              <span class="Counter">11</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -414,7 +414,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">10</span>
+      <span class="Counter ">11</span>
     </a>
   </nav>
 </div>
@@ -428,6 +428,42 @@
         
       
       <ul>
+        
+        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
+          <div class="col-12 d-inline-block">
+            <div class="d-inline-block mb-1">
+              <h3 class="wb-break-all">
+                <a href="https://taxfree.dev/post/2023-08-30/">.Trash-0のせいでDocker上でJupyterLabを起動できない</a>
+              </h3>
+            </div>
+
+            <div>
+              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
+                ある日のこと会社のリモートマシンに SSH で接続して
+docker-compose up --build をすると
+failed to solve: error from sender: open /working_directory/.Trash-0: permission denied が出るようになり，JupyterLabを立ち上げれなくなりました．これは困ったということで解決策を考えます．
+いろいろやってみる まず，原因となっている .Trash-0 についてですが
+Jupyter Notebook 上で GUI で削除したファイルは削除されるのではなく、全てこちらの ‘Trash’ に移動されるようです[1] です．そして，権限を調べてみると
+drwx------ となっていて，一般ユーザーでは何もできないことが分かります．ですので，rm しようとしても消えません．
+解決策 こうなっている原因は Container 中で JupyterLab を動かし，GUI 上からファイルを削除したからです．ですので，container の中に入ってから .Trash-0 を消してあげる必要があります． .Trash-0 の原因を考えると，この問題が発生するのは，少くとも一度は container を作成して起動した場合なので，以下 conintaier はあるものとして考えます．
+対象の container が起動してるか確認する なので，まずは
+docker ps をして対象の container が起動しているかを確認します[2]．起動している場合は次の「対象の container を起動する」部分は飛ばしてください．
+対象の container を起動する 対象の container が起動していないことを確認したので，container を起動して，中に入れるようにします．
+docker start &lt;目的のCONTAINER ID&gt; 一応，確認のために docker ps を打って，ちゃんと起動していることを確認しました．
+              </div>
+            </div>
+
+            <div class="f6 text-gray mt-2">
+              
+
+              Created
+              <relative-time datetime=" Wed, 30 Aug 2023 03:00:00 &#43;0900" class="no-wrap"
+                title=" Wed, 30 Aug 2023 03:00:00 &#43;0900">
+                Wed, 30 Aug 2023 03:00:00 &#43;0900
+              </relative-time>
+            </div>
+          </div>
+        </li>
         
         <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
           <div class="col-12 d-inline-block">
@@ -676,32 +712,6 @@ np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T.reshape(x*y, z), axis 
           </div>
         </li>
         
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/me/">READMEの続き</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <p>トップページに書いてる「ざっくり」に入りきらなかった部分を書いていきます．</p>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Thu, 08 Dec 2022 02:22:02 &#43;0900" class="no-wrap"
-                title=" Thu, 08 Dec 2022 02:22:02 &#43;0900">
-                Thu, 08 Dec 2022 02:22:02 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
       </ul>
       <div class="paginate-container">
         <div class="BtnGroup">
@@ -709,7 +719,7 @@ np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T.reshape(x*y, z), axis 
           <button class="btn btn-outline BtnGroup-item" disabled="disabled">Previous</button>
           
           
-          <button class="btn btn-outline BtnGroup-item" disabled="disabled">Next</button>
+          <a rel="nofollow" class="btn btn-outline BtnGroup-item" href="/post/page/2/">Next</a>
           
         </div>
       </div>
