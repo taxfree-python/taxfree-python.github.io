@@ -18,17 +18,7 @@
 
     
     <meta name="description"
-  content="ある日のこと会社のリモートマシンに SSH で接続して
-docker-compose up --build をすると
-failed to solve: error from sender: open /working_directory/.Trash-0: permission denied が出るようになり，JupyterLabを立ち上げれなくなりました．これは困ったということで解決策を考えます．
-いろいろやってみる まず，原因となっている .Trash-0 についてですが
-Jupyter Notebook 上で GUI で削除したファイルは削除されるのではなく、全てこちらの ‘Trash’ に移動されるようです[1] です．そして，権限を調べてみると
-drwx------ となっていて，一般ユーザーでは何もできないことが分かります．ですので，rm しようとしても消えません．
-解決策 こうなっている原因は Container 中で JupyterLab を動かし，GUI 上からファイルを削除したからです．ですので，container の中に入ってから .Trash-0 を消してあげる必要があります． .Trash-0 の原因を考えると，この問題が発生するのは，少くとも一度は container を作成して起動した場合なので，以下 conintaier はあるものとして考えます．
-対象の container が起動してるか確認する なので，まずは
-docker ps をして対象の container が起動しているかを確認します[2]．起動している場合は次の「対象の container を起動する」部分は飛ばしてください．
-対象の container を起動する 対象の container が起動していないことを確認したので，container を起動して，中に入れるようにします．
-docker start &amp;lt;目的のCONTAINER ID&amp;gt; 一応，確認のために docker ps を打って，ちゃんと起動していることを確認しました．" />
+  content="" />
 <meta name="keywords"
   content='' />
 <meta name="robots" content="noodp" />
@@ -38,17 +28,7 @@ docker start &amp;lt;目的のCONTAINER ID&amp;gt; 一応，確認のために d
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content=".Trash-0のせいでDocker上でJupyterLabを起動できない - tax_free&#39;s blog" />
 <meta name="twitter:description"
-  content="ある日のこと会社のリモートマシンに SSH で接続して
-docker-compose up --build をすると
-failed to solve: error from sender: open /working_directory/.Trash-0: permission denied が出るようになり，JupyterLabを立ち上げれなくなりました．これは困ったということで解決策を考えます．
-いろいろやってみる まず，原因となっている .Trash-0 についてですが
-Jupyter Notebook 上で GUI で削除したファイルは削除されるのではなく、全てこちらの ‘Trash’ に移動されるようです[1] です．そして，権限を調べてみると
-drwx------ となっていて，一般ユーザーでは何もできないことが分かります．ですので，rm しようとしても消えません．
-解決策 こうなっている原因は Container 中で JupyterLab を動かし，GUI 上からファイルを削除したからです．ですので，container の中に入ってから .Trash-0 を消してあげる必要があります． .Trash-0 の原因を考えると，この問題が発生するのは，少くとも一度は container を作成して起動した場合なので，以下 conintaier はあるものとして考えます．
-対象の container が起動してるか確認する なので，まずは
-docker ps をして対象の container が起動しているかを確認します[2]．起動している場合は次の「対象の container を起動する」部分は飛ばしてください．
-対象の container を起動する 対象の container が起動していないことを確認したので，container を起動して，中に入れるようにします．
-docker start &amp;lt;目的のCONTAINER ID&amp;gt; 一応，確認のために docker ps を打って，ちゃんと起動していることを確認しました．" />
+  content="" />
 <meta name="twitter:site" content="https://taxfree.dev" />
 <meta name="twitter:creator" content="" />
 <meta name="twitter:image"
@@ -58,17 +38,7 @@ docker start &amp;lt;目的のCONTAINER ID&amp;gt; 一応，確認のために d
 <meta property="og:type" content="article" />
 <meta property="og:title" content=".Trash-0のせいでDocker上でJupyterLabを起動できない - tax_free&#39;s blog">
 <meta property="og:description"
-  content="ある日のこと会社のリモートマシンに SSH で接続して
-docker-compose up --build をすると
-failed to solve: error from sender: open /working_directory/.Trash-0: permission denied が出るようになり，JupyterLabを立ち上げれなくなりました．これは困ったということで解決策を考えます．
-いろいろやってみる まず，原因となっている .Trash-0 についてですが
-Jupyter Notebook 上で GUI で削除したファイルは削除されるのではなく、全てこちらの ‘Trash’ に移動されるようです[1] です．そして，権限を調べてみると
-drwx------ となっていて，一般ユーザーでは何もできないことが分かります．ですので，rm しようとしても消えません．
-解決策 こうなっている原因は Container 中で JupyterLab を動かし，GUI 上からファイルを削除したからです．ですので，container の中に入ってから .Trash-0 を消してあげる必要があります． .Trash-0 の原因を考えると，この問題が発生するのは，少くとも一度は container を作成して起動した場合なので，以下 conintaier はあるものとして考えます．
-対象の container が起動してるか確認する なので，まずは
-docker ps をして対象の container が起動しているかを確認します[2]．起動している場合は次の「対象の container を起動する」部分は飛ばしてください．
-対象の container を起動する 対象の container が起動していないことを確認したので，container を起動して，中に入れるようにします．
-docker start &amp;lt;目的のCONTAINER ID&amp;gt; 一応，確認のために docker ps を打って，ちゃんと起動していることを確認しました．" />
+  content="" />
 <meta property="og:url" content="https://taxfree.dev/post/2023-08-30/" />
 <meta property="og:site_name" content=".Trash-0のせいでDocker上でJupyterLabを起動できない" />
 <meta property="og:image"
@@ -254,8 +224,7 @@ docker start &amp;lt;目的のCONTAINER ID&amp;gt; 一応，確認のために d
 <pre tabindex="0"><code>docker-compose up --build
 </code></pre><p>をして JupyerLab を立ち上げることができるようになりました．</p>
 <h2 id="防止策">防止策</h2>
-<p><code>.Trash-0</code> が生成される原因が「GUI 上からファイルを削除したとき」なので，GUI 上からファイルを削除しないようにすることで，防止できると思います(検証してない)．</p>
-</article>
+<p><code>.Trash-0</code> が生成される原因が「GUI 上からファイルを削除したとき」なので，GUI 上からファイルを削除しないようにすることで，防止できると思います(検証してない)．</p></article>
               </div>
             </div>
           </div>
