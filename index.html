@@ -542,12 +542,7 @@
 
 
                 <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
-                  自分用にメモ
-昇順 x→y→z の順(axis=0→axis=1→axis=2)で埋めていくには
-np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T, axis = 0).reshape(x, y, z) shape=(x, y, z) の arr を y→x→z の順(axis=1→axis=0→axis=2)で埋めていくには
-np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T.reshape(x*y, z), axis = 0).reshape(x, y, z) 降順 x→y→z の順(axis=0→axis=1→axis=2)で埋めていくには
-np.flip(np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T, axis = 0).reshape(x, y, z)) y→x→z の順(axis=1→axis=0→axis=2)で埋めていくには
-np.sort(np.sort(arr.reshape(1, x*y*z)).reshape(z, y, x).T.reshape(x*y, z), axis = 0).reshape(x, y, z) 
+                  <p>自分用にメモ</p>
                 </div>
 
                 <p class="mb-0 f6 text-gray">
