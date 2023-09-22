@@ -180,7 +180,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      402 Words
+                      406 Words
                     
 
                   </div>
@@ -196,33 +196,29 @@
 <h3 id="証明">証明</h3>
 <p>ユークリッド平面上の 4 点(A, B, C, D)を考える．ここで A→B→C→D(経路1) は経路の交差がなく，A→C→B→D(経路2)は A→C(AC) と B→D(BD) が交差しているとする．AC と BD の交点を X とする．経路1と経路2の経路長をそれぞれ $d_1$ と $d_2$ とすると，
 $$
-\begin{align*}
-d_1 &amp; = AC + BC + BD \
-&amp; = (AX + XC) + BC + (CX + DX) \
-&amp; = (AX + BX) + BC + (CX + DX) \
-d_2 &amp; = AB + BC + CD \
-\end{align*}
+\begin{array}{lll} d_1 &amp; = &amp; AC + BC + BD \\
+&amp; = &amp; (AX + XC) + BC + (CX + DX) \\
+&amp; = &amp; (AX + BX) + BC + (CX + DX) \\
+d_2 &amp; = &amp; AB + BC + CD \\ \end{array}
 $$
 となる．ここで，三角形 AXB を考えると，三角不等式より
 $$
-\begin{align*}
-AX + BX \geq AB
-\end{align*}
+\begin{array}{lll} AX + BX \geq AB \end{array}
 $$
 が成り立つ．これは三角形 CXD でも同様に成り立つから
 $$
-\begin{align*}
+\begin{array}{lll}
 CX + DX \geq CD
-\end{align*}
+\end{array}
 $$
 となる．従って，$d_1$ と $d_2$ の大小関係は
 $$
-\begin{align*}
-d_1 &amp; = (AX + BX) + BC + (CX + DX) \
-&amp; \geq AB + BC + (CX + DX) \
-&amp; \geq AB + BC + CD \
+\begin{array}{lll}
+d_1 &amp; = (AX + BX) + BC + (CX + DX) \\
+&amp; \geq AB + BC + (CX + DX) \\
+&amp; \geq AB + BC + CD \\
 &amp; = d_2
-\end{align*}
+\end{array}
 $$
 となる．よって，$d_1$ は最短経路ではない．(証明終)</p>
 <p>こういう証明をぱっとできるようにならないとですね．</p></article>
