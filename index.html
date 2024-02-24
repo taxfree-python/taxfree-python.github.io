@@ -155,7 +155,7 @@
                 </path>
               </svg>
               Posts
-              <span class="Counter">18</span>
+              <span class="Counter">19</span>
             </a>
           </nav>
           <div class="profile-color-modes js-promo-color-modes-banner-profile isInitialToggle">
@@ -415,7 +415,7 @@
         </path>
       </svg>
       Posts
-      <span class="Counter ">18</span>
+      <span class="Counter ">19</span>
     </a>
   </nav>
 </div>
@@ -468,6 +468,38 @@
           Popular posts
         </h2>
         <ol class="d-flex flex-wrap list-style-none gutter-condensed mb-4 js-pinned-items-reorder-list">
+          
+          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
+            <div
+              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
+              <div class="pinned-item-list-item-content">
+                <div class="d-flex width-full flex-items-center position-relative">
+                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
+                    width="16" height="16">
+                    <path fill-rule="evenodd"
+                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
+                    </path>
+                  </svg>
+                  <a class="text-bold flex-auto min-width-0" href="https://taxfree.dev/post/2024-02-25/">
+                    <span class="repo" title="PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話">PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話</span>
+                  </a>
+                </div>
+
+
+                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
+                  環境 PyCharm，Docker，jupyter lab のバージョン
+PyCharm 2023.3.1 docker desktop 4.21.1 jupyter lab 4.0.5 やりたいこと docker 上で動かしている jupyter lab にブラウザからではなく PyCharm から直接アクセスして ipynb を編集して，実行したい．
+詰まったこと ネットにあるように settings/Project: hoge/Pyton Interpreter → Add Interpreter → On Docker Compose ... → 適当な docker-compose.yaml を設定して，ipybn の適当なセルを実行しても
+Running as root is not recommended. Use --allow-root to bypass. のエラーが出て jupyter が停止してしまう問題
+解決方法 エラーを読むと root ユーザーの権限がよくないらしいので jupyter を起動するときの引数に --allow-rootを渡して実行すればよさそうです．私はここで，どうやって PyCharm の jupyter 実行時に引数を渡すかで悩みました．答えは単純で settings/Languages&amp;Frameworks/Jupyter/Jupyter Serves に Command line arguments というのがあるので，ここを lab --allow-root にしましょう．そうすれば PyCharm 上から jupyter を実行できるようになると思います．
+                </div>
+
+                <p class="mb-0 f6 text-gray">
+                  
+                </p>
+              </div>
+            </div>
+          </li>
           
           <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
             <div
@@ -616,40 +648,18 @@
             </div>
           </li>
           
-          <li class="col-12 col-md-6 col-lg-6 mb-3 d-flex flex-content-stretch">
-            <div
-              class="Box pinned-item-list-item d-flex p-3 width-full js-pinned-item-list-item public source reorderable sortable-button-item">
-              <div class="pinned-item-list-item-content">
-                <div class="d-flex width-full flex-items-center position-relative">
-                  <svg class="octicon octicon-repo mr-2 text-gray flex-shrink-0" viewBox="0 0 16 16" version="1.1"
-                    width="16" height="16">
-                    <path fill-rule="evenodd"
-                      d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z">
-                    </path>
-                  </svg>
-                  <a class="text-bold flex-auto min-width-0" href="https://taxfree.dev/post/2023-11-15/">
-                    <span class="repo" title="ヨーロッパ旅行まとめ">ヨーロッパ旅行まとめ</span>
-                  </a>
-                </div>
-
-
-                <div name="summary" class="pinned-item-desc text-gray text-small d-block mt-2 mb-3">
-                  <p>この記事は iGEM 2023 の後にヨーロッパを旅行した記録?です．適当に書いてます．</p>
-                </div>
-
-                <p class="mb-0 f6 text-gray">
-                  
-                </p>
-              </div>
-            </div>
-          </li>
-          
         </ol>
       </div>
     </div>
 
     
     <div class="mt-4 position-relative" id="contributions" data='[
+{
+  "title": "PyCharm%20%e3%81%a7%20Docker%20%e4%b8%8a%e3%81%ae%20Jupyter%20lab%20%e3%81%ab%e3%82%a2%e3%82%af%e3%82%bb%e3%82%b9%e3%81%97%e3%82%88%e3%81%86%e3%81%a8%e3%81%97%e3%81%9f%e3%82%89%e8%a9%b0%e3%81%be%e3%81%a3%e3%81%9f%e8%a9%b1",
+  "link": "https://taxfree.dev/post/2024-02-25/",
+  "publishDate": "2024-02-25%2000:00:00"
+},
+
 {
   "title": "serial%20experiments%20lain%20%e3%81%ae%e6%84%9f%e6%83%b3",
   "link": "https://taxfree.dev/post/2024-01-22/",
