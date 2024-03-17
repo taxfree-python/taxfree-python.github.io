@@ -6,7 +6,46 @@
     <description>Recent content in Posts on tax_free&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Feb 2024 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Mar 2024 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Docker&#43;Poetry 環境下で qiskit を動かそうとしたら matplotlib の最新バージョン関係で build できなかった話</title>
+      <link>https://taxfree.dev/post/2024-03-18/</link>
+      <pubDate>Mon, 18 Mar 2024 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2024-03-18/</guid>
+      <description>&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+&lt;p&gt;PyCharm，Docker のバージョン&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PyCharm
+&lt;ul&gt;
+&lt;li&gt;2023.3.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;docker desktop
+&lt;ul&gt;
+&lt;li&gt;4.21.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;pyproject.toml の設定&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[tool.poetry]
+name = &amp;#34;jupyter-poetry-env&amp;#34;
+version = &amp;#34;0.1.0&amp;#34;
+description = &amp;#34;&amp;#34;
+authors = [&amp;#34;tax_free&amp;#34;]
+
+[tool.poetry.dependencies]
+python = &amp;#34;^3.11&amp;#34;
+jupyterlab = &amp;#34;^4.0&amp;#34;
+qiskit = &amp;#34;^1.0&amp;#34;
+matplotlib = &amp;#34;^3.8.3&amp;#34;
+
+[build-system]
+requires = [&amp;#34;poetry-core&amp;gt;=1.0.0&amp;#34;]
+build-backend = &amp;#34;poetry.core.masonry.api&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
     <item>
       <title>PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話</title>
       <link>https://taxfree.dev/post/2024-02-25/</link>
