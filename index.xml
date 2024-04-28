@@ -6,7 +6,19 @@
     <description>Recent content on tax_free&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 18 Mar 2024 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vertex AI の Notebook の権限に関する問題(Required &#39;Current principal doesn&#39;t have permission to mutate this resource!&#39; permission for &#39;instance name&#39;)</title>
+      <link>https://taxfree.dev/post/2024-04-28/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2024-04-28/</guid>
+      <description>Kaggle で GPU を使いたかったので GCP の Vertex AI のサービスを使って Notebook 環境を作ったはいいものの，コンペが終わった後に消そうとしても
+Required &amp;#39;Current principal doesn&amp;#39;t have permission to mutate this resource!&amp;#39; permission for &amp;#39;instance name&amp;#39; が表示されて VM instance を削除できない問題が発生しました．
+これ，GCP の仕様が不親切だなと思ったのですが，Vertex AI ワークベンチ の instance ページから特定の instance をクリックすると VM instance のページに移動します．なので，私はこの VM instance のページが消そうとしていたのですが，このページからだと Owner の権限を持っているユーザーでも instance が消せません．それで困っていたのですが，VM instance のページではなく Vertex AI ワークベンチ の instance のリストから削除すると削除できました．なので，VM instance ページ上での instance への権限は，Vertex AI ワークベンチ から見る instance への権限と違うようです．
+これのせいで 5,000 円くらい溶かしました&amp;hellip; 勉強代だと思って忘れようと思います．</description>
+    </item>
+    
     <item>
       <title>Docker&#43;Poetry 環境下で qiskit を動かそうとしたら matplotlib の最新バージョン関係で build できなかった話</title>
       <link>https://taxfree.dev/post/2024-03-18/</link>

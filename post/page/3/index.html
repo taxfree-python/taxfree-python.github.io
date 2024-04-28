@@ -433,16 +433,14 @@
           <div class="col-12 d-inline-block">
             <div class="d-inline-block mb-1">
               <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/2024-04-28/">Vertex AI の Notebook の権限に関する問題(Required &#39;Current principal doesn&#39;t have permission to mutate this resource!&#39; permission for &#39;instance name&#39;)</a>
+                <a href="https://taxfree.dev/post/my_motivation_is/">My Motivation Is</a>
               </h3>
             </div>
 
             <div>
               <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                Kaggle で GPU を使いたかったので GCP の Vertex AI のサービスを使って Notebook 環境を作ったはいいものの，コンペが終わった後に消そうとしても
-Required &#39;Current principal doesn&#39;t have permission to mutate this resource!&#39; permission for &#39;instance name&#39; が表示されて VM instance を削除できない問題が発生しました．
-これ，GCP の仕様が不親切だなと思ったのですが，Vertex AI ワークベンチ の instance ページから特定の instance をクリックすると VM instance のページに移動します．なので，私はこの VM instance のページが消そうとしていたのですが，このページからだと Owner の権限を持っているユーザーでも instance が消せません．それで困っていたのですが，VM instance のページではなく Vertex AI ワークベンチ の instance のリストから削除すると削除できました．なので，VM instance ページ上での instance への権限は，Vertex AI ワークベンチ から見る instance への権限と違うようです．
-これのせいで 5,000 円くらい溶かしました&hellip; 勉強代だと思って忘れようと思います．
+                感動を作り，届ける．
+きっと，世界はもっと良くなるはずだから
               </div>
             </div>
 
@@ -450,298 +448,9 @@ Required &#39;Current principal doesn&#39;t have permission to mutate this resou
               
 
               Created
-              <relative-time datetime=" Sun, 28 Apr 2024 00:00:00 &#43;0900" class="no-wrap"
-                title=" Sun, 28 Apr 2024 00:00:00 &#43;0900">
-                Sun, 28 Apr 2024 00:00:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/2024-03-18/">Docker&#43;Poetry 環境下で qiskit を動かそうとしたら matplotlib の最新バージョン関係で build できなかった話</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <h1 id="環境">環境</h1>
-<p>PyCharm，Docker のバージョン</p>
-<ul>
-<li>PyCharm
-<ul>
-<li>2023.3.1</li>
-</ul>
-</li>
-<li>docker desktop
-<ul>
-<li>4.21.1</li>
-</ul>
-</li>
-</ul>
-<p>pyproject.toml の設定</p>
-<pre tabindex="0"><code>[tool.poetry]
-name = &#34;jupyter-poetry-env&#34;
-version = &#34;0.1.0&#34;
-description = &#34;&#34;
-authors = [&#34;tax_free&#34;]
-
-[tool.poetry.dependencies]
-python = &#34;^3.11&#34;
-jupyterlab = &#34;^4.0&#34;
-qiskit = &#34;^1.0&#34;
-matplotlib = &#34;^3.8.3&#34;
-
-[build-system]
-requires = [&#34;poetry-core&gt;=1.0.0&#34;]
-build-backend = &#34;poetry.core.masonry.api&#34;
-</code></pre>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Mon, 18 Mar 2024 00:00:00 &#43;0900" class="no-wrap"
-                title=" Mon, 18 Mar 2024 00:00:00 &#43;0900">
-                Mon, 18 Mar 2024 00:00:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/2024-02-25/">PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <h1 id="環境">環境</h1>
-<p>PyCharm，Docker，jupyter lab のバージョン</p>
-<ul>
-<li>PyCharm
-<ul>
-<li>2023.3.1</li>
-</ul>
-</li>
-<li>docker desktop
-<ul>
-<li>4.21.1</li>
-</ul>
-</li>
-<li>jupyter lab
-<ul>
-<li>4.0.5</li>
-</ul>
-</li>
-</ul>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Sun, 25 Feb 2024 00:00:00 &#43;0900" class="no-wrap"
-                title=" Sun, 25 Feb 2024 00:00:00 &#43;0900">
-                Sun, 25 Feb 2024 00:00:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/2024-01-22/">serial experiments lain の感想</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <p>serial experiments lain を見ました．感想を書こうと思います．</p>
-<p>当たり前ですが，アニメ版，そしておそらくゲーム版のネタバレを含みます．</p>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Mon, 22 Jan 2024 00:00:00 &#43;0900" class="no-wrap"
-                title=" Mon, 22 Jan 2024 00:00:00 &#43;0900">
-                Mon, 22 Jan 2024 00:00:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/2023-12-11/">アナフィラキシーで死にかけました</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                アナフィラキシーショックで死にかけました．自分の命を大切に生きます．
-麦アレルギーかとろろアレルギーかの2択らしくて，全力でとろろであれと思っています．
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Mon, 11 Dec 2023 02:30:00 &#43;0900" class="no-wrap"
-                title=" Mon, 11 Dec 2023 02:30:00 &#43;0900">
-                Mon, 11 Dec 2023 02:30:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/seeyou-igem-tokyotech/">iGEM TokyoTechを辞めます</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <p>タイトルの通りです．iGEM TokyoTechを辞めます．</p>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Fri, 08 Dec 2023 00:00:00 &#43;0900" class="no-wrap"
-                title=" Fri, 08 Dec 2023 00:00:00 &#43;0900">
-                Fri, 08 Dec 2023 00:00:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/2023-12-08/">懐古自慰</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <!-- raw HTML omitted -->
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Fri, 08 Dec 2023 00:00:00 &#43;0900" class="no-wrap"
-                title=" Fri, 08 Dec 2023 00:00:00 &#43;0900">
-                Fri, 08 Dec 2023 00:00:00 &#43;0900
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/2023-12-01/">iGEM アドベントカレンダー始まるよ~</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <p>この投稿は，<a href="https://adventar.org/calendars/8876">iGEM･Synthetic biology(合成生物学)･Japan Advent Calendar 2023</a>の 1 日目です．</p>
-<h2 id="はじめに">はじめに</h2>
-<p>こんにちは．iGEM TokyoTech の <a href="taxfree.dev">tax_free</a> です．<br>
-今年は Japan-United が Grand Prize を獲るなど歴史的な年になったと思っています．
-その波に乗って iGEM Japan Community を盛り上げて，日本でもっと iGEM が広がってほしいという気持ちから，去年に引き続き，複数の日本チームで Advent Calendar を書くことになりました．</p>
-<p>ぜひ楽しく書いて，読んで交流していただけたらと思っています．</p>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Fri, 01 Dec 2023 00:00:00 &#43;0000" class="no-wrap"
-                title=" Fri, 01 Dec 2023 00:00:00 &#43;0000">
-                Fri, 01 Dec 2023 00:00:00 &#43;0000
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/2023-11-15/">ヨーロッパ旅行まとめ</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                <p>この記事は iGEM 2023 の後にヨーロッパを旅行した記録?です．適当に書いてます．</p>
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Thu, 09 Nov 2023 00:00:00 &#43;0100" class="no-wrap"
-                title=" Thu, 09 Nov 2023 00:00:00 &#43;0100">
-                Thu, 09 Nov 2023 00:00:00 &#43;0100
-              </relative-time>
-            </div>
-          </div>
-        </li>
-        
-        <li class="col-12 d-flex width-full py-4 border-bottom color-border-secondary public source">
-          <div class="col-12 d-inline-block">
-            <div class="d-inline-block mb-1">
-              <h3 class="wb-break-all">
-                <a href="https://taxfree.dev/post/2023-08-30/">.Trash-0のせいでDocker上でJupyterLabを起動できない</a>
-              </h3>
-            </div>
-
-            <div>
-              <div class="col-12 d-inline-block text-gray mb-2 pr-4">
-                
-              </div>
-            </div>
-
-            <div class="f6 text-gray mt-2">
-              
-
-              Created
-              <relative-time datetime=" Wed, 30 Aug 2023 03:00:00 &#43;0900" class="no-wrap"
-                title=" Wed, 30 Aug 2023 03:00:00 &#43;0900">
-                Wed, 30 Aug 2023 03:00:00 &#43;0900
+              <relative-time datetime=" Tue, 24 Jun 2003 09:00:00 &#43;0000" class="no-wrap"
+                title=" Tue, 24 Jun 2003 09:00:00 &#43;0000">
+                Tue, 24 Jun 2003 09:00:00 &#43;0000
               </relative-time>
             </div>
           </div>
@@ -751,10 +460,10 @@ build-backend = &#34;poetry.core.masonry.api&#34;
       <div class="paginate-container">
         <div class="BtnGroup">
           
-          <button class="btn btn-outline BtnGroup-item" disabled="disabled">Previous</button>
+          <a rel="nofollow" class="btn btn-outline BtnGroup-item" href="/post/page/2/">Previous</a>
           
           
-          <a rel="nofollow" class="btn btn-outline BtnGroup-item" href="/post/page/2/">Next</a>
+          <button class="btn btn-outline BtnGroup-item" disabled="disabled">Next</button>
           
         </div>
       </div>
