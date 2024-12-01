@@ -6,7 +6,188 @@
     <description>Recent content in Posts on tax_free&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Jul 2023 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vertex AI の Notebook の権限に関する問題(Required &#39;Current principal doesn&#39;t have permission to mutate this resource!&#39; permission for &#39;instance name&#39;)</title>
+      <link>https://taxfree.dev/post/2024-04-28/</link>
+      <pubDate>Sun, 28 Apr 2024 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2024-04-28/</guid>
+      <description>&lt;p&gt;Kaggle で GPU を使いたかったので GCP の Vertex AI のサービスを使って Notebook 環境を作ったはいいものの，コンペが終わった後に消そうとしても&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Required &amp;#39;Current principal doesn&amp;#39;t have permission to mutate this resource!&amp;#39; permission for &amp;#39;instance name&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;が表示されて VM instance を削除できない問題が発生しました．&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker&#43;Poetry 環境下で qiskit を動かそうとしたら matplotlib の最新バージョン関係で build できなかった話</title>
+      <link>https://taxfree.dev/post/2024-03-18/</link>
+      <pubDate>Mon, 18 Mar 2024 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2024-03-18/</guid>
+      <description>&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+&lt;p&gt;PyCharm，Docker のバージョン&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PyCharm
+&lt;ul&gt;
+&lt;li&gt;2023.3.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;docker desktop
+&lt;ul&gt;
+&lt;li&gt;4.21.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;pyproject.toml の設定&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[tool.poetry]
+name = &amp;#34;jupyter-poetry-env&amp;#34;
+version = &amp;#34;0.1.0&amp;#34;
+description = &amp;#34;&amp;#34;
+authors = [&amp;#34;tax_free&amp;#34;]
+
+[tool.poetry.dependencies]
+python = &amp;#34;^3.11&amp;#34;
+jupyterlab = &amp;#34;^4.0&amp;#34;
+qiskit = &amp;#34;^1.0&amp;#34;
+matplotlib = &amp;#34;^3.8.3&amp;#34;
+
+[build-system]
+requires = [&amp;#34;poetry-core&amp;gt;=1.0.0&amp;#34;]
+build-backend = &amp;#34;poetry.core.masonry.api&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    
+    <item>
+      <title>PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話</title>
+      <link>https://taxfree.dev/post/2024-02-25/</link>
+      <pubDate>Sun, 25 Feb 2024 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2024-02-25/</guid>
+      <description>&lt;h1 id=&#34;環境&#34;&gt;環境&lt;/h1&gt;
+&lt;p&gt;PyCharm，Docker，jupyter lab のバージョン&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;PyCharm
+&lt;ul&gt;
+&lt;li&gt;2023.3.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;docker desktop
+&lt;ul&gt;
+&lt;li&gt;4.21.1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;jupyter lab
+&lt;ul&gt;
+&lt;li&gt;4.0.5&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>serial experiments lain の感想</title>
+      <link>https://taxfree.dev/post/2024-01-22/</link>
+      <pubDate>Mon, 22 Jan 2024 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2024-01-22/</guid>
+      <description>&lt;p&gt;serial experiments lain を見ました．感想を書こうと思います．&lt;/p&gt;
+&lt;p&gt;当たり前ですが，アニメ版，そしておそらくゲーム版のネタバレを含みます．&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>アナフィラキシーで死にかけました</title>
+      <link>https://taxfree.dev/post/2023-12-11/</link>
+      <pubDate>Mon, 11 Dec 2023 02:30:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-12-11/</guid>
+      <description>アナフィラキシーショックで死にかけました．自分の命を大切に生きます．
+麦アレルギーかとろろアレルギーかの2択らしくて，全力でとろろであれと思っています．</description>
+    </item>
+    
+    <item>
+      <title>iGEM TokyoTechを辞めます</title>
+      <link>https://taxfree.dev/post/seeyou-igem-tokyotech/</link>
+      <pubDate>Fri, 08 Dec 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/seeyou-igem-tokyotech/</guid>
+      <description>&lt;p&gt;タイトルの通りです．iGEM TokyoTechを辞めます．&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>懐古自慰</title>
+      <link>https://taxfree.dev/post/2023-12-08/</link>
+      <pubDate>Fri, 08 Dec 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-12-08/</guid>
+      <description>&lt;!-- raw HTML omitted --&gt;</description>
+    </item>
+    
+    <item>
+      <title>iGEM アドベントカレンダー始まるよ~</title>
+      <link>https://taxfree.dev/post/2023-12-01/</link>
+      <pubDate>Fri, 01 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-12-01/</guid>
+      <description>&lt;p&gt;この投稿は，&lt;a href=&#34;https://adventar.org/calendars/8876&#34;&gt;iGEM･Synthetic biology(合成生物学)･Japan Advent Calendar 2023&lt;/a&gt;の 1 日目です．&lt;/p&gt;
+&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;こんにちは．iGEM TokyoTech の &lt;a href=&#34;https://x.com/taxfree_python&#34;&gt;tax_free&lt;/a&gt; です．&lt;br&gt;
+今年は Japan-United が Grand Prize を獲るなど歴史的な年になったと思っています．
+その波に乗って iGEM Japan Community を盛り上げて，日本でもっと iGEM が広がってほしいという気持ちから，去年に引き続き，複数の日本チームで Advent Calendar を書くことになりました．&lt;/p&gt;
+&lt;p&gt;ぜひ楽しく書いて，読んで交流していただけたらと思っています．&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>iGEM アドベントカレンダー始まるよ~</title>
+      <link>https://taxfree.dev/post/2024-12-01/</link>
+      <pubDate>Fri, 01 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://taxfree.dev/post/2024-12-01/</guid>
+      <description>&lt;p&gt;この投稿は，&lt;a href=&#34;https://adventar.org/calendars/10451&#34;&gt;iGEM･Synthetic biology(合成生物学)･Japan Advent Calendar 2024&lt;/a&gt;の 1 日目です．&lt;/p&gt;
+&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;こんにちは．&lt;a href=&#34;https://x.com/taxfree_python&#34;&gt;tax_free&lt;/a&gt; です．&lt;br&gt;
+昨年は Japan-United が，今年は Waseda-Tokyo が日本勢として初めて Undergrad で Top 10 に入るという結果で嬉しい気持ちになっています．
+その波に乗って iGEM Japan Community を盛り上げて，日本でもっと iGEM が広がってほしいという気持ちから，&lt;a href=&#34;https://adventar.org/calendars/7510&#34;&gt;2022&lt;/a&gt;, &lt;a href=&#34;https://adventar.org/calendars/8876&#34;&gt;2023&lt;/a&gt; に続いて Advent Calendar を企画しました．&lt;/p&gt;
+&lt;p&gt;2022 は 25 枠が全て埋まって喜び，2023 は 25 枠全てが違う人で埋まって喜んでいましたが，今年は 11 月中に 25 枠全てが違う人で埋まり，大変嬉しく，ありがたいです．
+地味ながらも確実にアウトプットの文化が根付いていることを感じています．&lt;/p&gt;
+&lt;p&gt;ぜひ楽しく書いて，読んで交流していただけたらと思っています．&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ヨーロッパ旅行まとめ</title>
+      <link>https://taxfree.dev/post/2023-11-15/</link>
+      <pubDate>Thu, 09 Nov 2023 00:00:00 +0100</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-11-15/</guid>
+      <description>&lt;p&gt;この記事は iGEM 2023 の後にヨーロッパを旅行した記録?です．適当に書いてます．&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>.Trash-0のせいでDocker上でJupyterLabを起動できない</title>
+      <link>https://taxfree.dev/post/2023-08-30/</link>
+      <pubDate>Wed, 30 Aug 2023 03:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-08-30/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ユークリッド平面上の交差する経路が最短経路にならないことの証明</title>
+      <link>https://taxfree.dev/post/2023-08-28/</link>
+      <pubDate>Mon, 28 Aug 2023 00:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-08-28/</guid>
+      <description>&lt;p&gt;証明自体は仮定からほぼほぼ自明に近いのですが，証明するのに少し考えてしまったので忘れないようにメモ．&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Numpy の sort</title>
+      <link>https://taxfree.dev/post/2023-08-17/</link>
+      <pubDate>Thu, 17 Aug 2023 03:00:00 +0900</pubDate>
+      
+      <guid>https://taxfree.dev/post/2023-08-17/</guid>
+      <description>&lt;p&gt;自分用にメモ&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>映画「遠いところ」を見て</title>
       <link>https://taxfree.dev/post/2023-07-08/</link>
@@ -61,9 +242,7 @@
       <pubDate>Tue, 10 Jan 2023 00:00:00 +0900</pubDate>
       
       <guid>https://taxfree.dev/post/2023-01-09-01/</guid>
-      <description>&lt;p&gt;遅くなりましたが，あけましておめでとうございます．こっちも遅くなりましたが，この投稿では，今年の目標をまとめたいと思います．公言しておくことで引くに引けない状態を作っておく．&lt;/p&gt;
-&lt;h1 id=&#34;楽しく生きる&#34;&gt;「楽しく生きる」&lt;/h1&gt;
-&lt;p&gt;今年の目標&amp;quot;も&amp;quot;これです．毎年同じようなことを目標にしていて，去年は受験生として，その前の年はコロナ禍の中で，その前の年は&amp;hellip;と，毎年与えられた・勝ち取った環境で「楽しく」生きれるように行動して，ある程度は実現できたと思っています．2023 年は，せっかく大学生として東工大に通える環境にあるので，その環境を活かして楽しく生きていきます．&lt;/p&gt;</description>
+      <description>&lt;p&gt;遅くなりましたが，あけましておめでとうございます．こっちも遅くなりましたが，この投稿では，今年の目標をまとめたいと思います．公言しておくことで引くに引けない状態を作っておく．&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -85,6 +264,16 @@
       
       <guid>https://taxfree.dev/post/me/</guid>
       <description>&lt;p&gt;トップページに書いてる「ざっくり」に入りきらなかった部分を書いていきます．&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>My Motivation Is</title>
+      <link>https://taxfree.dev/post/my_motivation_is/</link>
+      <pubDate>Tue, 24 Jun 2003 09:00:00 +0000</pubDate>
+      
+      <guid>https://taxfree.dev/post/my_motivation_is/</guid>
+      <description>感動を作り，届ける．
+きっと，世界はもっと良くなるはずだから</description>
     </item>
     
   </channel>

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href='https://taxfree.dev/css/light.css' />
     <link rel="stylesheet" href='https://taxfree.dev/css/dark.css' />
     <link rel="stylesheet" href='https://taxfree.dev/css/syntax.css' />
-    <title> - tax_free&#39;s blog</title>
+    <title>.Trash-0のせいでDocker上でJupyterLabを起動できない - tax_free&#39;s blog</title>
     
     <link rel="icon" type="image/x-icon" href='https://pbs.twimg.com/profile_images/1505012518556561409/g93YcdDs_400x400.jpg'>
     
@@ -18,17 +18,17 @@
 
     
     <meta name="description"
-  content="ざっくり 名前 : tax_free 年齢 : 20 所属 : 東京工業大学 情報理工学院 数理・計算科学系 学部2年 最近 : Education x Tech で教育格差を是正・解決することに興味があります ひとこと : 単位がまずい 続き" />
+  content="" />
 <meta name="keywords"
   content='' />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="https://taxfree.dev/readme/" />
+<link rel="canonical" href="https://taxfree.dev/post/2023-08-30/" />
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content=" - tax_free&#39;s blog" />
+<meta name="twitter:title" content=".Trash-0のせいでDocker上でJupyterLabを起動できない - tax_free&#39;s blog" />
 <meta name="twitter:description"
-  content="ざっくり 名前 : tax_free 年齢 : 20 所属 : 東京工業大学 情報理工学院 数理・計算科学系 学部2年 最近 : Education x Tech で教育格差を是正・解決することに興味があります ひとこと : 単位がまずい 続き" />
+  content="" />
 <meta name="twitter:site" content="https://taxfree.dev" />
 <meta name="twitter:creator" content="" />
 <meta name="twitter:image"
@@ -36,15 +36,17 @@
 
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content=" - tax_free&#39;s blog">
+<meta property="og:title" content=".Trash-0のせいでDocker上でJupyterLabを起動できない - tax_free&#39;s blog">
 <meta property="og:description"
-  content="ざっくり 名前 : tax_free 年齢 : 20 所属 : 東京工業大学 情報理工学院 数理・計算科学系 学部2年 最近 : Education x Tech で教育格差を是正・解決することに興味があります ひとこと : 単位がまずい 続き" />
-<meta property="og:url" content="https://taxfree.dev/readme/" />
-<meta property="og:site_name" content="" />
+  content="" />
+<meta property="og:url" content="https://taxfree.dev/post/2023-08-30/" />
+<meta property="og:site_name" content=".Trash-0のせいでDocker上でJupyterLabを起動できない" />
 <meta property="og:image"
   content="https://taxfree.dev">
 <meta property="og:image:width" content="2048">
 <meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2023-08-30 03:00:00 &#43;0900 JST" />
 
 
 
@@ -127,12 +129,12 @@
                   <span class="author">
                     <a href="https://taxfree.dev">tax_free</a></span><span
                     class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
-                      href="https://taxfree.dev/readme/"></a></strong>
+                      href="https://taxfree.dev/post/2023-08-30/">.Trash-0のせいでDocker上でJupyterLabを起動できない</a></strong>
                 </h1>
                 <div class="note m-0">
-                  Created <relative-time datetime="Mon, 01 Jan 0001 00:00:00 &#43;0000"
+                  Created <relative-time datetime="Wed, 30 Aug 2023 03:00:00 &#43;0900"
                     class="no-wrap">
-                    Mon, 01 Jan 0001 00:00:00 &#43;0000</relative-time>
+                    Wed, 30 Aug 2023 03:00:00 &#43;0900</relative-time>
 
                   
                 </div>
@@ -163,7 +165,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      81 Words
+                      805 Words
                     
 
                   </div>
@@ -175,17 +177,42 @@
 
 
               <div class="Box-body px-5 pb-5" style="z-index: 1">
-                <article class="markdown-body entry-content container-lg"><h1 id="ざっくり">ざっくり</h1>
-<ul>
-<li>名前 : tax_free</li>
-<li>年齢 : 20</li>
-<li>所属 : 東京工業大学 情報理工学院 数理・計算科学系 学部2年</li>
-<li>最近 : Education x Tech で教育格差を是正・解決することに興味があります</li>
-<li>ひとこと : 単位がまずい</li>
-</ul>
-<p><a href="https://taxfree.dev/post/me/">続き</a></p>
-<!-- raw HTML omitted -->
-</article>
+                <article class="markdown-body entry-content container-lg"><p>ある日のこと JupyterLab を起動しようとして</p>
+<pre tabindex="0"><code>docker-compose up --build
+</code></pre><p>をすると</p>
+<pre tabindex="0"><code>failed to solve: error from sender: open /working_directory/.Trash-0: permission denied
+</code></pre><p>が出るようになり，JupyterLabを立ち上げれなくなりました．これは困ったということで解決策を考えます．</p>
+<h2 id="いろいろやってみる">いろいろやってみる</h2>
+<p>まず，原因となっている <code>.Trash-0</code> についてですが</p>
+<blockquote>
+<p>Jupyter Notebook 上で GUI で削除したファイルは削除されるのではなく、全てこちらの ‘Trash’ に移動されるようです<a href="https://www.cresco.co.jp/blog/entry/11955.html">[1]</a>
+です．そして，権限を調べてみると</p>
+</blockquote>
+<pre tabindex="0"><code>drwx------
+</code></pre><p>となっていて，一般ユーザーでは何もできないことが分かります．ですので，<code>rm</code> しようとしても消えません．</p>
+<h2 id="解決策">解決策</h2>
+<p>こうなっている原因は Container 中で JupyterLab を動かし，GUI 上からファイルを削除したからです．ですので，container の中に入ってから <code>.Trash-0</code> を消してあげる必要があります．
+<code>.Trash-0</code> の原因を考えると，この問題が発生するのは，少くとも一度は container を作成して起動した場合なので，以下 conintaier はあるものとして考えます．</p>
+<h3 id="対象の-container-が起動してるか確認する">対象の container が起動してるか確認する</h3>
+<p>なので，まずは</p>
+<pre tabindex="0"><code>docker ps
+</code></pre><p>をして対象の container が起動しているかを確認します<a href="https://docs.docker.jp/engine/reference/commandline/ps.html">[2]</a>．起動している場合は次の「対象の container を起動する」部分は飛ばしてください．</p>
+<h3 id="対象の-container-を起動する">対象の container を起動する</h3>
+<p>対象の container が起動していないことを確認したので，container を起動して，中に入れるようにします．</p>
+<pre tabindex="0"><code>docker start &lt;目的のCONTAINER ID&gt;
+</code></pre><p>一応，確認のために <code>docker ps</code> を打って，ちゃんと起動していることを確認しました．</p>
+<h3 id="対象の-container-の中に入る">対象の container の中に入る</h3>
+<p>対象の container を起動できたので，後は中に入って <code>.Trash-0</code> を消すだけです．</p>
+<pre tabindex="0"><code>docker exec -it &lt;CONTINER NAME&gt; bash
+</code></pre><p>で container 内で bash を起動します．この環境では <code>.Trash-0</code> を <code>rm</code> で削除することができると思います．</p>
+<pre tabindex="0"><code>rm -r .Trash-0
+</code></pre><p>確認のために</p>
+<pre tabindex="0"><code>ls -a
+</code></pre><p>をすると，<code>.Trash-0</code> が削除されているのが確認できます．これで</p>
+<pre tabindex="0"><code>docker-compose up --build
+</code></pre><p>をして JupyerLab を立ち上げることができるようになりました．</p>
+<h2 id="防止策">防止策</h2>
+<p><code>.Trash-0</code> が生成される原因が「GUI 上からファイルを削除したとき」なので，GUI 上からファイルを削除しないようにすることで，防止できると思います(検証してない)．</p></article>
               </div>
             </div>
           </div>
@@ -233,6 +260,14 @@
 </body>
 
 <script type="application/javascript" src="https://taxfree.dev/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://fastly.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://fastly.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
 
 
 

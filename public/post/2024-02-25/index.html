@@ -10,7 +10,7 @@
     <link rel="stylesheet" href='https://taxfree.dev/css/light.css' />
     <link rel="stylesheet" href='https://taxfree.dev/css/dark.css' />
     <link rel="stylesheet" href='https://taxfree.dev/css/syntax.css' />
-    <title> - tax_free&#39;s blog</title>
+    <title>PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話 - tax_free&#39;s blog</title>
     
     <link rel="icon" type="image/x-icon" href='https://pbs.twimg.com/profile_images/1505012518556561409/g93YcdDs_400x400.jpg'>
     
@@ -18,17 +18,19 @@
 
     
     <meta name="description"
-  content="ざっくり 名前 : tax_free 年齢 : 20 所属 : 東京工業大学 情報理工学院 数理・計算科学系 学部2年 最近 : Education x Tech で教育格差を是正・解決することに興味があります ひとこと : 単位がまずい 続き" />
+  content="環境 PyCharm，Docker，jupyter lab のバージョン
+PyCharm 2023.3.1 docker desktop 4.21.1 jupyter lab 4.0.5 " />
 <meta name="keywords"
   content='' />
 <meta name="robots" content="noodp" />
-<link rel="canonical" href="https://taxfree.dev/readme/" />
+<link rel="canonical" href="https://taxfree.dev/post/2024-02-25/" />
 
 
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content=" - tax_free&#39;s blog" />
+<meta name="twitter:title" content="PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話 - tax_free&#39;s blog" />
 <meta name="twitter:description"
-  content="ざっくり 名前 : tax_free 年齢 : 20 所属 : 東京工業大学 情報理工学院 数理・計算科学系 学部2年 最近 : Education x Tech で教育格差を是正・解決することに興味があります ひとこと : 単位がまずい 続き" />
+  content="環境 PyCharm，Docker，jupyter lab のバージョン
+PyCharm 2023.3.1 docker desktop 4.21.1 jupyter lab 4.0.5 " />
 <meta name="twitter:site" content="https://taxfree.dev" />
 <meta name="twitter:creator" content="" />
 <meta name="twitter:image"
@@ -36,15 +38,18 @@
 
 
 <meta property="og:type" content="article" />
-<meta property="og:title" content=" - tax_free&#39;s blog">
+<meta property="og:title" content="PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話 - tax_free&#39;s blog">
 <meta property="og:description"
-  content="ざっくり 名前 : tax_free 年齢 : 20 所属 : 東京工業大学 情報理工学院 数理・計算科学系 学部2年 最近 : Education x Tech で教育格差を是正・解決することに興味があります ひとこと : 単位がまずい 続き" />
-<meta property="og:url" content="https://taxfree.dev/readme/" />
-<meta property="og:site_name" content="" />
+  content="環境 PyCharm，Docker，jupyter lab のバージョン
+PyCharm 2023.3.1 docker desktop 4.21.1 jupyter lab 4.0.5 " />
+<meta property="og:url" content="https://taxfree.dev/post/2024-02-25/" />
+<meta property="og:site_name" content="PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話" />
 <meta property="og:image"
   content="https://taxfree.dev">
 <meta property="og:image:width" content="2048">
 <meta property="og:image:height" content="1024">
+
+<meta property="article:published_time" content="2024-02-25 00:00:00 &#43;0900 JST" />
 
 
 
@@ -127,12 +132,12 @@
                   <span class="author">
                     <a href="https://taxfree.dev">tax_free</a></span><span
                     class="path-divider">/</span><strong class="css-truncate-target mr-1" style="max-width: 410px"><a
-                      href="https://taxfree.dev/readme/"></a></strong>
+                      href="https://taxfree.dev/post/2024-02-25/">PyCharm で Docker 上の Jupyter lab にアクセスしようとしたら詰まった話</a></strong>
                 </h1>
                 <div class="note m-0">
-                  Created <relative-time datetime="Mon, 01 Jan 0001 00:00:00 &#43;0000"
+                  Created <relative-time datetime="Sun, 25 Feb 2024 00:00:00 &#43;0900"
                     class="no-wrap">
-                    Mon, 01 Jan 0001 00:00:00 &#43;0000</relative-time>
+                    Sun, 25 Feb 2024 00:00:00 &#43;0900</relative-time>
 
                   
                 </div>
@@ -163,7 +168,7 @@
                         </div>
                       </div>
                     </details-menu>
-                      81 Words
+                      335 Words
                     
 
                   </div>
@@ -175,17 +180,34 @@
 
 
               <div class="Box-body px-5 pb-5" style="z-index: 1">
-                <article class="markdown-body entry-content container-lg"><h1 id="ざっくり">ざっくり</h1>
+                <article class="markdown-body entry-content container-lg"><h1 id="環境">環境</h1>
+<p>PyCharm，Docker，jupyter lab のバージョン</p>
 <ul>
-<li>名前 : tax_free</li>
-<li>年齢 : 20</li>
-<li>所属 : 東京工業大学 情報理工学院 数理・計算科学系 学部2年</li>
-<li>最近 : Education x Tech で教育格差を是正・解決することに興味があります</li>
-<li>ひとこと : 単位がまずい</li>
+<li>PyCharm
+<ul>
+<li>2023.3.1</li>
 </ul>
-<p><a href="https://taxfree.dev/post/me/">続き</a></p>
-<!-- raw HTML omitted -->
-</article>
+</li>
+<li>docker desktop
+<ul>
+<li>4.21.1</li>
+</ul>
+</li>
+<li>jupyter lab
+<ul>
+<li>4.0.5</li>
+</ul>
+</li>
+</ul>
+<h1 id="やりたいこと">やりたいこと</h1>
+<p>docker 上で動かしている jupyter lab にブラウザからではなく PyCharm から直接アクセスして ipynb を編集して，実行したい．</p>
+<h1 id="詰まったこと">詰まったこと</h1>
+<p>ネットにあるように <code>settings/Project: hoge/Pyton Interpreter → Add Interpreter → On Docker Compose ... → 適当な docker-compose.yaml</code>
+を設定して，ipynb の適当なセルを実行しても</p>
+<pre tabindex="0"><code>Running as root is not recommended. Use --allow-root to bypass.
+</code></pre><p>のエラーが出て jupyter が停止してしまう問題</p>
+<h1 id="解決方法">解決方法</h1>
+<p>エラーを読むと root ユーザーの権限がよくないらしいので jupyter を起動するときの引数に <code>--allow-root</code>を渡して実行すればよさそうです．私はここで，どうやって PyCharm の jupyter 実行時に引数を渡すかで悩みました．答えは単純で <code>settings/Languages&amp;Frameworks/Jupyter/Jupyter Serves</code> に <code>Command line arguments</code> というのがあるので，ここに <code>--allow-root</code> を追加しましょう．そうすれば PyCharm 上から jupyter を実行できるようになると思います．</p></article>
               </div>
             </div>
           </div>
@@ -233,6 +255,14 @@
 </body>
 
 <script type="application/javascript" src="https://taxfree.dev/js/github-style.js"></script>
+
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css"
+  integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+<script defer src="https://fastly.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"
+  integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+<script defer src="https://fastly.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"
+  integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+  onload="renderMathInElement(document.body);"></script>
 
 
 
