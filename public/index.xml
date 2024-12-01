@@ -6,7 +6,23 @@
     <description>Recent content on tax_free&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Apr 2024 00:00:00 +0900</lastBuildDate><atom:link href="https://taxfree.dev/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://taxfree.dev/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>iGEM アドベントカレンダー始まるよ~</title>
+      <link>https://taxfree.dev/post/2024-12-01/</link>
+      <pubDate>Sun, 01 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://taxfree.dev/post/2024-12-01/</guid>
+      <description>&lt;p&gt;この投稿は，&lt;a href=&#34;https://adventar.org/calendars/10451&#34;&gt;iGEM･Synthetic biology(合成生物学)･Japan Advent Calendar 2024&lt;/a&gt;の 1 日目です．&lt;/p&gt;
+&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+&lt;p&gt;こんにちは．&lt;a href=&#34;https://x.com/taxfree_python&#34;&gt;tax_free&lt;/a&gt; です．&lt;br&gt;
+昨年は Japan-United が，今年は Waseda-Tokyo が日本勢として初めて Undergrad で Top 10 に入るという結果で嬉しい気持ちになっています．
+その波に乗って iGEM Japan Community を盛り上げて，日本でもっと iGEM が広がってほしいという気持ちから，&lt;a href=&#34;https://adventar.org/calendars/7510&#34;&gt;2022&lt;/a&gt;, &lt;a href=&#34;https://adventar.org/calendars/8876&#34;&gt;2023&lt;/a&gt; に続いて Advent Calendar を企画しました．&lt;/p&gt;
+&lt;p&gt;2022 は 25 枠が全て埋まって喜び，2023 は 25 枠全てが違う人で埋まって喜んでいましたが，今年は 11 月中に 25 枠全てが違う人で埋まり，大変嬉しく，ありがたいです．
+地味ながらも確実にアウトプットの文化が根付いていることを感じています．&lt;/p&gt;
+&lt;p&gt;ぜひ楽しく書いて，読んで交流していただけたらと思っています．&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Vertex AI の Notebook の権限に関する問題(Required &#39;Current principal doesn&#39;t have permission to mutate this resource!&#39; permission for &#39;instance name&#39;)</title>
       <link>https://taxfree.dev/post/2024-04-28/</link>
@@ -133,22 +149,6 @@ build-backend = &amp;#34;poetry.core.masonry.api&amp;#34;
 &lt;p&gt;こんにちは．iGEM TokyoTech の &lt;a href=&#34;https://x.com/taxfree_python&#34;&gt;tax_free&lt;/a&gt; です．&lt;br&gt;
 今年は Japan-United が Grand Prize を獲るなど歴史的な年になったと思っています．
 その波に乗って iGEM Japan Community を盛り上げて，日本でもっと iGEM が広がってほしいという気持ちから，去年に引き続き，複数の日本チームで Advent Calendar を書くことになりました．&lt;/p&gt;
-&lt;p&gt;ぜひ楽しく書いて，読んで交流していただけたらと思っています．&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>iGEM アドベントカレンダー始まるよ~</title>
-      <link>https://taxfree.dev/post/2024-12-01/</link>
-      <pubDate>Fri, 01 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://taxfree.dev/post/2024-12-01/</guid>
-      <description>&lt;p&gt;この投稿は，&lt;a href=&#34;https://adventar.org/calendars/10451&#34;&gt;iGEM･Synthetic biology(合成生物学)･Japan Advent Calendar 2024&lt;/a&gt;の 1 日目です．&lt;/p&gt;
-&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
-&lt;p&gt;こんにちは．&lt;a href=&#34;https://x.com/taxfree_python&#34;&gt;tax_free&lt;/a&gt; です．&lt;br&gt;
-昨年は Japan-United が，今年は Waseda-Tokyo が日本勢として初めて Undergrad で Top 10 に入るという結果で嬉しい気持ちになっています．
-その波に乗って iGEM Japan Community を盛り上げて，日本でもっと iGEM が広がってほしいという気持ちから，&lt;a href=&#34;https://adventar.org/calendars/7510&#34;&gt;2022&lt;/a&gt;, &lt;a href=&#34;https://adventar.org/calendars/8876&#34;&gt;2023&lt;/a&gt; に続いて Advent Calendar を企画しました．&lt;/p&gt;
-&lt;p&gt;2022 は 25 枠が全て埋まって喜び，2023 は 25 枠全てが違う人で埋まって喜んでいましたが，今年は 11 月中に 25 枠全てが違う人で埋まり，大変嬉しく，ありがたいです．
-地味ながらも確実にアウトプットの文化が根付いていることを感じています．&lt;/p&gt;
 &lt;p&gt;ぜひ楽しく書いて，読んで交流していただけたらと思っています．&lt;/p&gt;</description>
     </item>
     
