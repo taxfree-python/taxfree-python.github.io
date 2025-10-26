@@ -1,4 +1,5 @@
 export type ActivityKind = 'project' | 'internship' | 'competition' | 'research' | 'other';
+export type ActivityCategory = 'work' | 'personal';
 
 export interface ProjectActivity {
   id: string;
@@ -7,6 +8,7 @@ export interface ProjectActivity {
   description: string;
   skills: string[];
   kind?: ActivityKind;
+  category: ActivityCategory;
   link?: string;
   detailedDescription?: string;
   achievements?: string[];

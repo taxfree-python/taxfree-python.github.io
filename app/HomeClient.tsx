@@ -6,7 +6,8 @@ import { AboutSection } from '@/components/AboutSection';
 import { RecentPostsSection } from '@/components/RecentPostsSection';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ActivitiesSection } from '@/components/ActivitiesSection';
-import { heroContent, aboutContent } from '@/data/profile';
+import { QualificationsSection } from '@/components/QualificationsSection';
+import { heroContent, aboutContent, qualificationsContent } from '@/data/profile';
 import type { PostData } from '@/lib/posts';
 
 interface HomeClientProps {
@@ -38,6 +39,7 @@ export default function HomeClient({ recentPosts }: HomeClientProps) {
       <div id="activities-section">
         <ActivitiesSection selectedSkill={selectedSkill} />
       </div>
+      <QualificationsSection content={qualificationsContent} />
     </div>
   );
 }
