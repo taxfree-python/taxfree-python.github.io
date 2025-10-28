@@ -13,11 +13,6 @@ export function Card({ children, onClick, sx }: CardProps) {
       onClick={onClick}
       sx={{
         cursor: onClick ? 'pointer' : 'default',
-        '&:hover': onClick
-          ? {
-              boxShadow: 6,
-            }
-          : undefined,
         ...sx,
       }}
     >

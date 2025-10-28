@@ -4,9 +4,16 @@ export type SkillCategory =
   | 'communication'
   | 'other';
 
+export const skillCategoryLabels: Record<SkillCategory, string> = {
+  technical: 'Technical',
+  language: 'Languages & Credentials',
+  communication: 'Communication',
+  other: 'Other',
+};
+
 export interface SkillDetail {
   name: string;
-  icon: string;
+  icon?: string;
   category: SkillCategory;
   description: string;
   experience?: string;

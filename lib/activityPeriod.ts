@@ -1,0 +1,123 @@
+import { ActivityDate, ActivityPeriod, ProjectActivity } from '../types/activities';
+
+const MIN_MONTH = 1;
+const MAX_MONTH = 12;
+const MIN_DAY = 1;
+const MAX_DAY = 31;
+
+function invariant(condition: unknown, message: string): asserts condition {
+  if (!condition) {
+    throw new Error(message);
+  }
+}
+
+const isInteger = (value: number): boolean => Number.isInteger(value);
+
+export const activityDateToComparableValue = (date: ActivityDate): number => {
+  const month = date.month ?? 1;
+  const day = date.day ?? 1;
+  return Date.UTC(date.year, month - 1, day);
+};
+
+export const activityDateToDate = (date: ActivityDate): Date => {
+  return new Date(activityDateToComparableValue(date));
+};
+
+const assertActivityDateValid = (date: ActivityDate, context: string): void => {
+  invariant(isInteger(date.year), `${context}.year must be an integer year`);
+  invariant(date.year >= 0, `${context}.year must be >= 0`);
+
+  if (date.month !== undefined) {
+    invariant(isInteger(date.month), `${context}.month must be an integer month`);
+    invariant(
+      date.month >= MIN_MONTH && date.month <= MAX_MONTH,
+      `${context}.month must be between ${MIN_MONTH} and ${MAX_MONTH}`,
+    );
+  }
+
+  if (date.day !== undefined) {
+    invariant(isInteger(date.day), `${context}.day must be an integer day`);
+    invariant(
+      date.day >= MIN_DAY && date.day <= MAX_DAY,
+      `${context}.day must be between ${MIN_DAY} and ${MAX_DAY}`,
+    );
+  }
+};
+
+export const isSameActivityDate = (a: ActivityDate, b: ActivityDate): boolean => {
+  return a.year === b.year && a.month === b.month && a.day === b.day;
+};
+
+export const validateActivityPeriod = (period: ActivityPeriod, context: string): void => {
+  assertActivityDateValid(period.start, `${context}.period.start`);
+
+  if (period.end === undefined || period.end === null) {
+    return;
+  }
+
+  assertActivityDateValid(period.end, `${context}.period.end`);
+
+  const startValue = activityDateToComparableValue(period.start);
+  const endValue = activityDateToComparableValue(period.end);
+
+  invariant(
+    endValue >= startValue,
+    `${context}.period.end must not be earlier than ${context}.period.start`,
+  );
+};
+
+export const formatActivityDate = (date: ActivityDate, options?: { omitYear?: boolean }): string => {
+  const omitYear = options?.omitYear ?? false;
+  const hasMonthOrDay = date.month !== undefined || date.day !== undefined;
+  const parts: string[] = [];
+
+  if (!omitYear || !hasMonthOrDay) {
+    parts.push(`${date.year}年`);
+  }
+
+  if (date.month !== undefined) {
+    parts.push(`${date.month}月`);
+  }
+
+  if (date.day !== undefined) {
+    parts.push(`${date.day}日`);
+  }
+
+  return parts.join('');
+};
+
+export const formatActivityPeriod = (period: ActivityPeriod): string => {
+  const start = formatActivityDate(period.start);
+
+  if (period.end === undefined || period.end === null) {
+    return `${start} - 現在`;
+  }
+
+  if (isSameActivityDate(period.start, period.end)) {
+    return start;
+  }
+
+  const shouldOmitYear =
+    period.start.year === period.end.year &&
+    (period.end.month !== undefined || period.end.day !== undefined);
+
+  const end = formatActivityDate(period.end, { omitYear: shouldOmitYear });
+  return `${start} - ${end}`;
+};
+
+export const getActivityPeriodEndValue = (period: ActivityPeriod): number => {
+  if (period.end === undefined || period.end === null) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  return activityDateToComparableValue(period.end);
+};
+
+export const getActivityPeriodStartValue = (period: ActivityPeriod): number => {
+  return activityDateToComparableValue(period.start);
+};
+
+export const validateProjectActivity = (activity: ProjectActivity): ProjectActivity => {
+  validateActivityPeriod(activity.period, `Activity(${activity.id})`);
+  return activity;
+};

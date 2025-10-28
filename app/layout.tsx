@@ -14,8 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "tax_free's Portfolio & Blog",
+  title: "tax_free",
   description: "Software Engineer & Researcher at TokyoTech",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({

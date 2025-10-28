@@ -13,7 +13,9 @@ import {
 import CloseIcon from '@mui/icons-material/Close';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { ProjectActivity } from '../types/activities';
+import { formatActivityPeriod } from '../lib/activityPeriod';
 import { SkillTag } from './SkillTag';
+import { LinkifiedText } from './LinkifiedText';
 
 interface ActivityDialogProps {
   activity: ProjectActivity | null;
@@ -25,9 +27,11 @@ export function ActivityDialog({ activity, isOpen, onClose }: ActivityDialogProp
   if (!activity) return null;
 
   const getSkillVariant = (skill: string): 'blue' | 'green' => {
-    const programmingLanguages = ['Python', 'TypeScript', 'JavaScript', 'Go', 'Rust'];
+    const programmingLanguages = ['Python', 'TypeScript'];
     return programmingLanguages.includes(skill) ? 'blue' : 'green';
   };
+
+  const sortedSkills = Array.from(new Set(activity.skills)).sort((a, b) => a.localeCompare(b, 'ja'));
 
   return (
     <Dialog
@@ -48,7 +52,7 @@ export function ActivityDialog({ activity, isOpen, onClose }: ActivityDialogProp
               {activity.title}
             </Typography>
             <Typography variant="body2" color="text.secondary" gutterBottom>
-              {activity.date}
+              {formatActivityPeriod(activity.period)}
             </Typography>
             {activity.kind && (
               <Chip
@@ -76,7 +80,7 @@ export function ActivityDialog({ activity, isOpen, onClose }: ActivityDialogProp
             概要
           </Typography>
           <Typography variant="body1" color="text.primary">
-            {activity.description}
+            <LinkifiedText text={activity.description} />
           </Typography>
         </Box>
 
@@ -87,7 +91,7 @@ export function ActivityDialog({ activity, isOpen, onClose }: ActivityDialogProp
               詳細
             </Typography>
             <Typography variant="body1" color="text.primary" sx={{ whiteSpace: 'pre-line' }}>
-              {activity.detailedDescription}
+              <LinkifiedText text={activity.detailedDescription} preserveLineBreaks />
             </Typography>
           </Box>
         )}
@@ -109,13 +113,13 @@ export function ActivityDialog({ activity, isOpen, onClose }: ActivityDialogProp
         )}
 
         {/* Skills */}
-        {activity.skills.length > 0 && (
+        {sortedSkills.length > 0 && (
           <Box mb={3}>
             <Typography variant="h6" gutterBottom>
               使用技術
             </Typography>
             <Box display="flex" flexWrap="wrap" gap={1}>
-              {activity.skills.map((skill) => (
+              {sortedSkills.map((skill) => (
                 <SkillTag key={skill} label={skill} variant={getSkillVariant(skill)} />
               ))}
             </Box>

@@ -70,11 +70,15 @@
 スキルセクション全体を表示するコンポーネント。
 
 **カスタマイズ:**
-`data/skills.ts` でスキルカテゴリや内容を編集し、`highlights` や `achievements` に語学スコア・資格を追記します。型の変更が必要な場合は `types/skills.ts` を更新してください。
+`data/skills.yaml` でスキルカテゴリや内容を編集し、`highlights` や `achievements` に語学スコア・資格を追記します。値は `lib/skills.ts` の `getSkillsData` で読み込み、アクティビティ連携は `lib/activities.ts` 経由のデータを組み合わせてください。型の変更が必要な場合は `types/skills.ts` を更新します。
 
 **使用例:**
 ```tsx
-<SkillsSection />
+<SkillsSection
+  selectedSkill={selectedSkill}
+  onSkillClick={handleSkillClick}
+  activities={activities}
+/>
 ```
 
 ### `HeroSection.tsx`
@@ -125,11 +129,11 @@ SNS や外部リンクをボタン群で表示するコンポーネント。
 活動・プロジェクトセクション全体を表示するコンポーネント。
 
 **カスタマイズ:**
-`data/activities.ts` の `projectsAndActivities` を編集して活動を追加・削除します。型定義は `types/activities.ts` を参照してください。
+`data/activities.yaml` で活動データを編集し、`lib/activities.ts` の `getProjectsAndActivities` を通じて読み込みます。型定義は `types/activities.ts` を参照してください。
 
 **使用例:**
 ```tsx
-<ActivitiesSection />
+<ActivitiesSection activities={activities} />
 ```
 
 ## コンポーネント設計の原則

@@ -1,0 +1,202 @@
+---
+skillGroups:
+  -
+    id: "technical"
+    title: "Technical Skills"
+    description: "扱っている技術領域と現在注力している開発スタック。"
+  -
+    id: "communication"
+    title: "Leadership & Collaboration"
+    description: "チームビルディングと協働で発揮してきた強み。"
+  -
+    id: "other"
+    title: "Personal Strengths"
+    description: "継続的な学習姿勢など、成長を支える特性。"
+  -
+    id: "language"
+    title: "Languages"
+    description: "得意とする言語スキル情報。"
+skills:
+  -
+    name: "Python"
+    category: "technical"
+    experience: "6+ years"
+    description: "中学生の頃に学び始めて以来、機械学習・数理最適化・バックエンド開発まで幅広く活用。PyTorch、FastAPI、Scipy、PuLP、OpenCVなどを自在に組み合わせて実装しています。"
+    relatedItemIds:
+      - "pfn-summer-internship"
+      - "pfn-education-project-engineer"
+      - "layerx-summer-internship"
+      - "preferred-robotics-intern"
+      - "luup-data-scientist-intern"
+      - "riken-bdr-part-timer"
+      - "nec-llm-competition"
+      - "autonomous-lab-scheduling"
+      - "igem-tokyotech-2023"
+      - "igem-tokyotech-2022"
+      - "trap-hackathon"
+      - "corpy-software-engineer-intern"
+      - "zest-software-engineer-intern"
+    filterable: true
+    highlights:
+      - "コミュニティ登壇・TA経験"
+      - "研究と事業の双方で活用"
+  -
+    name: "LLM"
+    category: "technical"
+    experience: "Since 2023"
+    description: "生成AIを用いたサービス開発に注力。OpenAI APIや日本語特化LLMを活用し、プロンプト最適化やUX改善を通じて成果を出しています。"
+    relatedItemIds:
+      - "pfn-summer-internship"
+      - "pfn-education-project-engineer"
+      - "layerx-summer-internship"
+      - "nec-llm-competition"
+      - "igem-library"
+      - "chatgpt-business-contest"
+      - "trap-hackathon"
+      - "riken-bdr-part-timer"
+      - "preferred-robotics-intern"
+    filterable: true
+    highlights:
+      - "NEC CTO賞"
+      - "教育サービス開発"
+  -
+    name: "React / Next.js"
+    category: "technical"
+    experience: "2+ years"
+    description: "Next.jsとTypeScriptで型安全なフロント実装を担当。PFNでの教育サービス開発や個人プロジェクトでのUI改善に活用しています。"
+    relatedItemIds:
+      - "pfn-summer-internship"
+      - "pfn-education-project-engineer"
+      - "preferred-robotics-intern"
+      - "igem-library"
+    filterable: true
+  -
+    name: "Machine Learning"
+    category: "technical"
+    experience: "Project-based"
+    description: "LSTMやLassoを用いた時系列解析、画像認識、ベイズ最適化など幅広いモデルを実装。iGEMでのデング熱予測や産生量予測に活かしました。"
+    relatedItemIds:
+      - "igem-tokyotech-2023"
+      - "igem-tokyotech-2022"
+      - "doctor-car-data-analysis"
+    filterable: true
+  -
+    name: "Mathematical Optimization"
+    category: "technical"
+    experience: "3+ years"
+    description: "組合せ最適化やスケジューリング最適化を研究。自動・自律実験のタスク配分や3D-PCRの配置最適化など、現場の制約に沿ったモデル化を行っています。"
+    relatedItemIds:
+      - "autonomous-lab-scheduling"
+      - "igem-tokyotech-2023"
+      - "riken-bdr-part-timer"
+      - "corpy-software-engineer-intern"
+    filterable: true
+    highlights:
+      - "研究提携プロジェクト"
+      - "現場制約を考慮した数理モデル"
+  -
+    name: "SQL / Data Analysis"
+    category: "technical"
+    experience: "2+ years"
+    description: "医療・モビリティデータの分析経験。BigQueryやRedashを用いて意思決定に直結するダッシュボードと洞察を提供しています。"
+    relatedItemIds:
+      - "doctor-car-data-analysis"
+      - "luup-data-scientist-intern"
+      - "zest-software-engineer-intern"
+    filterable: true
+  -
+    name: "FastAPI"
+    category: "technical"
+    experience: "Project-based"
+    description: "画像生成サービスや社内ツールのバックエンドを構築。MariaDBやLLM推論基盤と組み合わせたAPI開発を担当しました。"
+    relatedItemIds:
+      - "trap-hackathon"
+      - "chatgpt-business-contest"
+    filterable: true
+  -
+    name: "Streamlit"
+    category: "technical"
+    experience: "Project-based"
+    description: "LLMアプリのプロトタイピングに活用。ユーザーバイアス検出アプリでの実装が評価され、NEC主催のコンテストでCTO賞を獲得しました。"
+    relatedItemIds:
+      - "nec-llm-competition"
+    filterable: true
+  -
+    name: "OpenCV"
+    category: "technical"
+    experience: "Project-based"
+    description: "画像処理と自動計測を担当。Webカメラによる色定量プログラムやOCR並列化などで研究プロジェクトを支援しました。"
+    relatedItemIds:
+      - "igem-tokyotech-2022"
+    filterable: true
+  -
+    name: "Firebase"
+    category: "technical"
+    experience: "Project-based"
+    description: "Hugoと組み合わせた静的サイトのホスティングや、個人プロジェクトのデプロイに利用。運用と集計フローを整備しました。"
+    relatedItemIds:
+      - "igem-library"
+    filterable: true
+  -
+    name: "Leadership"
+    category: "communication"
+    level: "iGEM TokyoTech Co-Leader"
+    description: "iGEMでの共同リーダーやハッカソンのリード経験を通じ、目標設定から実装、発表までチームを牽引しました。"
+    relatedItemIds:
+      - "igem-tokyotech-2023"
+      - "trap-hackathon"
+      - "nec-llm-competition"
+  -
+    name: "Followership"
+    category: "communication"
+    description: "多様な専門領域をもつチームで支援役に回り、研究や医療データ分析の現場課題に寄り添って推進。"
+    relatedItemIds:
+      - "pfn-summer-internship"
+      - "autonomous-lab-scheduling"
+      - "doctor-car-data-analysis"
+      - "luup-data-scientist-intern"
+      - "riken-bdr-part-timer"
+  -
+    name: "Collaborative Balance"
+    category: "communication"
+    description: "コミュニティ運営やインターンで培った、チームの文化に溶け込みつつ自分の視点を提案するスタンス。"
+    relatedItemIds:
+      - "pfn-summer-internship"
+      - "trap-hackathon"
+      - "chatgpt-business-contest"
+      - "layerx-summer-internship"
+      - "luup-data-scientist-intern"
+  -
+    name: "Continuous Learning"
+    category: "other"
+    description: "新しい領域に迅速にキャッチアップし、研究・事業・コミュニティで実践までやり切る継続学習力。"
+    relatedItemIds:
+      - "pfn-summer-internship"
+      - "pfn-education-project-engineer"
+      - "layerx-summer-internship"
+      - "riken-bdr-part-timer"
+      - "nec-llm-competition"
+      - "igem-library"
+    highlights:
+      - "継続的に発信しているスキル"
+  -
+    name: "Japanese"
+    category: "language"
+    level: "ネイティブレベル"
+    description: "沖縄でのコミュニティ運営や技術イベント企画、国内カンファレンスでの登壇経験を通じて高度な情報発信力を磨いています。"
+    relatedItemIds:
+      - "pycon-kyushu-2019"
+      - "pythonbeginners-okinawa"
+      - "pfn-summer-internship"
+      - "jij-dialog-event"
+      - "riken-bdr-part-timer"
+  -
+    name: "English"
+    category: "language"
+    level: "日常会話レベル"
+    description: "TOEIC 815点。iGEMでの英語プレゼンや国際イベントでのポスター発表など、研究成果を英語で伝える実績があります。"
+    relatedItemIds:
+      - "igem-tokyotech-2023"
+      - "igem-tokyotech-2022"
+      - "oist-science-challenge-2023"
+      - "corpy-software-engineer-intern"

@@ -4,21 +4,22 @@ import { useState } from 'react';
 import { Container, Typography, Stack, Tabs, Tab, Box } from '@mui/material';
 import { ActivityCard } from './ActivityCard';
 import { ActivityDialog } from './ActivityDialog';
-import { projectsAndActivities } from '../data/activities';
 import { ProjectActivity, ActivityCategory } from '../types/activities';
+import { formatActivityPeriod } from '../lib/activityPeriod';
 
 interface ActivitiesSectionProps {
   selectedSkill?: string | null;
+  activities: ProjectActivity[];
 }
 
 type TabValue = 'all' | ActivityCategory;
 
-export function ActivitiesSection({ selectedSkill }: ActivitiesSectionProps) {
+export function ActivitiesSection({ selectedSkill, activities }: ActivitiesSectionProps) {
   const [selectedActivity, setSelectedActivity] = useState<ProjectActivity | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedTab, setSelectedTab] = useState<TabValue>('all');
 
-  const source: ProjectActivity[] = projectsAndActivities;
+  const source: ProjectActivity[] = activities;
 
   // Filter by category tab
   const categoryFiltered = selectedTab === 'all'
@@ -64,6 +65,7 @@ export function ActivitiesSection({ selectedSkill }: ActivitiesSectionProps) {
         <Tabs value={selectedTab} onChange={handleTabChange} aria-label="activity category tabs">
           <Tab label="All" value="all" />
           <Tab label="Work" value="work" />
+          <Tab label="Research" value="research" />
           <Tab label="Personal" value="personal" />
         </Tabs>
       </Box>
@@ -78,7 +80,7 @@ export function ActivitiesSection({ selectedSkill }: ActivitiesSectionProps) {
             <ActivityCard
               key={activity.id}
               title={activity.title}
-              date={activity.date}
+              date={formatActivityPeriod(activity.period)}
               description={activity.description}
               skills={activity.skills}
               onClick={() => handleActivityClick(activity)}

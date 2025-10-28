@@ -1,18 +1,32 @@
+'use client';
+
+import { useState } from 'react';
 import { Container, Typography, Box } from '@mui/material';
 import { SkillCard } from './SkillCard';
-import { skillGroups, skills } from '../data/skills';
-import { projectsAndActivities } from '../data/activities';
+import { SkillDialog } from './SkillDialog';
 import { ProjectActivity } from '../types/activities';
+import { SkillDetail, SkillGroup } from '../types/skills';
 
 interface SkillsSectionProps {
   selectedSkill: string | null;
   onSkillClick: (skill: string) => void;
+  activities: ProjectActivity[];
+  skillGroups: SkillGroup[];
+  skills: SkillDetail[];
 }
 
-export function SkillsSection({ selectedSkill, onSkillClick }: SkillsSectionProps) {
-  // 各スキルに関連するプロジェクト数を計算
-  const getProjectCount = (skillName: string): number => {
-    return projectsAndActivities.filter((activity) => activity.skills.includes(skillName)).length;
+export function SkillsSection({ selectedSkill, onSkillClick, activities, skillGroups, skills }: SkillsSectionProps) {
+  const [dialogSkill, setDialogSkill] = useState<SkillDetail | null>(null);
+
+  const handleCardClick = (skill: SkillDetail) => {
+    if (skill.filterable) {
+      onSkillClick(skill.name);
+    }
+    setDialogSkill(skill);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogSkill(null);
   };
 
   return (
@@ -51,28 +65,12 @@ export function SkillsSection({ selectedSkill, onSkillClick }: SkillsSectionProp
               gap={2}
             >
               {groupedSkills.map((skill) => {
-                const projectCount = getProjectCount(skill.name);
-                const canFilter = Boolean(skill.filterable && projectCount > 0);
-                const dynamicHighlights = [
-                  ...(skill.highlights ?? []),
-                  ...(canFilter ? [`関連アクティビティ ${projectCount} 件`] : []),
-                ];
-                const relatedItems = (skill.relatedItemIds ?? [])
-                  .map((id) =>
-                    projectsAndActivities.find((item) => item.id === id)
-                  )
-                  .filter((item): item is ProjectActivity => Boolean(item));
-
                 return (
                   <SkillCard
                     key={skill.name}
-                    skill={{
-                      ...skill,
-                      highlights: dynamicHighlights,
-                    }}
-                    relatedItems={relatedItems}
-                    onClick={canFilter ? () => onSkillClick(skill.name) : undefined}
-                    isActive={canFilter && selectedSkill === skill.name}
+                    skill={skill}
+                    onClick={() => handleCardClick(skill)}
+                    isActive={selectedSkill === skill.name}
                   />
                 );
               })}
@@ -80,6 +78,19 @@ export function SkillsSection({ selectedSkill, onSkillClick }: SkillsSectionProp
           </Box>
         );
       })}
+
+      <SkillDialog
+        skill={dialogSkill}
+        isOpen={dialogSkill !== null}
+        onClose={handleCloseDialog}
+        relatedItems={
+          dialogSkill
+            ? (dialogSkill.relatedItemIds ?? [])
+                .map((id) => activities.find((item) => item.id === id))
+                .filter((item): item is ProjectActivity => Boolean(item))
+            : []
+        }
+      />
     </Container>
   );
 }

@@ -2,7 +2,7 @@ import { AboutContent, HeroContent, QualificationsContent } from '@/types/profil
 
 export const heroContent: HeroContent = {
   title: 'tax_free',
-  subtitle: 'Software Engineer & Researcher',
+  subtitle: '最適化技術で格差を是正する',
   socialLinks: [
     {
       label: 'GitHub',
@@ -25,8 +25,7 @@ export const heroContent: HeroContent = {
 export const aboutContent: AboutContent = {
   title: 'About Me',
   paragraphs: [
-    'TokyoTech, Japan でソフトウェアエンジニアリングと研究を行っています。',
-    '機械学習、最適化、プログラミング言語に興味があります。',
+    '最適化や AI で格差を是正し、幸せな人を増やす。',
   ],
 };
 
@@ -34,25 +33,18 @@ export const qualificationsContent: QualificationsContent = {
   title: '資格・語学',
   qualifications: [
     {
-      name: '実用英語技能検定 準1級',
-      issuer: '日本英語検定協会',
-      date: '取得済み',
-      score: '英検CSEスコア: 2459',
-      description: '4技能総合CEFR: B2',
-    },
-    {
       name: 'TOEIC Listening & Reading Test',
       issuer: 'ETS',
-      date: '取得済み',
+      date: '2025年3月取得',
       score: 'Total: 815',
-      description: 'Listening: 425, Reading: 390',
+      description: 'Listening: 425 / Reading: 390',
     },
     {
-      name: 'AtCoder',
-      issuer: 'AtCoder株式会社',
-      date: '継続中',
-      score: 'Algo Rating: 571 (灰色)',
-      description: '競技プログラミングプラットフォーム',
+      name: '実用英語技能検定 準1級',
+      issuer: '日本英語検定協会',
+      date: '2021年10月取得',
+      score: 'CSEスコア: 2459',
+      description: 'CEFR B2 / 4技能総合評価',
     },
   ],
 };

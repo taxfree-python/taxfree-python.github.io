@@ -18,7 +18,7 @@ export function BlogPostCard({ slug, title, date }: BlogPostCardProps) {
           gutterBottom
           sx={{
             color: 'text.primary',
-            '&:hover': { color: 'primary.main' },
+            '&:hover': { color: 'grey.100' },
             transition: 'color 0.2s',
           }}
         >
