@@ -41,39 +41,23 @@ export function SkillsSection({ selectedSkill, onSkillClick, activities, skillGr
 
         return (
           <Box key={group.id} mb={5}>
-            <Box
-              display="flex"
-              flexDirection={{ xs: 'column', sm: 'row' }}
-              alignItems={{ sm: 'baseline' }}
-              justifyContent={{ sm: 'space-between' }}
-              gap={1}
-              mb={2}
-            >
-              <Typography variant="h3" component="h3">
-                {group.title}
-              </Typography>
-              {group.description && (
-                <Typography variant="body2" color="text.secondary">
-                  {group.description}
-                </Typography>
-              )}
-            </Box>
+            <Typography variant="h3" component="h3" mb={2}>
+              {group.title}
+            </Typography>
 
             <Box
               display="grid"
               gridTemplateColumns={{ xs: '1fr', md: 'repeat(2, 1fr)' }}
               gap={2}
             >
-              {groupedSkills.map((skill) => {
-                return (
-                  <SkillCard
-                    key={skill.name}
-                    skill={skill}
-                    onClick={() => handleCardClick(skill)}
-                    isActive={selectedSkill === skill.name}
-                  />
-                );
-              })}
+              {groupedSkills.map((skill) => (
+                <SkillCard
+                  key={skill.name}
+                  skill={skill}
+                  onClick={() => handleCardClick(skill)}
+                  isActive={selectedSkill === skill.name}
+                />
+              ))}
             </Box>
           </Box>
         );

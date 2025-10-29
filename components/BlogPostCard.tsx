@@ -10,7 +10,7 @@ interface BlogPostCardProps {
 
 export function BlogPostCard({ slug, title, date }: BlogPostCardProps) {
   return (
-    <Card sx={{ '&:hover': { boxShadow: 6 } }}>
+    <Card>
       <Link href={`/blog/${slug}`} style={{ textDecoration: 'none' }}>
         <Typography
           variant="h5"

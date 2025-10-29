@@ -1,5 +1,11 @@
+/* Keep layout width stable regardless of scrollbar visibility */
+html {
+  scrollbar-gutter: stable;
+}
+
 /* MUI handles all styling */
 body {
   margin: 0;
   font-family: var(--font-geist-sans), system-ui, sans-serif;
+  overflow-y: scroll;
 }

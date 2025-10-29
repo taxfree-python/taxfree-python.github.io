@@ -61,8 +61,31 @@ export function ActivitiesSection({ selectedSkill, activities }: ActivitiesSecti
         )}
       </Typography>
 
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 3 }}>
-        <Tabs value={selectedTab} onChange={handleTabChange} aria-label="activity category tabs">
+      <Box sx={{ mb: 3 }}>
+        <Tabs
+          value={selectedTab}
+          onChange={handleTabChange}
+          aria-label="activity category tabs"
+          sx={{
+            '& .MuiTabs-indicator': {
+              backgroundColor: 'text.primary',
+              height: 1,
+            },
+            '& .MuiTab-root': {
+              color: 'text.secondary',
+              textTransform: 'none',
+              minWidth: 'auto',
+              px: 2,
+              '&.Mui-selected': {
+                color: 'text.primary',
+              },
+              '&:hover': {
+                color: 'text.primary',
+                backgroundColor: 'transparent',
+              },
+            },
+          }}
+        >
           <Tab label="All" value="all" />
           <Tab label="Work" value="work" />
           <Tab label="Research" value="research" />

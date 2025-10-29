@@ -42,6 +42,10 @@ export function ActivityDialog({ activity, isOpen, onClose }: ActivityDialogProp
       PaperProps={{
         sx: {
           borderRadius: 2,
+          backgroundColor: 'rgba(23, 23, 23, 0.85)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid',
+          borderColor: 'divider',
         },
       }}
     >

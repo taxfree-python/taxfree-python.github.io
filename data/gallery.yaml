@@ -1,0 +1,31 @@
+# Gallery works
+# Add your artwork, projects, and creative works here
+#
+# Fields:
+#   id: Unique identifier
+#   title: Work title
+#   date: Creation date (YYYY-MM-DD)
+#   media: Path to media file (image/gif/video)
+#   thumbnail: Path to thumbnail image
+#   mediaType: Type of media (image, gif, or video)
+#   description: Optional description
+#   category: Optional category (e.g., "illustration", "3d", "photography")
+#   tools: Optional list of tools used
+#   featured: Set to true to display on homepage (recommend 3-5 featured works)
+#
+# Example:
+# works:
+#   - id: work-001
+#     title: 作品タイトル
+#     date: 2025-01-15
+#     media: /images/gallery/work-001.jpg
+#     thumbnail: /images/gallery/work-001-thumb.jpg
+#     mediaType: image
+#     description: 作品の説明
+#     category: illustration
+#     tools:
+#       - Procreate
+#       - Photoshop
+#     featured: true
+
+works: []

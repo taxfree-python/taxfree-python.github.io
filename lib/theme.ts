@@ -69,13 +69,14 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 8,
-          border: '1px solid #262626',
-          backgroundColor: '#171717',
-          transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
-          boxShadow: '0 12px 32px rgba(0, 0, 0, 0.35)',
+          border: '1px solid transparent',
+          backgroundColor: 'rgba(23, 23, 23, 0.3)',
+          backdropFilter: 'blur(10px)',
+          transition: 'border-color 0.2s ease, background-color 0.2s ease',
+          boxShadow: 'none',
           '&:hover': {
             borderColor: '#333333',
-            boxShadow: '0 16px 40px rgba(0, 0, 0, 0.45)',
+            backgroundColor: 'rgba(23, 23, 23, 0.5)',
           },
         },
       },
@@ -112,10 +113,10 @@ export const theme = createTheme({
           transition: 'all 0.2s ease',
         },
         containedPrimary: {
-          backgroundColor: '#f2f2f2',
-          color: '#111111',
+          backgroundColor: '#111111',
+          color: '#f2f2f2',
           '&:hover': {
-            backgroundColor: '#d6d6d6',
+            backgroundColor: '#1f1f1f',
           },
         },
         outlinedPrimary: {

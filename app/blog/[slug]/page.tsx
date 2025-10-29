@@ -1,5 +1,6 @@
 import { getPostData, getAllPostSlugs } from '@/lib/posts';
 import Link from 'next/link';
+import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -17,43 +18,58 @@ export default async function BlogPost({ params }: PageProps) {
   const post = await getPostData(slug);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-      {/* Header Section */}
-      <section className="max-w-4xl mx-auto px-4 py-20">
-        <div className="text-center">
-          <Link href="/" className="inline-block">
-            <h1 className="text-5xl font-bold mb-4 text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-              tax_free
-            </h1>
-          </Link>
-          <p className="text-xl text-gray-600 dark:text-gray-300">
-            Software Engineer & Researcher
-          </p>
-        </div>
-      </section>
-
-      <div className="max-w-3xl mx-auto px-4 pb-20">
-        <Link
+    <Box
+      sx={{
+        minHeight: '100vh',
+        background: 'linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%)',
+        '@media (prefers-color-scheme: dark)': {
+          background: 'linear-gradient(to bottom, #0a0a0a 0%, #141414 100%)',
+        },
+      }}
+    >
+      <Container maxWidth="md" component="section" sx={{ py: 6 }}>
+        <MuiLink
+          component={Link}
           href="/blog"
-          className="text-blue-600 dark:text-blue-400 hover:underline mb-6 inline-flex items-center gap-1"
+          sx={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 0.5,
+            mb: 3,
+            color: 'text.secondary',
+            textDecoration: 'none',
+            '&:hover': {
+              color: 'text.primary',
+              textDecoration: 'underline',
+            },
+          }}
         >
           <span>←</span>
           <span>Back to Blog</span>
-        </Link>
+        </MuiLink>
 
-        <article className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8 mt-4">
-          <header className="mb-8">
-            <h1 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+        <Box
+          component="article"
+          sx={{
+            bgcolor: 'background.paper',
+            borderRadius: 2,
+            boxShadow: 2,
+            p: 4,
+            mt: 2,
+          }}
+        >
+          <Box component="header" sx={{ mb: 4 }}>
+            <Typography variant="h3" component="h1" sx={{ mb: 2 }}>
               {post.title}
-            </h1>
-            <time className="text-gray-500 dark:text-gray-400">
+            </Typography>
+            <Typography variant="body2" component="time" color="text.secondary">
               {new Date(post.date).toLocaleDateString('ja-JP', {
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
               })}
-            </time>
-          </header>
+            </Typography>
+          </Box>
 
           <div
             className="prose prose-lg dark:prose-invert max-w-none
@@ -64,8 +80,8 @@ export default async function BlogPost({ params }: PageProps) {
               prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900"
             dangerouslySetInnerHTML={{ __html: post.contentHtml || '' }}
           />
-        </article>
-      </div>
-    </div>
+        </Box>
+      </Container>
+    </Box>
   );
 }

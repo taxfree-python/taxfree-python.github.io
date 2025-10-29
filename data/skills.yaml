@@ -3,19 +3,15 @@ skillGroups:
   -
     id: "technical"
     title: "Technical Skills"
-    description: "扱っている技術領域と現在注力している開発スタック。"
   -
     id: "communication"
     title: "Leadership & Collaboration"
-    description: "チームビルディングと協働で発揮してきた強み。"
   -
     id: "other"
     title: "Personal Strengths"
-    description: "継続的な学習姿勢など、成長を支える特性。"
   -
     id: "language"
     title: "Languages"
-    description: "得意とする言語スキル情報。"
 skills:
   -
     name: "Python"

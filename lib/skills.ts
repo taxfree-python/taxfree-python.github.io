@@ -79,14 +79,8 @@ function validateSkillGroup(raw: unknown, index: number): SkillGroup {
   assert(skillCategorySet.has(idValue as SkillCategory), `${context}.id must be a valid SkillCategory`);
   const id = idValue as SkillCategory;
   const title = toString(obj.title, `${context}.title`);
-  const description = toOptionalString(obj.description, `${context}.description`);
 
-  const group: SkillGroup = { id, title };
-  if (description !== undefined) {
-    group.description = description;
-  }
-
-  return group;
+  return { id, title };
 }
 
 function validateSkillDetail(raw: unknown, index: number): SkillDetail {

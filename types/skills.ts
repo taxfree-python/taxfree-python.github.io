@@ -27,7 +27,6 @@ export interface SkillDetail {
 export interface SkillGroup {
   id: SkillCategory;
   title: string;
-  description?: string;
 }
 
 export interface SkillAchievement {
