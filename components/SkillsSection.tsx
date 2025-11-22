@@ -1,11 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { Container, Typography, Box } from '@mui/material';
-import { SkillCard } from './SkillCard';
-import { SkillDialog } from './SkillDialog';
-import { ProjectActivity } from '../types/activities';
+import { Container, Typography, Box, Stack } from '@mui/material';
 import { SkillDetail, SkillGroup } from '../types/skills';
+import { ProjectActivity } from '../types/activities';
 
 interface SkillsSectionProps {
   selectedSkill: string | null;
@@ -15,66 +12,59 @@ interface SkillsSectionProps {
   skills: SkillDetail[];
 }
 
-export function SkillsSection({ selectedSkill, onSkillClick, activities, skillGroups, skills }: SkillsSectionProps) {
-  const [dialogSkill, setDialogSkill] = useState<SkillDetail | null>(null);
-
-  const handleCardClick = (skill: SkillDetail) => {
-    if (skill.filterable) {
-      onSkillClick(skill.name);
-    }
-    setDialogSkill(skill);
-  };
-
-  const handleCloseDialog = () => {
-    setDialogSkill(null);
-  };
-
+export function SkillsSection({ skills }: SkillsSectionProps) {
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6 }}>
-      <Typography variant="h2" component="h2" gutterBottom>
-        Skills & Experience
+      <Typography
+        variant="h4"
+        component="h2"
+        gutterBottom
+        sx={{
+          mb: 4,
+          fontWeight: 400,
+          letterSpacing: '-0.02em'
+        }}
+      >
+        Core Skills
       </Typography>
 
-      {skillGroups.map((group) => {
-        const groupedSkills = skills.filter((skill) => skill.category === group.id);
-        if (groupedSkills.length === 0) return null;
-
-        return (
-          <Box key={group.id} mb={5}>
-            <Typography variant="h3" component="h3" mb={2}>
-              {group.title}
-            </Typography>
-
-            <Box
-              display="grid"
-              gridTemplateColumns={{ xs: '1fr', md: 'repeat(2, 1fr)' }}
-              gap={2}
+      <Stack spacing={2}>
+        {skills.map((skill) => (
+          <Box
+            key={skill.name}
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'baseline',
+              py: 1,
+              '&:not(:last-child)': {
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+              }
+            }}
+          >
+            <Typography
+              variant="body1"
+              sx={{
+                fontWeight: 500,
+                letterSpacing: '-0.01em'
+              }}
             >
-              {groupedSkills.map((skill) => (
-                <SkillCard
-                  key={skill.name}
-                  skill={skill}
-                  onClick={() => handleCardClick(skill)}
-                  isActive={selectedSkill === skill.name}
-                />
-              ))}
-            </Box>
+              {skill.name}
+            </Typography>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{
+                ml: 2,
+                whiteSpace: 'nowrap'
+              }}
+            >
+              {skill.experience}
+            </Typography>
           </Box>
-        );
-      })}
-
-      <SkillDialog
-        skill={dialogSkill}
-        isOpen={dialogSkill !== null}
-        onClose={handleCloseDialog}
-        relatedItems={
-          dialogSkill
-            ? (dialogSkill.relatedItemIds ?? [])
-                .map((id) => activities.find((item) => item.id === id))
-                .filter((item): item is ProjectActivity => Boolean(item))
-            : []
-        }
-      />
+        ))}
+      </Stack>
     </Container>
   );
 }

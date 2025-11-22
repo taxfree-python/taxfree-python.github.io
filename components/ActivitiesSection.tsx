@@ -1,122 +1,102 @@
 'use client';
 
 import { useState } from 'react';
-import { Container, Typography, Stack, Tabs, Tab, Box } from '@mui/material';
-import { ActivityCard } from './ActivityCard';
-import { ActivityDialog } from './ActivityDialog';
-import { ProjectActivity, ActivityCategory } from '../types/activities';
+import { Container, Typography, Box, Stack, Button } from '@mui/material';
+import { ProjectActivity } from '../types/activities';
 import { formatActivityPeriod } from '../lib/activityPeriod';
 
 interface ActivitiesSectionProps {
   selectedSkill?: string | null;
   activities: ProjectActivity[];
+  allActivities?: ProjectActivity[];
 }
 
-type TabValue = 'all' | ActivityCategory;
+export function ActivitiesSection({ activities, allActivities = [] }: ActivitiesSectionProps) {
+  const [showAll, setShowAll] = useState(false);
 
-export function ActivitiesSection({ selectedSkill, activities }: ActivitiesSectionProps) {
-  const [selectedActivity, setSelectedActivity] = useState<ProjectActivity | null>(null);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [selectedTab, setSelectedTab] = useState<TabValue>('all');
-
-  const source: ProjectActivity[] = activities;
-
-  // Filter by category tab
-  const categoryFiltered = selectedTab === 'all'
-    ? source
-    : source.filter((activity) => activity.category === selectedTab);
-
-  // Then filter by skill if selected
-  const filteredActivities = selectedSkill
-    ? categoryFiltered.filter((activity) => activity.skills.includes(selectedSkill))
-    : categoryFiltered;
-
-  const handleActivityClick = (activity: ProjectActivity) => {
-    setSelectedActivity(activity);
-    setIsDialogOpen(true);
-  };
-
-  const handleCloseDialog = () => {
-    setIsDialogOpen(false);
-    setSelectedActivity(null);
-  };
-
-  const handleTabChange = (_event: React.SyntheticEvent, newValue: TabValue) => {
-    setSelectedTab(newValue);
-  };
+  const displayedActivities = showAll ? allActivities : activities;
+  const hasMore = allActivities.length > activities.length;
 
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6, pb: 10 }}>
-      <Typography variant="h2" component="h2" gutterBottom>
-        Activities & Projects
-        {selectedSkill && (
-          <Typography
-            component="span"
-            variant="h6"
-            color="text.secondary"
-            sx={{ ml: 2, fontWeight: 'normal' }}
-          >
-            - Filtered by: {selectedSkill}
-          </Typography>
-        )}
+      <Typography
+        variant="h4"
+        component="h2"
+        gutterBottom
+        sx={{
+          mb: 4,
+          fontWeight: 400,
+          letterSpacing: '-0.02em'
+        }}
+      >
+        Experience
       </Typography>
 
-      <Box sx={{ mb: 3 }}>
-        <Tabs
-          value={selectedTab}
-          onChange={handleTabChange}
-          aria-label="activity category tabs"
-          sx={{
-            '& .MuiTabs-indicator': {
-              backgroundColor: 'text.primary',
-              height: 1,
-            },
-            '& .MuiTab-root': {
-              color: 'text.secondary',
+      <Stack spacing={6}>
+        {displayedActivities.map((activity) => (
+          <Box
+            key={activity.id}
+            sx={{
+              '&:not(:last-child)': {
+                pb: 6,
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+              }
+            }}
+          >
+            <Typography
+              variant="h6"
+              component="h3"
+              sx={{
+                fontWeight: 600,
+                letterSpacing: '-0.01em',
+                mb: 0.5
+              }}
+            >
+              {activity.title}
+            </Typography>
+
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ mb: 2 }}
+            >
+              {formatActivityPeriod(activity.period)}
+            </Typography>
+
+            <Typography
+              variant="body1"
+              color="text.secondary"
+              sx={{
+                lineHeight: 1.7,
+                letterSpacing: '-0.01em'
+              }}
+            >
+              {activity.description}
+            </Typography>
+          </Box>
+        ))}
+      </Stack>
+
+      {hasMore && (
+        <Box sx={{ mt: 6, textAlign: 'center' }}>
+          <Button
+            onClick={() => setShowAll(!showAll)}
+            sx={{
               textTransform: 'none',
-              minWidth: 'auto',
-              px: 2,
-              '&.Mui-selected': {
-                color: 'text.primary',
-              },
+              color: 'text.primary',
+              fontWeight: 400,
+              letterSpacing: '-0.01em',
               '&:hover': {
-                color: 'text.primary',
                 backgroundColor: 'transparent',
-              },
-            },
-          }}
-        >
-          <Tab label="All" value="all" />
-          <Tab label="Work" value="work" />
-          <Tab label="Research" value="research" />
-          <Tab label="Personal" value="personal" />
-        </Tabs>
-      </Box>
-
-      {filteredActivities.length === 0 ? (
-        <Typography color="text.secondary">
-          該当するアクティビティはありません
-        </Typography>
-      ) : (
-        <Stack spacing={2}>
-          {filteredActivities.map((activity) => (
-            <ActivityCard
-              key={activity.id}
-              title={activity.title}
-              date={formatActivityPeriod(activity.period)}
-              description={activity.description}
-              skills={activity.skills}
-              onClick={() => handleActivityClick(activity)}
-            />
-          ))}
-        </Stack>
+                textDecoration: 'underline',
+              }
+            }}
+          >
+            {showAll ? '← Show Less' : 'View All Experience →'}
+          </Button>
+        </Box>
       )}
-
-      <ActivityDialog
-        activity={selectedActivity}
-        isOpen={isDialogOpen}
-        onClose={handleCloseDialog}
-      />
     </Container>
   );
 }

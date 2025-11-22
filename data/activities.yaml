@@ -12,10 +12,15 @@
     - "Python"
     - "LLM"
     - "Mathematical Optimization"
+    - "AI Agents"
   kind: "research"
   category: "work"
-  detailedDescription: "1.生命科学実験自動化のボトルネックを解消するAIシステムの開発\n2.ゲノム・トランスクリプトーム情報の解読を加速するインフォマティクス技術の開発\n3.大規模言語モデル等AI技術を用いて細胞情報の利活用を推進するプラットフォームの開発\n4.生命科学研究におけるデータの解析・解釈・統合をスケールさせるAIエージェント等のAIシステムの開発\n\nポジションの職務内容欄から引用 (ref: https://www.riken.jp/careers/researchers/20250605_3/index.html)"
+  detailedDescription: "AI-based research idea generation agentのリード開発者（primary contributor）として、科学文献とデータベースから研究仮説を生成するシステムを開発。要約→概念抽出→新規性分析→仮説生成のワークフローをプロトタイプとして設計し、研究者と協力して生成アイデアの妥当性と新規性を評価しています。"
   achievements:
+    - "研究仮説生成AIエージェントのプロトタイプ開発"
+    - "オープンエンド探索ワークフローの設計"
+    - "研究者との協働による評価基準の反復改善"
+    - "大規模科学探索空間における深層探索戦略の調査"
 -
   id: "layerx-summer-internship"
   title: "LayerX Ai Workforce R&D サマーインターン"
@@ -30,11 +35,15 @@
   skills:
     - "LLM"
     - "Python"
-    - "AI Agent"
+    - "AI Agents"
   kind: "internship"
   category: "work"
-  detailedDescription: "- AIやLLMのプロダクトに組み込むための応用技術を研究、実験、ツール化します。主に以下のテーマから一つ選んでフォーカスし、先行研究の調査、課題解決方法の提案、実験計画、検証、成果レポートを実施します。\n    - ワークフロー自動生成のためのLLMのRFT\n    - AI agentの精度評価と正確性改善\n    - LLMによるビジネスドキュメントのデータ合成とツール開発\n    - AI agentのツール選択最適化と自動作成\n- LLMを実用的に活用するプロダクトのためのR&Dとなります。最新技術からビジネス価値を生む経験を得ることができます。\n\nポジションの業務内容欄から引用 (ref: https://www.linkedin.com/jobs/view/%E3%80%90ai%E3%83%BBllm%E3%80%91%E3%83%AA%E3%82%B5%E3%83%BC%E3%83%81%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3-r-d%E3%83%81%E3%83%BC%E3%83%A0-%E3%82%B5%E3%83%9E%E3%83%BC%E3%82%A4%E3%83%B3%E3%82%BF%E3%83%BC%E3%83%B3-at-layerx-4245427362/)"
+  detailedDescription: "AIエージェントによるビジネスワークフロー自動化に焦点を当てたR&Dプロジェクトに参加。業務プロセスの分析（手順、依存関係、データ構造）を行い、タスク分解とワークフロー抽象化を実施。AdaptFlow、AFlow、Multi-Agent Architecture Searchなどの最新研究に着想を得たエージェントワークフロー生成技術を探索・プロトタイプ化し、エージェント行動ログから失敗パターンを抽出して反復的に改善しました。"
   achievements:
+    - "業務プロセスのタスク分解とワークフロー抽象化"
+    - "最新研究に基づくエージェントワークフロー生成技術のプロトタイピング"
+    - "エージェント行動ログの分析と失敗パターンの抽出"
+    - "プロンプト、ステップ設計、ワークフロー構造の反復改善"
 -
   id: "preferred-robotics-intern"
   title: "Preferred Robotics ソフトウェアエンジニアインターン"
@@ -49,11 +58,15 @@
   skills:
     - "React"
     - "TypeScript"
-    - "LLM"
+    - "Coding Agents"
   kind: "internship"
   category: "work"
-  detailedDescription: "React を用いてロボットの UI 開発を行いました。\nCodex などの Coding Agent を積極的に使用し、開発の効率化、非属人化に取り組みました。"
+  detailedDescription: "Figma MCPとコード生成モデル（Codex / Claude Code）を統合し、ロボットUI設計の標準化・自動化ワークフローを構築。GUIコンポーネント構造の整理、変数定義の統一、再利用可能コンポーネントの抽象化を行い、AI支援コーディングに最適化された設計ガイドラインを確立。デプロイ後の修正コストが高いロボットUIにおいて重要な設計原則を特定・形式化しました。"
   achievements:
+    - "Figma MCP × Coding Agent統合による自動化ワークフロー構築"
+    - "AI支援コーディング最適化のための設計ガイドライン確立"
+    - "フルタイムエンジニア向けの引き継ぎドキュメント作成と講義実施"
+    - "高コスト環境に適した設計原則の特定と形式化"
 -
   id: "luup-data-scientist-intern"
   title: "Luup Data Scientist Intern"
@@ -71,7 +84,7 @@
     - "Data Analysis"
   kind: "internship"
   category: "work"
-  detailedDescription: "データ分析をやっています"
+  detailedDescription: "BigQueryとRedashを用いたモビリティサービスデータの分析と可視化を実施。"
   achievements:
 -
   id: "pfn-education-project-engineer"
@@ -86,10 +99,14 @@
     - "Python"
     - "LLM"
     - "React"
+    - "TypeScript"
   kind: "internship"
   category: "work"
-  detailedDescription: "> 2020年からPreferred Networks（PFN）では様々な教育サービスを提供しています。プログラミング学習教材「Playgram」や社会人教育サービス「ジクタス」に関わる開発・運用をサポートして頂けるパートタイムのスタッフを募集します。主にPFNの社員といっしょに教育コンテンツ企画・開発を行って頂くことを想定しています。\nJob Description より引用(https://open.talentio.com/r/1/c/preferred/pages/88461)"
+  detailedDescription: "LLMを活用した教育サービスの開発に継続的に貢献。夏期インターンシップで構築した基盤を発展させ、ワークフロー設計、モデル動作の改善、学習体験を向上させるUX改善に従事しています。"
   achievements:
+    - "LLMベースの教育サービス開発への継続的な貢献"
+    - "ワークフロー設計とモデル動作の反復改善"
+    - "学習者向けのUX設計と実装"
 -
   id: "pfn-summer-internship"
   title: "PFN 2024 夏期国内インターンシップ"
@@ -97,7 +114,9 @@
     start:
       year: 2024
       month: 8
-    end: null
+    end:
+      year: 2024
+      month: 9
   description: "Preferred Networks での LLM を用いた教育サービス開発"
   skills:
     - "Python"
@@ -105,8 +124,12 @@
     - "LLM"
   kind: "internship"
   category: "work"
-  detailedDescription: "「RD32 大規模言語モデルの教育サービスへの応用」に参加"
+  detailedDescription: "「RD32 大規模言語モデルの教育サービスへの応用」に参加し、LLM-based educational feedback generation workflowの設計と実装を担当。教師へのインタビューを通じて評価基準を定義し、React/TypeScriptでのUI/UX実装を行いました。"
   achievements:
+    - "教師インタビューによるフィードバック特性の形式化"
+    - "LLMベースのフィードバック生成ワークフローの設計"
+    - "React/TypeScriptでのUI/UX実装とプロトタイピング"
+    - "プロダクトの基礎アーキテクチャ設計"
   links:
     -
       label: "Preferred Networks 公式サイト"
@@ -185,20 +208,22 @@
   title: "自動・自律実験システムのスケジューリング最適化"
   period:
     start:
-      year: 2023
+      year: 2024
+      month: 12
     end: null
   description: "東京大学 一杉研究室との共同研究"
   skills:
     - "Python"
     - "Mathematical Optimization"
-    - "Bayesian Optimization"
+    - "Constraint Modeling"
   kind: "research"
   category: "research"
-  detailedDescription: "東京大学 一杉研究室が開発している自動・自律実験システムのスケジューリングを最適化するアルゴリズムを開発。材料化学に特有の測定の順序制約や装置の排他制約を含めた定式化を実現し、ベイズ最適化を含めた動的なスケジューリングを効率的に行う手法を研究しています。"
+  detailedDescription: "自律実験室システムのための複雑な実験ワークフローの定式化と最適化。リソース排他性、順序制約、実運用要件を組み込んだスケジューリングモデルを構築。一杉研究室との共同研究を提案・主導し、実際の自律実験システムを運用するチームと緊密に協力して実務制約を形式的なスケジューリングモデルに変換。将来的な論文化に向けて実験評価と改良を進めています。"
   achievements:
-    - "材料化学特有の制約を考慮した定式化の実現"
-    - "makespanだけでない多様な目的関数の最適化"
-    - "ベイズ最適化を活用した動的スケジューリング手法の開発"
+    - "一杉研究室との共同研究プロジェクトの提案と主導"
+    - "実運用チームとの協働による実務制約の形式的モデル化"
+    - "リソース排他性と順序制約を含むスケジューリングモデルの構築"
+    - "論文化に向けた実験評価と改良の推進"
   links:
     -
       label: "東京大学 一杉研究室"
@@ -208,22 +233,23 @@
   title: "ドクターカー運用データ分析"
   period:
     start:
-      year: 2023
+      year: 2024
+      month: 6
     end: null
   description: "東京科学大学 救命救急センターとの共同研究"
   skills:
     - "Python"
     - "Data Analysis"
-    - "Healthcare Data"
+    - "Spatiotemporal Analysis"
   kind: "research"
   category: "research"
-  detailedDescription: "東京科学大学 救命救急センターが運営するドクターカーの運用データを用いて、効果的・効率的な運用を行うための知見を発見。ビジネス化も含めた技術的な提案を行っています。"
+  detailedDescription: "実運用データを用いた救急需要とドクターカー派遣戦略のデータ駆動分析。大学統合プロセス中に立ち上げられた医工連携プロジェクトのエンジニアリング側主担当として、データ前処理、可視化、探索的分析を実施し、主要医学会での発表の基盤を構築。時空間パターンのモデリングと可視化により医療意思決定を支援しました。"
   achievements:
-    - "ドクターカー運用データの分析"
-    - "効率的な運用のための知見発見"
-    - "ビジネス化を含めた技術提案"
-    - "第53回日本救急医学会総会・学術集会にて東京科学大学 岩崎先生の研究「当院ドクターカー病院前救急医療体制における出動要請基準に関する検討」のデータ分析を担当"
-    - "第52回日本集中治療医学会学術集会にて東京女子医科大学病院 森先生の研究「ドクターカー運用の最適化を追求する～AI解析への布石」のデータ分析を担当"
+    - "医工連携プロジェクトのエンジニアリング側主担当"
+    - "データ前処理・可視化・探索的分析の基盤構築"
+    - "第52回日本集中治療医学会学術集会でのポスター発表に貢献"
+    - "第53回日本救急医学会総会・学術集会でのポスター発表に貢献"
+    - "実運用制約に基づく分析パイプラインと仮説の設計"
   links:
     -
       label: "東京科学大学 ドクターカー"
@@ -351,14 +377,15 @@
     - "Algorithms"
   kind: "competition"
   category: "personal"
-  detailedDescription: "iGEM(国際遺伝子工学マシンコンペティション)にてCo-Leader・渉外およびDry team leaderを務めました。200万円程度の寄附を獲得し、実験データを用いた物質産生量予測モデルの構築と3D-PCRの検体配置最適化アルゴリズムを開発。英語で発表と質疑応答を行いました。"
+  detailedDescription: "iGEM(国際遺伝子工学マシンコンペティション)にてCo-Leader・渉外およびDry team leaderを務めました。同窓生やVCとのコネクションを活用し、約200万円の寄附を獲得。二次代謝物SRIPの産生量を予測するODEモデルを開発し、Scipyを用いたパラメータ推定を実施。3D-PCRの検体配置最適化アルゴリズムを開発し、実験効率を改善。パリでの国際大会で英語によるプレゼンテーションとポスターセッションを担当しました。"
   achievements:
     - "Silver メダル獲得"
     - "Co-Leader・Dry team leaderとしてチームマネジメント"
-    - "200万円程度の寄附獲得"
-    - "ODEモデルによる物質産生量予測"
+    - "約200万円の寄附獲得（同窓生・VC向け渉外）"
+    - "二次代謝物SRIPの産生量予測ODEモデル開発"
+    - "Scipyを用いたパラメータ推定"
     - "3D-PCR検体配置最適化アルゴリズムの開発"
-    - "英語での発表と質疑応答"
+    - "パリでの国際大会でプレゼンテーションとポスターセッション"
   links:
     -
       label: "iGEM TokyoTech 2023"
@@ -408,14 +435,15 @@
     - "Machine Learning"
   kind: "competition"
   category: "personal"
-  detailedDescription: "Dry team leaderとしてプロジェクトの設計・実装を担当。実際の感染データを用いたデング熱の流行予測モデルを構築し、LassoやLSTMを用いた時系列データの解析と予測を実施。Webカメラの画像データから特定の色を定量するプログラムも開発しました。"
+  detailedDescription: "Dry team leaderとしてプロジェクトの設計・実装を担当。実際の感染データを用いてserotype別のデング熱流行予測モデルを構築し、Lasso/LSTMを用いた時系列データの解析と予測を実施。気候パラメータの寄与分析を行い、先行研究との比較を実施。Webカメラの画像データから特定の色を定量するプログラムも開発しました。パリでの国際大会で英語によるプレゼンテーションと質疑応答を担当しました。"
   achievements:
     - "Silver メダル獲得"
     - "Dry team leaderとしてマネジメント"
+    - "serotype別デング熱流行予測モデルの構築"
     - "Lasso・LSTMを用いた時系列データ解析"
-    - "感染データに基づくデング熱流行予測"
+    - "気候パラメータの寄与分析と先行研究との比較"
     - "OpenCVを用いた画像処理・定量プログラムの開発"
-    - "英語での8分間のプレゼンテーションと質疑応答"
+    - "パリでの国際大会でプレゼンテーションと質疑応答"
   links:
     -
       label: "iGEM TokyoTech 2022"
@@ -434,13 +462,17 @@
   skills:
     - "Python"
     - "Mathematical Optimization"
+    - "Machine Learning"
+    - "OpenCV"
     - "English"
   kind: "internship"
   category: "work"
-  detailedDescription: "英語を用いた業務レベルのコミュニケーションとチーム開発を学ぶために join しました．また，会社の理念である「先端AI技術で人命を救い，平等を拡張する」に強く共感しています．\n機械学習に関するプロジェクトだけではなく，数理最適化を用いたプロジェクトにも取り組んでいました"
+  detailedDescription: "英語ベースのリモート環境で、MLモデル開発、組合せ最適化（PuLP）、コンピュータビジョン（OpenCV）に取り組みました。会社の理念である「先端AI技術で人命を救い、平等を拡張する」に強く共感し、英語での業務レベルのコミュニケーションとチーム開発を経験しました。"
   achievements:
-    - "英語でのチーム開発とステークホルダー調整を経験"
-    - "機械学習・数理最適化を用いたプロジェクトを担当"
+    - "英語ベースのリモート環境でのチーム開発"
+    - "PuLPを用いた組合せ最適化プロジェクト"
+    - "OpenCVを用いたコンピュータビジョン開発"
+    - "MLモデル開発と実装"
 -
   id: "zest-software-engineer-intern"
   title: "株式会社ZEST ソフトウェアエンジニアインターン"
@@ -458,10 +490,8 @@
     - "Python"
   kind: "internship"
   category: "work"
-  detailedDescription: "業務レベルのプログラミング開発を経験するために join しました．\nSQL を用いた生データの整形，可視化を支援しました．"
+  detailedDescription: "SQLとPythonを用いて高齢者介護サービスのデータ分析を実施。"
   achievements:
-    - "SQLによるデータ前処理とレポート作成を担当"
-    - "分析結果に基づく改善提案を実施"
 -
   id: "trap-hackathon"
   title: "traP ハッカソン"

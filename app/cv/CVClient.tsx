@@ -17,19 +17,15 @@ interface CVClientProps {
 }
 
 export default function CVClient({ activities, skillGroups, skills, qualifications }: CVClientProps) {
-  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  // Core skills only: Python, React/TypeScript, AI Agents
+  const coreSkills = skills.filter(skill =>
+    ['Python', 'React/TypeScript', 'AI Agents'].includes(skill.name)
+  );
 
-  const handleSkillClick = (skill: string) => {
-    if (selectedSkill === skill) {
-      setSelectedSkill(null);
-    } else {
-      setSelectedSkill(skill);
-      const activitiesSection = document.getElementById('activities-section');
-      if (activitiesSection) {
-        activitiesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  };
+  // Main experiences only: PFN, RIKEN, LayerX
+  const mainExperiences = activities.filter(activity =>
+    ['pfn-education-project-engineer', 'riken-bdr-part-timer', 'layerx-summer-internship'].includes(activity.id)
+  );
 
   return (
     <Box
@@ -43,26 +39,18 @@ export default function CVClient({ activities, skillGroups, skills, qualificatio
     >
       <Container maxWidth="md">
         <Box sx={{ py: 8 }}>
-        <Typography
-          variant="h3"
-          component="h1"
-          fontWeight="bold"
-          gutterBottom
-          sx={{ mb: 6 }}
-        >
-          Curriculum Vitae
-        </Typography>
-
         <SkillsSection
-          selectedSkill={selectedSkill}
-          onSkillClick={handleSkillClick}
-          activities={activities}
+          selectedSkill={null}
+          onSkillClick={() => {}}
+          activities={mainExperiences}
           skillGroups={skillGroups}
-          skills={skills}
+          skills={coreSkills}
         />
-        <div id="activities-section">
-          <ActivitiesSection selectedSkill={selectedSkill} activities={activities} />
-        </div>
+        <ActivitiesSection
+          selectedSkill={null}
+          activities={mainExperiences}
+          allActivities={activities}
+        />
         <QualificationsSection content={qualifications} />
         </Box>
       </Container>

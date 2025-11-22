@@ -13,11 +13,12 @@ skillGroups:
     id: "language"
     title: "Languages"
 skills:
+  # Programming Languages (sorted by experience)
   -
     name: "Python"
     category: "technical"
     experience: "6+ years"
-    description: "中学生の頃に学び始めて以来、機械学習・数理最適化・バックエンド開発まで幅広く活用。PyTorch、FastAPI、Scipy、PuLP、OpenCVなどを自在に組み合わせて実装しています。"
+    description: "中学生の頃に学び始めて以来、機械学習・数理最適化・バックエンド開発まで幅広く活用。PyTorch、FastAPI、Scipy、PuLPなどを自在に組み合わせて実装しています。"
     relatedItemIds:
       - "pfn-summer-internship"
       - "pfn-education-project-engineer"
@@ -37,50 +38,117 @@ skills:
       - "コミュニティ登壇・TA経験"
       - "研究と事業の双方で活用"
   -
-    name: "LLM"
+    name: "React/TypeScript"
     category: "technical"
-    experience: "Since 2023"
-    description: "生成AIを用いたサービス開発に注力。OpenAI APIや日本語特化LLMを活用し、プロンプト最適化やUX改善を通じて成果を出しています。"
+    experience: "1+ year"
+    description: "TypeScriptによる型安全な開発を重視し、React/Next.jsでフロント実装を担当。PFNでの教育サービス開発やPreferred Roboticsでの実務経験を通じて習熟。"
+    relatedItemIds:
+      - "pfn-summer-internship"
+      - "pfn-education-project-engineer"
+      - "preferred-robotics-intern"
+      - "igem-library"
+    filterable: true
+  -
+    name: "SQL"
+    category: "technical"
+    experience: "< 1 year"
+    description: "BigQueryやRedashを用いたデータ分析・可視化を実施。高齢者介護サービスやモビリティサービスのデータ分析に活用しています。"
+    relatedItemIds:
+      - "doctor-car-data-analysis"
+      - "luup-data-scientist-intern"
+      - "zest-software-engineer-intern"
+    filterable: true
+  # Libraries/Frameworks (sorted by experience)
+  -
+    name: "FastAPI"
+    category: "technical"
+    experience: "1+ year"
+    description: "画像生成サービスや社内ツールのバックエンドを構築。MariaDBやLLM推論基盤と組み合わせたAPI開発を担当しました。"
+    relatedItemIds:
+      - "trap-hackathon"
+      - "chatgpt-business-contest"
+    filterable: true
+  -
+    name: "LangGraph"
+    category: "technical"
+    experience: "< 1 year"
+    description: "AI Agentのワークフロー設計に活用。複雑な状態遷移を伴うエージェントシステムの実装に使用しています。"
+    relatedItemIds:
+      - "layerx-summer-internship"
+      - "riken-bdr-part-timer"
+    filterable: true
+  -
+    name: "PyTorch"
+    category: "technical"
+    experience: "Project-based"
+    description: "深層学習モデルの実装に活用。研究プロジェクトや機械学習案件で実践経験を積んでいます。"
+    relatedItemIds:
+      - "riken-bdr-part-timer"
+      - "igem-tokyotech-2023"
+      - "igem-tokyotech-2022"
+    filterable: true
+  # Tools (sorted by experience)
+  -
+    name: "Git / GitHub"
+    category: "technical"
+    experience: "6+ years"
+    description: "バージョン管理とチーム開発の基盤として日常的に活用。プルリクエストレビューやブランチ戦略の設計も経験。"
     relatedItemIds:
       - "pfn-summer-internship"
       - "pfn-education-project-engineer"
       - "layerx-summer-internship"
+      - "preferred-robotics-intern"
+      - "riken-bdr-part-timer"
+      - "corpy-software-engineer-intern"
+    filterable: true
+  -
+    name: "Coding Agents"
+    category: "technical"
+    experience: "1+ year"
+    description: "Claude CodeやCodexを積極的に活用し、開発効率化と非属人化を推進。Preferred RoboticsでのGUI開発プロセス改善に貢献。"
+    relatedItemIds:
+      - "preferred-robotics-intern"
+      - "riken-bdr-part-timer"
+    filterable: true
+    highlights:
+      - "開発効率化"
+      - "非属人化の推進"
+  -
+    name: "Docker"
+    category: "technical"
+    experience: "Project-based"
+    description: "開発環境の構築や本番デプロイに活用。コンテナ化による環境の再現性向上に貢献しています。"
+    relatedItemIds:
+      - "layerx-summer-internship"
+      - "riken-bdr-part-timer"
+    filterable: true
+  # Domain Expertise (sorted by experience)
+  -
+    name: "AI Agents"
+    category: "technical"
+    experience: "1+ year"
+    description: "LLMベースのワークフロー設計、Prompt Engineering、Agent評価、Multi-agent systemsの開発に従事。教育サービス開発、ビジネスワークフロー自動化、研究アイデア生成などのプロジェクトを通じてエージェント技術を実践。"
+    relatedItemIds:
+      - "pfn-summer-internship"
+      - "pfn-education-project-engineer"
+      - "layerx-summer-internship"
+      - "riken-bdr-part-timer"
+      - "preferred-robotics-intern"
       - "nec-llm-competition"
       - "igem-library"
       - "chatgpt-business-contest"
       - "trap-hackathon"
-      - "riken-bdr-part-timer"
-      - "preferred-robotics-intern"
     filterable: true
     highlights:
-      - "NEC CTO賞"
-      - "教育サービス開発"
+      - "LLM-based workflow design"
+      - "Prompt Engineering"
+      - "Agent evaluation"
+      - "Multi-agent systems"
   -
-    name: "React / Next.js"
+    name: "Optimization"
     category: "technical"
-    experience: "2+ years"
-    description: "Next.jsとTypeScriptで型安全なフロント実装を担当。PFNでの教育サービス開発や個人プロジェクトでのUI改善に活用しています。"
-    relatedItemIds:
-      - "pfn-summer-internship"
-      - "pfn-education-project-engineer"
-      - "preferred-robotics-intern"
-      - "igem-library"
-    filterable: true
-  -
-    name: "Machine Learning"
-    category: "technical"
-    experience: "Project-based"
-    description: "LSTMやLassoを用いた時系列解析、画像認識、ベイズ最適化など幅広いモデルを実装。iGEMでのデング熱予測や産生量予測に活かしました。"
-    relatedItemIds:
-      - "igem-tokyotech-2023"
-      - "igem-tokyotech-2022"
-      - "doctor-car-data-analysis"
-    filterable: true
-  -
-    name: "Mathematical Optimization"
-    category: "technical"
-    experience: "3+ years"
-    description: "組合せ最適化やスケジューリング最適化を研究。自動・自律実験のタスク配分や3D-PCRの配置最適化など、現場の制約に沿ったモデル化を行っています。"
+    experience: "1+ year"
+    description: "組合せ最適化（Combinatorial Optimization）とスケジューリング最適化を研究。自律実験システムの制約モデリング（Constraint Modeling）や、現場の実運用要件を考慮した定式化を行っています。"
     relatedItemIds:
       - "autonomous-lab-scheduling"
       - "igem-tokyotech-2023"
@@ -88,51 +156,25 @@ skills:
       - "corpy-software-engineer-intern"
     filterable: true
     highlights:
-      - "研究提携プロジェクト"
-      - "現場制約を考慮した数理モデル"
+      - "Combinatorial Optimization"
+      - "Scheduling"
+      - "Constraint Modeling"
   -
-    name: "SQL / Data Analysis"
+    name: "Data Science"
     category: "technical"
-    experience: "2+ years"
-    description: "医療・モビリティデータの分析経験。BigQueryやRedashを用いて意思決定に直結するダッシュボードと洞察を提供しています。"
+    experience: "1+ year"
+    description: "医療データの時空間分析（Spatiotemporal Analysis）やモビリティデータの分析経験。BigQueryやRedashを用いた可視化とデータ駆動的な意思決定支援を実施。"
     relatedItemIds:
       - "doctor-car-data-analysis"
       - "luup-data-scientist-intern"
       - "zest-software-engineer-intern"
-    filterable: true
-  -
-    name: "FastAPI"
-    category: "technical"
-    experience: "Project-based"
-    description: "画像生成サービスや社内ツールのバックエンドを構築。MariaDBやLLM推論基盤と組み合わせたAPI開発を担当しました。"
-    relatedItemIds:
-      - "trap-hackathon"
-      - "chatgpt-business-contest"
-    filterable: true
-  -
-    name: "Streamlit"
-    category: "technical"
-    experience: "Project-based"
-    description: "LLMアプリのプロトタイピングに活用。ユーザーバイアス検出アプリでの実装が評価され、NEC主催のコンテストでCTO賞を獲得しました。"
-    relatedItemIds:
-      - "nec-llm-competition"
-    filterable: true
-  -
-    name: "OpenCV"
-    category: "technical"
-    experience: "Project-based"
-    description: "画像処理と自動計測を担当。Webカメラによる色定量プログラムやOCR並列化などで研究プロジェクトを支援しました。"
-    relatedItemIds:
+      - "igem-tokyotech-2023"
       - "igem-tokyotech-2022"
     filterable: true
-  -
-    name: "Firebase"
-    category: "technical"
-    experience: "Project-based"
-    description: "Hugoと組み合わせた静的サイトのホスティングや、個人プロジェクトのデプロイに利用。運用と集計フローを整備しました。"
-    relatedItemIds:
-      - "igem-library"
-    filterable: true
+    highlights:
+      - "Spatiotemporal Analysis"
+      - "Medical Data Analysis"
+  # Leadership & Collaboration
   -
     name: "Leadership"
     category: "communication"
@@ -162,6 +204,7 @@ skills:
       - "chatgpt-business-contest"
       - "layerx-summer-internship"
       - "luup-data-scientist-intern"
+  # Personal Strengths
   -
     name: "Continuous Learning"
     category: "other"
@@ -175,6 +218,7 @@ skills:
       - "igem-library"
     highlights:
       - "継続的に発信しているスキル"
+  # Languages
   -
     name: "Japanese"
     category: "language"
