@@ -12,7 +12,6 @@ export interface PostData {
   slug: string;
   title: string;
   date: string;
-  content?: string;
   contentHtml?: string;
   draft?: boolean;
   math?: boolean;

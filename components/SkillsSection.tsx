@@ -45,16 +45,18 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
             >
               {skill.name}
             </Typography>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{
-                ml: 2,
-                whiteSpace: 'nowrap'
-              }}
-            >
-              {skill.experience}
-            </Typography>
+            {skill.experience && (
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  ml: 2,
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {skill.experience}
+              </Typography>
+            )}
           </Box>
         ))}
       </Stack>

@@ -19,10 +19,6 @@ export const activityDateToComparableValue = (date: ActivityDate): number => {
   return Date.UTC(date.year, month - 1, day);
 };
 
-export const activityDateToDate = (date: ActivityDate): Date => {
-  return new Date(activityDateToComparableValue(date));
-};
-
 const assertActivityDateValid = (date: ActivityDate, context: string): void => {
   invariant(isInteger(date.year), `${context}.year must be an integer year`);
   invariant(date.year >= 0, `${context}.year must be >= 0`);

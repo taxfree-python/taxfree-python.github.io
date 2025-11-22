@@ -5,17 +5,16 @@ import { SkillsSection } from '@/components/SkillsSection';
 import { ActivitiesSection } from '@/components/ActivitiesSection';
 import { QualificationsSection } from '@/components/QualificationsSection';
 import type { ProjectActivity } from '@/types/activities';
-import type { SkillDetail, SkillGroup } from '@/types/skills';
+import type { SkillDetail } from '@/types/skills';
 import type { QualificationsContent } from '@/types/profile';
 
 interface CVClientProps {
   activities: ProjectActivity[];
-  skillGroups: SkillGroup[];
   skills: SkillDetail[];
   qualifications: QualificationsContent;
 }
 
-export default function CVClient({ activities, skillGroups, skills, qualifications }: CVClientProps) {
+export default function CVClient({ activities, skills, qualifications }: CVClientProps) {
   // Core skills only: Python, React/TypeScript, AI Agents
   const coreSkills = skills.filter(skill =>
     ['Python', 'React/TypeScript', 'AI Agents'].includes(skill.name)

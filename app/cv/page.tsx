@@ -11,12 +11,11 @@ export const metadata: Metadata = {
 
 export default function CVPage() {
   const activities = getProjectsAndActivities();
-  const { skillGroups, skills } = getSkillsData();
+  const { skills } = getSkillsData();
 
   return (
     <CVClient
       activities={activities}
-      skillGroups={skillGroups}
       skills={skills}
       qualifications={qualificationsContent}
     />
