@@ -1,0 +1,586 @@
+---
+-
+  id: "riken-bdr-part-timer"
+  title: "理化学研究所 BDR 研究パートタイマーⅠ"
+  period:
+    start:
+      year: 2025
+      month: 9
+    end: null
+  description: "論文・データベースを入力として研究アイデアを生成するAIエージェントの立ち上げ・実装を主担当"
+  skills:
+    - "Python"
+    - "LLM"
+    - "Mathematical Optimization"
+    - "AI Agents"
+  category: "work"
+  detailedDescription: "論文の要約 → 関連概念の抽出 → 既存研究との差分分析 → アイデア提案、という流れを整理し、Open-ended な探索が可能なエージェントの試作 workflow を設計・実装。生成アイデアの妥当性・新規性について研究者と議論し、評価基準を少しずつ言語化しながら、フィードバックを用いた改善ループを継続的に回している。科学研究の探索空間の広さを踏まえ、情報過多の環境での Deep Research 的手法や探索戦略(idea search)の検討を行っている。"
+  achievements:
+    - "Open-ended探索が可能なエージェント試作workflowの設計・実装"
+    - "研究者との議論による評価基準の言語化とフィードバックループの構築"
+    - "情報過多環境でのDeep Research的手法と探索戦略の検討"
+-
+  id: "layerx-summer-internship"
+  title: "LayerX Ai Workforce R&D サマーインターン"
+  period:
+    start:
+      year: 2025
+      month: 10
+    end:
+      year: 2025
+      month: 10
+  description: "業務プロセスの自動化を目的としたAI Agent Workflowの設計・最適化に取り組むR&Dチームに参加"
+  skills:
+    - "LLM"
+    - "Python"
+    - "AI Agents"
+  category: "work"
+  detailedDescription: "業務に含まれる操作手順・依存関係・データ構造を分析し、タスク分解・ステップ設計・パラメータ抽象化を実施。LayerXで扱う問題に近いベンチマークを用いて、Agent workflow生成の技術を使った解法を検討・実装。AdaptFlow (Adaptive Workflow Optimization via Meta-Learning)、AFlow (Automating Agentic Workflow Generation)、Multi-Agent Architecture Search via Agentic Supernetなどの研究をベースに検討・実装。Agentの挙動ログを観察し、失敗パターンの抽出・プロンプト改善・ステップ再設計など、改善サイクルを実行。"
+  achievements:
+    - "業務プロセスの操作手順・依存関係・データ構造の分析とタスク分解"
+    - "最新研究(AdaptFlow, AFlow, Multi-Agent Architecture Search)ベースの実装"
+    - "Agent挙動ログの観察と失敗パターンの抽出"
+    - "プロンプト改善・ステップ再設計による改善サイクルの実行"
+-
+  id: "preferred-robotics-intern"
+  title: "Preferred Robotics ソフトウェアエンジニアインターン"
+  period:
+    start:
+      year: 2025
+      month: 8
+    end:
+      year: 2025
+      month: 9
+  description: "Figma MCPとコード生成を連携させ、ロボット用GUIのデザインから実装までのフローを非属人化・標準化"
+  skills:
+    - "React"
+    - "TypeScript"
+    - "Coding Agents"
+  category: "work"
+  detailedDescription: "GUIコンポーネントの構造化、変数の統一、再利用可能な部品の抽象化など、Coding Agentを活用した開発に適した設計指針を整理。インターン終了後、引き継ぎ用ドキュメントを整備し、フルタイムエンジニア向けに簡単な講義・QAを実施。ロボットUIのように出荷後の変更コストが高い領域で、品質保証・可読性・保守性が重要になる点を踏まえ、そのための設計思想・注意点をまとめた。"
+  achievements:
+    - "Coding Agent活用に適した設計指針の整理と標準化"
+    - "引き継ぎドキュメント整備とフルタイムエンジニア向け講義・QA実施"
+    - "高コスト変更環境における設計思想・注意点の体系化"
+-
+  id: "luup-data-scientist-intern"
+  title: "Luup Data Scientist Intern"
+  period:
+    start:
+      year: 2024
+      month: 6
+    end:
+      year: 2025
+      month: 10
+  description: "モビリティデータの分析とダッシュボード整備を担当"
+  skills:
+    - "Python"
+    - "SQL"
+    - "Data Analysis"
+  category: "work"
+  detailedDescription: "BigQueryとRedashを用いたモビリティサービスデータの分析と可視化を実施。"
+  achievements:
+-
+  id: "pfn-education-project-engineer"
+  title: "PFN 教育プロジェクトエンジニア (パートタイム) "
+  period:
+    start:
+      year: 2024
+      month: 10
+    end: null
+  description: "LLMを活用した教育向けサービスの企画・開発に従事。LLMだけに閉じないUI/UXも含めて、学習体験全体の設計に関わる"
+  skills:
+    - "Python"
+    - "LLM"
+    - "React"
+    - "TypeScript"
+  category: "work"
+  detailedDescription: "現場の講師・先生へのヒアリングを通じて、学習者向けフィードバックにおける「望ましい応答条件」(言葉遣い、安全性、モチベーション維持、認知負荷など)を整理し、タスク特化の評価基準として体系化。これらの評価基準を踏まえ、LLMによるフィードバック生成workflowを設計・実装。出力の傾向を確認しながら、プロンプト改善・仕様調整の反復サイクルを自ら回した。モデル側だけでなく、学習者にとって分かりやすいUI/UXの検討・プロトタイプ実装(React)にも大きくコミット。インターン期間内に、現在のサービスの基盤となる構成(画面遷移・機能構造・LLM workflowの接続)を設計し、フルタイムエンジニアと共同してプロダクト化を見据えた開発を推進。"
+  achievements:
+    - "講師・先生へのヒアリングによる評価基準の体系化"
+    - "LLMフィードバック生成workflowの設計・実装と反復改善"
+    - "学習者向けUI/UXの検討とReactプロトタイプ実装"
+    - "サービス基盤構成の設計とプロダクト化を見据えた開発推進"
+-
+  id: "pfn-summer-internship"
+  title: "PFN 2024 夏期国内インターンシップ"
+  period:
+    start:
+      year: 2024
+      month: 8
+    end:
+      year: 2024
+      month: 9
+  description: "Preferred Networks での LLM を用いた教育サービス開発"
+  skills:
+    - "Python"
+    - "React"
+    - "LLM"
+  category: "work"
+  detailedDescription: "「RD32 大規模言語モデルの教育サービスへの応用」に参加し、LLM-based educational feedback generation workflowの設計と実装を担当。教師へのインタビューを通じて評価基準を定義し、React/TypeScriptでのUI/UX実装を行いました。"
+  achievements:
+    - "教師インタビューによるフィードバック特性の形式化"
+    - "LLMベースのフィードバック生成ワークフローの設計"
+    - "React/TypeScriptでのUI/UX実装とプロトタイピング"
+    - "プロダクトの基礎アーキテクチャ設計"
+  links:
+    -
+      label: "Preferred Networks 公式サイト"
+      url: "https://www.preferred.jp/"
+-
+  id: "nec-llm-competition"
+  title: "東工大 x NEC 生成AIアプリコンテスト"
+  period:
+    start:
+      year: 2024
+      month: 8
+    end:
+      year: 2024
+      month: 9
+  description: "NECの日本語特化LLMを用いたアプリコンテストでCTO賞を獲得"
+  skills:
+    - "Python"
+    - "LLM"
+    - "Streamlit"
+  category: "others"
+  detailedDescription: "日本電気株式会社が開発している日本語特化LLMを用いたアプリコンテストに参加し、CTO賞を獲得しました。ユーザーとの会話を通してバイアスを特定し緩和するアプリをStreamlitで実装しました。"
+  achievements:
+    - "CTO賞を獲得"
+    - "ユーザーバイアス検出・緩和アプリの開発"
+    - "Streamlitを用いたインタラクティブなUIの実装"
+  links:
+    -
+      label: "NEC 公式サイト"
+      url: "https://jpn.nec.com/"
+-
+  id: "jij-dialog-event"
+  title: "株式会社Jij CEO 山城悠さんとの対談イベント"
+  period:
+    start:
+      year: 2024
+      month: 2
+    end:
+      year: 2024
+      month: 2
+  description: "最適化スタートアップとの対談イベントでナビゲータを担当"
+  skills:
+    - "Facilitation"
+    - "Event Management"
+  category: "others"
+  detailedDescription: "株式会社Jijの山城悠CEOとの対談イベントにて、参加者との双方向コミュニケーションをリードし、AIと最適化のキャリアについて議論を深めました。"
+  achievements:
+    - "ナビゲータとして進行と議論を設計"
+    - "AI/最適化領域の学習コミュニティを拡張"
+-
+  id: "chatgpt-business-contest"
+  title: "Thursday Gathering #279 でのピッチ"
+  period:
+    start:
+      year: 2024
+      month: 1
+    end:
+      year: 2024
+      month: 3
+  description: "ChatGPT ビジネスコンテストでリーダーとしてピッチ"
+  skills:
+    - "Python"
+    - "OpenAI API"
+    - "ChatGPT"
+    - "Gradio"
+  category: "others"
+  detailedDescription: "Thursday Gathering #279にて、ChatGPTとembeddingを用いた求人検索システムを開発し、Hugging Face Spaceにデプロイ。リーダーとして課題設定からプレゼンまで担当しました。"
+  achievements:
+    - "リーダーとしてビジネスピッチ"
+    - "ChatGPT + embeddingによる求人検索システム開発"
+    - "Gradioを用いたUIの実装とデプロイ"
+-
+  id: "autonomous-lab-scheduling"
+  title: "自動・自律実験システムのスケジューリング最適化"
+  period:
+    start:
+      year: 2024
+      month: 12
+    end: null
+  description: "東京大学 一杉研究室との共同研究"
+  skills:
+    - "Python"
+    - "Mathematical Optimization"
+    - "Constraint Modeling"
+  category: "research"
+  detailedDescription: "自律実験室システムのための複雑な実験ワークフローの定式化と最適化。リソース排他性、順序制約、実運用要件を組み込んだスケジューリングモデルを構築。一杉研究室との共同研究を提案・主導し、実際の自律実験システムを運用するチームと緊密に協力して実務制約を形式的なスケジューリングモデルに変換。将来的な論文化に向けて実験評価と改良を進めています。"
+  achievements:
+    - "一杉研究室との共同研究プロジェクトの提案と主導"
+    - "実運用チームとの協働による実務制約の形式的モデル化"
+    - "リソース排他性と順序制約を含むスケジューリングモデルの構築"
+    - "論文化に向けた実験評価と改良の推進"
+  links:
+    -
+      label: "東京大学 一杉研究室"
+      url: "https://solid-state-chemistry.jp/"
+-
+  id: "doctor-car-data-analysis"
+  title: "ドクターカー運用データ分析"
+  period:
+    start:
+      year: 2024
+      month: 6
+    end: null
+  description: "東京科学大学 救命救急センターとの共同研究"
+  skills:
+    - "Python"
+    - "Data Analysis"
+    - "Spatiotemporal Analysis"
+  category: "research"
+  detailedDescription: "実運用データを用いた救急需要とドクターカー派遣戦略のデータ駆動分析。大学統合プロセス中に立ち上げられた医工連携プロジェクトのエンジニアリング側主担当として、データ前処理、可視化、探索的分析を実施し、主要医学会での発表の基盤を構築。時空間パターンのモデリングと可視化により医療意思決定を支援しました。"
+  achievements:
+    - "医工連携プロジェクトのエンジニアリング側主担当"
+    - "データ前処理・可視化・探索的分析の基盤構築"
+    - "第52回日本集中治療医学会学術集会でのポスター発表に貢献"
+    - "第53回日本救急医学会総会・学術集会でのポスター発表に貢献"
+    - "実運用制約に基づく分析パイプラインと仮説の設計"
+  links:
+    -
+      label: "東京科学大学 ドクターカー"
+      url: "https://www.tmd.ac.jp/accm/doctorcar/"
+-
+  id: "comiket-103"
+  title: "コミックマーケット103 技術同人誌頒布"
+  period:
+    start:
+      year: 2023
+      month: 8
+    end:
+      year: 2023
+      month: 12
+  description: "生成AIや最適化の知見をまとめた技術同人誌を制作・頒布"
+  skills:
+    - "Writing"
+    - "Editing"
+    - "Community"
+  category: "others"
+  detailedDescription: "技術同人誌を制作し、コミックマーケット103で頒布。生成AIや最適化で得た知見を分かりやすくまとめ、フィードバックを得ながら改訂しました。"
+  achievements:
+    - "技術同人誌の制作・頒布"
+    - "来場者との対話を通じた知見共有"
+-
+  id: "comiket-102"
+  title: "コミックマーケット102 技術同人誌頒布"
+  period:
+    start:
+      year: 2023
+      month: 3
+    end:
+      year: 2023
+      month: 8
+  description: "AI関連の同人誌を制作し初めてコミケで頒布"
+  skills:
+    - "Writing"
+    - "Editing"
+    - "Project Management"
+  category: "others"
+  detailedDescription: "コミックマーケット102で技術同人誌を頒布。原稿の編集体制づくりや印刷ディレクションを担当し、次回開催に向けた改善点を整理しました。"
+  achievements:
+    - "原稿制作から頒布までを自走"
+    - "読者フィードバックを次回企画に反映"
+-
+  id: "oist-science-challenge-2023"
+  title: "OIST Science Challenge 2023"
+  period:
+    start:
+      year: 2023
+      month: 3
+    end:
+      year: 2023
+      month: 3
+  description: "OIST主催のサイエンスコンテストで研究アイデアを発表"
+  skills:
+    - "Presentation"
+    - "English"
+    - "Research Planning"
+  category: "others"
+  detailedDescription: "沖縄科学技術大学院大学 (OIST) が主催するScience Challengeで研究アイデアを英語で発表し、専門家からフィードバックを獲得しました。"
+  achievements:
+    - "英語による研究アイデアの発表"
+    - "専門家からのフィードバックを獲得"
+-
+  id: "design-life-engineering-2023"
+  title: "第8回 デザイン生命工学研究会"
+  period:
+    start:
+      year: 2023
+      month: 3
+    end:
+      year: 2023
+      month: 3
+  description: "トークセッションとポスター発表に登壇"
+  skills:
+    - "Presentation"
+    - "Synthetic Biology"
+    - "Community"
+  category: "others"
+  detailedDescription: "デザイン生命工学研究会でトークセッションとポスター発表を担当し、研究内容と社会実装の方向性を議論しました。"
+  achievements:
+    - "口頭発表とポスター発表を両立"
+    - "研究コミュニティとネットワークを構築"
+-
+  id: "super-multidisciplinary-2023"
+  title: "超異分野学会 東京大会2023"
+  period:
+    start:
+      year: 2023
+      month: 3
+    end:
+      year: 2023
+      month: 3
+  description: "ピッチとポスター発表で研究内容を紹介"
+  skills:
+    - "Presentation"
+    - "Synthetic Biology"
+    - "Optimization"
+  category: "others"
+  detailedDescription: "超異分野学会 東京大会2023にて、ピッチ登壇とポスター展示を実施。幅広い分野の研究者と議論しプロジェクトの方向性をブラッシュアップしました。"
+  achievements:
+    - "ピッチとポスターの二軸で発信"
+    - "異分野研究者とのコラボレーションを模索"
+-
+  id: "igem-tokyotech-2023"
+  title: "iGEM TokyoTech 2023 Silver メダル"
+  period:
+    start:
+      year: 2022
+      month: 11
+    end:
+      year: 2023
+      month: 11
+  description: "合成生物学の国際大会でCo-Leader・Dry team leaderとして参加"
+  skills:
+    - "Python"
+    - "Scipy"
+    - "Mathematical Modeling"
+    - "Algorithms"
+  category: "others"
+  detailedDescription: "iGEM(国際遺伝子工学マシンコンペティション)にてCo-Leader・渉外およびDry team leaderを務めました。同窓生やVCとのコネクションを活用し、約200万円の寄附を獲得。二次代謝物SRIPの産生量を予測するODEモデルを開発し、Scipyを用いたパラメータ推定を実施。3D-PCRの検体配置最適化アルゴリズムを開発し、実験効率を改善。パリでの国際大会で英語によるプレゼンテーションとポスターセッションを担当しました。"
+  achievements:
+    - "Silver メダル獲得"
+    - "Co-Leader・Dry team leaderとしてチームマネジメント"
+    - "約200万円の寄附獲得 (同窓生・VC向け渉外) "
+    - "二次代謝物SRIPの産生量予測ODEモデル開発"
+    - "Scipyを用いたパラメータ推定"
+    - "3D-PCR検体配置最適化アルゴリズムの開発"
+    - "パリでの国際大会でプレゼンテーションとポスターセッション"
+  links:
+    -
+      label: "iGEM TokyoTech 2023"
+      url: "https://2023.igem.wiki/tokyotech"
+-
+  id: "igem-library"
+  title: "iGEM library"
+  period:
+    start:
+      year: 2023
+    end:
+      year: 2023
+  description: "過去のiGEMプロジェクトを自然言語で検索できるライブラリ"
+  skills:
+    - "Python"
+    - "LLM"
+    - "GPT-4"
+    - "Hugo"
+    - "Firebase"
+  category: "others"
+  detailedDescription: "過去のiGEMチームのプロジェクトを自然言語で検索できるiGEM libraryを開発。要約にGPT-4を使用し、GUIはHugoで構築、Firebaseでホスティングしています。"
+  achievements:
+    - "GPT-4による過去プロジェクトの要約"
+    - "自然言語検索機能の実装"
+    - "Hugo + Firebaseによるウェブアプリ開発"
+  links:
+    -
+      label: "iGEM library"
+      url: "https://igem-library.app/"
+-
+  id: "igem-tokyotech-2022"
+  title: "iGEM TokyoTech 2022 Silver メダル"
+  period:
+    start:
+      year: 2022
+      month: 4
+    end:
+      year: 2022
+      month: 11
+  description: "Dry team leaderとしてデング熱流行予測モデルを構築"
+  skills:
+    - "Python"
+    - "Keras"
+    - "LSTM"
+    - "OpenCV"
+    - "Machine Learning"
+  category: "others"
+  detailedDescription: "Dry team leaderとしてプロジェクトの設計・実装を担当。実際の感染データを用いてserotype別のデング熱流行予測モデルを構築し、Lasso/LSTMを用いた時系列データの解析と予測を実施。気候パラメータの寄与分析を行い、先行研究との比較を実施。Webカメラの画像データから特定の色を定量するプログラムも開発しました。パリでの国際大会で英語によるプレゼンテーションと質疑応答を担当しました。"
+  achievements:
+    - "Silver メダル獲得"
+    - "Dry team leaderとしてマネジメント"
+    - "serotype別デング熱流行予測モデルの構築"
+    - "Lasso・LSTMを用いた時系列データ解析"
+    - "気候パラメータの寄与分析と先行研究との比較"
+    - "OpenCVを用いた画像処理・定量プログラムの開発"
+    - "パリでの国際大会でプレゼンテーションと質疑応答"
+  links:
+    -
+      label: "iGEM TokyoTech 2022"
+      url: "https://2022.igem.wiki/tokyotech"
+-
+  id: "corpy-software-engineer-intern"
+  title: "CORPY&CO. ソフトウェアエンジニアインターン"
+  period:
+    start:
+      year: 2023
+      month: 4
+    end:
+      year: 2024
+      month: 5
+  description: "英語環境で機械学習・数理最適化案件に従事"
+  skills:
+    - "Python"
+    - "Mathematical Optimization"
+    - "Machine Learning"
+    - "OpenCV"
+    - "English"
+  category: "work"
+  detailedDescription: "英語ベースのリモート環境で、MLモデル開発、組合せ最適化 (PuLP) 、コンピュータビジョン (OpenCV) に取り組みました。会社の理念である「先端AI技術で人命を救い、平等を拡張する」に強く共感し、英語での業務レベルのコミュニケーションとチーム開発を経験しました。"
+  achievements:
+    - "英語ベースのリモート環境でのチーム開発"
+    - "PuLPを用いた組合せ最適化プロジェクト"
+    - "OpenCVを用いたコンピュータビジョン開発"
+    - "MLモデル開発と実装"
+-
+  id: "zest-software-engineer-intern"
+  title: "株式会社ZEST ソフトウェアエンジニアインターン"
+  period:
+    start:
+      year: 2023
+      month: 2
+    end:
+      year: 2023
+      month: 3
+  description: "SQLを用いた生データ整形と可視化を支援"
+  skills:
+    - "SQL"
+    - "Data Analysis"
+    - "Python"
+  category: "work"
+  detailedDescription: "SQLとPythonを用いて高齢者介護サービスのデータ分析を実施。"
+  achievements:
+-
+  id: "trap-hackathon"
+  title: "traP ハッカソン"
+  period:
+    start:
+      year: 2023
+    end:
+      year: 2023
+  description: "チームリーダーとして架空の料理生成サービスを開発"
+  skills:
+    - "Python"
+    - "FastAPI"
+    - "MariaDB"
+    - "OpenAI API"
+    - "Dall-e 3"
+  category: "others"
+  detailedDescription: "チームリーダーとしてtraP ハッカソンに参加。OpenAI APIのDall-e 3を用いて架空の料理の画像とレシピを生成するサービスを開発しました。FastAPIとMariaDBを用いてバックエンドを実装しました。"
+  achievements:
+    - "チームリーダーとしてプロジェクト推進"
+    - "Dall-e 3による画像生成機能の実装"
+    - "FastAPI + MariaDBによるバックエンド開発"
+    - "サービスのデプロイと公開"
+  links:
+    -
+      label: "成果物"
+      url: "https://are-you-hungry.trap.show/"
+-
+  id: "tokyotech-sogo-admission"
+  title: "東京工業大学 情報理工学院 総合型入試"
+  period:
+    start:
+      year: 2021
+    end:
+      year: 2022
+  description: "Qiita記事を基にしたレポートで総合型選抜に合格"
+  skills:
+    - "Research"
+    - "Composition"
+    - "Presentation"
+  category: "others"
+  detailedDescription: "壁打ちとリサーチを重ねながらレポートを作成し、総合型選抜で合格。wallprimeの開発元であるbaton Inc.に確認して学術利用の許可を得ました。"
+  achievements:
+    - "総合型選抜での合格"
+    - "企業との調整を通じた学術利用許諾の取得"
+-
+  id: "pythonbeginners-okinawa"
+  title: "PythonBeginners沖縄 共同Organizer"
+  period:
+    start:
+      year: 2019
+    end:
+      year: 2020
+  description: "Python初学者向けコミュニティでイベント企画を担当"
+  skills:
+    - "Community Management"
+    - "Event Planning"
+  category: "others"
+  detailedDescription: "Python初学者向けコミュニティ「PythonBeginners沖縄」で共同Organizerとしてイベントの開催や企画を担当。地域での学習機会を継続的に提供しました。"
+  achievements:
+    - "継続的な勉強会の開催"
+    - "コミュニティの参加者拡大に貢献"
+-
+  id: "python-bootcamp-okinawa"
+  title: "Python Boot Camp in 沖縄 TA"
+  period:
+    start:
+      year: 2019
+    end:
+      year: 2019
+  description: "Python Boot CampでTAとして参加者をサポート"
+  skills:
+    - "Python"
+    - "Mentoring"
+  category: "others"
+  detailedDescription: "2019年に開催されたPython Boot Camp in 沖縄でTAとして参加者をサポートし、演習のフォローや質問対応を行いました。"
+  achievements:
+    - "初学者の学習サポート"
+    - "現場での問題解決とフォローアップ"
+-
+  id: "pycon-jp-2019"
+  title: "PyCon JP 2019 ポスターセッション"
+  period:
+    start:
+      year: 2019
+    end:
+      year: 2019
+  description: "Tweet分析とWord-Cloud生成のPythonプログラムを発表"
+  skills:
+    - "Python"
+    - "NLP"
+    - "Presentation"
+  category: "others"
+  detailedDescription: "日本最大級のPythonカンファレンスであるPyCon JPにて、特定ユーザーのTweetからWord-Cloudを自動生成するPythonプログラムについてポスター発表しました。"
+  achievements:
+    - "自然言語処理アプリケーションの実装"
+    - "カンファレンスでの技術発表"
+-
+  id: "pycon-kyushu-2019"
+  title: "PyCon Kyushu 2019 運営"
+  period:
+    start:
+      year: 2018
+    end:
+      year: 2019
+  description: "企画担当としてタイムテーブルやCfPを策定"
+  skills:
+    - "Event Management"
+    - "Community"
+    - "Project Management"
+  category: "others"
+  detailedDescription: "PyCon Kyushu 2019で企画を担当し、タイムテーブルの作成やCfPの選定を実施。地域のPythonコミュニティ活性化に貢献しました。"
+  achievements:
+    - "大型技術イベントの企画をリード"
+    - "登壇者・参加者との調整を担当"
