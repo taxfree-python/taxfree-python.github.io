@@ -12,12 +12,12 @@ export const heroContent: HeroContent = {
     {
       label: 'Twitter',
       href: 'https://twitter.com/taxfree_python',
-      color: 'secondary',
+      color: 'primary',
     },
     {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/yu-chinen',
-      color: 'secondary',
+      color: 'primary',
     },
   ],
 };
