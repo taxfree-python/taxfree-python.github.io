@@ -51,15 +51,19 @@ export default async function BlogPost({ params }: PageProps) {
         <Box
           component="article"
           sx={{
-            bgcolor: 'background.paper',
-            borderRadius: 2,
-            boxShadow: 2,
-            p: 4,
             mt: 2,
           }}
         >
           <Box component="header" sx={{ mb: 4 }}>
-            <Typography variant="h3" component="h1" sx={{ mb: 2 }}>
+            <Typography
+              variant="h4"
+              component="h1"
+              sx={{
+                mb: 1,
+                fontWeight: 400,
+                letterSpacing: '-0.02em'
+              }}
+            >
               {post.title}
             </Typography>
             <Typography variant="body2" component="time" color="text.secondary">

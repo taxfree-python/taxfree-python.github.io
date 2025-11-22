@@ -30,7 +30,7 @@ export const aboutContent: AboutContent = {
 };
 
 export const qualificationsContent: QualificationsContent = {
-  title: '資格・語学',
+  title: 'Languages',
   qualifications: [
     {
       name: 'TOEIC Listening & Reading Test',

@@ -18,8 +18,10 @@ export function SocialLinks({ links }: SocialLinksProps) {
           rel="noopener noreferrer"
           variant="contained"
           sx={{
+            boxShadow: 'none',
             '&:hover': {
               opacity: 0.8,
+              boxShadow: 'none',
             },
           }}
         >
