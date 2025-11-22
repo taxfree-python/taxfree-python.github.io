@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import { Typography } from '@mui/material';
-import { Card } from './Card';
+import { Typography, Box } from '@mui/material';
 
 interface BlogPostCardProps {
   slug: string;
@@ -10,24 +9,40 @@ interface BlogPostCardProps {
 
 export function BlogPostCard({ slug, title, date }: BlogPostCardProps) {
   return (
-    <Card>
+    <Box
+      sx={{
+        py: 1,
+        '&:not(:last-child)': {
+          borderBottom: '1px solid',
+          borderColor: 'divider',
+        }
+      }}
+    >
       <Link href={`/blog/${slug}`} style={{ textDecoration: 'none' }}>
         <Typography
-          variant="h5"
+          variant="h6"
           component="h3"
-          gutterBottom
           sx={{
+            fontWeight: 600,
+            letterSpacing: '-0.01em',
+            mb: 0.5,
             color: 'text.primary',
-            '&:hover': { color: 'grey.100' },
-            transition: 'color 0.2s',
+            '&:hover': {
+              textDecoration: 'underline',
+            },
+            transition: 'all 0.2s',
           }}
         >
           {title}
         </Typography>
       </Link>
-      <Typography variant="body2" component="time" color="text.secondary">
+      <Typography
+        variant="body2"
+        component="time"
+        color="text.secondary"
+      >
         {date}
       </Typography>
-    </Card>
+    </Box>
   );
 }

@@ -41,15 +41,19 @@ export function BlogList({ posts }: BlogListProps) {
         },
       }}
     >
-      <Container maxWidth="md" component="section" sx={{ py: 6 }}>
-        <Box sx={{ mb: 4 }}>
-          <Typography variant="h2" component="h2" sx={{ mb: 1 }}>
-            Blog Posts
-          </Typography>
-          <Typography variant="body1" color="text.secondary">
-            {posts.length} articles
-          </Typography>
-        </Box>
+      <Container maxWidth="md" component="section" sx={{ py: 6, pb: 10 }}>
+        <Typography
+          variant="h4"
+          component="h2"
+          gutterBottom
+          sx={{
+            mb: 4,
+            fontWeight: 400,
+            letterSpacing: '-0.02em'
+          }}
+        >
+          Blog
+        </Typography>
 
         <Stack spacing={2}>
           {posts.slice(0, displayCount).map((post) => (
@@ -67,24 +71,21 @@ export function BlogList({ posts }: BlogListProps) {
         </Stack>
 
         {displayCount < posts.length && (
-          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+          <Box sx={{ mt: 6, textAlign: 'center' }}>
             <Button
-              variant="outlined"
               onClick={() => setDisplayCount((prev) => prev + POSTS_PER_PAGE)}
               sx={{
-                borderColor: 'divider',
+                textTransform: 'none',
                 color: 'text.primary',
-                backgroundColor: 'rgba(23, 23, 23, 0.3)',
-                backdropFilter: 'blur(10px)',
-                px: 4,
-                py: 1.5,
+                fontWeight: 400,
+                letterSpacing: '-0.01em',
                 '&:hover': {
-                  borderColor: 'text.secondary',
-                  backgroundColor: 'rgba(23, 23, 23, 0.5)',
+                  backgroundColor: 'transparent',
+                  textDecoration: 'underline',
                 },
               }}
             >
-              もっと見る
+              もっと見る →
             </Button>
           </Box>
         )}
