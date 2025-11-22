@@ -13,7 +13,6 @@
     - "LLM"
     - "Mathematical Optimization"
     - "AI Agents"
-  kind: "research"
   category: "work"
   detailedDescription: "AI-based research idea generation agentのリード開発者 (primary contributor) として、科学文献とデータベースから研究仮説を生成するシステムを開発。要約→概念抽出→新規性分析→仮説生成のワークフローをプロトタイプとして設計し、研究者と協力して生成アイデアの妥当性と新規性を評価しています。"
   achievements:
@@ -36,7 +35,6 @@
     - "LLM"
     - "Python"
     - "AI Agents"
-  kind: "internship"
   category: "work"
   detailedDescription: "AIエージェントによるビジネスワークフロー自動化に焦点を当てたR&Dプロジェクトに参加。業務プロセスの分析 (手順、依存関係、データ構造) を行い、タスク分解とワークフロー抽象化を実施。AdaptFlow、AFlow、Multi-Agent Architecture Searchなどの最新研究に着想を得たエージェントワークフロー生成技術を探索・プロトタイプ化し、エージェント行動ログから失敗パターンを抽出して反復的に改善しました。"
   achievements:
@@ -59,7 +57,6 @@
     - "React"
     - "TypeScript"
     - "Coding Agents"
-  kind: "internship"
   category: "work"
   detailedDescription: "Figma MCPとコード生成モデル (Codex / Claude Code) を統合し、ロボットUI設計の標準化・自動化ワークフローを構築。GUIコンポーネント構造の整理、変数定義の統一、再利用可能コンポーネントの抽象化を行い、AI支援コーディングに最適化された設計ガイドラインを確立。デプロイ後の修正コストが高いロボットUIにおいて重要な設計原則を特定・形式化しました。"
   achievements:
@@ -82,7 +79,6 @@
     - "Python"
     - "SQL"
     - "Data Analysis"
-  kind: "internship"
   category: "work"
   detailedDescription: "BigQueryとRedashを用いたモビリティサービスデータの分析と可視化を実施。"
   achievements:
@@ -100,7 +96,6 @@
     - "LLM"
     - "React"
     - "TypeScript"
-  kind: "internship"
   category: "work"
   detailedDescription: "LLMを活用した教育サービスの開発に継続的に貢献。夏期インターンシップで構築した基盤を発展させ、ワークフロー設計、モデル動作の改善、学習体験を向上させるUX改善に従事しています。"
   achievements:
@@ -122,7 +117,6 @@
     - "Python"
     - "React"
     - "LLM"
-  kind: "internship"
   category: "work"
   detailedDescription: "「RD32 大規模言語モデルの教育サービスへの応用」に参加し、LLM-based educational feedback generation workflowの設計と実装を担当。教師へのインタビューを通じて評価基準を定義し、React/TypeScriptでのUI/UX実装を行いました。"
   achievements:
@@ -149,8 +143,7 @@
     - "Python"
     - "LLM"
     - "Streamlit"
-  kind: "competition"
-  category: "personal"
+  category: "others"
   detailedDescription: "日本電気株式会社が開発している日本語特化LLMを用いたアプリコンテストに参加し、CTO賞を獲得しました。ユーザーとの会話を通してバイアスを特定し緩和するアプリをStreamlitで実装しました。"
   achievements:
     - "CTO賞を獲得"
@@ -174,8 +167,7 @@
   skills:
     - "Facilitation"
     - "Event Management"
-  kind: "other"
-  category: "personal"
+  category: "others"
   detailedDescription: "株式会社Jijの山城悠CEOとの対談イベントにて、参加者との双方向コミュニケーションをリードし、AIと最適化のキャリアについて議論を深めました。"
   achievements:
     - "ナビゲータとして進行と議論を設計"
@@ -196,8 +188,7 @@
     - "OpenAI API"
     - "ChatGPT"
     - "Gradio"
-  kind: "competition"
-  category: "personal"
+  category: "others"
   detailedDescription: "Thursday Gathering #279にて、ChatGPTとembeddingを用いた求人検索システムを開発し、Hugging Face Spaceにデプロイ。リーダーとして課題設定からプレゼンまで担当しました。"
   achievements:
     - "リーダーとしてビジネスピッチ"
@@ -216,7 +207,6 @@
     - "Python"
     - "Mathematical Optimization"
     - "Constraint Modeling"
-  kind: "research"
   category: "research"
   detailedDescription: "自律実験室システムのための複雑な実験ワークフローの定式化と最適化。リソース排他性、順序制約、実運用要件を組み込んだスケジューリングモデルを構築。一杉研究室との共同研究を提案・主導し、実際の自律実験システムを運用するチームと緊密に協力して実務制約を形式的なスケジューリングモデルに変換。将来的な論文化に向けて実験評価と改良を進めています。"
   achievements:
@@ -241,7 +231,6 @@
     - "Python"
     - "Data Analysis"
     - "Spatiotemporal Analysis"
-  kind: "research"
   category: "research"
   detailedDescription: "実運用データを用いた救急需要とドクターカー派遣戦略のデータ駆動分析。大学統合プロセス中に立ち上げられた医工連携プロジェクトのエンジニアリング側主担当として、データ前処理、可視化、探索的分析を実施し、主要医学会での発表の基盤を構築。時空間パターンのモデリングと可視化により医療意思決定を支援しました。"
   achievements:
@@ -269,8 +258,7 @@
     - "Writing"
     - "Editing"
     - "Community"
-  kind: "project"
-  category: "personal"
+  category: "others"
   detailedDescription: "技術同人誌を制作し、コミックマーケット103で頒布。生成AIや最適化で得た知見を分かりやすくまとめ、フィードバックを得ながら改訂しました。"
   achievements:
     - "技術同人誌の制作・頒布"
@@ -290,8 +278,7 @@
     - "Writing"
     - "Editing"
     - "Project Management"
-  kind: "project"
-  category: "personal"
+  category: "others"
   detailedDescription: "コミックマーケット102で技術同人誌を頒布。原稿の編集体制づくりや印刷ディレクションを担当し、次回開催に向けた改善点を整理しました。"
   achievements:
     - "原稿制作から頒布までを自走"
@@ -311,8 +298,7 @@
     - "Presentation"
     - "English"
     - "Research Planning"
-  kind: "competition"
-  category: "personal"
+  category: "others"
   detailedDescription: "沖縄科学技術大学院大学 (OIST) が主催するScience Challengeで研究アイデアを英語で発表し、専門家からフィードバックを獲得しました。"
   achievements:
     - "英語による研究アイデアの発表"
@@ -332,8 +318,7 @@
     - "Presentation"
     - "Synthetic Biology"
     - "Community"
-  kind: "competition"
-  category: "personal"
+  category: "others"
   detailedDescription: "デザイン生命工学研究会でトークセッションとポスター発表を担当し、研究内容と社会実装の方向性を議論しました。"
   achievements:
     - "口頭発表とポスター発表を両立"
@@ -353,8 +338,7 @@
     - "Presentation"
     - "Synthetic Biology"
     - "Optimization"
-  kind: "competition"
-  category: "personal"
+  category: "others"
   detailedDescription: "超異分野学会 東京大会2023にて、ピッチ登壇とポスター展示を実施。幅広い分野の研究者と議論しプロジェクトの方向性をブラッシュアップしました。"
   achievements:
     - "ピッチとポスターの二軸で発信"
@@ -375,8 +359,7 @@
     - "Scipy"
     - "Mathematical Modeling"
     - "Algorithms"
-  kind: "competition"
-  category: "personal"
+  category: "others"
   detailedDescription: "iGEM(国際遺伝子工学マシンコンペティション)にてCo-Leader・渉外およびDry team leaderを務めました。同窓生やVCとのコネクションを活用し、約200万円の寄附を獲得。二次代謝物SRIPの産生量を予測するODEモデルを開発し、Scipyを用いたパラメータ推定を実施。3D-PCRの検体配置最適化アルゴリズムを開発し、実験効率を改善。パリでの国際大会で英語によるプレゼンテーションとポスターセッションを担当しました。"
   achievements:
     - "Silver メダル獲得"
@@ -405,8 +388,7 @@
     - "GPT-4"
     - "Hugo"
     - "Firebase"
-  kind: "project"
-  category: "personal"
+  category: "others"
   detailedDescription: "過去のiGEMチームのプロジェクトを自然言語で検索できるiGEM libraryを開発。要約にGPT-4を使用し、GUIはHugoで構築、Firebaseでホスティングしています。"
   achievements:
     - "GPT-4による過去プロジェクトの要約"
@@ -433,8 +415,7 @@
     - "LSTM"
     - "OpenCV"
     - "Machine Learning"
-  kind: "competition"
-  category: "personal"
+  category: "others"
   detailedDescription: "Dry team leaderとしてプロジェクトの設計・実装を担当。実際の感染データを用いてserotype別のデング熱流行予測モデルを構築し、Lasso/LSTMを用いた時系列データの解析と予測を実施。気候パラメータの寄与分析を行い、先行研究との比較を実施。Webカメラの画像データから特定の色を定量するプログラムも開発しました。パリでの国際大会で英語によるプレゼンテーションと質疑応答を担当しました。"
   achievements:
     - "Silver メダル獲得"
@@ -465,7 +446,6 @@
     - "Machine Learning"
     - "OpenCV"
     - "English"
-  kind: "internship"
   category: "work"
   detailedDescription: "英語ベースのリモート環境で、MLモデル開発、組合せ最適化 (PuLP) 、コンピュータビジョン (OpenCV) に取り組みました。会社の理念である「先端AI技術で人命を救い、平等を拡張する」に強く共感し、英語での業務レベルのコミュニケーションとチーム開発を経験しました。"
   achievements:
@@ -488,7 +468,6 @@
     - "SQL"
     - "Data Analysis"
     - "Python"
-  kind: "internship"
   category: "work"
   detailedDescription: "SQLとPythonを用いて高齢者介護サービスのデータ分析を実施。"
   achievements:
@@ -507,8 +486,7 @@
     - "MariaDB"
     - "OpenAI API"
     - "Dall-e 3"
-  kind: "project"
-  category: "personal"
+  category: "others"
   detailedDescription: "チームリーダーとしてtraP ハッカソンに参加。OpenAI APIのDall-e 3を用いて架空の料理の画像とレシピを生成するサービスを開発しました。FastAPIとMariaDBを用いてバックエンドを実装しました。"
   achievements:
     - "チームリーダーとしてプロジェクト推進"
@@ -532,8 +510,7 @@
     - "Research"
     - "Composition"
     - "Presentation"
-  kind: "other"
-  category: "personal"
+  category: "others"
   detailedDescription: "壁打ちとリサーチを重ねながらレポートを作成し、総合型選抜で合格。wallprimeの開発元であるbaton Inc.に確認して学術利用の許可を得ました。"
   achievements:
     - "総合型選抜での合格"
@@ -550,8 +527,7 @@
   skills:
     - "Community Management"
     - "Event Planning"
-  kind: "other"
-  category: "personal"
+  category: "others"
   detailedDescription: "Python初学者向けコミュニティ「PythonBeginners沖縄」で共同Organizerとしてイベントの開催や企画を担当。地域での学習機会を継続的に提供しました。"
   achievements:
     - "継続的な勉強会の開催"
@@ -568,8 +544,7 @@
   skills:
     - "Python"
     - "Mentoring"
-  kind: "other"
-  category: "personal"
+  category: "others"
   detailedDescription: "2019年に開催されたPython Boot Camp in 沖縄でTAとして参加者をサポートし、演習のフォローや質問対応を行いました。"
   achievements:
     - "初学者の学習サポート"
@@ -587,8 +562,7 @@
     - "Python"
     - "NLP"
     - "Presentation"
-  kind: "competition"
-  category: "personal"
+  category: "others"
   detailedDescription: "日本最大級のPythonカンファレンスであるPyCon JPにて、特定ユーザーのTweetからWord-Cloudを自動生成するPythonプログラムについてポスター発表しました。"
   achievements:
     - "自然言語処理アプリケーションの実装"
@@ -606,8 +580,7 @@
     - "Event Management"
     - "Community"
     - "Project Management"
-  kind: "other"
-  category: "personal"
+  category: "others"
   detailedDescription: "PyCon Kyushu 2019で企画を担当し、タイムテーブルの作成やCfPの選定を実施。地域のPythonコミュニティ活性化に貢献しました。"
   achievements:
     - "大型技術イベントの企画をリード"

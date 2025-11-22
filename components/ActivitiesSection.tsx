@@ -60,15 +60,27 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
                 }
               }}
             >
-              <Typography
-                variant="body1"
-                sx={{
-                  fontWeight: 500,
-                  letterSpacing: '-0.01em'
-                }}
-              >
-                {activity.title}
-              </Typography>
+              <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1 }}>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontWeight: 500,
+                    letterSpacing: '-0.01em'
+                  }}
+                >
+                  {activity.title}
+                </Typography>
+                <Typography
+                  variant="caption"
+                  sx={{
+                    color: 'text.secondary',
+                    fontSize: '0.75rem',
+                    textTransform: 'capitalize'
+                  }}
+                >
+                  [{activity.category}]
+                </Typography>
+              </Box>
               <Typography
                 variant="body2"
                 color="text.secondary"

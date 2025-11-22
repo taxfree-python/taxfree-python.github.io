@@ -1,5 +1,4 @@
-export type ActivityKind = 'project' | 'internship' | 'competition' | 'research' | 'other';
-export type ActivityCategory = 'work' | 'personal' | 'research';
+export type ActivityCategory = 'work' | 'research' | 'others';
 
 export interface ActivityDate {
   year: number;
@@ -18,7 +17,6 @@ export interface ProjectActivity {
   period: ActivityPeriod;
   description: string;
   skills: string[];
-  kind?: ActivityKind;
   category: ActivityCategory;
   link?: string;
   detailedDescription?: string;
