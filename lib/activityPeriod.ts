@@ -1,15 +1,10 @@
-import { ActivityDate, ActivityPeriod, ProjectActivity } from '../types/activities';
+import { ActivityDate, ActivityPeriod, Activity } from '@/types/activities';
+import { assert } from '@/lib/assert';
 
 const MIN_MONTH = 1;
 const MAX_MONTH = 12;
 const MIN_DAY = 1;
 const MAX_DAY = 31;
-
-function invariant(condition: unknown, message: string): asserts condition {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
 
 const isInteger = (value: number): boolean => Number.isInteger(value);
 
@@ -20,27 +15,27 @@ export const activityDateToComparableValue = (date: ActivityDate): number => {
 };
 
 const assertActivityDateValid = (date: ActivityDate, context: string): void => {
-  invariant(isInteger(date.year), `${context}.year must be an integer year`);
-  invariant(date.year >= 0, `${context}.year must be >= 0`);
+  assert(isInteger(date.year), `${context}.year must be an integer year`);
+  assert(date.year >= 0, `${context}.year must be >= 0`);
 
   if (date.month !== undefined) {
-    invariant(isInteger(date.month), `${context}.month must be an integer month`);
-    invariant(
+    assert(isInteger(date.month), `${context}.month must be an integer month`);
+    assert(
       date.month >= MIN_MONTH && date.month <= MAX_MONTH,
       `${context}.month must be between ${MIN_MONTH} and ${MAX_MONTH}`,
     );
   }
 
   if (date.day !== undefined) {
-    invariant(isInteger(date.day), `${context}.day must be an integer day`);
-    invariant(
+    assert(isInteger(date.day), `${context}.day must be an integer day`);
+    assert(
       date.day >= MIN_DAY && date.day <= MAX_DAY,
       `${context}.day must be between ${MIN_DAY} and ${MAX_DAY}`,
     );
   }
 };
 
-export const isSameActivityDate = (a: ActivityDate, b: ActivityDate): boolean => {
+const isSameActivityDate = (a: ActivityDate, b: ActivityDate): boolean => {
   return a.year === b.year && a.month === b.month && a.day === b.day;
 };
 
@@ -56,7 +51,7 @@ export const validateActivityPeriod = (period: ActivityPeriod, context: string):
   const startValue = activityDateToComparableValue(period.start);
   const endValue = activityDateToComparableValue(period.end);
 
-  invariant(
+  assert(
     endValue >= startValue,
     `${context}.period.end must not be earlier than ${context}.period.start`,
   );
@@ -113,7 +108,10 @@ export const getActivityPeriodStartValue = (period: ActivityPeriod): number => {
   return activityDateToComparableValue(period.start);
 };
 
-export const validateProjectActivity = (activity: ProjectActivity): ProjectActivity => {
+export const validateActivity = (activity: Activity): Activity => {
   validateActivityPeriod(activity.period, `Activity(${activity.id})`);
   return activity;
 };
+
+// 後方互換性のための関数エイリアス
+export const validateProjectActivity = validateActivity;

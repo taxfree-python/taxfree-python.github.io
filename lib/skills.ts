@@ -4,17 +4,12 @@ import { cache } from 'react';
 import YAML from 'yaml';
 
 import { SkillDetail } from '@/types/skills';
+import { assert } from '@/lib/assert';
 
 const skillsFilePath = path.join(process.cwd(), 'data', 'skills.yaml');
 
 interface SkillsData {
   skills: SkillDetail[];
-}
-
-function assert(condition: unknown, message: string): asserts condition {
-  if (!condition) {
-    throw new Error(message);
-  }
 }
 
 function ensureObject(value: unknown, context: string): Record<string, unknown> {

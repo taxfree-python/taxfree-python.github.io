@@ -3,12 +3,12 @@ import path from 'node:path';
 import { cache } from 'react';
 import YAML from 'yaml';
 
-import { ProjectActivity } from '@/types/activities';
-import { validateProjectActivity } from './activityPeriod';
+import { Activity } from '@/types/activities';
+import { validateActivity } from './activityPeriod';
 
 const activitiesFilePath = path.join(process.cwd(), 'data', 'activities.yaml');
 
-function readActivitiesFile(): ProjectActivity[] {
+function readActivitiesFile(): Activity[] {
   const fileContents = fs.readFileSync(activitiesFilePath, 'utf-8');
   const parsed = YAML.parse(fileContents);
 
@@ -18,7 +18,7 @@ function readActivitiesFile(): ProjectActivity[] {
 
   return parsed.map((item, index) => {
     try {
-      return validateProjectActivity(item as ProjectActivity);
+      return validateActivity(item as Activity);
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown validation error';
       throw new Error(`Invalid activity at index ${index}: ${message}`);
@@ -26,7 +26,10 @@ function readActivitiesFile(): ProjectActivity[] {
   });
 }
 
-export const getProjectsAndActivities = cache((): ProjectActivity[] => {
+export const getActivities = cache((): Activity[] => {
   return readActivitiesFile();
 });
+
+// 後方互換性のための関数エイリアス
+export const getProjectsAndActivities = getActivities;
 

@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Container, Typography, Box, Stack, Button, Collapse } from '@mui/material';
-import { ProjectActivity, ActivityCategory } from '../types/activities';
-import { formatActivityPeriod, getActivityPeriodEndValue, getActivityPeriodStartValue } from '../lib/activityPeriod';
+import { ProjectActivity, ActivityCategory } from '@/types/activities';
+import { formatActivityPeriod, getActivityPeriodEndValue, getActivityPeriodStartValue } from '@/lib/activityPeriod';
 
 interface ActivitiesSectionProps {
   activities: ProjectActivity[];

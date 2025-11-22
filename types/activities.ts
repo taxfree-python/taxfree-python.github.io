@@ -11,10 +11,13 @@ export interface ActivityPeriod {
   end?: ActivityDate | null;
 }
 
-export interface ProjectActivity {
+export interface Activity {
   id: string;
   title: string;
   period: ActivityPeriod;
   description: string;
   category: ActivityCategory;
 }
+
+// 後方互換性のための型エイリアス
+export type ProjectActivity = Activity;

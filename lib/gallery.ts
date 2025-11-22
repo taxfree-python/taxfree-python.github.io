@@ -4,17 +4,12 @@ import { cache } from 'react';
 import YAML from 'yaml';
 
 import { GalleryWork, GalleryData, MediaType } from '@/types/gallery';
+import { assert } from '@/lib/assert';
 
 const galleryFilePath = path.join(process.cwd(), 'data', 'gallery.yaml');
 
 const mediaTypeValues: MediaType[] = ['image', 'gif', 'video'];
 const mediaTypeSet = new Set<MediaType>(mediaTypeValues);
-
-function assert(condition: unknown, message: string): asserts condition {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
 
 function ensureObject(value: unknown, context: string): Record<string, unknown> {
   assert(value !== null && typeof value === 'object' && !Array.isArray(value), `${context} must be an object`);
