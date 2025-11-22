@@ -10,7 +10,6 @@ export interface GalleryWork {
   description?: string;
   category?: string;
   tools?: string[];
-  featured?: boolean; // Display on homepage
 }
 
 export interface GalleryData {

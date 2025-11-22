@@ -1,3 +1,21 @@
+@import 'katex/dist/katex.min.css';
+
+.katex {
+  color: inherit;
+  font-size: 0.98em;
+}
+
+.katex-display {
+  margin: 1.25rem 0;
+  text-align: left;
+  overflow-x: auto;
+}
+
+.katex-display > .katex {
+  display: inline-block;
+  padding: 0.25rem 0;
+}
+
 /* Keep layout width stable regardless of scrollbar visibility */
 html {
   scrollbar-gutter: stable;

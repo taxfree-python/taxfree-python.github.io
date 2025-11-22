@@ -103,17 +103,6 @@ SNS や外部リンクをボタン群で表示するコンポーネント。
 <SocialLinks links={heroContent.socialLinks} />
 ```
 
-### `AboutSection.tsx`
-自己紹介セクション。複数段落を柔軟に表示できます。
-
-**カスタマイズ:**
-`data/profile.ts` の `aboutContent` でタイトルと本文を管理します。
-
-**使用例:**
-```tsx
-<AboutSection content={aboutContent} />
-```
-
 ### `RecentPostsSection.tsx`
 最新ブログ投稿を一覧で表示するセクション。
 

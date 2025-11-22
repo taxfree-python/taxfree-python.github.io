@@ -10,11 +10,6 @@ export interface HeroContent {
   socialLinks: SocialLink[];
 }
 
-export interface AboutContent {
-  title: string;
-  paragraphs: string[];
-}
-
 export interface Qualification {
   name: string;
   issuer: string;

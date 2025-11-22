@@ -16,10 +16,5 @@ export interface ProjectActivity {
   title: string;
   period: ActivityPeriod;
   description: string;
-  skills: string[];
   category: ActivityCategory;
-  link?: string;
-  detailedDescription?: string;
-  achievements?: string[];
-  links?: { label: string; url: string }[];
 }

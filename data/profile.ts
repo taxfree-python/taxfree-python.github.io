@@ -1,4 +1,4 @@
-import { AboutContent, HeroContent, QualificationsContent } from '@/types/profile';
+import { HeroContent, QualificationsContent } from '@/types/profile';
 
 export const heroContent: HeroContent = {
   title: 'tax_free',
@@ -19,13 +19,6 @@ export const heroContent: HeroContent = {
       href: 'https://www.linkedin.com/in/yu-chinen',
       color: 'primary',
     },
-  ],
-};
-
-export const aboutContent: AboutContent = {
-  title: 'About Me',
-  paragraphs: [
-    '最適化や AI で格差を是正し、幸せな人を増やす。',
   ],
 };
 

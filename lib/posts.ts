@@ -2,8 +2,11 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
-import html from 'remark-html';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import remarkRehype from 'remark-rehype';
+import rehypeKatex from 'rehype-katex';
+import rehypeStringify from 'rehype-stringify';
 import sanitizeHtml from 'sanitize-html';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
@@ -71,16 +74,72 @@ export async function getPostData(slug: string): Promise<PostData> {
   const matterResult = matter(fileContents);
 
   const processedContent = await remark()
+    .use(remarkMath)
     .use(remarkGfm)
-    .use(html, { sanitize: false })
+    .use(remarkRehype)
+    .use(rehypeKatex)
+    .use(rehypeStringify)
     .process(matterResult.content);
   const rawContentHtml = processedContent.toString();
   const contentHtml = sanitizeHtml(rawContentHtml, {
-    allowedTags: sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat([
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+      'span',
+      'math',
+      'semantics',
+      'mrow',
+      'mi',
+      'mo',
+      'mn',
+      'msup',
+      'msub',
+      'msubsup',
+      'mfrac',
+      'msqrt',
+      'mroot',
+      'mtext',
+      'annotation',
+      'mtable',
+      'mtr',
+      'mtd',
+      'mspace',
+      'ms',
+      'mover',
+      'munder',
+      'munderover',
+    ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
       a: ['href', 'name', 'target', 'rel'],
       img: ['src', 'alt'],
+      span: ['class'],
+      math: ['xmlns', 'display'],
+      semantics: ['class'],
+      mrow: ['class'],
+      mi: ['class'],
+      mo: ['class'],
+      mn: ['class'],
+      msup: ['class'],
+      msub: ['class'],
+      msubsup: ['class'],
+      mfrac: ['class'],
+      msqrt: ['class'],
+      mroot: ['class'],
+      mtext: ['class'],
+      mtable: ['class'],
+      mtr: ['class'],
+      mtd: ['class'],
+      mspace: ['class'],
+      ms: ['class'],
+      mover: ['class'],
+      munder: ['class'],
+      munderover: ['class'],
+      annotation: ['encoding'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
   });

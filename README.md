@@ -164,14 +164,6 @@ const navLinks = [
 ];
 ```
 
-### 4. ホームページにFeatured Worksを表示（オプション）
-
-`app/HomeClient.tsx` の20-21行目のコメントを外す：
-
-```typescript
-<FeaturedWorksSection works={featuredWorks} />  // ← コメントを外す
-```
-
 ## スタイルのカスタマイズ
 
 - `app/globals.css` - グローバルスタイル

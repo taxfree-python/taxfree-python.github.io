@@ -33,18 +33,6 @@ function toOptionalString(value: unknown, context: string): string | undefined {
   return toString(value, context);
 }
 
-function toBoolean(value: unknown, context: string): boolean {
-  assert(typeof value === 'boolean', `${context} must be a boolean`);
-  return value;
-}
-
-function toOptionalBoolean(value: unknown, context: string): boolean | undefined {
-  if (value === undefined || value === null) {
-    return undefined;
-  }
-  return toBoolean(value, context);
-}
-
 function toStringArray(value: unknown, context: string): string[] {
   assert(Array.isArray(value), `${context} must be an array`);
   return value.map((item, index) => toString(item, `${context}[${index}]`));
@@ -95,11 +83,6 @@ function validateGalleryWork(raw: unknown, index: number): GalleryWork {
     work.tools = tools;
   }
 
-  const featured = toOptionalBoolean(obj.featured, `${context}.featured`);
-  if (featured !== undefined) {
-    work.featured = featured;
-  }
-
   return work;
 }
 
@@ -118,9 +101,4 @@ function readGalleryFile(): GalleryData {
 
 export const getGalleryData = cache((): GalleryData => {
   return readGalleryFile();
-});
-
-export const getFeaturedWorks = cache((): GalleryWork[] => {
-  const { works } = getGalleryData();
-  return works.filter(work => work.featured === true);
 });
