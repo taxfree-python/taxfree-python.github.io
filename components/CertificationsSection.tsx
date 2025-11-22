@@ -2,14 +2,14 @@
 
 import { useState } from 'react';
 import { Container, Typography, Box, Stack, Collapse } from '@mui/material';
-import { QualificationsContent } from '@/types/profile';
+import { CertificationsContent } from '@/types/profile';
 import { formatActivityDate } from '@/lib/activityPeriod';
 
-interface QualificationsSectionProps {
-  content: QualificationsContent;
+interface CertificationsSectionProps {
+  content: CertificationsContent;
 }
 
-export function QualificationsSection({ content }: QualificationsSectionProps) {
+export function CertificationsSection({ content }: CertificationsSectionProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
   const toggleExpanded = (name: string) => {
@@ -37,10 +37,10 @@ export function QualificationsSection({ content }: QualificationsSectionProps) {
         {content.title}
       </Typography>
       <Stack spacing={2}>
-        {content.qualifications.map((qualification) => (
-          <Box key={qualification.name}>
+        {content.certifications.map((certification) => (
+          <Box key={certification.name}>
             <Box
-              onClick={() => toggleExpanded(qualification.name)}
+              onClick={() => toggleExpanded(certification.name)}
               sx={{
                 display: 'flex',
                 justifyContent: 'space-between',
@@ -61,7 +61,7 @@ export function QualificationsSection({ content }: QualificationsSectionProps) {
                   letterSpacing: '-0.01em'
                 }}
               >
-                {qualification.name}
+                {certification.name}
               </Typography>
               <Typography
                 variant="body2"
@@ -71,19 +71,19 @@ export function QualificationsSection({ content }: QualificationsSectionProps) {
                   whiteSpace: 'nowrap'
                 }}
               >
-                {formatActivityDate(qualification.acquiredDate)}
+                {formatActivityDate(certification.acquiredDate)}
               </Typography>
             </Box>
-            <Collapse in={expandedIds.has(qualification.name)}>
+            <Collapse in={expandedIds.has(certification.name)}>
               <Box sx={{ py: 2, pl: 2 }}>
                 <Typography
                   variant="body2"
                   color="text.secondary"
                   sx={{ mb: 1 }}
                 >
-                  {qualification.issuer}
+                  {certification.issuer}
                 </Typography>
-                {qualification.score && (
+                {certification.score && (
                   <Typography
                     variant="body1"
                     sx={{
@@ -91,10 +91,10 @@ export function QualificationsSection({ content }: QualificationsSectionProps) {
                       mb: 0.5
                     }}
                   >
-                    {qualification.score}
+                    {certification.score}
                   </Typography>
                 )}
-                {qualification.description && (
+                {certification.description && (
                   <Typography
                     variant="body2"
                     color="text.secondary"
@@ -103,7 +103,7 @@ export function QualificationsSection({ content }: QualificationsSectionProps) {
                       letterSpacing: '-0.01em'
                     }}
                   >
-                    {qualification.description}
+                    {certification.description}
                   </Typography>
                 )}
               </Box>

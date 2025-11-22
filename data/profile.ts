@@ -1,4 +1,4 @@
-import { HeroContent, QualificationsContent } from '@/types/profile';
+import { HeroContent, CertificationsContent } from '@/types/profile';
 
 export const heroContent: HeroContent = {
   title: 'tax_free',
@@ -22,9 +22,9 @@ export const heroContent: HeroContent = {
   ],
 };
 
-export const qualificationsContent: QualificationsContent = {
+export const certificationsContent: CertificationsContent = {
   title: 'Languages',
-  qualifications: [
+  certifications: [
     {
       name: 'TOEIC Listening & Reading Test',
       issuer: 'ETS',

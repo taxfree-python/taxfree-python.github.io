@@ -12,7 +12,7 @@ export interface HeroContent {
   socialLinks: SocialLink[];
 }
 
-export interface Qualification {
+export interface Certification {
   name: string;
   issuer: string;
   acquiredDate: ActivityDate;
@@ -20,7 +20,7 @@ export interface Qualification {
   description?: string;
 }
 
-export interface QualificationsContent {
+export interface CertificationsContent {
   title: string;
-  qualifications: Qualification[];
+  certifications: Certification[];
 }

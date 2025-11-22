@@ -3,18 +3,18 @@
 import { Container, Box } from '@mui/material';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ActivitiesSection } from '@/components/ActivitiesSection';
-import { QualificationsSection } from '@/components/QualificationsSection';
+import { CertificationsSection } from '@/components/CertificationsSection';
 import type { ProjectActivity } from '@/types/activities';
 import type { SkillDetail } from '@/types/skills';
-import type { QualificationsContent } from '@/types/profile';
+import type { CertificationsContent } from '@/types/profile';
 
 interface CVClientProps {
   activities: ProjectActivity[];
   skills: SkillDetail[];
-  qualifications: QualificationsContent;
+  certifications: CertificationsContent;
 }
 
-export default function CVClient({ activities, skills, qualifications }: CVClientProps) {
+export default function CVClient({ activities, skills, certifications }: CVClientProps) {
   // Core skills only: Python, React/TypeScript, AI Agents
   const coreSkills = skills.filter(skill =>
     ['Python', 'React/TypeScript', 'AI Agents'].includes(skill.name)
@@ -41,7 +41,7 @@ export default function CVClient({ activities, skills, qualifications }: CVClien
             activities={mainExperiences}
             allActivities={activities}
           />
-          <QualificationsSection content={qualifications} />
+          <CertificationsSection content={certifications} />
         </Box>
       </Container>
     </Box>
