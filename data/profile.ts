@@ -7,17 +7,17 @@ export const heroContent: HeroContent = {
     {
       label: 'GitHub',
       href: 'https://github.com/taxfree-python',
-      colorClass: 'bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900',
+      color: 'primary',
     },
     {
       label: 'Twitter',
       href: 'https://twitter.com/taxfree_python',
-      colorClass: 'bg-blue-500 text-white',
+      color: 'secondary',
     },
     {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/yu-chinen',
-      colorClass: 'bg-blue-700 text-white',
+      color: 'secondary',
     },
   ],
 };

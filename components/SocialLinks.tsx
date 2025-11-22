@@ -17,16 +17,14 @@ export function SocialLinks({ links }: SocialLinksProps) {
           target="_blank"
           rel="noopener noreferrer"
           variant="contained"
+          color={link.color ?? 'primary'}
           sx={{
             boxShadow: 'none',
-            bgcolor: link.colorClass ? undefined : 'primary.main',
-            color: link.colorClass ? undefined : 'text.primary',
             '&:hover': {
-              opacity: 0.85,
+              opacity: 0.9,
               boxShadow: 'none',
             },
           }}
-          className={link.colorClass}
         >
           {link.label}
         </Button>

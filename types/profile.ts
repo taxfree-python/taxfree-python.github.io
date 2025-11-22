@@ -1,7 +1,7 @@
 export interface SocialLink {
   label: string;
   href: string;
-  colorClass?: string;
+  color?: 'primary' | 'secondary' | 'inherit';
 }
 
 export interface HeroContent {

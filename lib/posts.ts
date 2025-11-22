@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 import remarkGfm from 'remark-gfm';
+import sanitizeHtml from 'sanitize-html';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 
@@ -74,7 +75,16 @@ export async function getPostData(slug: string): Promise<PostData> {
     .use(remarkGfm)
     .use(html, { sanitize: false })
     .process(matterResult.content);
-  const contentHtml = processedContent.toString();
+  const rawContentHtml = processedContent.toString();
+  const contentHtml = sanitizeHtml(rawContentHtml, {
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
+    allowedAttributes: {
+      ...sanitizeHtml.defaults.allowedAttributes,
+      a: ['href', 'name', 'target', 'rel'],
+      img: ['src', 'alt'],
+    },
+    allowedSchemes: ['http', 'https', 'mailto'],
+  });
 
   return {
     slug,
