@@ -19,11 +19,14 @@ export function SocialLinks({ links }: SocialLinksProps) {
           variant="contained"
           sx={{
             boxShadow: 'none',
+            bgcolor: link.colorClass ? undefined : 'primary.main',
+            color: link.colorClass ? undefined : 'text.primary',
             '&:hover': {
-              opacity: 0.8,
+              opacity: 0.85,
               boxShadow: 'none',
             },
           }}
+          className={link.colorClass}
         >
           {link.label}
         </Button>

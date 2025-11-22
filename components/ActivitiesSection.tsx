@@ -6,7 +6,6 @@ import { ProjectActivity } from '../types/activities';
 import { formatActivityPeriod } from '../lib/activityPeriod';
 
 interface ActivitiesSectionProps {
-  selectedSkill?: string | null;
   activities: ProjectActivity[];
   allActivities?: ProjectActivity[];
 }

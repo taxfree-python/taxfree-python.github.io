@@ -1,7 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { Container, Typography, Box } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ActivitiesSection } from '@/components/ActivitiesSection';
 import { QualificationsSection } from '@/components/QualificationsSection';
@@ -36,19 +35,14 @@ export default function CVClient({ activities, skillGroups, skills, qualificatio
     >
       <Container maxWidth="md">
         <Box sx={{ py: 8 }}>
-        <SkillsSection
-          selectedSkill={null}
-          onSkillClick={() => {}}
-          activities={mainExperiences}
-          skillGroups={skillGroups}
-          skills={coreSkills}
-        />
-        <ActivitiesSection
-          selectedSkill={null}
-          activities={mainExperiences}
-          allActivities={activities}
-        />
-        <QualificationsSection content={qualifications} />
+          <SkillsSection
+            skills={coreSkills}
+          />
+          <ActivitiesSection
+            activities={mainExperiences}
+            allActivities={activities}
+          />
+          <QualificationsSection content={qualifications} />
         </Box>
       </Container>
     </Box>

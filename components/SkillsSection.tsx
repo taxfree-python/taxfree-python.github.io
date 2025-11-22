@@ -1,14 +1,9 @@
 'use client';
 
 import { Container, Typography, Box, Stack } from '@mui/material';
-import { SkillDetail, SkillGroup } from '../types/skills';
-import { ProjectActivity } from '../types/activities';
+import { SkillDetail } from '../types/skills';
 
 interface SkillsSectionProps {
-  selectedSkill: string | null;
-  onSkillClick: (skill: string) => void;
-  activities: ProjectActivity[];
-  skillGroups: SkillGroup[];
   skills: SkillDetail[];
 }
 

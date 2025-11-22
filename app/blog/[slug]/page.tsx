@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }
 
 export async function generateStaticParams() {
@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 }
 
 export default async function BlogPost({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug } = params;
   const post = await getPostData(slug);
 
   return (

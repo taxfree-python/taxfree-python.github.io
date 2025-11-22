@@ -50,6 +50,12 @@ export function getAllPostSlugs(): { params: { slug: string } }[] {
   const fileNames = fs.readdirSync(postsDirectory);
   return fileNames
     .filter((fileName) => fileName.endsWith('.md'))
+    .filter((fileName) => {
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const matterResult = matter(fileContents);
+      return matterResult.data.draft !== true;
+    })
     .map((fileName) => {
       return {
         params: {

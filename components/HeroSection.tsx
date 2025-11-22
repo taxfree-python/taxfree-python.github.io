@@ -12,6 +12,13 @@ export function HeroSection({ content }: HeroSectionProps) {
       <Typography variant="h1" component="h1" gutterBottom sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, mb: 3 }}>
         {content.title}
       </Typography>
+      <Typography
+        variant="h5"
+        component="p"
+        sx={{ color: 'text.secondary', mb: 3, fontWeight: 400, letterSpacing: '-0.01em' }}
+      >
+        {content.subtitle}
+      </Typography>
       <SocialLinks links={content.socialLinks} />
     </Container>
   );
