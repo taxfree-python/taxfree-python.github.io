@@ -32,10 +32,8 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
               justifyContent: 'space-between',
               alignItems: 'baseline',
               py: 1,
-              '&:not(:last-child)': {
-                borderBottom: '1px solid',
-                borderColor: 'divider',
-              }
+              borderBottom: '1px solid',
+              borderColor: 'divider',
             }}
           >
             <Typography
