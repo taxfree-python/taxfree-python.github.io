@@ -72,25 +72,25 @@ export const formatActivityDate = (date: ActivityDate, options?: { omitYear?: bo
   const parts: string[] = [];
 
   if (!omitYear || !hasMonthOrDay) {
-    parts.push(`${date.year}年`);
+    parts.push(`${date.year}`);
   }
 
   if (date.month !== undefined) {
-    parts.push(`${date.month}月`);
+    parts.push(String(date.month).padStart(2, '0'));
   }
 
   if (date.day !== undefined) {
-    parts.push(`${date.day}日`);
+    parts.push(String(date.day).padStart(2, '0'));
   }
 
-  return parts.join('');
+  return parts.join('/');
 };
 
 export const formatActivityPeriod = (period: ActivityPeriod): string => {
   const start = formatActivityDate(period.start);
 
   if (period.end === undefined || period.end === null) {
-    return `${start} - 現在`;
+    return `${start} - Present`;
   }
 
   if (isSameActivityDate(period.start, period.end)) {

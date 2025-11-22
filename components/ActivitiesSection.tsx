@@ -2,13 +2,21 @@
 
 import { useState } from 'react';
 import { Container, Typography, Box, Stack, Button, Collapse } from '@mui/material';
-import { ProjectActivity } from '../types/activities';
-import { formatActivityPeriod } from '../lib/activityPeriod';
+import { ProjectActivity, ActivityCategory } from '../types/activities';
+import { formatActivityPeriod, getActivityPeriodEndValue, getActivityPeriodStartValue } from '../lib/activityPeriod';
 
 interface ActivitiesSectionProps {
   activities: ProjectActivity[];
   allActivities?: ProjectActivity[];
 }
+
+const categoryLabels: Record<ActivityCategory, string> = {
+  work: 'Work',
+  research: 'Research',
+  others: 'Others',
+};
+
+const categoryOrder: ActivityCategory[] = ['work', 'research', 'others'];
 
 export function ActivitiesSection({ activities, allActivities = [] }: ActivitiesSectionProps) {
   const [showAll, setShowAll] = useState(false);
@@ -27,6 +35,27 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
     setExpandedIds(newExpanded);
   };
 
+  // Sort activities by end date (most recent first, ongoing activities at top)
+  const sortedActivities = [...displayedActivities].sort((a, b) => {
+    const endA = getActivityPeriodEndValue(a.period);
+    const endB = getActivityPeriodEndValue(b.period);
+
+    if (endA !== endB) {
+      return endB - endA; // Descending order (most recent first)
+    }
+
+    // If end dates are the same, sort by start date (most recent first)
+    const startA = getActivityPeriodStartValue(a.period);
+    const startB = getActivityPeriodStartValue(b.period);
+    return startB - startA;
+  });
+
+  // Group activities by category
+  const groupedActivities = categoryOrder.reduce((acc, category) => {
+    acc[category] = sortedActivities.filter(a => a.category === category);
+    return acc;
+  }, {} as Record<ActivityCategory, ProjectActivity[]>);
+
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6, pb: 10 }}>
       <Typography
@@ -42,72 +71,84 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
         Experience
       </Typography>
 
-      <Stack spacing={2}>
-        {displayedActivities.map((activity) => (
-          <Box key={activity.id}>
-            <Box
-              onClick={() => toggleExpanded(activity.id)}
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'baseline',
-                py: 1,
-                borderBottom: '1px solid',
-                borderColor: 'divider',
-                cursor: 'pointer',
-                '&:hover': {
-                  backgroundColor: 'action.hover',
-                }
-              }}
-            >
-              <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1 }}>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontWeight: 500,
-                    letterSpacing: '-0.01em'
-                  }}
-                >
-                  {activity.title}
-                </Typography>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    color: 'text.secondary',
-                    fontSize: '0.75rem',
-                    textTransform: 'capitalize'
-                  }}
-                >
-                  [{activity.category}]
-                </Typography>
-              </Box>
+      <Stack spacing={6}>
+        {categoryOrder.map((category) => {
+          const categoryActivities = groupedActivities[category];
+          if (categoryActivities.length === 0) return null;
+
+          return (
+            <Box key={category}>
               <Typography
-                variant="body2"
-                color="text.secondary"
+                variant="h6"
+                component="h3"
                 sx={{
-                  ml: 2,
-                  whiteSpace: 'nowrap'
+                  mb: 2,
+                  fontWeight: 500,
+                  letterSpacing: '-0.01em',
+                  color: 'text.secondary',
+                  fontSize: '1rem'
                 }}
               >
-                {formatActivityPeriod(activity.period)}
+                {categoryLabels[category]}
               </Typography>
+              <Stack spacing={2}>
+                {categoryActivities.map((activity) => (
+                  <Box key={activity.id}>
+                    <Box
+                      onClick={() => toggleExpanded(activity.id)}
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'baseline',
+                        py: 1,
+                        borderBottom: '1px solid',
+                        borderColor: 'divider',
+                        cursor: 'pointer',
+                        '&:hover': {
+                          backgroundColor: 'action.hover',
+                        }
+                      }}
+                    >
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontWeight: 500,
+                          letterSpacing: '-0.01em'
+                        }}
+                      >
+                        {activity.title}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          ml: 2,
+                          whiteSpace: 'nowrap'
+                        }}
+                      >
+                        {formatActivityPeriod(activity.period)}
+                      </Typography>
+                    </Box>
+                    <Collapse in={expandedIds.has(activity.id)}>
+                      <Box sx={{ py: 2, pl: 2 }}>
+                        <Typography
+                          variant="body1"
+                          color="text.secondary"
+                          sx={{
+                            lineHeight: 1.7,
+                            letterSpacing: '-0.01em'
+                          }}
+                        >
+                          {activity.description}
+                        </Typography>
+                      </Box>
+                    </Collapse>
+                  </Box>
+                ))}
+              </Stack>
             </Box>
-            <Collapse in={expandedIds.has(activity.id)}>
-              <Box sx={{ py: 2, pl: 2 }}>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    lineHeight: 1.7,
-                    letterSpacing: '-0.01em'
-                  }}
-                >
-                  {activity.description}
-                </Typography>
-              </Box>
-            </Collapse>
-          </Box>
-        ))}
+          );
+        })}
       </Stack>
 
       {hasMore && (
