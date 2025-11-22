@@ -21,10 +21,7 @@ export default async function BlogPost({ params }: PageProps) {
     <Box
       sx={{
         minHeight: '100vh',
-        background: 'linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%)',
-        '@media (prefers-color-scheme: dark)': {
-          background: 'linear-gradient(to bottom, #0a0a0a 0%, #141414 100%)',
-        },
+        bgcolor: 'background.default',
       }}
     >
       <Container maxWidth="md" component="section" sx={{ py: 6 }}>

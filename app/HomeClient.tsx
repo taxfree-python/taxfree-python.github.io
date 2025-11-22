@@ -14,7 +14,7 @@ interface HomeClientProps {
 
 export default function HomeClient({ recentPosts }: HomeClientProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <HeroSection content={heroContent} />
       <RecentPostsSection posts={recentPosts} />
       {/* Featured Works - 製作中のため一時的に非表示 */}
