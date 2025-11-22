@@ -28,14 +28,20 @@ export const qualificationsContent: QualificationsContent = {
     {
       name: 'TOEIC Listening & Reading Test',
       issuer: 'ETS',
-      date: '2025年3月取得',
+      acquiredDate: {
+        year: 2025,
+        month: 3,
+      },
       score: 'Total: 815',
       description: 'Listening: 425 / Reading: 390',
     },
     {
       name: '実用英語技能検定 準1級',
       issuer: '日本英語検定協会',
-      date: '2021年10月取得',
+      acquiredDate: {
+        year: 2021,
+        month: 10,
+      },
       score: 'CSEスコア: 2459',
       description: 'CEFR B2 / 4技能総合評価',
     },

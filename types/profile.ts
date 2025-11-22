@@ -1,3 +1,5 @@
+import { ActivityDate } from './activities';
+
 export interface SocialLink {
   label: string;
   href: string;
@@ -13,7 +15,7 @@ export interface HeroContent {
 export interface Qualification {
   name: string;
   issuer: string;
-  date: string;
+  acquiredDate: ActivityDate;
   score?: string;
   description?: string;
 }

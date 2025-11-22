@@ -77,7 +77,12 @@ export async function getPostData(slug: string): Promise<PostData> {
     .use(remarkMath)
     .use(remarkGfm)
     .use(remarkRehype)
-    .use(rehypeKatex)
+    .use(rehypeKatex, {
+      strict: false,
+      macros: {
+        '\\*': '\\ast',
+      },
+    })
     .use(rehypeStringify)
     .process(matterResult.content);
   const rawContentHtml = processedContent.toString();

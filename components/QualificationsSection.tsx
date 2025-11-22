@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { Container, Typography, Box, Stack, Collapse } from '@mui/material';
 import { QualificationsContent } from '@/types/profile';
+import { formatActivityDate } from '@/lib/activityPeriod';
 
 interface QualificationsSectionProps {
   content: QualificationsContent;
@@ -70,7 +71,7 @@ export function QualificationsSection({ content }: QualificationsSectionProps) {
                   whiteSpace: 'nowrap'
                 }}
               >
-                {qualification.date}
+                {formatActivityDate(qualification.acquiredDate)}
               </Typography>
             </Box>
             <Collapse in={expandedIds.has(qualification.name)}>
