@@ -15,7 +15,7 @@
     - "AI Agents"
   kind: "research"
   category: "work"
-  detailedDescription: "AI-based research idea generation agentのリード開発者（primary contributor）として、科学文献とデータベースから研究仮説を生成するシステムを開発。要約→概念抽出→新規性分析→仮説生成のワークフローをプロトタイプとして設計し、研究者と協力して生成アイデアの妥当性と新規性を評価しています。"
+  detailedDescription: "AI-based research idea generation agentのリード開発者 (primary contributor) として、科学文献とデータベースから研究仮説を生成するシステムを開発。要約→概念抽出→新規性分析→仮説生成のワークフローをプロトタイプとして設計し、研究者と協力して生成アイデアの妥当性と新規性を評価しています。"
   achievements:
     - "研究仮説生成AIエージェントのプロトタイプ開発"
     - "オープンエンド探索ワークフローの設計"
@@ -38,7 +38,7 @@
     - "AI Agents"
   kind: "internship"
   category: "work"
-  detailedDescription: "AIエージェントによるビジネスワークフロー自動化に焦点を当てたR&Dプロジェクトに参加。業務プロセスの分析（手順、依存関係、データ構造）を行い、タスク分解とワークフロー抽象化を実施。AdaptFlow、AFlow、Multi-Agent Architecture Searchなどの最新研究に着想を得たエージェントワークフロー生成技術を探索・プロトタイプ化し、エージェント行動ログから失敗パターンを抽出して反復的に改善しました。"
+  detailedDescription: "AIエージェントによるビジネスワークフロー自動化に焦点を当てたR&Dプロジェクトに参加。業務プロセスの分析 (手順、依存関係、データ構造) を行い、タスク分解とワークフロー抽象化を実施。AdaptFlow、AFlow、Multi-Agent Architecture Searchなどの最新研究に着想を得たエージェントワークフロー生成技術を探索・プロトタイプ化し、エージェント行動ログから失敗パターンを抽出して反復的に改善しました。"
   achievements:
     - "業務プロセスのタスク分解とワークフロー抽象化"
     - "最新研究に基づくエージェントワークフロー生成技術のプロトタイピング"
@@ -61,7 +61,7 @@
     - "Coding Agents"
   kind: "internship"
   category: "work"
-  detailedDescription: "Figma MCPとコード生成モデル（Codex / Claude Code）を統合し、ロボットUI設計の標準化・自動化ワークフローを構築。GUIコンポーネント構造の整理、変数定義の統一、再利用可能コンポーネントの抽象化を行い、AI支援コーディングに最適化された設計ガイドラインを確立。デプロイ後の修正コストが高いロボットUIにおいて重要な設計原則を特定・形式化しました。"
+  detailedDescription: "Figma MCPとコード生成モデル (Codex / Claude Code) を統合し、ロボットUI設計の標準化・自動化ワークフローを構築。GUIコンポーネント構造の整理、変数定義の統一、再利用可能コンポーネントの抽象化を行い、AI支援コーディングに最適化された設計ガイドラインを確立。デプロイ後の修正コストが高いロボットUIにおいて重要な設計原則を特定・形式化しました。"
   achievements:
     - "Figma MCP × Coding Agent統合による自動化ワークフロー構築"
     - "AI支援コーディング最適化のための設計ガイドライン確立"
@@ -88,7 +88,7 @@
   achievements:
 -
   id: "pfn-education-project-engineer"
-  title: "PFN 教育プロジェクトエンジニア（パートタイム）"
+  title: "PFN 教育プロジェクトエンジニア (パートタイム) "
   period:
     start:
       year: 2024
@@ -313,7 +313,7 @@
     - "Research Planning"
   kind: "competition"
   category: "personal"
-  detailedDescription: "沖縄科学技術大学院大学（OIST）が主催するScience Challengeで研究アイデアを英語で発表し、専門家からフィードバックを獲得しました。"
+  detailedDescription: "沖縄科学技術大学院大学 (OIST) が主催するScience Challengeで研究アイデアを英語で発表し、専門家からフィードバックを獲得しました。"
   achievements:
     - "英語による研究アイデアの発表"
     - "専門家からのフィードバックを獲得"
@@ -381,7 +381,7 @@
   achievements:
     - "Silver メダル獲得"
     - "Co-Leader・Dry team leaderとしてチームマネジメント"
-    - "約200万円の寄附獲得（同窓生・VC向け渉外）"
+    - "約200万円の寄附獲得 (同窓生・VC向け渉外) "
     - "二次代謝物SRIPの産生量予測ODEモデル開発"
     - "Scipyを用いたパラメータ推定"
     - "3D-PCR検体配置最適化アルゴリズムの開発"
@@ -467,7 +467,7 @@
     - "English"
   kind: "internship"
   category: "work"
-  detailedDescription: "英語ベースのリモート環境で、MLモデル開発、組合せ最適化（PuLP）、コンピュータビジョン（OpenCV）に取り組みました。会社の理念である「先端AI技術で人命を救い、平等を拡張する」に強く共感し、英語での業務レベルのコミュニケーションとチーム開発を経験しました。"
+  detailedDescription: "英語ベースのリモート環境で、MLモデル開発、組合せ最適化 (PuLP) 、コンピュータビジョン (OpenCV) に取り組みました。会社の理念である「先端AI技術で人命を救い、平等を拡張する」に強く共感し、英語での業務レベルのコミュニケーションとチーム開発を経験しました。"
   achievements:
     - "英語ベースのリモート環境でのチーム開発"
     - "PuLPを用いた組合せ最適化プロジェクト"
