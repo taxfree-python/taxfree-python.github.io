@@ -2,10 +2,13 @@
 
 .katex {
   color: inherit;
-  font-size: 0.98em;
+  font-size: 0.9em;
+  line-height: 1.2;
+  vertical-align: middle;
 }
 
 .katex-display {
+  font-size: 0.98em;
   margin: 1.25rem 0;
   text-align: left;
   overflow-x: auto;
@@ -13,7 +16,7 @@
 
 .katex-display > .katex {
   display: inline-block;
-  padding: 0.25rem 0;
+  padding: 0.35rem 0;
 }
 
 /* Keep layout width stable regardless of scrollbar visibility */
