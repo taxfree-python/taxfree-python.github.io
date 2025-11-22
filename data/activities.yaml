@@ -7,19 +7,18 @@
       year: 2025
       month: 9
     end: null
-  description: "生命機能科学研究センター AI生物学研究チームでAIシステムの研究開発"
+  description: "論文・データベースを入力として研究アイデアを生成するAIエージェントの立ち上げ・実装を主担当"
   skills:
     - "Python"
     - "LLM"
     - "Mathematical Optimization"
     - "AI Agents"
   category: "work"
-  detailedDescription: "AI-based research idea generation agentのリード開発者 (primary contributor) として、科学文献とデータベースから研究仮説を生成するシステムを開発。要約→概念抽出→新規性分析→仮説生成のワークフローをプロトタイプとして設計し、研究者と協力して生成アイデアの妥当性と新規性を評価しています。"
+  detailedDescription: "論文の要約 → 関連概念の抽出 → 既存研究との差分分析 → アイデア提案、という流れを整理し、Open-ended な探索が可能なエージェントの試作 workflow を設計・実装。生成アイデアの妥当性・新規性について研究者と議論し、評価基準を少しずつ言語化しながら、フィードバックを用いた改善ループを継続的に回している。科学研究の探索空間の広さを踏まえ、情報過多の環境での Deep Research 的手法や探索戦略(idea search)の検討を行っている。"
   achievements:
-    - "研究仮説生成AIエージェントのプロトタイプ開発"
-    - "オープンエンド探索ワークフローの設計"
-    - "研究者との協働による評価基準の反復改善"
-    - "大規模科学探索空間における深層探索戦略の調査"
+    - "Open-ended探索が可能なエージェント試作workflowの設計・実装"
+    - "研究者との議論による評価基準の言語化とフィードバックループの構築"
+    - "情報過多環境でのDeep Research的手法と探索戦略の検討"
 -
   id: "layerx-summer-internship"
   title: "LayerX Ai Workforce R&D サマーインターン"
@@ -30,18 +29,18 @@
     end:
       year: 2025
       month: 10
-  description: "LayerXのAi Workforce R&DチームでLLM応用技術を検証"
+  description: "業務プロセスの自動化を目的としたAI Agent Workflowの設計・最適化に取り組むR&Dチームに参加"
   skills:
     - "LLM"
     - "Python"
     - "AI Agents"
   category: "work"
-  detailedDescription: "AIエージェントによるビジネスワークフロー自動化に焦点を当てたR&Dプロジェクトに参加。業務プロセスの分析 (手順、依存関係、データ構造) を行い、タスク分解とワークフロー抽象化を実施。AdaptFlow、AFlow、Multi-Agent Architecture Searchなどの最新研究に着想を得たエージェントワークフロー生成技術を探索・プロトタイプ化し、エージェント行動ログから失敗パターンを抽出して反復的に改善しました。"
+  detailedDescription: "業務に含まれる操作手順・依存関係・データ構造を分析し、タスク分解・ステップ設計・パラメータ抽象化を実施。LayerXで扱う問題に近いベンチマークを用いて、Agent workflow生成の技術を使った解法を検討・実装。AdaptFlow (Adaptive Workflow Optimization via Meta-Learning)、AFlow (Automating Agentic Workflow Generation)、Multi-Agent Architecture Search via Agentic Supernetなどの研究をベースに検討・実装。Agentの挙動ログを観察し、失敗パターンの抽出・プロンプト改善・ステップ再設計など、改善サイクルを実行。"
   achievements:
-    - "業務プロセスのタスク分解とワークフロー抽象化"
-    - "最新研究に基づくエージェントワークフロー生成技術のプロトタイピング"
-    - "エージェント行動ログの分析と失敗パターンの抽出"
-    - "プロンプト、ステップ設計、ワークフロー構造の反復改善"
+    - "業務プロセスの操作手順・依存関係・データ構造の分析とタスク分解"
+    - "最新研究(AdaptFlow, AFlow, Multi-Agent Architecture Search)ベースの実装"
+    - "Agent挙動ログの観察と失敗パターンの抽出"
+    - "プロンプト改善・ステップ再設計による改善サイクルの実行"
 -
   id: "preferred-robotics-intern"
   title: "Preferred Robotics ソフトウェアエンジニアインターン"
@@ -52,18 +51,17 @@
     end:
       year: 2025
       month: 9
-  description: "ロボット向けReact UIを開発し開発効率化を推進"
+  description: "Figma MCPとコード生成を連携させ、ロボット用GUIのデザインから実装までのフローを非属人化・標準化"
   skills:
     - "React"
     - "TypeScript"
     - "Coding Agents"
   category: "work"
-  detailedDescription: "Figma MCPとコード生成モデル (Codex / Claude Code) を統合し、ロボットUI設計の標準化・自動化ワークフローを構築。GUIコンポーネント構造の整理、変数定義の統一、再利用可能コンポーネントの抽象化を行い、AI支援コーディングに最適化された設計ガイドラインを確立。デプロイ後の修正コストが高いロボットUIにおいて重要な設計原則を特定・形式化しました。"
+  detailedDescription: "GUIコンポーネントの構造化、変数の統一、再利用可能な部品の抽象化など、Coding Agentを活用した開発に適した設計指針を整理。インターン終了後、引き継ぎ用ドキュメントを整備し、フルタイムエンジニア向けに簡単な講義・QAを実施。ロボットUIのように出荷後の変更コストが高い領域で、品質保証・可読性・保守性が重要になる点を踏まえ、そのための設計思想・注意点をまとめた。"
   achievements:
-    - "Figma MCP × Coding Agent統合による自動化ワークフロー構築"
-    - "AI支援コーディング最適化のための設計ガイドライン確立"
-    - "フルタイムエンジニア向けの引き継ぎドキュメント作成と講義実施"
-    - "高コスト環境に適した設計原則の特定と形式化"
+    - "Coding Agent活用に適した設計指針の整理と標準化"
+    - "引き継ぎドキュメント整備とフルタイムエンジニア向け講義・QA実施"
+    - "高コスト変更環境における設計思想・注意点の体系化"
 -
   id: "luup-data-scientist-intern"
   title: "Luup Data Scientist Intern"
@@ -90,18 +88,19 @@
       year: 2024
       month: 10
     end: null
-  description: "Playgramやジクタスなど教育サービス開発を継続支援"
+  description: "LLMを活用した教育向けサービスの企画・開発に従事。LLMだけに閉じないUI/UXも含めて、学習体験全体の設計に関わる"
   skills:
     - "Python"
     - "LLM"
     - "React"
     - "TypeScript"
   category: "work"
-  detailedDescription: "LLMを活用した教育サービスの開発に継続的に貢献。夏期インターンシップで構築した基盤を発展させ、ワークフロー設計、モデル動作の改善、学習体験を向上させるUX改善に従事しています。"
+  detailedDescription: "現場の講師・先生へのヒアリングを通じて、学習者向けフィードバックにおける「望ましい応答条件」(言葉遣い、安全性、モチベーション維持、認知負荷など)を整理し、タスク特化の評価基準として体系化。これらの評価基準を踏まえ、LLMによるフィードバック生成workflowを設計・実装。出力の傾向を確認しながら、プロンプト改善・仕様調整の反復サイクルを自ら回した。モデル側だけでなく、学習者にとって分かりやすいUI/UXの検討・プロトタイプ実装(React)にも大きくコミット。インターン期間内に、現在のサービスの基盤となる構成(画面遷移・機能構造・LLM workflowの接続)を設計し、フルタイムエンジニアと共同してプロダクト化を見据えた開発を推進。"
   achievements:
-    - "LLMベースの教育サービス開発への継続的な貢献"
-    - "ワークフロー設計とモデル動作の反復改善"
-    - "学習者向けのUX設計と実装"
+    - "講師・先生へのヒアリングによる評価基準の体系化"
+    - "LLMフィードバック生成workflowの設計・実装と反復改善"
+    - "学習者向けUI/UXの検討とReactプロトタイプ実装"
+    - "サービス基盤構成の設計とプロダクト化を見据えた開発推進"
 -
   id: "pfn-summer-internship"
   title: "PFN 2024 夏期国内インターンシップ"
