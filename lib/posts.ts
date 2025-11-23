@@ -80,6 +80,8 @@ export async function getPostData(slug: string): Promise<PostData> {
     .use(remarkEmbedPdf)
     .use(remarkMath)
     .use(remarkGfm)
+    // Allow raw HTML from remark plugins (e.g., remarkEmbedPdf) to pass through.
+    // This is required for custom PDF embedding, and the output is sanitized below.
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeKatex, {
       strict: false,
@@ -122,6 +124,7 @@ export async function getPostData(slug: string): Promise<PostData> {
       'munder',
       'munderover',
       'iframe',
+      'div',
     ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
@@ -134,6 +137,24 @@ export async function getPostData(slug: string): Promise<PostData> {
       div: ['style'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
+    // Restrict CSS properties on div elements to prevent CSS injection attacks
+    allowedStyles: {
+      div: {
+        width: [/^[\d.]+(%|px|rem|em)?$/],
+        height: [/^[\d.]+(%|px|rem|em)?$/],
+        margin: [/^[\d.\s]+(%|px|rem|em)?$/],
+      },
+    },
+    // Validate iframe src to only allow relative paths (for local PDF files)
+    transformTags: {
+      iframe: (tagName, attribs) => {
+        // Only allow relative paths starting with '/'
+        if (attribs.src && !attribs.src.startsWith('/')) {
+          return { tagName: 'div', attribs: {} };
+        }
+        return { tagName, attribs };
+      },
+    },
   });
 
   return {
