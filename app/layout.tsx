@@ -15,10 +15,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://taxfree.dev'),
   title: "tax_free",
   description: "Software Engineer & Researcher at TokyoTech",
   icons: {
     icon: "/icon.png",
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'ja_JP',
+    url: 'https://taxfree.dev',
+    siteName: 'tax_free',
+    title: 'tax_free',
+    description: 'Software Engineer & Researcher at TokyoTech',
+    images: [
+      {
+        url: '/icon.png',
+        width: 1706,
+        height: 1669,
+        alt: 'tax_free',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@taxfree_python',
+    creator: '@taxfree_python',
+    title: 'tax_free',
+    description: 'Software Engineer & Researcher at TokyoTech',
+    images: ['/icon.png'],
   },
 };
 

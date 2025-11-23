@@ -18,6 +18,7 @@ export interface PostData {
   contentHtml?: string;
   draft?: boolean;
   math?: boolean;
+  description?: string;
 }
 
 export function getSortedPostsData(): PostData[] {
@@ -36,6 +37,7 @@ export function getSortedPostsData(): PostData[] {
         date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : '',
         draft: matterResult.data.draft || false,
         math: matterResult.data.math || false,
+        description: matterResult.data.description,
       };
     })
     .filter((post) => !post.draft); // ドラフトを除外
@@ -136,5 +138,6 @@ export async function getPostData(slug: string): Promise<PostData> {
     contentHtml,
     draft: matterResult.data.draft || false,
     math: matterResult.data.math || false,
+    description: matterResult.data.description,
   };
 }
