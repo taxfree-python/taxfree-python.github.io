@@ -18,7 +18,6 @@ Next.js + React + TypeScriptで実装した個人サイト
 - **React 19**
 - **TypeScript**
 - **Material-UI (MUI) v7**
-- **Tailwind CSS v4**
 - **Markdown** (gray-matter + remark)
 
 ## セットアップ
@@ -167,4 +166,4 @@ const navLinks = [
 ## スタイルのカスタマイズ
 
 - `app/globals.css` - グローバルスタイル
-- 各コンポーネントファイル - Material-UIのSxPropsとTailwind CSS
+- 各コンポーネントファイル - Material-UIのSxProps
