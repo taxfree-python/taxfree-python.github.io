@@ -8,6 +8,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
 import sanitizeHtml from 'sanitize-html';
+import { remarkEmbedPdf } from './remark-embed-pdf';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 
@@ -76,16 +77,19 @@ export async function getPostData(slug: string): Promise<PostData> {
   const matterResult = matter(fileContents);
 
   const processedContent = await remark()
+    .use(remarkEmbedPdf)
     .use(remarkMath)
     .use(remarkGfm)
-    .use(remarkRehype)
+    // Allow raw HTML from remark plugins (e.g., remarkEmbedPdf) to pass through.
+    // This is required for custom PDF embedding, and the output is sanitized below.
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeKatex, {
       strict: false,
       macros: {
         '\\*': '\\ast',
       },
     })
-    .use(rehypeStringify)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(matterResult.content);
   const rawContentHtml = processedContent.toString();
   const contentHtml = sanitizeHtml(rawContentHtml, {
@@ -119,6 +123,8 @@ export async function getPostData(slug: string): Promise<PostData> {
       'mover',
       'munder',
       'munderover',
+      'iframe',
+      'div',
     ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
@@ -127,8 +133,32 @@ export async function getPostData(slug: string): Promise<PostData> {
       img: ['src', 'alt'],
       math: ['xmlns', 'display'],
       annotation: ['encoding'],
+      iframe: ['src', 'width', 'height', 'style', 'title', 'aria-label'],
+      div: ['style'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
+    // Restrict CSS properties on div and iframe elements to prevent CSS injection attacks
+    allowedStyles: {
+      div: {
+        width: [/^[\d]+(\.\d+)?(%|px|rem|em)$/],
+        height: [/^[\d]+(\.\d+)?(%|px|rem|em)$/],
+        margin: [/^[\d]+(\.\d+)?(\s+[\d]+(\.\d+)?)*(%|px|rem|em)$/],
+      },
+      iframe: {
+        border: [/^[\d]+(\.\d+)?px solid #([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/],
+        'border-radius': [/^[\d]+(\.\d+)?px$/],
+      },
+    },
+    // Validate iframe src to only allow relative paths (for local PDF files)
+    transformTags: {
+      iframe: (tagName, attribs) => {
+        // Only allow relative paths starting with '/'
+        if (attribs.src && !attribs.src.startsWith('/')) {
+          return { tagName: 'div', attribs: {} };
+        }
+        return { tagName, attribs };
+      },
+    },
   });
 
   return {
