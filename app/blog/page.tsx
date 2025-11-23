@@ -1,33 +1,36 @@
 import { getSortedPostsData } from '@/lib/posts';
 import { BlogList } from './BlogList';
 import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site';
+
+const blogDescription = 'Technical blog posts about software engineering, AI, and optimization';
 
 export const metadata: Metadata = {
-  title: 'Blog - tax_free',
-  description: 'Technical blog posts about software engineering, AI, and optimization',
+  title: `Blog - ${siteConfig.name}`,
+  description: blogDescription,
   openGraph: {
     type: 'website',
-    locale: 'ja_JP',
-    url: 'https://taxfree.dev/blog',
-    title: 'Blog - tax_free',
-    description: 'Technical blog posts about software engineering, AI, and optimization',
-    siteName: 'tax_free',
+    locale: siteConfig.locale,
+    url: `${siteConfig.url}/blog`,
+    title: `Blog - ${siteConfig.name}`,
+    description: blogDescription,
+    siteName: siteConfig.name,
     images: [
       {
-        url: '/icon.png',
-        width: 1706,
-        height: 1669,
-        alt: 'tax_free Blog',
+        url: siteConfig.ogImage.url,
+        width: siteConfig.ogImage.width,
+        height: siteConfig.ogImage.height,
+        alt: `${siteConfig.name} Blog`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@taxfree_python',
-    creator: '@taxfree_python',
-    title: 'Blog - tax_free',
-    description: 'Technical blog posts about software engineering, AI, and optimization',
-    images: ['/icon.png'],
+    site: siteConfig.social.twitter,
+    creator: siteConfig.social.twitter,
+    title: `Blog - ${siteConfig.name}`,
+    description: blogDescription,
+    images: [siteConfig.ogImage.url],
   },
 };
 
