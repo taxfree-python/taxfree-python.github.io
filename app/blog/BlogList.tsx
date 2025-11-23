@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { BlogPostCard } from '@/components/BlogPostCard';
 import { BlogEmptyState } from '@/components/BlogEmptyState';
-import { Container, Box, Typography, Stack, Button } from '@mui/material';
+import { Container, Box, Stack, Button } from '@mui/material';
 import type { PostData } from '@/lib/posts';
 
 const POSTS_PER_PAGE = 10;
@@ -36,19 +36,6 @@ export function BlogList({ posts }: BlogListProps) {
       }}
     >
       <Container maxWidth="md" component="section" sx={{ py: 6, pb: 10 }}>
-        <Typography
-          variant="h4"
-          component="h2"
-          gutterBottom
-          sx={{
-            mb: 4,
-            fontWeight: 400,
-            letterSpacing: '-0.02em'
-          }}
-        >
-          Blog
-        </Typography>
-
         <Stack spacing={2}>
           {posts.slice(0, displayCount).map((post) => (
             <BlogPostCard
