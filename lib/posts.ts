@@ -133,7 +133,7 @@ export async function getPostData(slug: string): Promise<PostData> {
       img: ['src', 'alt'],
       math: ['xmlns', 'display'],
       annotation: ['encoding'],
-      iframe: ['src', 'width', 'height', 'style'],
+      iframe: ['src', 'width', 'height', 'style', 'title'],
       div: ['style'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
