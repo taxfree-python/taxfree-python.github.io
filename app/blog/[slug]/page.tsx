@@ -1,6 +1,7 @@
 import { getPostData, getAllPostSlugs } from '@/lib/posts';
 import Link from 'next/link';
 import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
+import type { Metadata } from 'next';
 
 interface PageProps {
   params: { slug: string };
@@ -11,6 +12,45 @@ export async function generateStaticParams() {
   return paths.map((path) => ({
     slug: path.params.slug,
   }));
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { slug } = params;
+  const post = await getPostData(slug);
+
+  const title = `${post.title} | tax_free`;
+  const description = post.description || post.title;
+  const url = `https://taxfree.dev/blog/${slug}`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      type: 'article',
+      locale: 'ja_JP',
+      url,
+      title,
+      description,
+      siteName: 'tax_free',
+      images: [
+        {
+          url: '/icon.png',
+          width: 1706,
+          height: 1669,
+          alt: post.title,
+        },
+      ],
+      publishedTime: post.date,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@taxfree_python',
+      creator: '@taxfree_python',
+      title,
+      description,
+      images: ['/icon.png'],
+    },
+  };
 }
 
 export default async function BlogPost({ params }: PageProps) {
