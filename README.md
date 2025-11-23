@@ -104,8 +104,6 @@ npm run build
 
 `.github/workflows/deploy.yml` に設定済みです。
 
-Hugo ベースの旧サイトは `legacy-hugo` ブランチで参照できます。
-
 ## コンテンツの編集
 
 ### プロフィール情報
