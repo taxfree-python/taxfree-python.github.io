@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await getPostData(slug);
 
   const title = `${post.title} | ${siteConfig.name}`;
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function BlogPost({ params }: PageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await getPostData(slug);
 
   return (
