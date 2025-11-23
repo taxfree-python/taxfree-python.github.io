@@ -43,7 +43,11 @@ export function remarkEmbedPdf() {
 
       const url = match[1];
 
-      // Escape URL and attributes to prevent XSS attacks
+      // Escape URL and attributes to prevent XSS attacks.
+      // Note: This provides defense-in-depth, but the primary security validation
+      // happens in lib/posts.ts transformTags (which restricts iframe src to relative paths).
+      // HTML entity escaping alone is insufficient for attribute contexts, but combined
+      // with the transformTags validation, it adds an extra layer of protection.
       const escapedUrl = escapeHtml(url);
 
       // Extract filename from URL for accessibility attributes
