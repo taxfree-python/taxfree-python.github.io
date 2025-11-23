@@ -38,7 +38,6 @@ export function remarkEmbedPdf() {
       };
 
       parent.children[index] = htmlNode;
-      console.log('Replaced paragraph with HTML node');
     });
   };
 }
