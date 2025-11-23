@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://taxfree.dev'),
   title: "tax_free",
-  description: "Software Engineer & Researcher at TokyoTech",
+  description: "Software Engineer & Researcher at Science Tokyo",
   icons: {
     icon: "/icon.png",
   },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: 'https://taxfree.dev',
     siteName: 'tax_free',
     title: 'tax_free',
-    description: 'Software Engineer & Researcher at TokyoTech',
+    description: 'Software Engineer & Researcher at Science Tokyo',
     images: [
       {
         url: '/icon.png',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     site: '@taxfree_python',
     creator: '@taxfree_python',
     title: 'tax_free',
-    description: 'Software Engineer & Researcher at TokyoTech',
+    description: 'Software Engineer & Researcher at Science Tokyo',
     images: ['/icon.png'],
   },
 };
