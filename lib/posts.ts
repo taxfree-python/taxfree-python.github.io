@@ -133,16 +133,20 @@ export async function getPostData(slug: string): Promise<PostData> {
       img: ['src', 'alt'],
       math: ['xmlns', 'display'],
       annotation: ['encoding'],
-      iframe: ['src', 'width', 'height', 'style', 'title'],
+      iframe: ['src', 'width', 'height', 'style', 'title', 'aria-label'],
       div: ['style'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
-    // Restrict CSS properties on div elements to prevent CSS injection attacks
+    // Restrict CSS properties on div and iframe elements to prevent CSS injection attacks
     allowedStyles: {
       div: {
-        width: [/^[\d.]+(%|px|rem|em)?$/],
-        height: [/^[\d.]+(%|px|rem|em)?$/],
-        margin: [/^[\d.\s]+(%|px|rem|em)?$/],
+        width: [/^[\d.]+(%|px|rem|em)$/],
+        height: [/^[\d.]+(%|px|rem|em)$/],
+        margin: [/^[\d.\s]+(%|px|rem|em)$/],
+      },
+      iframe: {
+        border: [/^[\d.]+px solid #[0-9a-fA-F]{3,6}$/],
+        'border-radius': [/^[\d.]+px$/],
       },
     },
     // Validate iframe src to only allow relative paths (for local PDF files)

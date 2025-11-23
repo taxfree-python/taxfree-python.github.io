@@ -2,6 +2,20 @@ import { visit } from 'unist-util-visit';
 import type { Root, Paragraph } from 'mdast';
 
 /**
+ * Escapes HTML special characters to prevent XSS attacks
+ */
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;',
+  };
+  return text.replace(/[&<>"']/g, (char) => map[char]);
+}
+
+/**
  * Remark plugin to transform {{<embed-pdf url="...">}} syntax to iframe HTML
  */
 export function remarkEmbedPdf() {
@@ -29,16 +43,19 @@ export function remarkEmbedPdf() {
 
       const url = match[1];
 
+      // Escape URL and attributes to prevent XSS attacks
+      const escapedUrl = escapeHtml(url);
+
       // Extract filename from URL for accessibility attributes
       const filename = url.split('/').pop() || 'PDF document';
-      const title = `Embedded PDF: ${filename}`;
-      const ariaLabel = `PDF document viewer for ${filename}`;
+      const escapedTitle = escapeHtml(`Embedded PDF: ${filename}`);
+      const escapedAriaLabel = escapeHtml(`PDF document viewer for ${filename}`);
 
       // Replace the paragraph node with an HTML node
       const htmlNode = {
         type: 'html' as const,
         value: `<div style="width: 100%; height: 600px; margin: 2rem 0;">
-  <iframe src="${url}" width="100%" height="100%" style="border: 1px solid #ccc; border-radius: 8px;" title="${title}" aria-label="${ariaLabel}"></iframe>
+  <iframe src="${escapedUrl}" width="100%" height="100%" style="border: 1px solid #ccc; border-radius: 8px;" title="${escapedTitle}" aria-label="${escapedAriaLabel}"></iframe>
 </div>`,
       };
 
