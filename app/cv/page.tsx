@@ -2,34 +2,37 @@ import { Metadata } from 'next';
 import { getProjectsAndActivities } from '@/lib/activities';
 import { getSkillsData } from '@/lib/skills';
 import { certificationsContent } from '@/data/profile';
+import { siteConfig } from '@/config/site';
 import CVClient from './CVClient';
 
+const cvDescription = 'Curriculum Vitae - Skills, Experience, and Certifications';
+
 export const metadata: Metadata = {
-  title: 'CV - tax_free',
-  description: 'Curriculum Vitae - Skills, Experience, and Certifications',
+  title: `CV - ${siteConfig.name}`,
+  description: cvDescription,
   openGraph: {
     type: 'profile',
-    locale: 'ja_JP',
-    url: 'https://taxfree.dev/cv',
-    title: 'CV - tax_free',
-    description: 'Curriculum Vitae - Skills, Experience, and Certifications',
-    siteName: 'tax_free',
+    locale: siteConfig.locale,
+    url: `${siteConfig.url}/cv`,
+    title: `CV - ${siteConfig.name}`,
+    description: cvDescription,
+    siteName: siteConfig.name,
     images: [
       {
-        url: '/icon.png',
-        width: 1706,
-        height: 1669,
-        alt: 'tax_free CV',
+        url: siteConfig.ogImage.url,
+        width: siteConfig.ogImage.width,
+        height: siteConfig.ogImage.height,
+        alt: `${siteConfig.name} CV`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@taxfree_python',
-    creator: '@taxfree_python',
-    title: 'CV - tax_free',
-    description: 'Curriculum Vitae - Skills, Experience, and Certifications',
-    images: ['/icon.png'],
+    site: siteConfig.social.twitter,
+    creator: siteConfig.social.twitter,
+    title: `CV - ${siteConfig.name}`,
+    description: cvDescription,
+    images: [siteConfig.ogImage.url],
   },
 };
 

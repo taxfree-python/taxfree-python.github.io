@@ -1,33 +1,36 @@
 import { Metadata } from 'next';
 import { GallerySection } from '@/components/GallerySection';
 import { getGalleryData } from '@/lib/gallery';
+import { siteConfig } from '@/config/site';
+
+const galleryDescription = 'Artwork and creative projects gallery';
 
 export const metadata: Metadata = {
-  title: 'Gallery - tax_free',
-  description: 'Artwork and creative projects gallery',
+  title: `Gallery - ${siteConfig.name}`,
+  description: galleryDescription,
   openGraph: {
     type: 'website',
-    locale: 'ja_JP',
-    url: 'https://taxfree.dev/gallery',
-    title: 'Gallery - tax_free',
-    description: 'Artwork and creative projects gallery',
-    siteName: 'tax_free',
+    locale: siteConfig.locale,
+    url: `${siteConfig.url}/gallery`,
+    title: `Gallery - ${siteConfig.name}`,
+    description: galleryDescription,
+    siteName: siteConfig.name,
     images: [
       {
-        url: '/icon.png',
-        width: 1706,
-        height: 1669,
-        alt: 'tax_free Gallery',
+        url: siteConfig.ogImage.url,
+        width: siteConfig.ogImage.width,
+        height: siteConfig.ogImage.height,
+        alt: `${siteConfig.name} Gallery`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@taxfree_python',
-    creator: '@taxfree_python',
-    title: 'Gallery - tax_free',
-    description: 'Artwork and creative projects gallery',
-    images: ['/icon.png'],
+    site: siteConfig.social.twitter,
+    creator: siteConfig.social.twitter,
+    title: `Gallery - ${siteConfig.name}`,
+    description: galleryDescription,
+    images: [siteConfig.ogImage.url],
   },
 };
 

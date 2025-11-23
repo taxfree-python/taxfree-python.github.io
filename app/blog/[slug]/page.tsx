@@ -2,6 +2,7 @@ import { getPostData, getAllPostSlugs } from '@/lib/posts';
 import Link from 'next/link';
 import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
 import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site';
 
 interface PageProps {
   params: { slug: string };
@@ -18,25 +19,25 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = params;
   const post = await getPostData(slug);
 
-  const title = `${post.title} | tax_free`;
+  const title = `${post.title} | ${siteConfig.name}`;
   const description = post.description || post.title;
-  const url = `https://taxfree.dev/blog/${slug}`;
+  const url = `${siteConfig.url}/blog/${slug}`;
 
   return {
     title,
     description,
     openGraph: {
       type: 'article',
-      locale: 'ja_JP',
+      locale: siteConfig.locale,
       url,
       title,
       description,
-      siteName: 'tax_free',
+      siteName: siteConfig.name,
       images: [
         {
-          url: '/icon.png',
-          width: 1706,
-          height: 1669,
+          url: siteConfig.ogImage.url,
+          width: siteConfig.ogImage.width,
+          height: siteConfig.ogImage.height,
           alt: post.title,
         },
       ],
@@ -44,11 +45,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     twitter: {
       card: 'summary_large_image',
-      site: '@taxfree_python',
-      creator: '@taxfree_python',
+      site: siteConfig.social.twitter,
+      creator: siteConfig.social.twitter,
       title,
       description,
-      images: ['/icon.png'],
+      images: [siteConfig.ogImage.url],
     },
   };
 }

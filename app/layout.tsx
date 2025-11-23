@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeRegistry } from "@/components/ThemeRegistry";
 import { Header } from "@/components/Header";
+import { siteConfig } from "@/config/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,35 +16,35 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://taxfree.dev'),
-  title: "tax_free",
-  description: "Software Engineer & Researcher at Science Tokyo",
+  metadataBase: new URL(siteConfig.url),
+  title: siteConfig.name,
+  description: siteConfig.description,
   icons: {
-    icon: "/icon.png",
+    icon: siteConfig.ogImage.url,
   },
   openGraph: {
     type: 'website',
-    locale: 'ja_JP',
-    url: 'https://taxfree.dev',
-    siteName: 'tax_free',
-    title: 'tax_free',
-    description: 'Software Engineer & Researcher at Science Tokyo',
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.name,
+    description: siteConfig.description,
     images: [
       {
-        url: '/icon.png',
-        width: 1706,
-        height: 1669,
-        alt: 'tax_free',
+        url: siteConfig.ogImage.url,
+        width: siteConfig.ogImage.width,
+        height: siteConfig.ogImage.height,
+        alt: siteConfig.name,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    site: '@taxfree_python',
-    creator: '@taxfree_python',
-    title: 'tax_free',
-    description: 'Software Engineer & Researcher at Science Tokyo',
-    images: ['/icon.png'],
+    site: siteConfig.social.twitter,
+    creator: siteConfig.social.twitter,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage.url],
   },
 };
 
