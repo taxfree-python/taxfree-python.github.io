@@ -8,6 +8,7 @@ import remarkRehype from 'remark-rehype';
 import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
 import sanitizeHtml from 'sanitize-html';
+import { remarkEmbedPdf } from './remark-embed-pdf';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 
@@ -76,16 +77,17 @@ export async function getPostData(slug: string): Promise<PostData> {
   const matterResult = matter(fileContents);
 
   const processedContent = await remark()
+    .use(remarkEmbedPdf)
     .use(remarkMath)
     .use(remarkGfm)
-    .use(remarkRehype)
+    .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeKatex, {
       strict: false,
       macros: {
         '\\*': '\\ast',
       },
     })
-    .use(rehypeStringify)
+    .use(rehypeStringify, { allowDangerousHtml: true })
     .process(matterResult.content);
   const rawContentHtml = processedContent.toString();
   const contentHtml = sanitizeHtml(rawContentHtml, {
@@ -119,6 +121,7 @@ export async function getPostData(slug: string): Promise<PostData> {
       'mover',
       'munder',
       'munderover',
+      'iframe',
     ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
@@ -127,6 +130,8 @@ export async function getPostData(slug: string): Promise<PostData> {
       img: ['src', 'alt'],
       math: ['xmlns', 'display'],
       annotation: ['encoding'],
+      iframe: ['src', 'width', 'height', 'style'],
+      div: ['style'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
   });
