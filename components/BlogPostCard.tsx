@@ -31,6 +31,9 @@ export function BlogPostCard({ slug, title, date }: BlogPostCardProps) {
               textDecoration: 'underline',
             },
             transition: 'all 0.2s',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
           }}
         >
           {title}
