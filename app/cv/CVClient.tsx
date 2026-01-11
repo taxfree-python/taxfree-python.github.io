@@ -22,7 +22,7 @@ export default function CVClient({ activities, skills, certifications }: CVClien
 
   // Main experiences only: PFN, RIKEN, LayerX
   const mainExperiences = activities.filter(activity =>
-    ['pfn-education-project-engineer', 'riken-bdr-part-timer', 'layerx-summer-internship'].includes(activity.id)
+    ['pfn-education-project-engineer', 'riken-bdr-part-timer', 'layerx-ai-workforce-intern'].includes(activity.id)
   );
 
   return (
