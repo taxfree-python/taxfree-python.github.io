@@ -35,10 +35,6 @@ const assertActivityDateValid = (date: ActivityDate, context: string): void => {
   }
 };
 
-const isSameActivityDate = (a: ActivityDate, b: ActivityDate): boolean => {
-  return a.year === b.year && a.month === b.month && a.day === b.day;
-};
-
 export const validateActivityPeriod = (period: ActivityPeriod, context: string): void => {
   assertActivityDateValid(period.start, `${context}.period.start`);
 
@@ -84,15 +80,7 @@ export const formatActivityPeriod = (period: ActivityPeriod): string => {
     return `${start} - Present`;
   }
 
-  if (isSameActivityDate(period.start, period.end)) {
-    return start;
-  }
-
-  const shouldOmitYear =
-    period.start.year === period.end.year &&
-    (period.end.month !== undefined || period.end.day !== undefined);
-
-  const end = formatActivityDate(period.end, { omitYear: shouldOmitYear });
+  const end = formatActivityDate(period.end);
   return `${start} - ${end}`;
 };
 
