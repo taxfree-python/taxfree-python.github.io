@@ -96,7 +96,7 @@ caffeinate -s
 
 ## 7. Tips: tmux で Claude Code のスクロールがおかしくなる問題
 
-tmux 内で Claude Code を動かすと、マウスホイールが通常のスクロールではなくチャット欄の履歴移動 (上下矢印相当) として処理されることがあります。過去ログが見返しづらくなるやつです。
+tmux 内で Claude Code を動かすと、マウスホイールが通常のスクロールではなくチャット欄の履歴移動 (上下矢印相当) として処理されて、過去ログが非常に見返しづらくなることがあります。(デフォルトだとそうなる?)
 
 以下のような設定を `~/.tmux.conf` に書くと改善します。
 
@@ -109,10 +109,3 @@ bind -n WheelDownPane if -F "#{pane_in_mode}" "send -M" "send -M"
 bind -n S-WheelUpPane send -M
 bind -n S-WheelDownPane send -M
 ```
-
-## まとめ
-
-- Tailscale + SSH + tmux で、外出先から Mac の作業を「そのまま」再開できる
-- 鍵は Claude Code を tmux の中で起動しておくこと
-- セキュリティ的には「ポート開放なし」「許可ユーザーを自分だけ」「鍵ログイン」が基本線
-- tmux ならではの操作感の差 (スクロール等) は `.tmux.conf` で吸収できる
