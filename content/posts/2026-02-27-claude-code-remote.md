@@ -24,16 +24,16 @@ draft: false
 
 ざっくりいうと、こういう構成です。
 
-- **[Tailscale](https://tailscale.com/)**: Android と Mac を同じ閉じたネットワークに入れる
+- **Tailscale**: Android と Mac を同じ閉じたネットワークに入れる
 - **SSH**: そのネットワーク上の Mac に入る (Remote Login)
-- **[tmux](https://github.com/tmux/tmux)**: セッションを保持して、外出先から attach できるようにする
+- **tmux**: セッションを保持して、外出先から attach できるようにする
 - **Claude Code**: tmux の中で起動しておく (ここが肝)
 
 ---
 
 ## 1. Tailscale の準備
 
-Mac と Android の両方に [Tailscale](https://tailscale.com/) を入れて、同じアカウントでログインします。個人利用なら無料プラン (Personal) で十分です。Android 側は VPN を ON にしておきます。
+Mac と Android の両方に Tailscale を入れて、同じアカウントでログインします。個人利用なら無料プラン (Personal) で十分です。Android 側は VPN を ON にしておきます。
 
 Mac 側で Tailscale の IP を確認しておきます (この記事では `<MAC_TS_IP>` と呼びます)。
 
