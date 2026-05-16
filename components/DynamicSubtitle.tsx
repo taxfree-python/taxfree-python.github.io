@@ -26,7 +26,7 @@ function compose(x: string, connector: string, y: string) {
 export function DynamicSubtitle({
   content,
   holdMs = 1800,
-  deleteMs = 47,
+  deleteMs = 60,
   typeMs = 80,
 }: DynamicSubtitleProps) {
   const { xOptions, yOptions, connector } = content;
