@@ -9,6 +9,7 @@ interface DynamicSubtitleProps {
   holdMs?: number;
   deleteMs?: number;
   typeMs?: number;
+  wipePauseMs?: number;
 }
 
 function buildCycle(xLen: number, yLen: number): Array<[number, number]> {
@@ -28,6 +29,7 @@ export function DynamicSubtitle({
   holdMs = 1800,
   deleteMs = 60,
   typeMs = 80,
+  wipePauseMs = 450,
 }: DynamicSubtitleProps) {
   const { xOptions, yOptions, connector } = content;
   const initial = compose(xOptions[0] ?? '', connector, yOptions[0] ?? '');
@@ -70,6 +72,11 @@ export function DynamicSubtitle({
           await wait(deleteMs);
         }
 
+        if (keepPrefix.length === 0 && wipePauseMs > 0) {
+          await wait(wipePauseMs);
+          if (cancelled) return;
+        }
+
         while (current.length < target.length) {
           if (cancelled) return;
           current = target.slice(0, current.length + 1);
@@ -87,7 +94,7 @@ export function DynamicSubtitle({
       cancelled = true;
       if (timeoutId !== null) clearTimeout(timeoutId);
     };
-  }, [xOptions, yOptions, connector, holdMs, deleteMs, typeMs]);
+  }, [xOptions, yOptions, connector, holdMs, deleteMs, typeMs, wipePauseMs]);
 
   return (
     <Typography
