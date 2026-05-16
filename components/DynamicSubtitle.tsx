@@ -29,7 +29,7 @@ export function DynamicSubtitle({
   holdMs = 1800,
   deleteMs = 60,
   typeMs = 80,
-  wipePauseMs = 450,
+  wipePauseMs = 400,
 }: DynamicSubtitleProps) {
   const { xOptions, yOptions, connector } = content;
   const initial = compose(xOptions[0] ?? '', connector, yOptions[0] ?? '');
