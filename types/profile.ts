@@ -6,9 +6,15 @@ export interface SocialLink {
   color?: 'primary' | 'secondary' | 'inherit';
 }
 
+export interface HeroSubtitle {
+  xOptions: string[];
+  yOptions: string[];
+  connector: string;
+}
+
 export interface HeroContent {
   title: string;
-  subtitle: string;
+  subtitle: HeroSubtitle;
   socialLinks: SocialLink[];
 }
 
