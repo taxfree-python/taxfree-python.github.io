@@ -4,13 +4,10 @@ import { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import { HeroSubtitle } from '@/types/profile';
 
-interface DynamicSubtitleProps {
-  content: HeroSubtitle;
-  holdMs?: number;
-  deleteMs?: number;
-  typeMs?: number;
-  wipePauseMs?: number;
-}
+const HOLD_MS = 1800;
+const DELETE_MS = 60;
+const TYPE_MS = 80;
+const WIPE_PAUSE_MS = 400;
 
 function buildCycle(xLen: number, yLen: number): Array<[number, number]> {
   const cycle: Array<[number, number]> = [];
@@ -24,26 +21,16 @@ function compose(x: string, connector: string, y: string) {
   return `${x} ${connector} ${y}`;
 }
 
-export function DynamicSubtitle({
-  content,
-  holdMs = 1800,
-  deleteMs = 60,
-  typeMs = 80,
-  wipePauseMs = 400,
-}: DynamicSubtitleProps) {
+export function DynamicSubtitle({ content }: { content: HeroSubtitle }) {
   const { xOptions, yOptions, connector } = content;
-  const initial = compose(xOptions[0] ?? '', connector, yOptions[0] ?? '');
-  const [text, setText] = useState(initial);
+  const [text, setText] = useState(() => compose(xOptions[0], connector, yOptions[0]));
 
   useEffect(() => {
-    if (xOptions.length === 0 || yOptions.length === 0) return;
-
     const cycle = buildCycle(xOptions.length, yOptions.length);
     if (cycle.length <= 1) return;
 
     let cancelled = false;
     let timeoutId: ReturnType<typeof setTimeout> | null = null;
-
     const wait = (ms: number) =>
       new Promise<void>((resolve) => {
         timeoutId = setTimeout(resolve, ms);
@@ -55,33 +42,32 @@ export function DynamicSubtitle({
       setText(current);
 
       while (!cancelled) {
-        await wait(holdMs);
+        await wait(HOLD_MS);
         if (cancelled) return;
 
         const next = (i + 1) % cycle.length;
         const [cxi] = cycle[i];
         const [nxi, nyi] = cycle[next];
         const target = compose(xOptions[nxi], connector, yOptions[nyi]);
-
         const keepPrefix = nxi === cxi ? `${xOptions[cxi]} ${connector} ` : '';
 
         while (current.length > keepPrefix.length) {
-          if (cancelled) return;
           current = current.slice(0, -1);
           setText(current);
-          await wait(deleteMs);
+          await wait(DELETE_MS);
+          if (cancelled) return;
         }
 
-        if (keepPrefix.length === 0 && wipePauseMs > 0) {
-          await wait(wipePauseMs);
+        if (keepPrefix.length === 0) {
+          await wait(WIPE_PAUSE_MS);
           if (cancelled) return;
         }
 
         while (current.length < target.length) {
-          if (cancelled) return;
           current = target.slice(0, current.length + 1);
           setText(current);
-          await wait(typeMs);
+          await wait(TYPE_MS);
+          if (cancelled) return;
         }
 
         i = next;
@@ -94,7 +80,7 @@ export function DynamicSubtitle({
       cancelled = true;
       if (timeoutId !== null) clearTimeout(timeoutId);
     };
-  }, [xOptions, yOptions, connector, holdMs, deleteMs, typeMs, wipePauseMs]);
+  }, [xOptions, yOptions, connector]);
 
   return (
     <Typography
@@ -109,7 +95,6 @@ export function DynamicSubtitle({
         fontFamily:
           '"JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace',
       }}
-      aria-label={`${xOptions.join(', ')} ${connector} ${yOptions.join(', ')}`}
     >
       <Box component="span" sx={{ whiteSpace: 'pre', color: 'text.primary' }}>
         {text}

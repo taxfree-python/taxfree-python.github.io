@@ -7,8 +7,8 @@ export interface SocialLink {
 }
 
 export interface HeroSubtitle {
-  xOptions: string[];
-  yOptions: string[];
+  xOptions: readonly [string, ...string[]];
+  yOptions: readonly [string, ...string[]];
   connector: string;
 }
 
