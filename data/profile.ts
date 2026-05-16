@@ -2,7 +2,11 @@ import { HeroContent, CertificationsContent } from '@/types/profile';
 
 export const heroContent: HeroContent = {
   title: 'tax_free',
-  subtitle: '最適化とAI Agentで格差を是正する',
+  subtitle: {
+    xOptions: ['AI', 'Agent'],
+    yOptions: ['Science', 'Society'],
+    connector: 'for',
+  },
   socialLinks: [
     {
       label: 'GitHub',
