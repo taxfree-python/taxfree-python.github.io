@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { AppBar, Toolbar, Container, Typography, Box } from '@mui/material';
 
 const navLinks = [
@@ -9,6 +12,9 @@ const navLinks = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
+
   return (
     <AppBar
       position="sticky"
@@ -19,23 +25,30 @@ export function Header() {
       elevation={0}
     >
       <Container maxWidth="md">
-        <Toolbar sx={{ justifyContent: 'space-between', gap: 2 }}>
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <Typography
-              variant="h5"
-              component="div"
-              fontWeight="bold"
-              sx={{
-                color: 'text.primary',
-                '&:hover': {
-                  color: 'primary.main',
-                },
-                transition: 'color 0.2s',
-              }}
-            >
-              tax_free
-            </Typography>
-          </Link>
+        <Toolbar
+          sx={{
+            justifyContent: isHome ? 'flex-end' : 'space-between',
+            gap: 2,
+          }}
+        >
+          {!isHome && (
+            <Link href="/" style={{ textDecoration: 'none' }}>
+              <Typography
+                variant="h5"
+                component="div"
+                fontWeight="bold"
+                sx={{
+                  color: 'text.primary',
+                  '&:hover': {
+                    color: 'primary.main',
+                  },
+                  transition: 'color 0.2s',
+                }}
+              >
+                tax_free
+              </Typography>
+            </Link>
+          )}
 
           <Box sx={{ display: 'flex', gap: { xs: 2, sm: 3 } }}>
             {navLinks.map((link) => (
