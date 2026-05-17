@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { Container, Typography, Box, Stack, Button, Collapse } from '@mui/material';
 import { ProjectActivity, ActivityCategory } from '@/types/activities';
-import { formatActivityPeriod, getActivityPeriodEndValue, getActivityPeriodStartValue } from '@/lib/activityPeriod';
+import { formatActivityPeriodParts, getActivityPeriodEndValue, getActivityPeriodStartValue } from '@/lib/activityPeriod';
 
 interface ActivitiesSectionProps {
   activities: ProjectActivity[];
@@ -118,16 +118,31 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
                       >
                         {activity.title}
                       </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
+                      <Box
                         sx={{
                           ml: 2,
-                          whiteSpace: 'nowrap'
+                          display: 'inline-grid',
+                          gridTemplateColumns: 'auto auto auto',
+                          columnGap: '0.4em',
+                          alignItems: 'baseline',
+                          fontVariantNumeric: 'tabular-nums',
+                          whiteSpace: 'nowrap',
+                          color: 'text.secondary',
+                          fontSize: (theme) => theme.typography.body2.fontSize,
+                          lineHeight: (theme) => theme.typography.body2.lineHeight,
                         }}
                       >
-                        {formatActivityPeriod(activity.period)}
-                      </Typography>
+                        {(() => {
+                          const { start, end } = formatActivityPeriodParts(activity.period);
+                          return (
+                            <>
+                              <Box component="span" sx={{ textAlign: 'right' }}>{start}</Box>
+                              <Box component="span">-</Box>
+                              <Box component="span" sx={{ textAlign: 'right', minWidth: '4em' }}>{end}</Box>
+                            </>
+                          );
+                        })()}
+                      </Box>
                     </Box>
                     <Collapse in={expandedIds.has(activity.id)}>
                       <Box sx={{ py: 2, pl: 2 }}>
