@@ -73,15 +73,18 @@ export const formatActivityDate = (date: ActivityDate, options?: { omitYear?: bo
   return parts.join('/');
 };
 
-export const formatActivityPeriod = (period: ActivityPeriod): string => {
+export interface FormattedPeriodParts {
+  start: string;
+  end: string;
+}
+
+export const formatActivityPeriodParts = (period: ActivityPeriod): FormattedPeriodParts => {
   const start = formatActivityDate(period.start);
-
-  if (period.end === undefined || period.end === null) {
-    return `${start} - Present`;
-  }
-
-  const end = formatActivityDate(period.end);
-  return `${start} - ${end}`;
+  const end =
+    period.end === undefined || period.end === null
+      ? 'Present'
+      : formatActivityDate(period.end);
+  return { start, end };
 };
 
 export const getActivityPeriodEndValue = (period: ActivityPeriod): number => {
