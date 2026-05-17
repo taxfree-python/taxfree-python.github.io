@@ -11,17 +11,14 @@ export const heroContent: HeroContent = {
     {
       label: 'GitHub',
       href: 'https://github.com/taxfree-python',
-      color: 'primary',
     },
     {
       label: 'Twitter',
       href: 'https://twitter.com/taxfree_python',
-      color: 'primary',
     },
     {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/yu-chinen',
-      color: 'primary',
     },
   ],
 };
