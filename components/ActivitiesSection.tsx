@@ -138,7 +138,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
                             <>
                               <Box component="span" sx={{ textAlign: 'right' }}>{start}</Box>
                               <Box component="span">-</Box>
-                              <Box component="span" sx={{ textAlign: 'right', minWidth: '4.5em' }}>{end}</Box>
+                              <Box component="span" sx={{ textAlign: 'right', minWidth: '4em' }}>{end}</Box>
                             </>
                           );
                         })()}
