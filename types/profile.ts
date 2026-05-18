@@ -3,7 +3,6 @@ import { ActivityDate } from './activities';
 export interface SocialLink {
   label: string;
   href: string;
-  color?: 'primary' | 'secondary' | 'inherit';
 }
 
 export interface HeroSubtitle {
