@@ -6,8 +6,10 @@ import { HeroSubtitle } from '@/types/profile';
 
 const HOLD_MS = 1800;
 const DELETE_MS = 60;
+const SWAP_DELETE_MS = 85;
 const TYPE_MS = 80;
 const WIPE_PAUSE_MS = 400;
+const SWAP_PAUSE_MS = 200;
 
 function buildCycle(xLen: number, yLen: number): Array<[number, number]> {
   const cycle: Array<[number, number]> = [];
@@ -51,17 +53,16 @@ export function DynamicSubtitle({ content }: { content: HeroSubtitle }) {
         const target = compose(xOptions[nxi], connector, yOptions[nyi]);
         const keepPrefix = nxi === cxi ? `${xOptions[cxi]} ${connector} ` : '';
 
+        const deleteMs = keepPrefix.length === 0 ? DELETE_MS : SWAP_DELETE_MS;
         while (current.length > keepPrefix.length) {
           current = current.slice(0, -1);
           setText(current);
-          await wait(DELETE_MS);
+          await wait(deleteMs);
           if (cancelled) return;
         }
 
-        if (keepPrefix.length === 0) {
-          await wait(WIPE_PAUSE_MS);
-          if (cancelled) return;
-        }
+        await wait(keepPrefix.length === 0 ? WIPE_PAUSE_MS : SWAP_PAUSE_MS);
+        if (cancelled) return;
 
         while (current.length < target.length) {
           current = target.slice(0, current.length + 1);
