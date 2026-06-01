@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { GallerySection } from '@/components/GallerySection';
 import { getGalleryData } from '@/lib/gallery';
 import { siteConfig } from '@/config/site';

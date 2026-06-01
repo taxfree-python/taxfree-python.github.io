@@ -1,4 +1,4 @@
-import { HeroContent, CertificationsContent } from '@/types/profile';
+import type { CertificationsContent, HeroContent } from '@/types/profile';
 
 export const heroContent: HeroContent = {
   title: 'tax_free',

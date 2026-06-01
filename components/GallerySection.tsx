@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import type { ReactNode, SyntheticEvent } from 'react';
 import {
   Container,
   Typography,
@@ -15,14 +16,14 @@ import {
   Tab,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import { GalleryWork } from '@/types/gallery';
+import type { GalleryWork } from '@/types/gallery';
 import { GalleryEmptyState } from './GalleryEmptyState';
 
-interface GallerySectionProps {
+type GallerySectionProps = {
   works: GalleryWork[];
   showTitle?: boolean;
   showCategories?: boolean;
-}
+};
 
 export function GallerySection({ works, showTitle = true, showCategories = true }: GallerySectionProps) {
   const [selectedWork, setSelectedWork] = useState<GalleryWork | null>(null);
@@ -34,13 +35,22 @@ export function GallerySection({ works, showTitle = true, showCategories = true 
   }
 
   // Get unique categories
-  const categories = ['all', ...Array.from(new Set(works.map(w => w.category).filter(Boolean)))];
+  const categories = [
+    'all',
+    ...Array.from(
+      new Set(
+        works
+          .map((work) => work.category)
+          .filter((category): category is string => category !== undefined && category.length > 0),
+      ),
+    ),
+  ];
 
   // Filter works by category
   const filteredWorks =
     selectedCategory === 'all'
       ? works
-      : works.filter(w => w.category === selectedCategory);
+      : works.filter((work) => work.category === selectedCategory);
 
   const handleWorkClick = (work: GalleryWork) => {
     setSelectedWork(work);
@@ -50,11 +60,11 @@ export function GallerySection({ works, showTitle = true, showCategories = true 
     setSelectedWork(null);
   };
 
-  const handleCategoryChange = (_event: React.SyntheticEvent, newValue: string) => {
+  const handleCategoryChange = (_event: SyntheticEvent, newValue: string) => {
     setSelectedCategory(newValue);
   };
 
-  const renderMedia = (work: GalleryWork, isThumbnail: boolean = true) => {
+  const renderMedia = (work: GalleryWork, isThumbnail = true): ReactNode => {
     const src = isThumbnail ? work.thumbnail : work.media;
 
     if (work.mediaType === 'video') {
@@ -103,14 +113,13 @@ export function GallerySection({ works, showTitle = true, showCategories = true 
             scrollButtons="auto"
           >
             <Tab label="All" value="all" />
-            {categories.slice(1).map(category => {
-              const categoryStr = category || '';
-              const label = categoryStr.charAt(0).toUpperCase() + categoryStr.slice(1);
+            {categories.slice(1).map((category) => {
+              const label = category.charAt(0).toUpperCase() + category.slice(1);
               return (
                 <Tab
-                  key={categoryStr}
+                  key={category}
                   label={label}
-                  value={categoryStr}
+                  value={category}
                 />
               );
             })}
@@ -129,7 +138,7 @@ export function GallerySection({ works, showTitle = true, showCategories = true 
           gap: 3,
         }}
       >
-        {filteredWorks.map(work => (
+        {filteredWorks.map((work) => (
           <Card
             key={work.id}
             sx={{
@@ -178,9 +187,11 @@ export function GallerySection({ works, showTitle = true, showCategories = true 
         onClose={handleCloseDialog}
         maxWidth="lg"
         fullWidth
-        PaperProps={{
-          sx: {
-            bgcolor: 'background.paper',
+        slotProps={{
+          paper: {
+            sx: {
+              bgcolor: 'background.paper',
+            },
           },
         }}
       >
@@ -228,7 +239,7 @@ export function GallerySection({ works, showTitle = true, showCategories = true 
                     Tools Used
                   </Typography>
                   <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
-                    {selectedWork.tools.map(tool => (
+                    {selectedWork.tools.map((tool) => (
                       <Box
                         key={tool}
                         sx={{

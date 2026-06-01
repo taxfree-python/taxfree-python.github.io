@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
@@ -9,72 +9,115 @@ import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
 import sanitizeHtml from 'sanitize-html';
 import { remarkEmbedPdf } from './remark-embed-pdf';
+import { assert } from '@/lib/assert';
+import { ensureObject, toOptionalBoolean, toOptionalString } from '@/lib/validation';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
+const markdownFilePattern = /\.md$/;
 
-export interface PostData {
+export type PostData = {
   slug: string;
   title: string;
   date: string;
   contentHtml?: string;
-  draft?: boolean;
-  math?: boolean;
+  draft: boolean;
+  math: boolean;
   description?: string;
+};
+
+export type PostStaticParam = {
+  slug: string;
+};
+
+type PostMetadata = Omit<PostData, 'slug' | 'contentHtml'>;
+
+type MarkdownPost = {
+  metadata: PostMetadata;
+  content: string;
+};
+
+function getPostFileNames(): string[] {
+  return fs.readdirSync(postsDirectory).filter((fileName) => fileName.endsWith('.md'));
+}
+
+function getSlugFromFileName(fileName: string): string {
+  return fileName.replace(markdownFilePattern, '');
+}
+
+function toDateIsoString(value: unknown, context: string): string {
+  if (value === undefined || value === null) {
+    return '';
+  }
+
+  assert(
+    value instanceof Date || typeof value === 'string' || typeof value === 'number',
+    `${context} must be a date string, timestamp, or Date`,
+  );
+
+  const date = value instanceof Date ? value : new Date(value);
+  assert(!Number.isNaN(date.getTime()), `${context} must be a valid date`);
+  return date.toISOString();
+}
+
+function parsePostMetadata(raw: unknown, slug: string, fileName: string): PostMetadata {
+  const context = `${fileName} frontmatter`;
+  const obj = ensureObject(raw, context);
+  const description = toOptionalString(obj.description, `${context}.description`);
+
+  const metadata: PostMetadata = {
+    title: toOptionalString(obj.title, `${context}.title`) ?? slug,
+    date: toDateIsoString(obj.date, `${context}.date`),
+    draft: toOptionalBoolean(obj.draft, `${context}.draft`) ?? false,
+    math: toOptionalBoolean(obj.math, `${context}.math`) ?? false,
+  };
+
+  if (description !== undefined) {
+    metadata.description = description;
+  }
+
+  return metadata;
+}
+
+function readMarkdownPost(fileName: string): MarkdownPost {
+  const slug = getSlugFromFileName(fileName);
+  const fullPath = path.join(postsDirectory, fileName);
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const matterResult = matter(fileContents);
+
+  return {
+    metadata: parsePostMetadata(matterResult.data, slug, fileName),
+    content: matterResult.content,
+  };
 }
 
 export function getSortedPostsData(): PostData[] {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
+  const allPostsData = getPostFileNames()
     .map((fileName) => {
-      const slug = fileName.replace(/\.md$/, '');
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const matterResult = matter(fileContents);
+      const { metadata } = readMarkdownPost(fileName);
 
       return {
-        slug,
-        title: matterResult.data.title || slug,
-        date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : '',
-        draft: matterResult.data.draft || false,
-        math: matterResult.data.math || false,
-        description: matterResult.data.description,
+        slug: getSlugFromFileName(fileName),
+        ...metadata,
       };
     })
     .filter((post) => !post.draft); // ドラフトを除外
 
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+  return allPostsData.sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export function getAllPostSlugs(): { params: { slug: string } }[] {
-  const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames
-    .filter((fileName) => fileName.endsWith('.md'))
+export function getAllPostSlugs(): PostStaticParam[] {
+  return getPostFileNames()
     .filter((fileName) => {
-      const fullPath = path.join(postsDirectory, fileName);
-      const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const matterResult = matter(fileContents);
-      return matterResult.data.draft !== true;
+      const { metadata } = readMarkdownPost(fileName);
+      return !metadata.draft;
     })
-    .map((fileName) => {
-      return {
-        params: {
-          slug: fileName.replace(/\.md$/, ''),
-        },
-      };
-    });
+    .map((fileName) => ({
+      slug: getSlugFromFileName(fileName),
+    }));
 }
 
 export async function getPostData(slug: string): Promise<PostData> {
-  const fullPath = path.join(postsDirectory, `${slug}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const matterResult = matter(fileContents);
+  const { metadata, content } = readMarkdownPost(`${slug}.md`);
 
   const processedContent = await remark()
     .use(remarkEmbedPdf)
@@ -90,7 +133,7 @@ export async function getPostData(slug: string): Promise<PostData> {
       },
     })
     .use(rehypeStringify, { allowDangerousHtml: true })
-    .process(matterResult.content);
+    .process(content);
   const rawContentHtml = processedContent.toString();
   const contentHtml = sanitizeHtml(rawContentHtml, {
     allowedTags: sanitizeHtml.defaults.allowedTags.concat([
@@ -163,11 +206,7 @@ export async function getPostData(slug: string): Promise<PostData> {
 
   return {
     slug,
-    title: matterResult.data.title || slug,
-    date: matterResult.data.date ? new Date(matterResult.data.date).toISOString() : '',
     contentHtml,
-    draft: matterResult.data.draft || false,
-    math: matterResult.data.math || false,
-    description: matterResult.data.description,
+    ...metadata,
   };
 }

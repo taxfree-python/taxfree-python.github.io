@@ -3,42 +3,21 @@ import path from 'node:path';
 import { cache } from 'react';
 import YAML from 'yaml';
 
-import { GalleryWork, GalleryData, MediaType } from '@/types/gallery';
+import type { GalleryData, GalleryWork, MediaType } from '@/types/gallery';
 import { assert } from '@/lib/assert';
+import {
+  ensureObject,
+  toOptionalString,
+  toOptionalStringArray,
+  toString,
+} from '@/lib/validation';
 
 const galleryFilePath = path.join(process.cwd(), 'data', 'gallery.yaml');
 
 const mediaTypeValues: MediaType[] = ['image', 'gif', 'video'];
-const mediaTypeSet = new Set<MediaType>(mediaTypeValues);
+const mediaTypeSet: ReadonlySet<string> = new Set(mediaTypeValues);
 
-function ensureObject(value: unknown, context: string): Record<string, unknown> {
-  assert(value !== null && typeof value === 'object' && !Array.isArray(value), `${context} must be an object`);
-  return value as Record<string, unknown>;
-}
-
-function toString(value: unknown, context: string): string {
-  assert(typeof value === 'string', `${context} must be a string`);
-  return value;
-}
-
-function toOptionalString(value: unknown, context: string): string | undefined {
-  if (value === undefined || value === null) {
-    return undefined;
-  }
-  return toString(value, context);
-}
-
-function toStringArray(value: unknown, context: string): string[] {
-  assert(Array.isArray(value), `${context} must be an array`);
-  return value.map((item, index) => toString(item, `${context}[${index}]`));
-}
-
-function toOptionalStringArray(value: unknown, context: string): string[] | undefined {
-  if (value === undefined || value === null) {
-    return undefined;
-  }
-  return toStringArray(value, context);
-}
+const isMediaType = (value: string): value is MediaType => mediaTypeSet.has(value);
 
 function validateGalleryWork(raw: unknown, index: number): GalleryWork {
   const context = `works[${index}]`;
@@ -51,8 +30,10 @@ function validateGalleryWork(raw: unknown, index: number): GalleryWork {
   const thumbnail = toString(obj.thumbnail, `${context}.thumbnail`);
   const mediaTypeValue = toString(obj.mediaType, `${context}.mediaType`);
 
-  assert(mediaTypeSet.has(mediaTypeValue as MediaType), `${context}.mediaType must be one of: ${mediaTypeValues.join(', ')}`);
-  const mediaType = mediaTypeValue as MediaType;
+  assert(
+    isMediaType(mediaTypeValue),
+    `${context}.mediaType must be one of: ${mediaTypeValues.join(', ')}`,
+  );
 
   const work: GalleryWork = {
     id,
@@ -60,7 +41,7 @@ function validateGalleryWork(raw: unknown, index: number): GalleryWork {
     date,
     media,
     thumbnail,
-    mediaType,
+    mediaType: mediaTypeValue,
   };
 
   const description = toOptionalString(obj.description, `${context}.description`);

@@ -1,23 +1,23 @@
 export type ActivityCategory = 'work' | 'research' | 'others';
 
-export interface ActivityDate {
+export type ActivityDate = {
   year: number;
   month?: number;
   day?: number;
-}
+};
 
-export interface ActivityPeriod {
+export type ActivityPeriod = {
   start: ActivityDate;
   end?: ActivityDate | null;
-}
+};
 
-export interface Activity {
+export type Activity = {
   id: string;
   title: string;
   period: ActivityPeriod;
   description: string;
   category: ActivityCategory;
-}
+};
 
 // 後方互換性のための型エイリアス
 export type ProjectActivity = Activity;

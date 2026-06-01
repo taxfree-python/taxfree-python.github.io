@@ -1,11 +1,11 @@
 'use client';
 
 import { Container, Typography, Box, Stack } from '@mui/material';
-import { SkillDetail } from '@/types/skills';
+import type { SkillDetail } from '@/types/skills';
 
-interface SkillsSectionProps {
+type SkillsSectionProps = {
   skills: SkillDetail[];
-}
+};
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
   return (

@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { getProjectsAndActivities } from '@/lib/activities';
 import { getSkillsData } from '@/lib/skills';
 import { certificationsContent } from '@/data/profile';

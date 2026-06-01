@@ -1,12 +1,18 @@
-import { ActivityDate, ActivityPeriod, Activity } from '@/types/activities';
+import type { Activity, ActivityCategory, ActivityDate, ActivityPeriod } from '@/types/activities';
 import { assert } from '@/lib/assert';
+import { ensureObject, toNumber, toString } from '@/lib/validation';
 
 const MIN_MONTH = 1;
 const MAX_MONTH = 12;
 const MIN_DAY = 1;
 const MAX_DAY = 31;
+const activityCategoryValues = ['work', 'research', 'others'] as const satisfies readonly ActivityCategory[];
+const activityCategorySet: ReadonlySet<string> = new Set(activityCategoryValues);
 
 const isInteger = (value: number): boolean => Number.isInteger(value);
+
+const isActivityCategory = (value: string): value is ActivityCategory =>
+  activityCategorySet.has(value);
 
 export const activityDateToComparableValue = (date: ActivityDate): number => {
   const month = date.month ?? 1;
@@ -35,14 +41,37 @@ const assertActivityDateValid = (date: ActivityDate, context: string): void => {
   }
 };
 
-export const validateActivityPeriod = (period: ActivityPeriod, context: string): void => {
-  assertActivityDateValid(period.start, `${context}.period.start`);
+export const validateActivityDate = (raw: unknown, context: string): ActivityDate => {
+  const obj = ensureObject(raw, context);
+  const year = toNumber(obj.year, `${context}.year`);
+  const monthValue = obj.month;
+  const dayValue = obj.day;
 
-  if (period.end === undefined || period.end === null) {
-    return;
+  const date: ActivityDate = { year };
+  if (monthValue !== undefined && monthValue !== null) {
+    date.month = toNumber(monthValue, `${context}.month`);
+  }
+  if (dayValue !== undefined && dayValue !== null) {
+    date.day = toNumber(dayValue, `${context}.day`);
   }
 
-  assertActivityDateValid(period.end, `${context}.period.end`);
+  assertActivityDateValid(date, context);
+  return date;
+};
+
+export const validateActivityPeriod = (raw: unknown, context: string): ActivityPeriod => {
+  const obj = ensureObject(raw, `${context}.period`);
+  const start = validateActivityDate(obj.start, `${context}.period.start`);
+  const period: ActivityPeriod = { start };
+
+  if (obj.end === undefined || obj.end === null) {
+    if (obj.end === null) {
+      period.end = null;
+    }
+    return period;
+  }
+
+  period.end = validateActivityDate(obj.end, `${context}.period.end`);
 
   const startValue = activityDateToComparableValue(period.start);
   const endValue = activityDateToComparableValue(period.end);
@@ -51,6 +80,8 @@ export const validateActivityPeriod = (period: ActivityPeriod, context: string):
     endValue >= startValue,
     `${context}.period.end must not be earlier than ${context}.period.start`,
   );
+
+  return period;
 };
 
 export const formatActivityDate = (date: ActivityDate, options?: { omitYear?: boolean }): string => {
@@ -73,10 +104,10 @@ export const formatActivityDate = (date: ActivityDate, options?: { omitYear?: bo
   return parts.join('/');
 };
 
-export interface FormattedPeriodParts {
+export type FormattedPeriodParts = {
   start: string;
   end: string;
-}
+};
 
 export const formatActivityPeriodParts = (period: ActivityPeriod): FormattedPeriodParts => {
   const start = formatActivityDate(period.start);
@@ -99,9 +130,27 @@ export const getActivityPeriodStartValue = (period: ActivityPeriod): number => {
   return activityDateToComparableValue(period.start);
 };
 
-export const validateActivity = (activity: Activity): Activity => {
-  validateActivityPeriod(activity.period, `Activity(${activity.id})`);
-  return activity;
+export const validateActivity = (raw: unknown): Activity => {
+  const obj = ensureObject(raw, 'Activity');
+  const id = toString(obj.id, 'Activity.id');
+  const context = `Activity(${id})`;
+  const title = toString(obj.title, `${context}.title`);
+  const period = validateActivityPeriod(obj.period, context);
+  const description = toString(obj.description, `${context}.description`);
+  const categoryValue = toString(obj.category, `${context}.category`);
+
+  assert(
+    isActivityCategory(categoryValue),
+    `${context}.category must be one of: ${activityCategoryValues.join(', ')}`,
+  );
+
+  return {
+    id,
+    title,
+    period,
+    description,
+    category: categoryValue,
+  };
 };
 
 // 後方互換性のための関数エイリアス

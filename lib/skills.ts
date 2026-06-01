@@ -3,31 +3,15 @@ import path from 'node:path';
 import { cache } from 'react';
 import YAML from 'yaml';
 
-import { SkillDetail } from '@/types/skills';
+import type { SkillDetail } from '@/types/skills';
 import { assert } from '@/lib/assert';
+import { ensureObject, toOptionalString, toString } from '@/lib/validation';
 
 const skillsFilePath = path.join(process.cwd(), 'data', 'skills.yaml');
 
-interface SkillsData {
+export type SkillsData = {
   skills: SkillDetail[];
-}
-
-function ensureObject(value: unknown, context: string): Record<string, unknown> {
-  assert(value !== null && typeof value === 'object' && !Array.isArray(value), `${context} must be an object`);
-  return value as Record<string, unknown>;
-}
-
-function toString(value: unknown, context: string): string {
-  assert(typeof value === 'string', `${context} must be a string`);
-  return value;
-}
-
-function toOptionalString(value: unknown, context: string): string | undefined {
-  if (value === undefined || value === null) {
-    return undefined;
-  }
-  return toString(value, context);
-}
+};
 
 function validateSkillDetail(raw: unknown, index: number): SkillDetail {
   const context = `skills[${index}]`;

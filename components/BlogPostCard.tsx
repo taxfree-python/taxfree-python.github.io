@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import { Typography, Box } from '@mui/material';
 
-interface BlogPostCardProps {
+type BlogPostCardProps = {
   slug: string;
   title: string;
   date: string;
-}
+};
 
 export function BlogPostCard({ slug, title, date }: BlogPostCardProps) {
   return (
