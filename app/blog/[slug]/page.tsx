@@ -4,15 +4,12 @@ import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 
-interface PageProps {
+type PageProps = {
   params: Promise<{ slug: string }>;
-}
+};
 
 export async function generateStaticParams() {
-  const paths = getAllPostSlugs();
-  return paths.map((path) => ({
-    slug: path.params.slug,
-  }));
+  return getAllPostSlugs();
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

@@ -1,24 +1,25 @@
 import { visit } from 'unist-util-visit';
-import type { Root, Paragraph } from 'mdast';
+import type { Html, Paragraph, Root } from 'mdast';
 
 /**
  * Escapes HTML special characters to prevent XSS attacks
  */
 function escapeHtml(text: string): string {
-  const map: Record<string, string> = {
+  const htmlEscapeMap: Record<string, string> = {
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
     "'": '&#039;',
   };
-  return text.replace(/[&<>"']/g, (char) => map[char]);
+
+  return text.replace(/[&<>"']/g, (char) => htmlEscapeMap[char] ?? char);
 }
 
 /**
  * Remark plugin to transform {{<embed-pdf url="...">}} syntax to iframe HTML
  */
-export function remarkEmbedPdf() {
+export function remarkEmbedPdf(): (tree: Root) => void {
   return (tree: Root) => {
     visit(tree, 'paragraph', (node: Paragraph, index, parent) => {
       if (!parent || index === undefined) return;
@@ -42,6 +43,7 @@ export function remarkEmbedPdf() {
       if (!match) return;
 
       const url = match[1];
+      if (url === undefined) return;
 
       // Escape URL and attributes to prevent XSS attacks.
       // Note: This provides defense-in-depth, but the primary security validation
@@ -56,8 +58,8 @@ export function remarkEmbedPdf() {
       const escapedAriaLabel = escapeHtml(`PDF document viewer for ${filename}`);
 
       // Replace the paragraph node with an HTML node
-      const htmlNode = {
-        type: 'html' as const,
+      const htmlNode: Html = {
+        type: 'html',
         value: `<div style="width: 100%; height: 600px; margin: 2rem 0;">
   <iframe src="${escapedUrl}" width="100%" height="100%" style="border: 1px solid #ccc; border-radius: 8px;" title="${escapedTitle}" aria-label="${escapedAriaLabel}"></iframe>
 </div>`,

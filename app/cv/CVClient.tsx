@@ -4,26 +4,34 @@ import { Container, Box } from '@mui/material';
 import { SkillsSection } from '@/components/SkillsSection';
 import { ActivitiesSection } from '@/components/ActivitiesSection';
 import { CertificationsSection } from '@/components/CertificationsSection';
+import type { CertificationsContent } from '@/types/profile';
 import type { ProjectActivity } from '@/types/activities';
 import type { SkillDetail } from '@/types/skills';
-import type { CertificationsContent } from '@/types/profile';
 
-interface CVClientProps {
+type CVClientProps = {
   activities: ProjectActivity[];
   skills: SkillDetail[];
   certifications: CertificationsContent;
-}
+};
+
+const coreSkillNames: ReadonlySet<string> = new Set([
+  'Python',
+  'React/TypeScript',
+  'AI Agents',
+]);
+
+const mainExperienceIds: ReadonlySet<string> = new Set([
+  'pfn-education-project-engineer',
+  'riken-bdr-part-timer',
+  'layerx-ai-workforce-intern',
+]);
 
 export default function CVClient({ activities, skills, certifications }: CVClientProps) {
   // Core skills only: Python, React/TypeScript, AI Agents
-  const coreSkills = skills.filter(skill =>
-    ['Python', 'React/TypeScript', 'AI Agents'].includes(skill.name)
-  );
+  const coreSkills = skills.filter((skill) => coreSkillNames.has(skill.name));
 
   // Main experiences only: PFN, RIKEN, LayerX
-  const mainExperiences = activities.filter(activity =>
-    ['pfn-education-project-engineer', 'riken-bdr-part-timer', 'layerx-ai-workforce-intern'].includes(activity.id)
-  );
+  const mainExperiences = activities.filter((activity) => mainExperienceIds.has(activity.id));
 
   return (
     <Box

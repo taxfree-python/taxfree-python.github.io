@@ -3,9 +3,9 @@ import { Container, Typography, Box, Stack } from '@mui/material';
 import { BlogPostCard } from './BlogPostCard';
 import type { PostData } from '@/lib/posts';
 
-interface RecentPostsSectionProps {
+type RecentPostsSectionProps = {
   posts: PostData[];
-}
+};
 
 export function RecentPostsSection({ posts }: RecentPostsSectionProps) {
   return (

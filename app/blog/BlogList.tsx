@@ -8,9 +8,9 @@ import type { PostData } from '@/lib/posts';
 
 const POSTS_PER_PAGE = 10;
 
-interface BlogListProps {
+type BlogListProps = {
   posts: PostData[];
-}
+};
 
 export function BlogList({ posts }: BlogListProps) {
   const [displayCount, setDisplayCount] = useState(POSTS_PER_PAGE);

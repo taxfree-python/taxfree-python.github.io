@@ -3,7 +3,7 @@ import path from 'node:path';
 import { cache } from 'react';
 import YAML from 'yaml';
 
-import { Activity } from '@/types/activities';
+import type { Activity } from '@/types/activities';
 import { validateActivity } from './activityPeriod';
 
 const activitiesFilePath = path.join(process.cwd(), 'data', 'activities.yaml');
@@ -18,7 +18,7 @@ function readActivitiesFile(): Activity[] {
 
   return parsed.map((item, index) => {
     try {
-      return validateActivity(item as Activity);
+      return validateActivity(item);
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown validation error';
       throw new Error(`Invalid activity at index ${index}: ${message}`);
@@ -32,4 +32,3 @@ export const getActivities = cache((): Activity[] => {
 
 // 後方互換性のための関数エイリアス
 export const getProjectsAndActivities = getActivities;
-

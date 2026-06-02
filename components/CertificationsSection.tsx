@@ -2,24 +2,26 @@
 
 import { useState } from 'react';
 import { Container, Typography, Box, Stack, Collapse } from '@mui/material';
-import { CertificationsContent } from '@/types/profile';
+import type { CertificationsContent } from '@/types/profile';
 import { formatActivityDate } from '@/lib/activityPeriod';
 
-interface CertificationsSectionProps {
+type CertificationsSectionProps = {
   content: CertificationsContent;
-}
+};
 
 export function CertificationsSection({ content }: CertificationsSectionProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
   const toggleExpanded = (name: string) => {
-    const newExpanded = new Set(expandedIds);
-    if (newExpanded.has(name)) {
-      newExpanded.delete(name);
-    } else {
-      newExpanded.add(name);
-    }
-    setExpandedIds(newExpanded);
+    setExpandedIds((currentIds) => {
+      const nextIds = new Set(currentIds);
+      if (nextIds.has(name)) {
+        nextIds.delete(name);
+      } else {
+        nextIds.add(name);
+      }
+      return nextIds;
+    });
   };
 
   return (

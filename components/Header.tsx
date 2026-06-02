@@ -9,7 +9,7 @@ const navLinks = [
   { href: '/cv', label: 'CV' },
   // 製作中のため一時的に非表示
   // { href: '/gallery', label: 'Gallery' },
-];
+] as const;
 
 export function Header() {
   const pathname = usePathname();

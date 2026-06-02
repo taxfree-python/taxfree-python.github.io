@@ -1,6 +1,6 @@
 export type MediaType = 'image' | 'gif' | 'video';
 
-export interface GalleryWork {
+export type GalleryWork = {
   id: string;
   title: string;
   date: string;
@@ -10,8 +10,8 @@ export interface GalleryWork {
   description?: string;
   category?: string;
   tools?: string[];
-}
+};
 
-export interface GalleryData {
+export type GalleryData = {
   works: GalleryWork[];
-}
+};

@@ -1,11 +1,11 @@
 import { Container, Typography } from '@mui/material';
-import { HeroContent } from '@/types/profile';
+import type { HeroContent } from '@/types/profile';
 import { SocialLinks } from './SocialLinks';
 import { DynamicSubtitle } from './DynamicSubtitle';
 
-interface HeroSectionProps {
+type HeroSectionProps = {
   content: HeroContent;
-}
+};
 
 export function HeroSection({ content }: HeroSectionProps) {
   return (

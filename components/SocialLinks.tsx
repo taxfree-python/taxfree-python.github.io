@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { Box, Typography } from '@mui/material';
-import { SocialLink } from '@/types/profile';
+import type { SocialLink } from '@/types/profile';
 
-interface SocialLinksProps {
+type SocialLinksProps = {
   links: SocialLink[];
-}
+};
 
 export function SocialLinks({ links }: SocialLinksProps) {
   return (

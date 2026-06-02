@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
-import { HeroSubtitle } from '@/types/profile';
+import type { HeroSubtitle } from '@/types/profile';
 
 const HOLD_MS = 1800;
 const DELETE_MS = 60;
@@ -11,19 +11,41 @@ const TYPE_MS = 80;
 const WIPE_PAUSE_MS = 400;
 const SWAP_PAUSE_MS = 200;
 
-function buildCycle(xLen: number, yLen: number): Array<[number, number]> {
-  const cycle: Array<[number, number]> = [];
+type DynamicSubtitleProps = {
+  content: HeroSubtitle;
+};
+
+type CycleStep = readonly [number, number];
+
+function buildCycle(xLen: number, yLen: number): CycleStep[] {
+  const cycle: CycleStep[] = [];
   for (let i = 0; i < xLen; i++) {
     for (let j = 0; j < yLen; j++) cycle.push([i, j]);
   }
   return cycle;
 }
 
-function compose(x: string, connector: string, y: string) {
+function getCycleStep(cycle: readonly CycleStep[], index: number): CycleStep {
+  const step = cycle[index];
+  if (step === undefined) {
+    throw new Error(`Dynamic subtitle cycle index out of range: ${index}`);
+  }
+  return step;
+}
+
+function getOption(options: readonly [string, ...string[]], index: number): string {
+  const option = options[index];
+  if (option === undefined) {
+    throw new Error(`Dynamic subtitle option index out of range: ${index}`);
+  }
+  return option;
+}
+
+function compose(x: string, connector: string, y: string): string {
   return `${x} ${connector} ${y}`;
 }
 
-export function DynamicSubtitle({ content }: { content: HeroSubtitle }) {
+export function DynamicSubtitle({ content }: DynamicSubtitleProps) {
   const { xOptions, yOptions, connector } = content;
   const [text, setText] = useState(() => compose(xOptions[0], connector, yOptions[0]));
 
@@ -40,7 +62,12 @@ export function DynamicSubtitle({ content }: { content: HeroSubtitle }) {
 
     const loop = async () => {
       let i = 0;
-      let current = compose(xOptions[cycle[0][0]], connector, yOptions[cycle[0][1]]);
+      const [firstXi, firstYi] = getCycleStep(cycle, 0);
+      let current = compose(
+        getOption(xOptions, firstXi),
+        connector,
+        getOption(yOptions, firstYi),
+      );
       setText(current);
 
       while (!cancelled) {
@@ -48,10 +75,10 @@ export function DynamicSubtitle({ content }: { content: HeroSubtitle }) {
         if (cancelled) return;
 
         const next = (i + 1) % cycle.length;
-        const [cxi] = cycle[i];
-        const [nxi, nyi] = cycle[next];
-        const target = compose(xOptions[nxi], connector, yOptions[nyi]);
-        const keepPrefix = nxi === cxi ? `${xOptions[cxi]} ${connector} ` : '';
+        const [cxi] = getCycleStep(cycle, i);
+        const [nxi, nyi] = getCycleStep(cycle, next);
+        const target = compose(getOption(xOptions, nxi), connector, getOption(yOptions, nyi));
+        const keepPrefix = nxi === cxi ? `${getOption(xOptions, cxi)} ${connector} ` : '';
 
         const deleteMs = keepPrefix.length === 0 ? DELETE_MS : SWAP_DELETE_MS;
         while (current.length > keepPrefix.length) {
@@ -75,7 +102,7 @@ export function DynamicSubtitle({ content }: { content: HeroSubtitle }) {
       }
     };
 
-    loop();
+    void loop();
 
     return () => {
       cancelled = true;

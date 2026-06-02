@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { Container, Typography, Box, Stack, Button, Collapse } from '@mui/material';
-import { ProjectActivity, ActivityCategory } from '@/types/activities';
+import type { ActivityCategory, ProjectActivity } from '@/types/activities';
 import { formatActivityPeriodParts, getActivityPeriodEndValue, getActivityPeriodStartValue } from '@/lib/activityPeriod';
 
-interface ActivitiesSectionProps {
+type ActivitiesSectionProps = {
   activities: ProjectActivity[];
   allActivities?: ProjectActivity[];
-}
+};
 
 const categoryLabels: Record<ActivityCategory, string> = {
   work: 'Work',
@@ -16,7 +16,7 @@ const categoryLabels: Record<ActivityCategory, string> = {
   others: 'Others',
 };
 
-const categoryOrder: ActivityCategory[] = ['work', 'research', 'others'];
+const categoryOrder = ['work', 'research', 'others'] as const satisfies readonly ActivityCategory[];
 
 export function ActivitiesSection({ activities, allActivities = [] }: ActivitiesSectionProps) {
   const [showAll, setShowAll] = useState(false);
@@ -26,13 +26,15 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
   const hasMore = allActivities.length > activities.length;
 
   const toggleExpanded = (id: string) => {
-    const newExpanded = new Set(expandedIds);
-    if (newExpanded.has(id)) {
-      newExpanded.delete(id);
-    } else {
-      newExpanded.add(id);
-    }
-    setExpandedIds(newExpanded);
+    setExpandedIds((currentIds) => {
+      const nextIds = new Set(currentIds);
+      if (nextIds.has(id)) {
+        nextIds.delete(id);
+      } else {
+        nextIds.add(id);
+      }
+      return nextIds;
+    });
   };
 
   // Sort activities by end date (most recent first, ongoing activities at top)
@@ -51,10 +53,14 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
   });
 
   // Group activities by category
-  const groupedActivities = categoryOrder.reduce((acc, category) => {
-    acc[category] = sortedActivities.filter(a => a.category === category);
-    return acc;
-  }, {} as Record<ActivityCategory, ProjectActivity[]>);
+  const groupedActivities: Record<ActivityCategory, ProjectActivity[]> = {
+    work: [],
+    research: [],
+    others: [],
+  };
+  for (const activity of sortedActivities) {
+    groupedActivities[activity.category].push(activity);
+  }
 
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6, pb: 10 }}>
@@ -169,7 +175,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
       {hasMore && (
         <Box sx={{ mt: 6, textAlign: 'center' }}>
           <Button
-            onClick={() => setShowAll(!showAll)}
+            onClick={() => setShowAll((currentShowAll) => !currentShowAll)}
             sx={{
               textTransform: 'none',
               color: 'text.primary',
