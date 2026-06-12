@@ -1,0 +1,84 @@
+---
+-
+  id: "jsai2026-collaborative-idea-evolution"
+  title: "multi-agentシステムによるラボ固有知識と文献に基づく共同研究アイディアの進化的生成"
+  authors:
+    - "知念優"
+    - "尾崎遼"
+  venue: "2026年度 人工知能学会全国大会 (JSAI2026), OS-30 進化するAIサイエンティスト"
+  type: "oral"
+  date:
+    year: 2026
+    month: 6
+  links:
+    -
+      label: "Confit"
+      url: "https://pub.confit.atlas.jp/ja/event/jsai2026/presentation/5L1-OS-30-03"
+-
+  id: "icml2026-ai4science-ideation-diversity"
+  title: "On the Effects of Reasoning Effort and Prompt-Based Diversification on Scientific Ideation Diversity"
+  authors:
+    - "Yu Chinen"
+    - "Haruka Ozaki"
+  venue: "ICML 2026 AI4Science Workshop"
+  type: "poster"
+  date:
+    year: 2026
+    month: 7
+  links:
+    -
+      label: "OpenReview"
+      url: "https://openreview.net/forum?id=xt5P634aET"
+-
+  id: "jaam53-doctor-car-dispatch-criteria"
+  title: "当院ドクターカー病院前救急医療体制における出動要請基準に関する検討"
+  authors:
+    - "岩﨑陽平"
+    - "知念優"
+    - "山下真"
+    - "北原嶺"
+    - "原島瑞葵"
+    - "服部恭平"
+    - "森周介"
+    - "小林和博"
+    - "中田和秀"
+    - "森下幸治"
+  venue: "第53回日本救急医学会総会・学術集会 (主題関連セッション21, O21-3)"
+  type: "oral"
+  date:
+    year: 2025
+    month: 10
+-
+  id: "jsicm52-doctor-car-optimization"
+  title: "ドクターカー運用の最適化を追求する～AI解析への布石"
+  authors:
+    - "森周介"
+    - "山下真"
+    - "中田和秀"
+    - "小林和博"
+    - "岩崎陽平"
+    - "北原嶺"
+    - "原島瑞葵"
+    - "服部恭平"
+    - "知念優"
+    - "森下幸治"
+  venue: "第52回日本集中治療医学会学術集会 (ポスター102 AI, P102-6)"
+  type: "poster"
+  date:
+    year: 2025
+    month: 3
+-
+  id: "ai4x-2026-evolving-collaborative-research-ideas"
+  title: "Evolving Collaborative Research Ideas with Multi-Agent Grounding in Lab-Specific Contexts and Literature"
+  authors:
+    - "Yu Chinen"
+    - "Haruka Ozaki"
+  venue: "AI4X – Accelerate Conference 2026"
+  type: "oral"
+  date:
+    year: 2026
+    month: 6
+  links:
+    -
+      label: "OpenReview"
+      url: "https://openreview.net/forum?id=RDTccqN78N"

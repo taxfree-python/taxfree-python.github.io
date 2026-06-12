@@ -63,7 +63,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
   }
 
   return (
-    <Container maxWidth="md" component="section" sx={{ py: 6, pb: 10 }}>
+    <Container maxWidth="md" component="section" sx={{ pt: 6, pb: 3 }}>
       <Typography
         variant="h4"
         component="h2"
@@ -173,7 +173,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
       </Stack>
 
       {hasMore && (
-        <Box sx={{ mt: 6, textAlign: 'center' }}>
+        <Box sx={{ mt: 3, textAlign: 'center' }}>
           <Button
             onClick={() => setShowAll((currentShowAll) => !currentShowAll)}
             sx={{
