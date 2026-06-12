@@ -70,7 +70,8 @@ export function CertificationsSection({ content }: CertificationsSectionProps) {
                 color="text.secondary"
                 sx={{
                   ml: 2,
-                  whiteSpace: 'nowrap'
+                  whiteSpace: 'nowrap',
+                  fontVariantNumeric: 'tabular-nums'
                 }}
               >
                 {formatActivityDate(certification.acquiredDate)}
@@ -90,7 +91,8 @@ export function CertificationsSection({ content }: CertificationsSectionProps) {
                     variant="body1"
                     sx={{
                       fontWeight: 500,
-                      mb: 0.5
+                      mb: 0.5,
+                      fontVariantNumeric: 'tabular-nums'
                     }}
                   >
                     {certification.score}
@@ -102,7 +104,8 @@ export function CertificationsSection({ content }: CertificationsSectionProps) {
                     color="text.secondary"
                     sx={{
                       lineHeight: 1.7,
-                      letterSpacing: '-0.01em'
+                      letterSpacing: '-0.01em',
+                      fontVariantNumeric: 'tabular-nums'
                     }}
                   >
                     {certification.description}
