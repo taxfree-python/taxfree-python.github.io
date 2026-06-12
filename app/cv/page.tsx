@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { getProjectsAndActivities } from '@/lib/activities';
 import { getSkillsData } from '@/lib/skills';
+import { getPublications } from '@/lib/publications';
 import { certificationsContent } from '@/data/profile';
 import { siteConfig } from '@/config/site';
 import CVClient from './CVClient';
 
-const cvDescription = 'Curriculum Vitae - Skills, Experience, and Certifications';
+const cvDescription = 'Curriculum Vitae - Skills, Experience, Publications, and Certifications';
 
 export const metadata: Metadata = {
   title: `CV - ${siteConfig.name}`,
@@ -39,11 +40,13 @@ export const metadata: Metadata = {
 export default function CVPage() {
   const activities = getProjectsAndActivities();
   const { skills } = getSkillsData();
+  const publications = getPublications();
 
   return (
     <CVClient
       activities={activities}
       skills={skills}
+      publications={publications}
       certifications={certificationsContent}
     />
   );
