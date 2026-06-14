@@ -9,14 +9,24 @@
     end:
       year: 2026
       month: 5
-  description: "LayerXでapplied R&Dに従事"
+  description: "Agenticなサービスにおける「UIのラストワンマイル」をLLMで埋めるR&Dに従事。Google主導の宣言的UI生成プロトコル A2UI を基盤に、ユーザーの自然言語指示から業務目的に応じたUIを動的生成する仕組みを設計・実装。成果は社外イベントで[発表した](https://speakerdeck.com/taxfree_python/r-and-d-uinorasutowanmairuwollmdemai-meru)。"
   skills:
     - "Python"
     - "LLM"
     - "AI Agents"
+    - "Generative UI"
   category: "work"
-  detailedDescription: ""
+  detailedDescription: "Agenticで動的・多目的なサービスでは全ユーザーに同一UIを提供する「one size fits all」が限界を迎えるという課題に対し、ユーザーが業務目的ごとにUIをカスタマイズできる体験を「UIのラストワンマイルをLLMで埋める」というコンセプトで提案・検証。Google主導の宣言的UI生成プロトコル A2UI を基盤に採用し、信頼できるコンポーネント群(catalog/inventory)の範囲内でLLMがUIをJSONとして生成する仕組みを構築。任意コードを実行しない宣言的生成により「壊れないUI」を担保しつつ、生成時はLLMでテンプレートUIを作り、利用時はテンプレートにデータを注入してレンダリングする「テンプレートとデータの分離」設計で、レイテンシと安定性を両立した。A2UI公式実装に不足していた複数LLMプロバイダ対応・マルチターン会話・UI定義のJSON export/importを自前で実装。さらに与えられたinventoryでUIを構成可能かを判定する境界検出を導入し、無理な更新の抑制とユーザーへのフィードバック・inventory拡張の根拠付けに活用。スライド検索を題材に、自然言語による段階的なレイアウト・表示項目・プロパティの変更が可能なことを検証した。"
   achievements:
+    - "「UIのラストワンマイルをLLMで埋める」コンセプトの提案と検証"
+    - "A2UI(宣言的UI生成プロトコル)を基盤としたUI動的生成基盤の設計・実装"
+    - "複数LLMプロバイダ対応・マルチターン会話・JSON export/importなど公式未対応機能の自前実装"
+    - "inventory境界検出による安全なUI更新とフィードバックループの構築"
+    - "成果を社外イベント「LayerXの向き合うR&D課題」で発表"
+  links:
+    -
+      label: "R&D_UIのラストワンマイルをLLMで埋める (発表スライド)"
+      url: "https://speakerdeck.com/taxfree_python/r-and-d-uinorasutowanmairuwollmdemai-meru"
 -
   id: "riken-bdr-part-timer"
   title: "理化学研究所 BDR 研究パートタイマーⅠ"
