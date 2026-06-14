@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Container, Typography, Box, Stack, Button, Collapse } from '@mui/material';
+import { Container, Typography, Box, Stack, Button, Collapse, Link } from '@mui/material';
 import type { ActivityCategory, ProjectActivity } from '@/types/activities';
 import { formatActivityPeriodParts, getActivityPeriodEndValue, getActivityPeriodStartValue } from '@/lib/activityPeriod';
 
@@ -17,6 +17,30 @@ const categoryLabels: Record<ActivityCategory, string> = {
 };
 
 const categoryOrder = ['work', 'research', 'others'] as const satisfies readonly ActivityCategory[];
+
+// Allowed URL characters exclude parentheses and any non-ASCII (e.g. Japanese)
+// so a URL embedded in CJK text like 「...」(https://example.com)として... stops correctly.
+const urlSplitPattern = /(https?:\/\/[A-Za-z0-9\-._~:/?#@!$&'*+,;=%]+)/g;
+const urlTestPattern = /^https?:\/\/[A-Za-z0-9\-._~:/?#@!$&'*+,;=%]+$/;
+
+// Split text on URLs and render each URL as a clickable link.
+function renderTextWithLinks(text: string) {
+  return text.split(urlSplitPattern).map((part, index) =>
+    urlTestPattern.test(part) ? (
+      <Link
+        key={index}
+        href={part}
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{ wordBreak: 'break-all' }}
+      >
+        {part}
+      </Link>
+    ) : (
+      part
+    ),
+  );
+}
 
 export function ActivitiesSection({ activities, allActivities = [] }: ActivitiesSectionProps) {
   const [showAll, setShowAll] = useState(false);
@@ -160,7 +184,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
                             letterSpacing: '-0.01em'
                           }}
                         >
-                          {activity.description}
+                          {renderTextWithLinks(activity.description)}
                         </Typography>
                       </Box>
                     </Collapse>
