@@ -57,18 +57,22 @@
     end:
       year: 2025
       month: 10
-  description: "業務プロセスの自動化を目的としたAI Agent Workflowの設計・最適化に取り組むR&Dチームに参加"
+  description: "「動的手法によるAI Agent自動生成」をテーマに、多様なタスクを解くAI Agentを動的に自動生成するメタエージェントの実装に取り組んだ。木探索ベースの手法を検証し、ベースライン比+3.5〜+25.0ポイントの精度改善を達成。成果は[LayerX技術ブログ](https://tech.layerx.co.jp/entry/2025/11/05/00)で紹介された。"
   skills:
     - "LLM"
     - "Python"
     - "AI Agents"
   category: "work"
-  detailedDescription: "業務に含まれる操作手順・依存関係・データ構造を分析し、タスク分解・ステップ設計・パラメータ抽象化を実施。LayerXで扱う問題に近いベンチマークを用いて、Agent workflow生成の技術を使った解法を検討・実装。AdaptFlow (Adaptive Workflow Optimization via Meta-Learning)、AFlow (Automating Agentic Workflow Generation)、Multi-Agent Architecture Search via Agentic Supernetなどの研究をベースに検討・実装。Agentの挙動ログを観察し、失敗パターンの抽出・プロンプト改善・ステップ再設計など、改善サイクルを実行。"
+  detailedDescription: "個別のAI Agent開発には膨大な工数がかかるという課題に対し、「多様なタスクを解くAI Agentを動的に自動生成するメタエージェント」の実装に取り組んだ。AdaptFlow (Adaptive Workflow Optimization via Meta-Learning)、AFlow (Automating Agentic Workflow Generation)、Multi-Agent Architecture Search via Agentic Supernet などの研究をベースに、木探索ベースでAI Agentを自動生成する手法を検証し、LLM単体をベースラインとして比較する設計を構築。実装過程で数量形式QAタスクの精度が上がらない問題を発見し、LLMの品質評価・サンプル数チューニング・QA種別分類などの仮説検証を通じて計5点の根本原因分析を実施。結果としてベースライン比+3.5〜+25.0ポイントの精度改善を達成した。"
   achievements:
-    - "業務プロセスの操作手順・依存関係・データ構造の分析とタスク分解"
-    - "最新研究(AdaptFlow, AFlow, Multi-Agent Architecture Search)ベースの実装"
-    - "Agent挙動ログの観察と失敗パターンの抽出"
-    - "プロンプト改善・ステップ再設計による改善サイクルの実行"
+    - "多様なタスクを解くAI Agentを動的に自動生成するメタエージェントの設計・実装"
+    - "最新研究(AdaptFlow, AFlow, Multi-Agent Architecture Search)をベースとした木探索ベース手法の検証"
+    - "数量形式QAタスクの精度問題に対する根本原因分析(計5点)の実施"
+    - "ベースライン比+3.5〜+25.0ポイントの精度改善を達成"
+  links:
+    -
+      label: "LayerX Ai Workforce R&Dチーム始動とインターン成果 (LayerX技術ブログ)"
+      url: "https://tech.layerx.co.jp/entry/2025/11/05/00"
 -
   id: "preferred-robotics-intern"
   title: "Preferred Robotics ソフトウェアエンジニアインターン"
