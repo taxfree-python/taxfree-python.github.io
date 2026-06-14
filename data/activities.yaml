@@ -108,7 +108,7 @@
     end:
       year: 2025
       month: 12
-  description: "LLMを活用した教育向けサービスの企画・開発に従事。LLMだけに閉じないUI/UXも含めて、学習体験全体の設計に関わる。開発に携わったサービスは「[AI添削小論文対策講座](https://ypswitch.jp/ai-syoron)」として公開された"
+  description: "LLMを活用した教育向けサービスの企画・開発に従事。LLMだけに閉じないUI/UXも含めて、学習体験全体の設計に関わる。開発に携わったサービスは「[AI添削小論文対策講座](https://ypswitch.jp/ai-syoron)」として公開された。"
   skills:
     - "Python"
     - "LLM"
