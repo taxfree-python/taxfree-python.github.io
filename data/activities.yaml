@@ -57,15 +57,15 @@
     end:
       year: 2025
       month: 10
-  description: "「動的手法によるAI Agent自動生成」をテーマに、多様なタスクを解くAI Agentを動的に自動生成するメタエージェントの実装に取り組んだ。木探索ベースの手法を検証し、ベースライン比+3.5〜+25.0ポイントの精度改善を達成。成果は[LayerX技術ブログ](https://tech.layerx.co.jp/entry/2025/11/05/00)で紹介された。"
+  description: "「動的手法によるAgent Workflow自動生成」をテーマに、多様なタスクを解くAgent Workflowを動的に自動生成するメタエージェントの実装に取り組んだ。木探索ベースの手法を検証し、ベースライン比+3.5〜+25.0ポイントの精度改善を達成。成果は[LayerX技術ブログ](https://tech.layerx.co.jp/entry/2025/11/05/00)で紹介された。"
   skills:
     - "LLM"
     - "Python"
     - "AI Agents"
   category: "work"
-  detailedDescription: "個別のAI Agent開発には膨大な工数がかかるという課題に対し、「多様なタスクを解くAI Agentを動的に自動生成するメタエージェント」の実装に取り組んだ。AdaptFlow (Adaptive Workflow Optimization via Meta-Learning)、AFlow (Automating Agentic Workflow Generation)、Multi-Agent Architecture Search via Agentic Supernet などの研究をベースに、木探索ベースでAI Agentを自動生成する手法を検証し、LLM単体をベースラインとして比較する設計を構築。実装過程で数量形式QAタスクの精度が上がらない問題を発見し、LLMの品質評価・サンプル数チューニング・QA種別分類などの仮説検証を通じて計5点の根本原因分析を実施。結果としてベースライン比+3.5〜+25.0ポイントの精度改善を達成した。"
+  detailedDescription: "個別のAgent Workflow開発には膨大な工数がかかるという課題に対し、「多様なタスクを解くAgent Workflowを動的に自動生成するメタエージェント」の実装に取り組んだ。AdaptFlow (Adaptive Workflow Optimization via Meta-Learning)、AFlow (Automating Agentic Workflow Generation)、Multi-Agent Architecture Search via Agentic Supernet などの研究をベースに、木探索ベースでAgent Workflowを自動生成する手法を検証し、LLM単体をベースラインとして比較する設計を構築。実装過程で数量形式QAタスクの精度が上がらない問題を発見し、LLMの品質評価・サンプル数チューニング・QA種別分類などの仮説検証を通じて計5点の根本原因分析を実施。結果としてベースライン比+3.5〜+25.0ポイントの精度改善を達成した。"
   achievements:
-    - "多様なタスクを解くAI Agentを動的に自動生成するメタエージェントの設計・実装"
+    - "多様なタスクを解くAgent Workflowを動的に自動生成するメタエージェントの設計・実装"
     - "最新研究(AdaptFlow, AFlow, Multi-Agent Architecture Search)をベースとした木探索ベース手法の検証"
     - "数量形式QAタスクの精度問題に対する根本原因分析(計5点)の実施"
     - "ベースライン比+3.5〜+25.0ポイントの精度改善を達成"
