@@ -6,15 +6,27 @@
     start:
       year: 2026
       month: 1
-    end: null
-  description: "LayerXでapplied R&Dに従事"
+    end:
+      year: 2026
+      month: 5
+  description: "Agentic なサービスにおける「UI のラストワンマイル」を LLM で埋める R&D に従事。Google 主導の宣言的 UI 生成プロトコル A2UI を基盤に、ユーザーの自然言語指示から業務目的に応じた UI を動的生成する仕組みを設計・実装。成果は社外イベントで[発表した](https://speakerdeck.com/taxfree_python/r-and-d-uinorasutowanmairuwollmdemai-meru)。"
   skills:
     - "Python"
     - "LLM"
     - "AI Agents"
+    - "Generative UI"
   category: "work"
-  detailedDescription: ""
+  detailedDescription: "Agentic で動的・多目的なサービスでは全ユーザーに同一 UI を提供する「one size fits all」が限界を迎えるという課題に対し、ユーザーが業務目的ごとに UI をカスタマイズできる体験を「UI のラストワンマイルを LLM で埋める」というコンセプトで提案・検証。Google 主導の宣言的 UI 生成プロトコル A2UI を基盤に採用し、信頼できるコンポーネント群 (catalog/inventory) の範囲内で LLM が UI を JSON として生成する仕組みを構築。任意コードを実行しない宣言的生成により「壊れない UI」を担保しつつ、生成時は LLM でテンプレート UI を作り、利用時はテンプレートにデータを注入してレンダリングする「テンプレートとデータの分離」設計で、レイテンシと安定性を両立した。A2UI 公式実装に不足していた複数 LLM プロバイダ対応・マルチターン会話・UI 定義の JSON export/import を自前で実装。さらに与えられた inventory で UI を構成可能かを判定する境界検出を導入し、無理な更新の抑制とユーザーへのフィードバック・inventory 拡張の根拠付けに活用。スライド検索を題材に、自然言語による段階的なレイアウト・表示項目・プロパティの変更が可能なことを検証した。"
   achievements:
+    - "「UI のラストワンマイルを LLM で埋める」コンセプトの提案と検証"
+    - "A2UI (宣言的 UI 生成プロトコル) を基盤とした UI 動的生成基盤の設計・実装"
+    - "複数 LLM プロバイダ対応・マルチターン会話・JSON export/import など公式未対応機能の自前実装"
+    - "inventory 境界検出による安全な UI 更新とフィードバックループの構築"
+    - "成果を社外イベント「LayerX の向き合う R&D 課題」で発表"
+  links:
+    -
+      label: "R&D_UI のラストワンマイルを LLM で埋める (発表スライド)"
+      url: "https://speakerdeck.com/taxfree_python/r-and-d-uinorasutowanmairuwollmdemai-meru"
 -
   id: "riken-bdr-part-timer"
   title: "理化学研究所 BDR 研究パートタイマーⅠ"
@@ -45,18 +57,22 @@
     end:
       year: 2025
       month: 10
-  description: "業務プロセスの自動化を目的としたAI Agent Workflowの設計・最適化に取り組むR&Dチームに参加"
+  description: "「動的手法による Agent Workflow 自動生成」をテーマに、多様なタスクを解く Agent Workflow を動的に自動生成するメタエージェントの実装に取り組んだ。木探索ベースの手法を検証し、ベースライン比 +3.5〜+25.0 ポイントの精度改善を達成。成果は[LayerX 技術ブログ](https://tech.layerx.co.jp/entry/2025/11/05/00)で紹介された。"
   skills:
     - "LLM"
     - "Python"
     - "AI Agents"
   category: "work"
-  detailedDescription: "業務に含まれる操作手順・依存関係・データ構造を分析し、タスク分解・ステップ設計・パラメータ抽象化を実施。LayerXで扱う問題に近いベンチマークを用いて、Agent workflow生成の技術を使った解法を検討・実装。AdaptFlow (Adaptive Workflow Optimization via Meta-Learning)、AFlow (Automating Agentic Workflow Generation)、Multi-Agent Architecture Search via Agentic Supernetなどの研究をベースに検討・実装。Agentの挙動ログを観察し、失敗パターンの抽出・プロンプト改善・ステップ再設計など、改善サイクルを実行。"
+  detailedDescription: "個別の Agent Workflow 開発には膨大な工数がかかるという課題に対し、「多様なタスクを解く Agent Workflow を動的に自動生成するメタエージェント」の実装に取り組んだ。AdaptFlow (Adaptive Workflow Optimization via Meta-Learning)、AFlow (Automating Agentic Workflow Generation)、Multi-Agent Architecture Search via Agentic Supernet などの研究をベースに、木探索ベースで Agent Workflow を自動生成する手法を検証し、LLM 単体をベースラインとして比較する設計を構築。実装過程で数量形式 QA タスクの精度が上がらない問題を発見し、LLM の品質評価・サンプル数チューニング・QA 種別分類などの仮説検証を通じて計 5 点の根本原因分析を実施。結果としてベースライン比 +3.5〜+25.0 ポイントの精度改善を達成した。"
   achievements:
-    - "業務プロセスの操作手順・依存関係・データ構造の分析とタスク分解"
-    - "最新研究(AdaptFlow, AFlow, Multi-Agent Architecture Search)ベースの実装"
-    - "Agent挙動ログの観察と失敗パターンの抽出"
-    - "プロンプト改善・ステップ再設計による改善サイクルの実行"
+    - "多様なタスクを解く Agent Workflow を動的に自動生成するメタエージェントの設計・実装"
+    - "最新研究 (AdaptFlow, AFlow, Multi-Agent Architecture Search) をベースとした木探索ベース手法の検証"
+    - "数量形式 QA タスクの精度問題に対する根本原因分析 (計 5 点) の実施"
+    - "ベースライン比 +3.5〜+25.0 ポイントの精度改善を達成"
+  links:
+    -
+      label: "LayerX Ai Workforce R&D チーム始動とインターン成果 (LayerX 技術ブログ)"
+      url: "https://tech.layerx.co.jp/entry/2025/11/05/00"
 -
   id: "preferred-robotics-intern"
   title: "Preferred Robotics ソフトウェアエンジニアインターン"
@@ -106,19 +122,24 @@
     end:
       year: 2025
       month: 12
-  description: "LLMを活用した教育向けサービスの企画・開発に従事。LLMだけに閉じないUI/UXも含めて、学習体験全体の設計に関わる"
+  description: "2024 年夏の国内インターンシップから引き続き、同じ教育向けサービスの企画・開発を担当。LLM を活用しつつ、LLM だけに閉じない UI/UX も含めて学習体験全体の設計に関わった。開発に携わったサービスは「[AI 添削小論文対策講座](https://ypswitch.jp/ai-syoron)」として公開された。"
   skills:
     - "Python"
     - "LLM"
     - "React"
     - "TypeScript"
   category: "work"
-  detailedDescription: "現場の講師・先生へのヒアリングを通じて、学習者向けフィードバックにおける「望ましい応答条件」(言葉遣い、安全性、モチベーション維持、認知負荷など)を整理し、タスク特化の評価基準として体系化。これらの評価基準を踏まえ、LLMによるフィードバック生成workflowを設計・実装。出力の傾向を確認しながら、プロンプト改善・仕様調整の反復サイクルを自ら回した。モデル側だけでなく、学習者にとって分かりやすいUI/UXの検討・プロトタイプ実装(React)にも大きくコミット。インターン期間内に、現在のサービスの基盤となる構成(画面遷移・機能構造・LLM workflowの接続)を設計し、フルタイムエンジニアと共同してプロダクト化を見据えた開発を推進。"
+  detailedDescription: "2024 年夏の国内インターンシップで着手した教育サービス開発を、パートタイムとして引き続き担当。現場の講師・先生へのヒアリングを通じて、学習者向けフィードバックにおける「望ましい応答条件」(言葉遣い、安全性、モチベーション維持、認知負荷など) を整理し、タスク特化の評価基準として体系化。これらの評価基準を踏まえ、LLM によるフィードバック生成 workflow を設計・実装。出力の傾向を確認しながら、プロンプト改善・仕様調整の反復サイクルを自ら回した。モデル側だけでなく、学習者にとって分かりやすい UI/UX の検討・プロトタイプ実装 (React) にも大きくコミット。インターン期間内に、現在のサービスの基盤となる構成 (画面遷移・機能構造・LLM workflow の接続) を設計し、フルタイムエンジニアと共同してプロダクト化を見据えた開発を推進。本プロジェクトで開発に携わったサービスは、やる気スイッチグループと PFN の合弁会社である YP スイッチから「AI 添削小論文対策講座」(https://ypswitch.jp/ai-syoron)として公開された。"
   achievements:
     - "講師・先生へのヒアリングによる評価基準の体系化"
-    - "LLMフィードバック生成workflowの設計・実装と反復改善"
-    - "学習者向けUI/UXの検討とReactプロトタイプ実装"
+    - "LLM フィードバック生成 workflow の設計・実装と反復改善"
+    - "学習者向け UI/UX の検討と React プロトタイプ実装"
     - "サービス基盤構成の設計とプロダクト化を見据えた開発推進"
+    - "開発に携わったサービスが「AI 添削小論文対策講座」として公開"
+  links:
+    -
+      label: "AI 添削小論文対策講座 (YP スイッチ)"
+      url: "https://ypswitch.jp/ai-syoron"
 -
   id: "pfn-summer-internship"
   title: "PFN 2024 夏期国内インターンシップ"
@@ -129,17 +150,17 @@
     end:
       year: 2024
       month: 9
-  description: "Preferred Networks での LLM を用いた教育サービス開発"
+  description: "Preferred Networks での LLM を用いた教育サービス開発に従事。本インターンで着手したサービス開発は、その後パートタイムとして継続し、「AI 添削小論文対策講座」として公開された。"
   skills:
     - "Python"
     - "React"
     - "LLM"
   category: "work"
-  detailedDescription: "「RD32 大規模言語モデルの教育サービスへの応用」に参加し、LLM-based educational feedback generation workflowの設計と実装を担当。教師へのインタビューを通じて評価基準を定義し、React/TypeScriptでのUI/UX実装を行いました。"
+  detailedDescription: "「RD32 大規模言語モデルの教育サービスへの応用」に参加し、LLM-based educational feedback generation workflow の設計と実装を担当。教師へのインタビューを通じて評価基準を定義し、React/TypeScript での UI/UX 実装を行いました。本インターンで着手したサービス開発は、その後パートタイム (教育プロジェクトエンジニア) として継続した。"
   achievements:
     - "教師インタビューによるフィードバック特性の形式化"
-    - "LLMベースのフィードバック生成ワークフローの設計"
-    - "React/TypeScriptでのUI/UX実装とプロトタイピング"
+    - "LLM ベースのフィードバック生成ワークフローの設計"
+    - "React/TypeScript での UI/UX 実装とプロトタイピング"
     - "プロダクトの基礎アーキテクチャ設計"
   links:
     -

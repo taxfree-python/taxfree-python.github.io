@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Container, Typography, Box, Stack, Button, Collapse } from '@mui/material';
+import { useState, type ReactNode } from 'react';
+import { Container, Typography, Box, Stack, Button, Collapse, Link } from '@mui/material';
 import type { ActivityCategory, ProjectActivity } from '@/types/activities';
 import { formatActivityPeriodParts, getActivityPeriodEndValue, getActivityPeriodStartValue } from '@/lib/activityPeriod';
 
@@ -17,6 +17,36 @@ const categoryLabels: Record<ActivityCategory, string> = {
 };
 
 const categoryOrder = ['work', 'research', 'others'] as const satisfies readonly ActivityCategory[];
+
+// Markdown-style inline links: [label](https://example.com)
+const markdownLinkPattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+
+// Render text with markdown-style links as clickable anchors, keeping surrounding text intact.
+function renderTextWithLinks(text: string) {
+  const nodes: ReactNode[] = [];
+  let lastIndex = 0;
+  markdownLinkPattern.lastIndex = 0;
+
+  let match: RegExpExecArray | null;
+  while ((match = markdownLinkPattern.exec(text)) !== null) {
+    const [full, label, url] = match;
+    if (match.index > lastIndex) {
+      nodes.push(text.slice(lastIndex, match.index));
+    }
+    nodes.push(
+      <Link key={match.index} href={url} target="_blank" rel="noopener noreferrer">
+        {label}
+      </Link>,
+    );
+    lastIndex = match.index + full.length;
+  }
+
+  if (lastIndex < text.length) {
+    nodes.push(text.slice(lastIndex));
+  }
+
+  return nodes;
+}
 
 export function ActivitiesSection({ activities, allActivities = [] }: ActivitiesSectionProps) {
   const [showAll, setShowAll] = useState(false);
@@ -160,7 +190,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
                             letterSpacing: '-0.01em'
                           }}
                         >
-                          {activity.description}
+                          {renderTextWithLinks(activity.description)}
                         </Typography>
                       </Box>
                     </Collapse>
