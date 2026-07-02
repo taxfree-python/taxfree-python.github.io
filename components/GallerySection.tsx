@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { ReactNode, SyntheticEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   Container,
   Typography,
@@ -9,6 +10,7 @@ import {
   Card,
   CardMedia,
   CardContent,
+  Chip,
   Dialog,
   DialogContent,
   IconButton,
@@ -26,6 +28,7 @@ type GallerySectionProps = {
 };
 
 export function GallerySection({ works, showTitle = true, showCategories = true }: GallerySectionProps) {
+  const router = useRouter();
   const [selectedWork, setSelectedWork] = useState<GalleryWork | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
@@ -53,6 +56,11 @@ export function GallerySection({ works, showTitle = true, showCategories = true 
       : works.filter((work) => work.category === selectedCategory);
 
   const handleWorkClick = (work: GalleryWork) => {
+    // Interactive works live on their own page instead of the lightbox.
+    if (work.mediaType === 'interactive') {
+      router.push(work.media);
+      return;
+    }
     setSelectedWork(work);
   };
 
@@ -155,6 +163,9 @@ export function GallerySection({ works, showTitle = true, showCategories = true 
             <CardContent>
               <Typography variant="h6" component="h3" gutterBottom>
                 {work.title}
+                {work.mediaType === 'interactive' && (
+                  <Chip label="Interactive" size="small" sx={{ ml: 1, verticalAlign: 'middle' }} />
+                )}
               </Typography>
               <Typography variant="caption" color="text.secondary" display="block" sx={{ mb: 1 }}>
                 {new Date(work.date).toLocaleDateString('ja-JP', {

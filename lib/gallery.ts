@@ -14,7 +14,7 @@ import {
 
 const galleryFilePath = path.join(process.cwd(), 'data', 'gallery.yaml');
 
-const mediaTypeValues: MediaType[] = ['image', 'gif', 'video'];
+const mediaTypeValues: MediaType[] = ['image', 'gif', 'video', 'interactive'];
 const mediaTypeSet: ReadonlySet<string> = new Set(mediaTypeValues);
 
 const isMediaType = (value: string): value is MediaType => mediaTypeSet.has(value);

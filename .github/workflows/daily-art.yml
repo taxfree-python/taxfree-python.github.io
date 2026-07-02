@@ -1,0 +1,59 @@
+name: Daily Art
+
+on:
+  schedule:
+    # 00:07 JST (JST has no DST). Offset from :00 to dodge GitHub's cron congestion.
+    - cron: '7 15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: daily-art
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Exits non-zero without touching files when no PD/CC0 image is found,
+      # which fails this run and keeps the previous day's work deployed.
+      - name: Fetch daily art
+        run: npm run fetch-daily-art
+
+      - name: Commit and push
+        id: commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/daily-art.json public/images/gallery/daily
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore: update memory of $(TZ=Asia/Tokyo date +%F)"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Pushes made with GITHUB_TOKEN do not fire other workflows' `on: push`,
+      # so the deploy workflow is dispatched explicitly.
+      - name: Trigger deploy
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --ref main

@@ -28,4 +28,16 @@
 #       - Photoshop
 #     featured: true
 
-works: []
+works:
+  - id: weathering
+    title: 風化
+    date: 2026-07-03
+    media: /gallery/weathering
+    thumbnail: /images/gallery/daily/current-thumb.jpg
+    mediaType: interactive
+    description: Wikipedia の「今日は何の日」に関わるパブリックドメイン画像を毎日選び、エッジ検出で得た輪郭の垂直方向へエッジの色が一日をかけて侵食していくジェネラティブアート。
+    category: generative
+    tools:
+      - WebGL2
+      - Computer Vision
+      - Wikimedia Commons

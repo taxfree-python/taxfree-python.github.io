@@ -1,0 +1,18 @@
+{
+  "date": "2026-07-03",
+  "seed": 3365759791,
+  "image": "/images/gallery/daily/current.jpg",
+  "thumbnail": "/images/gallery/daily/current-thumb.jpg",
+  "event": {
+    "year": 1866,
+    "text": "Austro-Prussian War is decided at the Battle of Königgrätz, enabling Prussia to exclude Austria from German affairs.",
+    "pageTitle": "Austro-Prussian War",
+    "pageUrl": "https://en.wikipedia.org/wiki/Austro-Prussian_War"
+  },
+  "source": {
+    "fileTitle": "File:Schlacht-bei-koeniggraetz-von-georg-bleibtreu.jpg",
+    "filePageUrl": "https://commons.wikimedia.org/wiki/File:Schlacht-bei-koeniggraetz-von-georg-bleibtreu.jpg",
+    "license": "Public domain",
+    "artist": "Georg Bleibtreu"
+  }
+}
