@@ -5,7 +5,7 @@ import { Weathering } from '@/components/Weathering';
 import { getDailyArt } from '@/lib/dailyArt';
 import { siteConfig } from '@/config/site';
 
-const pageTitle = `風化 - ${siteConfig.name}`;
+const pageTitle = `Weathering - ${siteConfig.name}`;
 const pageDescription =
   'Wikipedia の「今日は何の日」に関わるパブリックドメイン画像が、日本時間の一日をかけてエッジの色に侵食されていくジェネラティブアート。';
 

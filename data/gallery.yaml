@@ -30,7 +30,7 @@
 
 works:
   - id: weathering
-    title: 風化
+    title: Weathering
     date: 2026-07-03
     media: /gallery/weathering
     thumbnail: /images/gallery/daily/current-thumb.jpg
