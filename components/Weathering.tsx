@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { Box, CircularProgress, Link, Typography } from '@mui/material';
 
 import { computeGradientField } from '@/lib/cv/edges';
-import { MemoryEngine } from '@/lib/gl/memoryEngine';
+import { WeatheringEngine } from '@/lib/gl/weatheringEngine';
 import type { DailyArtWork } from '@/types/dailyArt';
 
-/** One simulation step every 45 seconds: the erosion completes at 24:00 JST. */
+/** One simulation step every 45 seconds: the weathering completes at 24:00 JST. */
 const STEPS_PER_DAY = 1920;
 
 const MAX_DIMENSION = 1024;
@@ -52,7 +52,7 @@ function formatDate(isoDate: string): string {
 
 export function Weathering({ date, works }: WeatheringProps) {
   const glCanvasRef = useRef<HTMLCanvasElement>(null);
-  const engineRef = useRef<MemoryEngine | null>(null);
+  const engineRef = useRef<WeatheringEngine | null>(null);
   const schedulerRef = useRef<{ kind: 'raf' | 'timeout'; id: number } | null>(null);
   const reducedMotionRef = useRef(false);
 
@@ -63,8 +63,8 @@ export function Weathering({ date, works }: WeatheringProps) {
   useEffect(() => {
     let cancelled = false;
 
-    // A different work of the day on every visit; the erosion stage is still
-    // strictly synchronized to the JST clock.
+    // A different work of the day on every visit; the weathering stage is
+    // still strictly synchronized to the JST clock.
     const picked = works[Math.floor(Math.random() * works.length)] ?? null;
     setWork(picked);
     if (!picked) {
@@ -138,7 +138,7 @@ export function Weathering({ date, works }: WeatheringProps) {
       const pixels = offscreenContext.getImageData(0, 0, width, height);
 
       const field = computeGradientField({ data: pixels.data, width, height });
-      const engine = MemoryEngine.create({
+      const engine = WeatheringEngine.create({
         canvas: glCanvas,
         source: offscreen,
         fieldTexture: field.texture,

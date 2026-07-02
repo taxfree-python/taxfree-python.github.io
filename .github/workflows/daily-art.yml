@@ -45,7 +45,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
-            git commit -m "chore: update memory of $(TZ=Asia/Tokyo date +%F)"
+            git commit -m "chore: update weathering images $(TZ=Asia/Tokyo date +%F)"
             git push
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi

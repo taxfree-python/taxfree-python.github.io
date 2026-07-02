@@ -1,5 +1,5 @@
 /**
- * Gradient-field extraction for the "Memory of Today" renderer.
+ * Gradient-field extraction for the "Weathering" renderer.
  *
  * The simulation needs a flow direction for every pixel, not just the thin
  * Sobel edge band, so two scales are combined: a fine field (where the edges

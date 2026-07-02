@@ -1,10 +1,10 @@
 /**
- * WebGL2 simulation for the "Memory of Today" work.
+ * WebGL2 simulation for the "Weathering" work.
  *
  * The state texture starts as the source photograph. Each step advects color
- * along the precomputed gradient field: edge colors invade the image
+ * along the precomputed gradient field: edge colors spread across the image
  * perpendicular to the contours, alternating sides each step. There is no
- * randomness and no grading — the erosion is a pure, monotonic function of
+ * randomness and no grading — the weathering is a pure, monotonic function of
  * the step count, so playback is perfectly smooth and every visit replays the
  * same decay.
  */
@@ -58,7 +58,7 @@ void main() {
 }
 `;
 
-export type MemoryEngineInit = {
+export type WeatheringEngineInit = {
   canvas: HTMLCanvasElement;
   source: TexImageSource;
   fieldTexture: Uint8Array;
@@ -73,7 +73,7 @@ type StepParams = {
   scaleMix: number;
 };
 
-export class MemoryEngine {
+export class WeatheringEngine {
   private gl: WebGL2RenderingContext;
   private stepProgram: WebGLProgram;
   private shadeProgram: WebGLProgram;
@@ -89,7 +89,7 @@ export class MemoryEngine {
   private stepCount = 0;
   private disposed = false;
 
-  static create(init: MemoryEngineInit): MemoryEngine | null {
+  static create(init: WeatheringEngineInit): WeatheringEngine | null {
     const gl = init.canvas.getContext('webgl2', {
       alpha: false,
       antialias: false,
@@ -101,13 +101,13 @@ export class MemoryEngine {
       return null;
     }
     try {
-      return new MemoryEngine(gl, init);
+      return new WeatheringEngine(gl, init);
     } catch {
       return null;
     }
   }
 
-  private constructor(gl: WebGL2RenderingContext, init: MemoryEngineInit) {
+  private constructor(gl: WebGL2RenderingContext, init: WeatheringEngineInit) {
     this.gl = gl;
     this.width = init.width;
     this.height = init.height;
@@ -261,8 +261,8 @@ export class MemoryEngine {
   }
 
   /**
-   * Erosion schedule: the invasion hugs the fine edges gently in the morning,
-   * then follows the coarse flow further and harder as the day passes.
+   * Weathering schedule: it hugs the fine edges gently in the morning, then
+   * follows the coarse flow further and harder as the day passes.
    */
   private paramsAt(s: number): StepParams {
     return {

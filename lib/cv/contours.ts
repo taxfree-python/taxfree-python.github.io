@@ -1,5 +1,5 @@
 /**
- * Contour extraction and simplification for the "Memory of Today" renderer.
+ * Contour extraction and simplification for the "Weathering" renderer.
  *
  * Strong edges are binarized and traced into polylines (Moore-neighbor
  * tracing), then progressively simplified with Douglas-Peucker. The renderer
