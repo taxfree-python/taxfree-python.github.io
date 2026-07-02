@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Container, Typography } from '@mui/material';
+import { Container } from '@mui/material';
 
 import { Weathering } from '@/components/Weathering';
 import { getDailyArt } from '@/lib/dailyArt';
@@ -43,10 +43,6 @@ export default function WeatheringPage() {
 
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6 }}>
-      <Typography variant="h2" component="h1" gutterBottom sx={{ mb: 4 }}>
-        風化
-      </Typography>
-
       <Weathering date={art.date} works={art.works} />
     </Container>
   );

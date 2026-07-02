@@ -30,6 +30,26 @@ function stepForMinutes(minutes: number): number {
   return Math.floor((minutes / MINUTES_PER_DAY) * STEPS_PER_DAY);
 }
 
+const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+function formatDate(isoDate: string): string {
+  const [year, month, day] = isoDate.split('-').map(Number);
+  return `${MONTHS[(month ?? 1) - 1] ?? ''} ${day}, ${year}`;
+}
+
 export function Weathering({ date, works }: WeatheringProps) {
   const glCanvasRef = useRef<HTMLCanvasElement>(null);
   const engineRef = useRef<MemoryEngine | null>(null);
@@ -161,8 +181,6 @@ export function Weathering({ date, works }: WeatheringProps) {
     };
   }, [works]);
 
-  const [year, month, day] = date.split('-');
-
   return (
     <Box>
       <Box sx={{ position: 'relative', width: '100%', aspectRatio, bgcolor: 'action.hover' }}>
@@ -170,7 +188,7 @@ export function Weathering({ date, works }: WeatheringProps) {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={work.image}
-            alt="風化(元画像)"
+            alt="Source image"
             style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
           />
         ) : (
@@ -196,18 +214,19 @@ export function Weathering({ date, works }: WeatheringProps) {
       {work && (
         <Box sx={{ mt: 3 }}>
           <Typography variant="caption" color="text.secondary" display="block">
-            {year}年{Number(month)}月{Number(day)}日 —{' '}
-            {work.event.year !== undefined ? `${work.event.year}年: ` : ''}
+            {formatDate(date)} —{' '}
+            {work.event.year !== undefined ? `${work.event.year}: ` : ''}
             <Link href={work.event.pageUrl} target="_blank" rel="noopener noreferrer">
               {work.event.pageTitle}
             </Link>
           </Typography>
           <Typography variant="caption" color="text.secondary" display="block">
-            元画像:{' '}
+            {'Source: '}
             <Link href={work.source.filePageUrl} target="_blank" rel="noopener noreferrer">
               {work.source.fileTitle.replace(/^File:/, '')}
             </Link>
-            {work.source.artist ? ` — ${work.source.artist}` : ''}(
+            {work.source.artist ? ` — ${work.source.artist}` : ''}
+            {' ('}
             {work.source.licenseUrl ? (
               <Link href={work.source.licenseUrl} target="_blank" rel="noopener noreferrer">
                 {work.source.license}
@@ -215,7 +234,7 @@ export function Weathering({ date, works }: WeatheringProps) {
             ) : (
               work.source.license
             )}
-            ), via Wikimedia Commons
+            {'), via Wikimedia Commons'}
           </Typography>
         </Box>
       )}
