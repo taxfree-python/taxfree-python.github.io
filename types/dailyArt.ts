@@ -1,5 +1,5 @@
 export type DailyArtEvent = {
-  year: number;
+  year?: number; // absent for holidays
   text: string;
   pageTitle: string;
   pageUrl: string;
@@ -13,12 +13,16 @@ export type DailyArtSource = {
   artist?: string;
 };
 
+export type DailyArtWork = {
+  image: string;
+  event: DailyArtEvent;
+  source: DailyArtSource;
+};
+
 /** Written daily by scripts/fetch-daily-art.mjs into data/daily-art.json. */
 export type DailyArt = {
   date: string;
   seed: number;
-  image: string;
   thumbnail: string;
-  event: DailyArtEvent;
-  source: DailyArtSource;
+  works: DailyArtWork[];
 };

@@ -1,10 +1,11 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress, Link, Typography } from '@mui/material';
 
 import { computeGradientField } from '@/lib/cv/edges';
 import { MemoryEngine } from '@/lib/gl/memoryEngine';
+import type { DailyArtWork } from '@/types/dailyArt';
 
 /** One simulation step every 45 seconds: the erosion completes at 24:00 JST. */
 const STEPS_PER_DAY = 1920;
@@ -15,7 +16,8 @@ const IDLE_POLL_MS = 500;
 const MINUTES_PER_DAY = 1440;
 
 type WeatheringProps = {
-  image: string;
+  date: string;
+  works: DailyArtWork[];
 };
 
 type Status = 'loading' | 'running' | 'fallback';
@@ -28,34 +30,26 @@ function stepForMinutes(minutes: number): number {
   return Math.floor((minutes / MINUTES_PER_DAY) * STEPS_PER_DAY);
 }
 
-/**
- * The piece is strictly synchronized to the JST clock — visitors cannot seek.
- * `?preview=HH:MM` pins it to a fixed time, for tuning the piece only.
- */
-function previewMinutes(): number | null {
-  const raw = new URLSearchParams(window.location.search).get('preview');
-  if (!raw) {
-    return null;
-  }
-  const match = /^(\d{1,2}):(\d{2})$/.exec(raw);
-  if (!match) {
-    return null;
-  }
-  const minutes = Number(match[1] ?? 0) * 60 + Number(match[2] ?? 0);
-  return Math.min(MINUTES_PER_DAY - 1, Math.max(0, minutes));
-}
-
-export function Weathering({ image }: WeatheringProps) {
+export function Weathering({ date, works }: WeatheringProps) {
   const glCanvasRef = useRef<HTMLCanvasElement>(null);
   const engineRef = useRef<MemoryEngine | null>(null);
   const schedulerRef = useRef<{ kind: 'raf' | 'timeout'; id: number } | null>(null);
   const reducedMotionRef = useRef(false);
 
+  const [work, setWork] = useState<DailyArtWork | null>(null);
   const [status, setStatus] = useState<Status>('loading');
   const [aspectRatio, setAspectRatio] = useState('2 / 1');
 
   useEffect(() => {
     let cancelled = false;
+
+    // A different work of the day on every visit; the erosion stage is still
+    // strictly synchronized to the JST clock.
+    const picked = works[Math.floor(Math.random() * works.length)] ?? null;
+    setWork(picked);
+    if (!picked) {
+      return undefined;
+    }
 
     const cancelScheduled = () => {
       const scheduled = schedulerRef.current;
@@ -70,15 +64,13 @@ export function Weathering({ image }: WeatheringProps) {
       schedulerRef.current = null;
     };
 
-    const pinned = previewMinutes();
-
     const tick = () => {
       schedulerRef.current = null;
       const engine = engineRef.current;
       if (cancelled || !engine) {
         return;
       }
-      const target = stepForMinutes(pinned ?? jstMinutesNow());
+      const target = stepForMinutes(jstMinutesNow());
       let mutated = false;
       if (target < engine.stepIndex) {
         engine.reset();
@@ -147,7 +139,7 @@ export function Weathering({ image }: WeatheringProps) {
     };
 
     const img = new Image();
-    img.src = image;
+    img.src = picked.image;
     img
       .decode()
       .then(() => {
@@ -167,34 +159,65 @@ export function Weathering({ image }: WeatheringProps) {
       engineRef.current?.dispose();
       engineRef.current = null;
     };
-  }, [image]);
+  }, [works]);
+
+  const [year, month, day] = date.split('-');
 
   return (
-    <Box sx={{ position: 'relative', width: '100%', aspectRatio, bgcolor: 'action.hover' }}>
-      {status === 'fallback' ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={image}
-          alt="風化(元画像)"
-          style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
-        />
-      ) : (
-        <>
-          <canvas ref={glCanvasRef} style={{ width: '100%', height: '100%', display: 'block' }} />
-          {status === 'loading' && (
-            <Box
-              sx={{
-                position: 'absolute',
-                inset: 0,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <CircularProgress size={28} />
-            </Box>
-          )}
-        </>
+    <Box>
+      <Box sx={{ position: 'relative', width: '100%', aspectRatio, bgcolor: 'action.hover' }}>
+        {status === 'fallback' && work ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={work.image}
+            alt="風化(元画像)"
+            style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
+          />
+        ) : (
+          <>
+            <canvas ref={glCanvasRef} style={{ width: '100%', height: '100%', display: 'block' }} />
+            {status === 'loading' && (
+              <Box
+                sx={{
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <CircularProgress size={28} />
+              </Box>
+            )}
+          </>
+        )}
+      </Box>
+
+      {work && (
+        <Box sx={{ mt: 3 }}>
+          <Typography variant="caption" color="text.secondary" display="block">
+            {year}年{Number(month)}月{Number(day)}日 —{' '}
+            {work.event.year !== undefined ? `${work.event.year}年: ` : ''}
+            <Link href={work.event.pageUrl} target="_blank" rel="noopener noreferrer">
+              {work.event.pageTitle}
+            </Link>
+          </Typography>
+          <Typography variant="caption" color="text.secondary" display="block">
+            元画像:{' '}
+            <Link href={work.source.filePageUrl} target="_blank" rel="noopener noreferrer">
+              {work.source.fileTitle.replace(/^File:/, '')}
+            </Link>
+            {work.source.artist ? ` — ${work.source.artist}` : ''}(
+            {work.source.licenseUrl ? (
+              <Link href={work.source.licenseUrl} target="_blank" rel="noopener noreferrer">
+                {work.source.license}
+              </Link>
+            ) : (
+              work.source.license
+            )}
+            ), via Wikimedia Commons
+          </Typography>
+        </Box>
       )}
     </Box>
   );

@@ -1,17 +1,17 @@
 /**
- * Fetch the daily source image for the "Memory of Today" gallery work.
+ * Fetch the daily source images for the "Weathering" gallery work.
  *
- * Picks a Wikipedia "On this day" event for the current JST date, finds an
- * associated image on Wikimedia Commons that is public domain or CC0, and
- * writes a normalized JPEG plus metadata into the repository:
+ * Picks Wikipedia "On this day" events for the current JST date, finds up to
+ * ten associated Wikimedia Commons images that are public domain or CC0, and
+ * writes normalized JPEGs plus metadata into the repository:
  *
- *   public/images/gallery/daily/current.jpg        (1280px, canvas source)
+ *   public/images/gallery/daily/0.jpg .. N-1.jpg   (1280px, canvas sources)
  *   public/images/gallery/daily/current-thumb.jpg  (640px, gallery card)
- *   public/images/gallery/daily/YYYY-MM-DD.jpg     (dated archive copy)
- *   data/daily-art.json                            (attribution + seed)
+ *   data/daily-art.json                            (attribution per work)
  *
- * Exits non-zero without touching any files when no acceptable image is
- * found, so the previous day's work stays in place.
+ * The client shows one of the works at random per page load. Selection is
+ * deterministic per date; exits non-zero without touching any files when no
+ * acceptable image is found, so the previous day's works stay in place.
  */
 
 import fs from 'node:fs/promises';
@@ -21,6 +21,7 @@ import sharp from 'sharp';
 const USER_AGENT =
   'taxfree-python.github.io/daily-art (https://github.com/taxfree-python/taxfree-python.github.io)';
 
+const MAX_WORKS = 10;
 const MIN_SOURCE_WIDTH = 640;
 const IMAGE_WIDTH = 1280;
 const THUMB_WIDTH = 640;
@@ -37,7 +38,7 @@ function jstToday() {
   return { date: `${yyyy}-${mm}-${dd}`, mm, dd };
 }
 
-// FNV-1a: deterministic seed shared by this script and the client renderer.
+// FNV-1a: deterministic per-date seed for candidate selection.
 function fnv1a(text) {
   let hash = 0x811c9dc5;
   for (let i = 0; i < text.length; i += 1) {
@@ -45,6 +46,25 @@ function fnv1a(text) {
     hash = Math.imul(hash, 0x01000193);
   }
   return hash >>> 0;
+}
+
+function mulberry32(state) {
+  let a = state;
+  return () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function seededShuffle(items, random) {
+  const shuffled = [...items];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
 }
 
 async function fetchJson(url) {
@@ -64,10 +84,12 @@ function chunk(items, size) {
 }
 
 function stripHtml(html) {
-  return html
+  const text = html
     .replace(/<[^>]*>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+  // Commons Artist markup often repeats the name in nested tags.
+  return text.replace(/^(.+?) \1$/, '$1');
 }
 
 function isFreeLicense(licenseShortName) {
@@ -81,23 +103,27 @@ function fileFormatTier(fileName) {
 }
 
 async function collectCandidates(mm, dd) {
+  // `all` merges events, selected, births, deaths, and holidays — a much
+  // larger pool of PD-heavy pages than events alone.
   const feed = await fetchJson(
-    `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/events/${mm}/${dd}`,
+    `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${mm}/${dd}`,
   );
 
   const byTitle = new Map();
-  for (const event of feed.events ?? []) {
-    for (const page of event.pages ?? []) {
-      const image = page.originalimage;
-      const title = page.titles?.normalized ?? page.title;
-      if (!image || image.width < MIN_SOURCE_WIDTH || !title || byTitle.has(title)) {
-        continue;
+  for (const key of ['selected', 'events', 'births', 'deaths', 'holidays']) {
+    for (const event of feed[key] ?? []) {
+      for (const page of event.pages ?? []) {
+        const image = page.originalimage;
+        const title = page.titles?.normalized ?? page.title;
+        if (!image || image.width < MIN_SOURCE_WIDTH || !title || byTitle.has(title)) {
+          continue;
+        }
+        byTitle.set(title, {
+          pageTitle: title,
+          pageUrl: page.content_urls?.desktop?.page ?? '',
+          event: { year: event.year ?? null, text: event.text },
+        });
       }
-      byTitle.set(title, {
-        pageTitle: title,
-        pageUrl: page.content_urls?.desktop?.page ?? '',
-        event: { year: event.year, text: event.text },
-      });
     }
   }
   return [...byTitle.values()];
@@ -105,6 +131,7 @@ async function collectCandidates(mm, dd) {
 
 async function resolvePageImages(candidates) {
   const resolved = [];
+  const seenFiles = new Set(); // several pages can share one page image
   for (const group of chunk(candidates, 50)) {
     const params = new URLSearchParams({
       action: 'query',
@@ -123,7 +150,8 @@ async function resolvePageImages(candidates) {
     );
     for (const candidate of group) {
       const fileName = fileByTitle.get(candidate.pageTitle);
-      if (fileName) {
+      if (fileName && !seenFiles.has(fileName)) {
+        seenFiles.add(fileName);
         resolved.push({ ...candidate, fileTitle: `File:${fileName}` });
       }
     }
@@ -191,6 +219,25 @@ async function fetchRenderedImage(fileTitle, sourceWidth) {
   return Buffer.from(await response.arrayBuffer());
 }
 
+function workEntry(candidate, index) {
+  return {
+    image: `/images/gallery/daily/${index}.jpg`,
+    event: {
+      ...(candidate.event.year != null ? { year: candidate.event.year } : {}),
+      text: candidate.event.text,
+      pageTitle: candidate.pageTitle,
+      pageUrl: candidate.pageUrl,
+    },
+    source: {
+      fileTitle: candidate.fileTitle,
+      filePageUrl: candidate.filePageUrl,
+      license: candidate.license,
+      ...(candidate.licenseUrl ? { licenseUrl: candidate.licenseUrl } : {}),
+      ...(candidate.artist ? { artist: candidate.artist } : {}),
+    },
+  };
+}
+
 async function main() {
   const { date, mm, dd } = jstToday();
   console.log(`Selecting daily art for ${date} (JST)`);
@@ -203,56 +250,76 @@ async function main() {
     process.exit(1);
   }
 
-  // Prefer photographs over diagrams, then pick deterministically by date so
-  // every run of the same day (locally or in CI) chooses the same image.
-  const bestTier = Math.min(...licensed.map((c) => fileFormatTier(c.fileTitle)));
-  const pool = licensed
-    .filter((c) => fileFormatTier(c.fileTitle) === bestTier)
-    .sort((a, b) => a.fileTitle.localeCompare(b.fileTitle));
+  // Photographs first, then diagrams; shuffled deterministically per date so
+  // every run of the same day (locally or in CI) picks the same set.
   const seed = fnv1a(date);
-  const picked = pool[seed % pool.length];
-  console.log(`Picked ${picked.fileTitle} (${picked.license}) from ${pool.length} candidates`);
-  console.log(`Event: ${picked.event.year} — ${picked.event.text}`);
+  const random = mulberry32(seed);
+  const tiers = [[], [], []];
+  for (const candidate of licensed) {
+    tiers[fileFormatTier(candidate.fileTitle)].push(candidate);
+  }
+  const ordered = tiers.flatMap((tier) =>
+    seededShuffle(
+      tier.sort((a, b) => a.fileTitle.localeCompare(b.fileTitle)),
+      random,
+    ),
+  );
+  const picks = ordered.slice(0, MAX_WORKS);
 
-  const original = await fetchRenderedImage(picked.fileTitle, picked.sourceWidth);
-  const base = sharp(original).rotate().flatten({ background: '#ffffff' });
-  const image = await base
-    .clone()
-    .resize({ width: IMAGE_WIDTH, withoutEnlargement: true })
-    .jpeg({ quality: 85 })
-    .toBuffer();
-  const thumb = await base
-    .clone()
+  const downloads = [];
+  for (const candidate of picks) {
+    try {
+      downloads.push({
+        candidate,
+        buffer: await fetchRenderedImage(candidate.fileTitle, candidate.sourceWidth),
+      });
+      console.log(`Fetched ${candidate.fileTitle} (${candidate.license})`);
+    } catch (error) {
+      console.warn(`Skipping ${candidate.fileTitle}: ${error.message}`);
+    }
+  }
+  if (downloads.length === 0) {
+    console.error('All downloads failed; keeping previous day.');
+    process.exit(1);
+  }
+
+  await fs.mkdir(dailyDir, { recursive: true });
+  for (const stale of await fs.readdir(dailyDir)) {
+    if (stale.endsWith('.jpg')) {
+      await fs.unlink(path.join(dailyDir, stale));
+    }
+  }
+
+  const works = [];
+  for (const [index, { candidate, buffer }] of downloads.entries()) {
+    const image = await sharp(buffer)
+      .rotate()
+      .flatten({ background: '#ffffff' })
+      .resize({ width: IMAGE_WIDTH, withoutEnlargement: true })
+      .jpeg({ quality: 85 })
+      .toBuffer();
+    await fs.writeFile(path.join(dailyDir, `${index}.jpg`), image);
+    works.push(workEntry(candidate, index));
+  }
+
+  const thumb = await sharp(downloads[0].buffer)
+    .rotate()
+    .flatten({ background: '#ffffff' })
     .resize({ width: THUMB_WIDTH, withoutEnlargement: true })
     .jpeg({ quality: 80 })
     .toBuffer();
+  await fs.writeFile(path.join(dailyDir, 'current-thumb.jpg'), thumb);
 
   const metadata = {
     date,
     seed,
-    image: '/images/gallery/daily/current.jpg',
     thumbnail: '/images/gallery/daily/current-thumb.jpg',
-    event: {
-      year: picked.event.year,
-      text: picked.event.text,
-      pageTitle: picked.pageTitle,
-      pageUrl: picked.pageUrl,
-    },
-    source: {
-      fileTitle: picked.fileTitle,
-      filePageUrl: picked.filePageUrl,
-      license: picked.license,
-      ...(picked.licenseUrl ? { licenseUrl: picked.licenseUrl } : {}),
-      ...(picked.artist ? { artist: picked.artist } : {}),
-    },
+    works,
   };
-
-  await fs.mkdir(dailyDir, { recursive: true });
-  await fs.writeFile(path.join(dailyDir, 'current.jpg'), image);
-  await fs.writeFile(path.join(dailyDir, 'current-thumb.jpg'), thumb);
-  await fs.writeFile(path.join(dailyDir, `${date}.jpg`), image);
   await fs.writeFile(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
-  console.log(`Wrote ${path.relative(repoRoot, metadataPath)} and images under public/images/gallery/daily/`);
+  console.log(
+    `Wrote ${works.length} works to ${path.relative(repoRoot, metadataPath)} and public/images/gallery/daily/`,
+  );
 }
 
 await main();

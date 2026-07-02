@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Box, Container, Link, Typography } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 
 import { Weathering } from '@/components/Weathering';
 import { getDailyArt } from '@/lib/dailyArt';
@@ -40,7 +40,6 @@ export const metadata: Metadata = {
 
 export default function WeatheringPage() {
   const art = getDailyArt();
-  const [year, month, day] = art.date.split('-');
 
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6 }}>
@@ -48,31 +47,7 @@ export default function WeatheringPage() {
         風化
       </Typography>
 
-      <Weathering image={art.image} />
-
-      <Box sx={{ mt: 3 }}>
-        <Typography variant="caption" color="text.secondary" display="block">
-          {year}年{Number(month)}月{Number(day)}日 — {art.event.year}年:{' '}
-          <Link href={art.event.pageUrl} target="_blank" rel="noopener noreferrer">
-            {art.event.pageTitle}
-          </Link>
-        </Typography>
-        <Typography variant="caption" color="text.secondary" display="block">
-          元画像:{' '}
-          <Link href={art.source.filePageUrl} target="_blank" rel="noopener noreferrer">
-            {art.source.fileTitle.replace(/^File:/, '')}
-          </Link>
-          {art.source.artist ? ` — ${art.source.artist}` : ''}(
-          {art.source.licenseUrl ? (
-            <Link href={art.source.licenseUrl} target="_blank" rel="noopener noreferrer">
-              {art.source.license}
-            </Link>
-          ) : (
-            art.source.license
-          )}
-          ), via Wikimedia Commons
-        </Typography>
-      </Box>
+      <Weathering date={art.date} works={art.works} />
     </Container>
   );
 }
