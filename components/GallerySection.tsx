@@ -29,7 +29,18 @@ export function GallerySection({ works, showTitle = true }: GallerySectionProps)
       <Box>
         {works.map((work) => (
           <Box key={work.id} sx={{ mb: 3 }}>
-            <Link component={NextLink} href={work.media} variant="h6" underline="hover">
+            <Link
+              component={NextLink}
+              href={work.media}
+              variant="h6"
+              underline="hover"
+              sx={{
+                // Keep the hover underline continuous under descenders (g, y, p)
+                // by moving it below them instead of letting the browser skip ink.
+                textUnderlineOffset: '0.25em',
+                textDecorationSkipInk: 'none',
+              }}
+            >
               {work.title}
             </Link>
             <Typography variant="caption" color="text.secondary" display="block">
