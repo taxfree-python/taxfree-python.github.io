@@ -5,14 +5,11 @@ import { SkillsSection } from '@/components/SkillsSection';
 import { ActivitiesSection } from '@/components/ActivitiesSection';
 import { PublicationsSection } from '@/components/PublicationsSection';
 import { CertificationsSection } from '@/components/CertificationsSection';
-import type { CertificationsContent } from '@/types/profile';
-import type { ProjectActivity } from '@/types/activities';
-import type { Publication } from '@/types/publications';
-import type { SkillDetail } from '@/types/skills';
+import type { Activity, CertificationsContent, Publication, Skill } from '@/types';
 
 type CVClientProps = {
-  activities: ProjectActivity[];
-  skills: SkillDetail[];
+  activities: Activity[];
+  skills: Skill[];
   publications: Publication[];
   certifications: CertificationsContent;
 };

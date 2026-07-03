@@ -1,5 +1,5 @@
 import { Container, Typography } from '@mui/material';
-import type { HeroContent } from '@/types/profile';
+import type { HeroContent } from '@/types';
 import { SocialLinks } from './SocialLinks';
 import { DynamicSubtitle } from './DynamicSubtitle';
 

@@ -1,4 +1,4 @@
-import { getPostData, getAllPostSlugs } from '@/lib/posts';
+import { getPost, getPostSlugs } from '@/lib/posts';
 import Link from 'next/link';
 import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
 import type { Metadata } from 'next';
@@ -9,12 +9,12 @@ type PageProps = {
 };
 
 export async function generateStaticParams() {
-  return getAllPostSlugs();
+  return getPostSlugs();
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getPostData(slug);
+  const post = await getPost(slug);
 
   const title = `${post.title} | ${siteConfig.name}`;
   const description = post.description || post.title;
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function BlogPost({ params }: PageProps) {
   const { slug } = await params;
-  const post = await getPostData(slug);
+  const post = await getPost(slug);
 
   return (
     <Box
@@ -173,7 +173,7 @@ export default async function BlogPost({ params }: PageProps) {
               prose-a:text-blue-600 dark:prose-a:text-blue-400
               prose-code:text-gray-900 dark:prose-code:text-gray-100
               prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml || '' }}
+            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
           />
         </Box>
       </Container>

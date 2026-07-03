@@ -17,5 +17,3 @@ export const siteConfig = {
     twitter: '@taxfree_python',
   },
 } as const;
-
-export type SiteConfig = typeof siteConfig;

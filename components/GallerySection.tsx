@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import { Box, Container, Link, Typography } from '@mui/material';
-import type { GalleryWork } from '@/types/gallery';
+import type { GalleryWork } from '@/types';
 import { GalleryEmptyState } from './GalleryEmptyState';
 
 type GallerySectionProps = {
@@ -31,7 +31,7 @@ export function GallerySection({ works, showTitle = true }: GallerySectionProps)
           <Box key={work.id} sx={{ mb: 3 }}>
             <Link
               component={NextLink}
-              href={work.media}
+              href={work.href}
               variant="h6"
               underline="hover"
               sx={{

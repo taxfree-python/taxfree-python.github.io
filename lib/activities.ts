@@ -3,10 +3,25 @@ import path from 'node:path';
 import { cache } from 'react';
 import YAML from 'yaml';
 
-import type { Activity } from '@/types/activities';
-import { validateActivity } from './activityPeriod';
+import { ACTIVITY_CATEGORIES, type Activity } from '@/types';
+import { ensureObject, toEnum, toString } from '@/lib/validation';
+import { validateCalendarPeriod } from '@/lib/date';
 
 const activitiesFilePath = path.join(process.cwd(), 'data', 'activities.yaml');
+
+export const validateActivity = (raw: unknown): Activity => {
+  const obj = ensureObject(raw, 'Activity');
+  const id = toString(obj.id, 'Activity.id');
+  const context = `Activity(${id})`;
+
+  return {
+    id,
+    title: toString(obj.title, `${context}.title`),
+    period: validateCalendarPeriod(obj.period, context),
+    description: toString(obj.description, `${context}.description`),
+    category: toEnum(obj.category, ACTIVITY_CATEGORIES, `${context}.category`),
+  };
+};
 
 function readActivitiesFile(): Activity[] {
   const fileContents = fs.readFileSync(activitiesFilePath, 'utf-8');
@@ -29,6 +44,3 @@ function readActivitiesFile(): Activity[] {
 export const getActivities = cache((): Activity[] => {
   return readActivitiesFile();
 });
-
-// 後方互換性のための関数エイリアス
-export const getProjectsAndActivities = getActivities;

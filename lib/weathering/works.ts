@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { cache } from 'react';
 
-import type { WeatheringData, WeatheringWork } from '@/types/weathering';
+import type { WeatheringData, WeatheringWork } from '@/types';
 import { assert } from '@/lib/assert';
 import { ensureObject, toNumber, toOptionalString, toString } from '@/lib/validation';
 

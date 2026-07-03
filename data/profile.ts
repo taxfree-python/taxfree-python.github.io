@@ -1,4 +1,4 @@
-import type { CertificationsContent, HeroContent } from '@/types/profile';
+import type { CertificationsContent, HeroContent } from '@/types';
 
 export const heroContent: HeroContent = {
   title: 'tax_free',
@@ -10,15 +10,15 @@ export const heroContent: HeroContent = {
   socialLinks: [
     {
       label: 'GitHub',
-      href: 'https://github.com/taxfree-python',
+      url: 'https://github.com/taxfree-python',
     },
     {
       label: 'Twitter',
-      href: 'https://twitter.com/taxfree_python',
+      url: 'https://twitter.com/taxfree_python',
     },
     {
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/yu-chinen',
+      url: 'https://www.linkedin.com/in/yu-chinen',
     },
   ],
 };

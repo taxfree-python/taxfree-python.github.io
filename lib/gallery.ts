@@ -3,7 +3,7 @@ import path from 'node:path';
 import { cache } from 'react';
 import YAML from 'yaml';
 
-import type { GalleryData, GalleryWork } from '@/types/gallery';
+import type { GalleryWork } from '@/types';
 import { assert } from '@/lib/assert';
 import {
   ensureObject,
@@ -22,7 +22,7 @@ function validateGalleryWork(raw: unknown, index: number): GalleryWork {
     id: toString(obj.id, `${context}.id`),
     title: toString(obj.title, `${context}.title`),
     date: toString(obj.date, `${context}.date`),
-    media: toString(obj.media, `${context}.media`),
+    href: toString(obj.href, `${context}.href`),
   };
 
   const description = toOptionalString(obj.description, `${context}.description`);
@@ -38,7 +38,7 @@ function validateGalleryWork(raw: unknown, index: number): GalleryWork {
   return work;
 }
 
-function readGalleryFile(): GalleryData {
+function readGalleryFile(): GalleryWork[] {
   const fileContents = fs.readFileSync(galleryFilePath, 'utf-8');
   const parsed = YAML.parse(fileContents);
   const root = ensureObject(parsed, 'gallery.yaml');
@@ -46,11 +46,9 @@ function readGalleryFile(): GalleryData {
   const rawWorks = root.works;
   assert(Array.isArray(rawWorks), 'gallery.yaml.works must be an array');
 
-  const works = rawWorks.map((item, index) => validateGalleryWork(item, index));
-
-  return { works };
+  return rawWorks.map((item, index) => validateGalleryWork(item, index));
 }
 
-export const getGalleryData = cache((): GalleryData => {
+export const getGalleryWorks = cache((): GalleryWork[] => {
   return readGalleryFile();
 });

@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest';
 import {
   ensureObject,
   toBoolean,
+  toEnum,
   toNumber,
   toOptionalString,
   toStringArray,
@@ -31,5 +32,12 @@ describe('validation helpers', () => {
     expect(toNumber(2026, 'year')).toBe(2026);
     expect(() => toBoolean('false', 'draft')).toThrow('draft must be a boolean');
     expect(() => toNumber(Number.NaN, 'year')).toThrow('year must be a finite number');
+  });
+
+  it('narrows string literal unions', () => {
+    expect(toEnum('oral', ['oral', 'poster', 'talk'], 'type')).toBe('oral');
+    expect(() => toEnum('keynote', ['oral', 'poster', 'talk'], 'type')).toThrow(
+      'type must be one of: oral, poster, talk',
+    );
   });
 });

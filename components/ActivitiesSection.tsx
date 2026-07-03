@@ -2,12 +2,12 @@
 
 import { useState, type ReactNode } from 'react';
 import { Container, Typography, Box, Stack, Button, Collapse, Link } from '@mui/material';
-import type { ActivityCategory, ProjectActivity } from '@/types/activities';
-import { formatActivityPeriodParts, getActivityPeriodEndValue, getActivityPeriodStartValue } from '@/lib/activityPeriod';
+import { ACTIVITY_CATEGORIES, type Activity, type ActivityCategory } from '@/types';
+import { calendarPeriodEndValue, calendarPeriodStartValue, formatCalendarPeriod } from '@/lib/date';
 
 type ActivitiesSectionProps = {
-  activities: ProjectActivity[];
-  allActivities?: ProjectActivity[];
+  activities: Activity[];
+  allActivities?: Activity[];
 };
 
 const categoryLabels: Record<ActivityCategory, string> = {
@@ -15,8 +15,6 @@ const categoryLabels: Record<ActivityCategory, string> = {
   research: 'Research',
   others: 'Others',
 };
-
-const categoryOrder = ['work', 'research', 'others'] as const satisfies readonly ActivityCategory[];
 
 // Markdown-style inline links: [label](https://example.com)
 const markdownLinkPattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
@@ -69,21 +67,21 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
 
   // Sort activities by end date (most recent first, ongoing activities at top)
   const sortedActivities = [...displayedActivities].sort((a, b) => {
-    const endA = getActivityPeriodEndValue(a.period);
-    const endB = getActivityPeriodEndValue(b.period);
+    const endA = calendarPeriodEndValue(a.period);
+    const endB = calendarPeriodEndValue(b.period);
 
     if (endA !== endB) {
       return endB - endA; // Descending order (most recent first)
     }
 
     // If end dates are the same, sort by start date (most recent first)
-    const startA = getActivityPeriodStartValue(a.period);
-    const startB = getActivityPeriodStartValue(b.period);
+    const startA = calendarPeriodStartValue(a.period);
+    const startB = calendarPeriodStartValue(b.period);
     return startB - startA;
   });
 
   // Group activities by category
-  const groupedActivities: Record<ActivityCategory, ProjectActivity[]> = {
+  const groupedActivities: Record<ActivityCategory, Activity[]> = {
     work: [],
     research: [],
     others: [],
@@ -108,7 +106,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
       </Typography>
 
       <Stack spacing={6}>
-        {categoryOrder.map((category) => {
+        {ACTIVITY_CATEGORIES.map((category) => {
           const categoryActivities = groupedActivities[category];
           if (categoryActivities.length === 0) return null;
 
@@ -169,7 +167,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
                         }}
                       >
                         {(() => {
-                          const { start, end } = formatActivityPeriodParts(activity.period);
+                          const { start, end } = formatCalendarPeriod(activity.period);
                           return (
                             <>
                               <Box component="span" sx={{ textAlign: 'right' }}>{start}</Box>

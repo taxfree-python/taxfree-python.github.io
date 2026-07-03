@@ -1,4 +1,4 @@
-import { getSortedPostsData } from '@/lib/posts';
+import { getPosts } from '@/lib/posts';
 import { BlogList } from './BlogList';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
@@ -35,6 +35,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  const posts = getSortedPostsData();
+  const posts = getPosts();
   return <BlogList posts={posts} />;
 }
