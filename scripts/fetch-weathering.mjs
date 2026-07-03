@@ -6,7 +6,6 @@
  * writes normalized JPEGs plus metadata into the repository:
  *
  *   public/images/gallery/weathering/0.jpg .. N-1.jpg   (1280px, canvas sources)
- *   public/images/gallery/weathering/current-thumb.jpg  (640px, gallery card)
  *   data/weathering.json                                (attribution per work)
  *
  * The client shows one of the works at random per page load. Selection is
@@ -24,7 +23,6 @@ const USER_AGENT =
 const MAX_WORKS = 10;
 const MIN_SOURCE_WIDTH = 640;
 const IMAGE_WIDTH = 1280;
-const THUMB_WIDTH = 640;
 
 const repoRoot = path.join(import.meta.dirname, '..');
 const imagesDir = path.join(repoRoot, 'public', 'images', 'gallery', 'weathering');
@@ -302,20 +300,7 @@ async function main() {
     works.push(workEntry(candidate, index));
   }
 
-  const thumb = await sharp(downloads[0].buffer)
-    .rotate()
-    .flatten({ background: '#ffffff' })
-    .resize({ width: THUMB_WIDTH, withoutEnlargement: true })
-    .jpeg({ quality: 80 })
-    .toBuffer();
-  await fs.writeFile(path.join(imagesDir, 'current-thumb.jpg'), thumb);
-
-  const metadata = {
-    date,
-    seed,
-    thumbnail: '/images/gallery/weathering/current-thumb.jpg',
-    works,
-  };
+  const metadata = { date, works };
   await fs.writeFile(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
   console.log(
     `Wrote ${works.length} works to ${path.relative(repoRoot, metadataPath)} and public/images/gallery/weathering/`,
