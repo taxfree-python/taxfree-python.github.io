@@ -2,12 +2,17 @@ import type { Metadata } from 'next';
 import { Container } from '@mui/material';
 
 import { Weathering } from '@/components/Weathering';
+import { assert } from '@/lib/assert';
 import { getDailyArt } from '@/lib/dailyArt';
+import { getGalleryData } from '@/lib/gallery';
 import { siteConfig } from '@/config/site';
 
-const pageTitle = `Weathering - ${siteConfig.name}`;
-const pageDescription =
-  'Wikipedia の「今日は何の日」に関わるパブリックドメイン画像が、日本時間の一日をかけてブラウザの中で風化していくジェネラティブアート。';
+// gallery.yaml is the single source of truth for the work's title and description.
+const galleryWork = getGalleryData().works.find((work) => work.id === 'weathering');
+assert(galleryWork?.description, 'gallery.yaml must define the weathering work with a description');
+
+const pageTitle = `${galleryWork.title} - ${siteConfig.name}`;
+const pageDescription = galleryWork.description;
 
 export const metadata: Metadata = {
   title: pageTitle,

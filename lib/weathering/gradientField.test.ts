@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { boxBlur, computeGradientField, sobel, toLuminance } from '@/lib/cv/edges';
-import type { PixelSource } from '@/lib/cv/edges';
+import { boxBlur, computeGradientField, sobel, toLuminance } from '@/lib/weathering/gradientField';
+import type { PixelSource } from '@/lib/weathering/gradientField';
 
 function grayscaleSource(values: number[][], width: number, height: number): PixelSource {
   const data = new Uint8ClampedArray(width * height * 4);

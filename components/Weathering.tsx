@@ -3,8 +3,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box, CircularProgress, Link, Typography } from '@mui/material';
 
-import { computeGradientField } from '@/lib/cv/edges';
-import { WeatheringEngine } from '@/lib/gl/weatheringEngine';
+import { computeGradientField } from '@/lib/weathering/gradientField';
+import { WeatheringEngine } from '@/lib/weathering/engine';
 import type { DailyArtWork } from '@/types/dailyArt';
 
 /** One simulation step every 45 seconds: the weathering completes at 24:00 JST. */

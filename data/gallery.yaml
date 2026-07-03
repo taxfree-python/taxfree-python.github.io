@@ -5,9 +5,9 @@
 #   id: Unique identifier
 #   title: Work title
 #   date: Creation date (YYYY-MM-DD)
-#   media: Path to media file (image/gif/video)
+#   media: Route path to the work page
 #   thumbnail: Path to thumbnail image
-#   mediaType: Type of media (image, gif, or video)
+#   mediaType: Type of work (currently only "interactive")
 #   description: Optional description
 #   category: Optional category (e.g., "illustration", "3d", "photography")
 #   tools: Optional list of tools used
@@ -18,9 +18,9 @@
 #   - id: work-001
 #     title: 作品タイトル
 #     date: 2025-01-15
-#     media: /images/gallery/work-001.jpg
+#     media: /gallery/work-001
 #     thumbnail: /images/gallery/work-001-thumb.jpg
-#     mediaType: image
+#     mediaType: interactive
 #     description: 作品の説明
 #     category: illustration
 #     tools:
@@ -39,5 +39,4 @@ works:
     category: generative
     tools:
       - WebGL2
-      - Computer Vision
       - Wikimedia Commons
