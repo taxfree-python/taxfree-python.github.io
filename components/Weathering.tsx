@@ -54,7 +54,7 @@ export function Weathering({ date, works }: WeatheringProps) {
   const glCanvasRef = useRef<HTMLCanvasElement>(null);
   const engineRef = useRef<WeatheringEngine | null>(null);
   const schedulerRef = useRef<{ kind: 'raf' | 'timeout'; id: number } | null>(null);
-  const reducedMotionRef = useRef(false);
+  const renderedStepRef = useRef(-1);
 
   const [work, setWork] = useState<WeatheringWork | null>(null);
   const [status, setStatus] = useState<Status>('loading');
@@ -91,29 +91,27 @@ export function Weathering({ date, works }: WeatheringProps) {
         return;
       }
       const target = stepForMinutes(jstMinutesNow());
-      let mutated = false;
       if (target < engine.stepIndex) {
         engine.reset();
-        mutated = true;
       }
       const pending = target - engine.stepIndex;
       if (pending > 0) {
         engine.advance(Math.min(pending, CATCH_UP_PER_FRAME));
-        mutated = true;
       }
-      if (mutated) {
-        const caughtUp = engine.stepIndex >= target;
-        if (!reducedMotionRef.current || caughtUp) {
+      if (engine.stepIndex >= target) {
+        // Only frames in sync with the clock are presented: the fast-forward
+        // catch-up stays invisible, so the pristine image never flashes.
+        if (renderedStepRef.current !== engine.stepIndex) {
           engine.render();
+          renderedStepRef.current = engine.stepIndex;
+          setStatus('running');
         }
-      }
-      if (target - engine.stepIndex > 0) {
-        schedulerRef.current = { kind: 'raf', id: requestAnimationFrame(tick) };
-      } else {
         schedulerRef.current = {
           kind: 'timeout',
           id: window.setTimeout(tick, IDLE_POLL_MS),
         };
+      } else {
+        schedulerRef.current = { kind: 'raf', id: requestAnimationFrame(tick) };
       }
     };
 
@@ -151,10 +149,8 @@ export function Weathering({ date, works }: WeatheringProps) {
         return;
       }
       engineRef.current = engine;
-      reducedMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
       setAspectRatio(`${width} / ${height}`);
-      setStatus('running');
+      // Status stays 'loading' (spinner) until tick catches up to the clock.
       tick();
     };
 
