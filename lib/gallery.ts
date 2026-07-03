@@ -3,6 +3,7 @@ import path from 'node:path';
 import { cache } from 'react';
 import YAML from 'yaml';
 
+import { mediaTypeValues } from '@/types/gallery';
 import type { GalleryData, GalleryWork, MediaType } from '@/types/gallery';
 import { assert } from '@/lib/assert';
 import {
@@ -14,7 +15,6 @@ import {
 
 const galleryFilePath = path.join(process.cwd(), 'data', 'gallery.yaml');
 
-const mediaTypeValues: MediaType[] = ['image', 'gif', 'video'];
 const mediaTypeSet: ReadonlySet<string> = new Set(mediaTypeValues);
 
 const isMediaType = (value: string): value is MediaType => mediaTypeSet.has(value);
@@ -47,11 +47,6 @@ function validateGalleryWork(raw: unknown, index: number): GalleryWork {
   const description = toOptionalString(obj.description, `${context}.description`);
   if (description !== undefined) {
     work.description = description;
-  }
-
-  const category = toOptionalString(obj.category, `${context}.category`);
-  if (category !== undefined) {
-    work.category = category;
   }
 
   const tools = toOptionalStringArray(obj.tools, `${context}.tools`);

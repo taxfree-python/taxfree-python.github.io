@@ -1,0 +1,21 @@
+name: Daily Weathering
+
+on:
+  schedule:
+    # 00:07 JST (JST has no DST). Offset from :00 to dodge GitHub's cron congestion.
+    - cron: '7 15 * * *'
+  workflow_dispatch:
+
+permissions:
+  actions: write
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # Daily images and metadata are fetched at build time (npm prebuild), so
+      # the nightly job only needs to re-run the deploy.
+      - name: Trigger deploy
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run deploy.yml --repo "$GITHUB_REPOSITORY" --ref main

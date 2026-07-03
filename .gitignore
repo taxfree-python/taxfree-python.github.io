@@ -13,3 +13,7 @@ pnpm-debug.log*
 references/
 memo.md
 .serena/
+
+# generated at build time by scripts/fetch-weathering.mjs
+/data/weathering.json
+/public/images/gallery/weathering/
