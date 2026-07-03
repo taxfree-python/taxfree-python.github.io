@@ -49,11 +49,6 @@ function validateGalleryWork(raw: unknown, index: number): GalleryWork {
     work.description = description;
   }
 
-  const category = toOptionalString(obj.category, `${context}.category`);
-  if (category !== undefined) {
-    work.category = category;
-  }
-
   const tools = toOptionalStringArray(obj.tools, `${context}.tools`);
   if (tools !== undefined) {
     work.tools = tools;

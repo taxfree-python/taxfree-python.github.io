@@ -11,7 +11,6 @@ export type GalleryWork = {
   thumbnail: string; // Path to thumbnail
   mediaType: MediaType;
   description?: string;
-  category?: string;
   tools?: string[];
 };
 

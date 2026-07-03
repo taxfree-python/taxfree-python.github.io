@@ -9,7 +9,6 @@
 #   thumbnail: Path to thumbnail image
 #   mediaType: Type of work (currently only "interactive")
 #   description: Optional description
-#   category: Optional category (e.g., "illustration", "3d", "photography")
 #   tools: Optional list of tools used
 #   featured: Set to true to display on homepage (recommend 3-5 featured works)
 #
@@ -22,7 +21,6 @@
 #     thumbnail: /images/gallery/work-001-thumb.jpg
 #     mediaType: interactive
 #     description: 作品の説明
-#     category: illustration
 #     tools:
 #       - Procreate
 #       - Photoshop
@@ -36,7 +34,6 @@ works:
     thumbnail: /images/gallery/weathering/current-thumb.jpg
     mediaType: interactive
     description: Wikipedia の「今日は何の日」に関わるパブリックドメイン画像を毎日選び、エッジ検出で得た輪郭の垂直方向へ色が滲みながら一日をかけて風化していく。
-    category: generative
     tools:
       - WebGL2
       - React
