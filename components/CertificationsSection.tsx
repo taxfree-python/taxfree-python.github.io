@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 import { Container, Typography, Box, Stack, Collapse } from '@mui/material';
-import type { CertificationsContent } from '@/types/profile';
-import { formatActivityDate } from '@/lib/activityPeriod';
+import type { CertificationsContent } from '@/types';
+import { formatCalendarDate } from '@/lib/date';
 
 type CertificationsSectionProps = {
   content: CertificationsContent;
@@ -74,7 +74,7 @@ export function CertificationsSection({ content }: CertificationsSectionProps) {
                   fontVariantNumeric: 'tabular-nums'
                 }}
               >
-                {formatActivityDate(certification.acquiredDate)}
+                {formatCalendarDate(certification.acquiredDate)}
               </Typography>
             </Box>
             <Collapse in={expandedIds.has(certification.name)}>

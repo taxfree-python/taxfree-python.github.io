@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import { Box, Typography } from '@mui/material';
-import type { SocialLink } from '@/types/profile';
+import type { LabeledLink } from '@/types';
 
 type SocialLinksProps = {
-  links: SocialLink[];
+  links: LabeledLink[];
 };
 
 export function SocialLinks({ links }: SocialLinksProps) {
@@ -11,8 +11,8 @@ export function SocialLinks({ links }: SocialLinksProps) {
     <Box display="flex" gap={3} justifyContent="center" flexWrap="wrap">
       {links.map((link) => (
         <Link
-          key={link.href}
-          href={link.href}
+          key={link.url}
+          href={link.url}
           target="_blank"
           rel="noopener noreferrer"
           style={{ textDecoration: 'none' }}

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { getProjectsAndActivities } from '@/lib/activities';
-import { getSkillsData } from '@/lib/skills';
+import { getActivities } from '@/lib/activities';
+import { getSkills } from '@/lib/skills';
 import { getPublications } from '@/lib/publications';
 import { certificationsContent } from '@/data/profile';
 import { siteConfig } from '@/config/site';
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
 };
 
 export default function CVPage() {
-  const activities = getProjectsAndActivities();
-  const { skills } = getSkillsData();
+  const activities = getActivities();
+  const skills = getSkills();
   const publications = getPublications();
 
   return (

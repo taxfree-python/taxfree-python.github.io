@@ -4,12 +4,12 @@ import { useState } from 'react';
 import { BlogPostCard } from '@/components/BlogPostCard';
 import { BlogEmptyState } from '@/components/BlogEmptyState';
 import { Container, Box, Stack, Button } from '@mui/material';
-import type { PostData } from '@/lib/posts';
+import type { PostMeta } from '@/types';
 
 const POSTS_PER_PAGE = 10;
 
 type BlogListProps = {
-  posts: PostData[];
+  posts: PostMeta[];
 };
 
 export function BlogList({ posts }: BlogListProps) {

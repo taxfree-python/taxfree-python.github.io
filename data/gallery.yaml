@@ -5,7 +5,7 @@
 #   id: Unique identifier
 #   title: Work title
 #   date: Creation date (YYYY-MM-DD)
-#   media: Route path to the work page
+#   href: Route path to the work page
 #   description: Optional description
 #   tools: Optional list of tools used
 #
@@ -14,7 +14,7 @@
 #   - id: work-001
 #     title: 作品タイトル
 #     date: 2025-01-15
-#     media: /gallery/work-001
+#     href: /gallery/work-001
 #     description: 作品の説明
 #     tools:
 #       - WebGL2
@@ -24,7 +24,7 @@ works:
   - id: weathering
     title: Weathering
     date: 2026-07-03
-    media: /gallery/weathering
+    href: /gallery/weathering
     description: Wikipedia の「今日は何の日」に関わるパブリックドメイン画像を毎日選び、エッジ検出で得た輪郭の垂直方向へ色が滲みながら一日をかけて風化していく。
     tools:
       - WebGL2

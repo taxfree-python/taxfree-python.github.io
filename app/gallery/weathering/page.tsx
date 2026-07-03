@@ -4,11 +4,11 @@ import { Container } from '@mui/material';
 import { Weathering } from '@/components/Weathering';
 import { assert } from '@/lib/assert';
 import { getWeatheringData } from '@/lib/weathering/works';
-import { getGalleryData } from '@/lib/gallery';
+import { getGalleryWorks } from '@/lib/gallery';
 import { siteConfig } from '@/config/site';
 
 // gallery.yaml is the single source of truth for the work's title and description.
-const galleryWork = getGalleryData().works.find((work) => work.id === 'weathering');
+const galleryWork = getGalleryWorks().find((work) => work.id === 'weathering');
 assert(galleryWork?.description, 'gallery.yaml must define the weathering work with a description');
 
 const pageTitle = `${galleryWork.title} - ${siteConfig.name}`;

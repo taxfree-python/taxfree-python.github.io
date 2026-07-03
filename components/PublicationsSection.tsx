@@ -1,8 +1,8 @@
 'use client';
 
 import { Container, Typography, Box, Stack, Link } from '@mui/material';
-import type { Publication, PublicationType } from '@/types/publications';
-import { activityDateToComparableValue, formatActivityDate } from '@/lib/activityPeriod';
+import type { Publication, PublicationType } from '@/types';
+import { calendarDateValue, formatCalendarDate } from '@/lib/date';
 
 type PublicationsSectionProps = {
   publications: Publication[];
@@ -19,7 +19,7 @@ const highlightedAuthors: ReadonlySet<string> = new Set(['Yu Chinen', '知念優
 export function PublicationsSection({ publications }: PublicationsSectionProps) {
   // Sort publications by date (most recent first)
   const sortedPublications = [...publications].sort(
-    (a, b) => activityDateToComparableValue(b.date) - activityDateToComparableValue(a.date),
+    (a, b) => calendarDateValue(b.date) - calendarDateValue(a.date),
   );
 
   if (sortedPublications.length === 0) return null;
@@ -73,7 +73,7 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
                   fontVariantNumeric: 'tabular-nums'
                 }}
               >
-                {formatActivityDate(publication.date)}
+                {formatCalendarDate(publication.date)}
               </Typography>
             </Box>
             <Typography

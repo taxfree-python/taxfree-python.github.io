@@ -11,28 +11,15 @@ import sanitizeHtml from 'sanitize-html';
 import { remarkEmbedPdf } from './remark-embed-pdf';
 import { assert } from '@/lib/assert';
 import { ensureObject, toOptionalBoolean, toOptionalString } from '@/lib/validation';
+import type { Post, PostMeta } from '@/types';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
 const markdownFilePattern = /\.md$/;
 
-export type PostData = {
-  slug: string;
-  title: string;
-  date: string;
-  contentHtml?: string;
-  draft: boolean;
-  math: boolean;
-  description?: string;
-};
-
-export type PostStaticParam = {
-  slug: string;
-};
-
-type PostMetadata = Omit<PostData, 'slug' | 'contentHtml'>;
+type PostFrontmatter = Omit<PostMeta, 'slug'>;
 
 type MarkdownPost = {
-  metadata: PostMetadata;
+  metadata: PostFrontmatter;
   content: string;
 };
 
@@ -59,12 +46,12 @@ function toDateIsoString(value: unknown, context: string): string {
   return date.toISOString();
 }
 
-function parsePostMetadata(raw: unknown, slug: string, fileName: string): PostMetadata {
+function parsePostMetadata(raw: unknown, slug: string, fileName: string): PostFrontmatter {
   const context = `${fileName} frontmatter`;
   const obj = ensureObject(raw, context);
   const description = toOptionalString(obj.description, `${context}.description`);
 
-  const metadata: PostMetadata = {
+  const metadata: PostFrontmatter = {
     title: toOptionalString(obj.title, `${context}.title`) ?? slug,
     date: toDateIsoString(obj.date, `${context}.date`),
     draft: toOptionalBoolean(obj.draft, `${context}.draft`) ?? false,
@@ -90,8 +77,9 @@ function readMarkdownPost(fileName: string): MarkdownPost {
   };
 }
 
-export function getSortedPostsData(): PostData[] {
-  const allPostsData = getPostFileNames()
+/** All published posts, newest first. */
+export function getPosts(): PostMeta[] {
+  const posts = getPostFileNames()
     .map((fileName) => {
       const { metadata } = readMarkdownPost(fileName);
 
@@ -102,10 +90,10 @@ export function getSortedPostsData(): PostData[] {
     })
     .filter((post) => !post.draft); // ドラフトを除外
 
-  return allPostsData.sort((a, b) => b.date.localeCompare(a.date));
+  return posts.sort((a, b) => b.date.localeCompare(a.date));
 }
 
-export function getAllPostSlugs(): PostStaticParam[] {
+export function getPostSlugs(): { slug: string }[] {
   return getPostFileNames()
     .filter((fileName) => {
       const { metadata } = readMarkdownPost(fileName);
@@ -116,7 +104,7 @@ export function getAllPostSlugs(): PostStaticParam[] {
     }));
 }
 
-export async function getPostData(slug: string): Promise<PostData> {
+export async function getPost(slug: string): Promise<Post> {
   const { metadata, content } = readMarkdownPost(`${slug}.md`);
 
   const processedContent = await remark()

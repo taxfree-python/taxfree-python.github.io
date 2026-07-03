@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
-import type { HeroSubtitle } from '@/types/profile';
+import type { HeroSubtitle } from '@/types';
 
 const HOLD_MS = 1800;
 const DELETE_MS = 60;

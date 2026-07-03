@@ -5,7 +5,7 @@ import { Box, CircularProgress, Link, Typography } from '@mui/material';
 
 import { computeGradientField } from '@/lib/weathering/gradientField';
 import { WeatheringEngine } from '@/lib/weathering/engine';
-import type { WeatheringWork } from '@/types/weathering';
+import type { WeatheringWork } from '@/types';
 
 /** One simulation step every 45 seconds: the weathering completes at 24:00 JST. */
 const STEPS_PER_DAY = 1920;

@@ -51,3 +51,14 @@ export function toNumber(value: unknown, context: string): number {
   assert(typeof value === 'number' && Number.isFinite(value), `${context} must be a finite number`);
   return value;
 }
+
+export function toEnum<T extends string>(
+  value: unknown,
+  allowed: readonly T[],
+  context: string,
+): T {
+  const str = toString(value, context);
+  const match = allowed.find((option) => option === str);
+  assert(match !== undefined, `${context} must be one of: ${allowed.join(', ')}`);
+  return match;
+}
