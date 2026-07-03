@@ -3,7 +3,7 @@ import { Container } from '@mui/material';
 
 import { Weathering } from '@/components/Weathering';
 import { assert } from '@/lib/assert';
-import { getDailyArt } from '@/lib/dailyArt';
+import { getWeatheringData } from '@/lib/weathering/works';
 import { getGalleryData } from '@/lib/gallery';
 import { siteConfig } from '@/config/site';
 
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 };
 
 export default function WeatheringPage() {
-  const art = getDailyArt();
+  const art = getWeatheringData();
 
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6 }}>

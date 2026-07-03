@@ -2,19 +2,19 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { cache } from 'react';
 
-import type { DailyArt, DailyArtWork } from '@/types/dailyArt';
+import type { WeatheringData, WeatheringWork } from '@/types/weathering';
 import { assert } from '@/lib/assert';
 import { ensureObject, toNumber, toOptionalString, toString } from '@/lib/validation';
 
-const dailyArtFilePath = path.join(process.cwd(), 'data', 'daily-art.json');
+const weatheringFilePath = path.join(process.cwd(), 'data', 'weathering.json');
 
-function validateWork(raw: unknown, index: number): DailyArtWork {
-  const context = `daily-art.json.works[${index}]`;
+function validateWork(raw: unknown, index: number): WeatheringWork {
+  const context = `weathering.json.works[${index}]`;
   const obj = ensureObject(raw, context);
   const event = ensureObject(obj.event, `${context}.event`);
   const source = ensureObject(obj.source, `${context}.source`);
 
-  const work: DailyArtWork = {
+  const work: WeatheringWork = {
     image: toString(obj.image, `${context}.image`),
     event: {
       text: toString(event.text, `${context}.event.text`),
@@ -45,23 +45,23 @@ function validateWork(raw: unknown, index: number): DailyArtWork {
   return work;
 }
 
-function readDailyArtFile(): DailyArt {
-  const fileContents = fs.readFileSync(dailyArtFilePath, 'utf-8');
+function readWeatheringFile(): WeatheringData {
+  const fileContents = fs.readFileSync(weatheringFilePath, 'utf-8');
   const parsed: unknown = JSON.parse(fileContents);
-  const root = ensureObject(parsed, 'daily-art.json');
+  const root = ensureObject(parsed, 'weathering.json');
 
   const rawWorks = root.works;
-  assert(Array.isArray(rawWorks), 'daily-art.json.works must be an array');
-  assert(rawWorks.length > 0, 'daily-art.json.works must not be empty');
+  assert(Array.isArray(rawWorks), 'weathering.json.works must be an array');
+  assert(rawWorks.length > 0, 'weathering.json.works must not be empty');
 
   return {
-    date: toString(root.date, 'daily-art.json.date'),
-    seed: toNumber(root.seed, 'daily-art.json.seed'),
-    thumbnail: toString(root.thumbnail, 'daily-art.json.thumbnail'),
+    date: toString(root.date, 'weathering.json.date'),
+    seed: toNumber(root.seed, 'weathering.json.seed'),
+    thumbnail: toString(root.thumbnail, 'weathering.json.thumbnail'),
     works: rawWorks.map((item, index) => validateWork(item, index)),
   };
 }
 
-export const getDailyArt = cache((): DailyArt => {
-  return readDailyArtFile();
+export const getWeatheringData = cache((): WeatheringData => {
+  return readWeatheringFile();
 });

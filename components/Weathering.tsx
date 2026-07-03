@@ -5,7 +5,7 @@ import { Box, CircularProgress, Link, Typography } from '@mui/material';
 
 import { computeGradientField } from '@/lib/weathering/gradientField';
 import { WeatheringEngine } from '@/lib/weathering/engine';
-import type { DailyArtWork } from '@/types/dailyArt';
+import type { WeatheringWork } from '@/types/weathering';
 
 /** One simulation step every 45 seconds: the weathering completes at 24:00 JST. */
 const STEPS_PER_DAY = 1920;
@@ -17,7 +17,7 @@ const MINUTES_PER_DAY = 1440;
 
 type WeatheringProps = {
   date: string;
-  works: DailyArtWork[];
+  works: WeatheringWork[];
 };
 
 type Status = 'loading' | 'running' | 'fallback';
@@ -56,7 +56,7 @@ export function Weathering({ date, works }: WeatheringProps) {
   const schedulerRef = useRef<{ kind: 'raf' | 'timeout'; id: number } | null>(null);
   const reducedMotionRef = useRef(false);
 
-  const [work, setWork] = useState<DailyArtWork | null>(null);
+  const [work, setWork] = useState<WeatheringWork | null>(null);
   const [status, setStatus] = useState<Status>('loading');
   const [aspectRatio, setAspectRatio] = useState('2 / 1');
 

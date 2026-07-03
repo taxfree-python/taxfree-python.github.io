@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "prebuild": "npm run fetch-daily-art",
+    "prebuild": "npm run fetch-weathering",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "check": "npm run lint && npm run typecheck && npm run test",
-    "fetch-daily-art": "node scripts/fetch-daily-art.mjs"
+    "fetch-weathering": "node scripts/fetch-weathering.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

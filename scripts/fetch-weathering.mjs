@@ -5,9 +5,9 @@
  * ten associated Wikimedia Commons images that are public domain or CC0, and
  * writes normalized JPEGs plus metadata into the repository:
  *
- *   public/images/gallery/daily/0.jpg .. N-1.jpg   (1280px, canvas sources)
- *   public/images/gallery/daily/current-thumb.jpg  (640px, gallery card)
- *   data/daily-art.json                            (attribution per work)
+ *   public/images/gallery/weathering/0.jpg .. N-1.jpg   (1280px, canvas sources)
+ *   public/images/gallery/weathering/current-thumb.jpg  (640px, gallery card)
+ *   data/weathering.json                                (attribution per work)
  *
  * The client shows one of the works at random per page load. Selection is
  * deterministic per date; exits non-zero without touching any files when no
@@ -19,7 +19,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 
 const USER_AGENT =
-  'taxfree-python.github.io/daily-art (https://github.com/taxfree-python/taxfree-python.github.io)';
+  'taxfree-python.github.io/weathering (https://github.com/taxfree-python/taxfree-python.github.io)';
 
 const MAX_WORKS = 10;
 const MIN_SOURCE_WIDTH = 640;
@@ -27,8 +27,8 @@ const IMAGE_WIDTH = 1280;
 const THUMB_WIDTH = 640;
 
 const repoRoot = path.join(import.meta.dirname, '..');
-const dailyDir = path.join(repoRoot, 'public', 'images', 'gallery', 'daily');
-const metadataPath = path.join(repoRoot, 'data', 'daily-art.json');
+const imagesDir = path.join(repoRoot, 'public', 'images', 'gallery', 'weathering');
+const metadataPath = path.join(repoRoot, 'data', 'weathering.json');
 
 function jstToday() {
   const jst = new Date(Date.now() + 9 * 60 * 60 * 1000);
@@ -221,7 +221,7 @@ async function fetchRenderedImage(fileTitle, sourceWidth) {
 
 function workEntry(candidate, index) {
   return {
-    image: `/images/gallery/daily/${index}.jpg`,
+    image: `/images/gallery/weathering/${index}.jpg`,
     event: {
       ...(candidate.event.year != null ? { year: candidate.event.year } : {}),
       text: candidate.event.text,
@@ -240,7 +240,7 @@ function workEntry(candidate, index) {
 
 async function main() {
   const { date, mm, dd } = jstToday();
-  console.log(`Selecting daily art for ${date} (JST)`);
+  console.log(`Selecting weathering works for ${date} (JST)`);
 
   const pages = await collectCandidates(mm, dd);
   const withFiles = await resolvePageImages(pages);
@@ -283,10 +283,10 @@ async function main() {
     process.exit(1);
   }
 
-  await fs.mkdir(dailyDir, { recursive: true });
-  for (const stale of await fs.readdir(dailyDir)) {
+  await fs.mkdir(imagesDir, { recursive: true });
+  for (const stale of await fs.readdir(imagesDir)) {
     if (stale.endsWith('.jpg')) {
-      await fs.unlink(path.join(dailyDir, stale));
+      await fs.unlink(path.join(imagesDir, stale));
     }
   }
 
@@ -298,7 +298,7 @@ async function main() {
       .resize({ width: IMAGE_WIDTH, withoutEnlargement: true })
       .jpeg({ quality: 85 })
       .toBuffer();
-    await fs.writeFile(path.join(dailyDir, `${index}.jpg`), image);
+    await fs.writeFile(path.join(imagesDir, `${index}.jpg`), image);
     works.push(workEntry(candidate, index));
   }
 
@@ -308,17 +308,17 @@ async function main() {
     .resize({ width: THUMB_WIDTH, withoutEnlargement: true })
     .jpeg({ quality: 80 })
     .toBuffer();
-  await fs.writeFile(path.join(dailyDir, 'current-thumb.jpg'), thumb);
+  await fs.writeFile(path.join(imagesDir, 'current-thumb.jpg'), thumb);
 
   const metadata = {
     date,
     seed,
-    thumbnail: '/images/gallery/daily/current-thumb.jpg',
+    thumbnail: '/images/gallery/weathering/current-thumb.jpg',
     works,
   };
   await fs.writeFile(metadataPath, `${JSON.stringify(metadata, null, 2)}\n`);
   console.log(
-    `Wrote ${works.length} works to ${path.relative(repoRoot, metadataPath)} and public/images/gallery/daily/`,
+    `Wrote ${works.length} works to ${path.relative(repoRoot, metadataPath)} and public/images/gallery/weathering/`,
   );
 }
 
