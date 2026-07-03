@@ -22,7 +22,5 @@ export type WeatheringWork = {
 /** Written daily by scripts/fetch-weathering.mjs into data/weathering.json. */
 export type WeatheringData = {
   date: string;
-  seed: number;
-  thumbnail: string;
   works: WeatheringWork[];
 };

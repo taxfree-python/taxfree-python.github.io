@@ -56,8 +56,6 @@ function readWeatheringFile(): WeatheringData {
 
   return {
     date: toString(root.date, 'weathering.json.date'),
-    seed: toNumber(root.seed, 'weathering.json.seed'),
-    thumbnail: toString(root.thumbnail, 'weathering.json.thumbnail'),
     works: rawWorks.map((item, index) => validateWork(item, index)),
   };
 }
