@@ -26,7 +26,7 @@ function lerpPositions(a: Positions, b: Positions, k: number): Positions {
 
 const OBJECTIVES = [
   { idx: 0, label: '透明度', dir: '↑', better: 'up' as const },
-  { idx: 1, label: 'バランス偏差 dB', dir: '↓', better: 'down' as const },
+  { idx: 1, label: 'バランス偏差 (dB)', dir: '↓', better: 'down' as const },
   { idx: 2, label: '広がり (1−IACC)', dir: '↑', better: 'up' as const },
 ];
 
@@ -160,8 +160,13 @@ export default function EvolutionReplay() {
           </Box>
 
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Button size="small" onClick={togglePlay} sx={{ ...actionSx, minWidth: 104 }}>
-              {playing ? '⏸ 一時停止' : t >= MAX ? '↻ 最初から' : '▶ 再生'}
+            <Button
+              size="small"
+              onClick={togglePlay}
+              sx={{ ...actionSx, minWidth: 44, px: 1.5 }}
+              aria-label={playing ? '一時停止' : t >= MAX ? '最初から' : '再生'}
+            >
+              {playing ? '⏸' : t >= MAX ? '↻' : '▶'}
             </Button>
             <input
               type="range"

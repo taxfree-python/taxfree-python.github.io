@@ -15,8 +15,8 @@ const LAYOUTS = (layoutsData as { layouts: Layout[] }).layouts;
 const SHORT: Record<string, string> = {
   us: 'US式',
   german: 'ドイツ式',
-  v3winner: '勝ち配置',
-  v2spread: '広がり',
+  v3winner: 'パレート解-1',
+  v2spread: 'パレート解-2',
   stack: 'STACK',
   ring: 'RING',
 };
@@ -78,7 +78,7 @@ export default function LayoutViewer() {
               {current.mode === 'surround' ? 'サラウンド' : 'ステージ'}
             </Typography>
           </Typography>
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 2, minHeight: '3.2em' }}>
             {current.description}
           </Typography>
           <AudioPlayer src={`/audio/orchestra/${current.audio}`} />

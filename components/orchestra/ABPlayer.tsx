@@ -7,8 +7,8 @@ import { actionSx, toggleSx, SEEK_ACCENT } from './ui';
 type Side = 'A' | 'B';
 
 const TRACKS: Record<Side, { label: string; sub: string; src: string }> = {
-  A: { label: 'A — 伝統配置', sub: 'アメリカ式 (US)', src: '/audio/orchestra/US_VR.m4a' },
-  B: { label: 'B — 最適解', sub: '代表解 (V5_KNEE)', src: '/audio/orchestra/V5_KNEE.m4a' },
+  A: { label: 'A — 伝統配置', sub: 'アメリカ式', src: '/audio/orchestra/US_VR.m4a' },
+  B: { label: 'B — パレート解', sub: '最適化で得た配置', src: '/audio/orchestra/V5_KNEE.m4a' },
 };
 
 function fmt(sec: number): string {
@@ -141,7 +141,7 @@ export default function ABPlayer() {
       </Box>
 
       <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 1.5 }}>
-        🎧 ヘッドホン必須。A/B はラウドネスを揃えてあり、切り替えても再生位置は同じ時刻を保ちます。
+        🎧 ヘッドホン必須。A/B は音量を揃えてあり、切り替えても再生位置は同じ時刻を保ちます。
         実際のブラインド確認では左右をランダム化し、どちらが最適解かを伏せて比較しました。
       </Typography>
     </Box>

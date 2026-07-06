@@ -66,7 +66,7 @@
       "label": "ドイツ式 (伝統)",
       "mode": "stage",
       "audio": "GERMAN.m4a",
-      "description": "ドイツ式。第1と第2ヴァイオリンを左右に分ける両翼配置。",
+      "description": "ドイツ式。第1と第2ヴァイオリンを左右に振り分ける両翼配置。低弦は右奥。",
       "positions": {
         "vn1": {
           "az": 36.0,
@@ -124,7 +124,7 @@
     },
     {
       "id": "v3winner",
-      "label": "最適解",
+      "label": "パレート解-1",
       "mode": "stage",
       "audio": "V3_WINNER.m4a",
       "description": "進化探索の勝者。ステージ全幅を使い、同族クラスタを解体して混ぜる。",
@@ -185,10 +185,10 @@
     },
     {
       "id": "v2spread",
-      "label": "最適解 (広がり重視)",
+      "label": "パレート解-2",
       "mode": "stage",
       "audio": "V2_SPREAD.m4a",
-      "description": "空間の広がりを重く見た解。左右に大きく展開する。",
+      "description": "空間の広がりを重視した解。左右に大きく展開し、奥行きも活かす配置。",
       "positions": {
         "cb": {
           "az": -53.39236181167552,
@@ -310,7 +310,7 @@
       "label": "RING (素朴なサラウンド)",
       "mode": "surround",
       "audio": "RING.m4a",
-      "description": "リスナーを等間隔で囲む単純な円環。サラウンド最適化の出発点。",
+      "description": "リスナーを等間隔で囲む単純な円環。サラウンド配置を最適化する際の素朴な出発点。",
       "positions": {
         "vn1": {
           "az": -166.15384615384616,
