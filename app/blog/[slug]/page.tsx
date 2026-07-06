@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
+import PostContent from '@/components/orchestra/PostContent';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -173,8 +174,9 @@ export default async function BlogPost({ params }: PageProps) {
               prose-a:text-blue-600 dark:prose-a:text-blue-400
               prose-code:text-gray-900 dark:prose-code:text-gray-100
               prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
+          >
+            <PostContent html={post.contentHtml} />
+          </div>
         </Box>
       </Container>
     </Box>
