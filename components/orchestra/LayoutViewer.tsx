@@ -5,7 +5,9 @@ import { Box, Button, Typography } from '@mui/material';
 import OrchestraStage from './OrchestraStage';
 import FamilyLegend from './FamilyLegend';
 import AudioPlayer from './AudioPlayer';
+import PieceToggle from './PieceToggle';
 import { toggleSx } from './ui';
+import { audioSrc, type Piece } from './piece';
 import type { Layout } from './types';
 import layoutsData from './data/layouts.json';
 
@@ -23,6 +25,7 @@ const SHORT: Record<string, string> = {
 
 export default function LayoutViewer() {
   const [selectedId, setSelectedId] = useState(LAYOUTS[0]!.id);
+  const [piece, setPiece] = useState<Piece>('mozart');
   const current = LAYOUTS.find((l) => l.id === selectedId) ?? LAYOUTS[0]!;
 
   return (
@@ -81,7 +84,10 @@ export default function LayoutViewer() {
           <Typography variant="body2" color="text.secondary" sx={{ mb: 2, minHeight: '3.2em' }}>
             {current.description}
           </Typography>
-          <AudioPlayer src={`/audio/orchestra/${current.audio}`} />
+          <AudioPlayer src={audioSrc(piece, current.audio)} />
+          <Box sx={{ mt: 1.5 }}>
+            <PieceToggle value={piece} onChange={setPiece} />
+          </Box>
           <Typography variant="caption" color="text.secondary" display="block" sx={{ mt: 1 }}>
             🎧 ヘッドホン推奨(バイノーラル音源)
           </Typography>

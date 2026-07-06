@@ -1,14 +1,16 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Box, Button, Typography } from '@mui/material';
 import { actionSx, toggleSx, SEEK_ACCENT } from './ui';
+import PieceToggle from './PieceToggle';
+import { audioSrc, type Piece } from './piece';
 
 type Side = 'A' | 'B';
 
-const TRACKS: Record<Side, { label: string; sub: string; src: string }> = {
-  A: { label: 'A — 伝統配置', sub: 'アメリカ式', src: '/audio/orchestra/US_VR.m4a' },
-  B: { label: 'B — パレート解', sub: '最適化で得た配置', src: '/audio/orchestra/V5_KNEE.m4a' },
+const TRACKS: Record<Side, { label: string; sub: string; file: string }> = {
+  A: { label: 'A — 伝統配置', sub: 'アメリカ式', file: 'US_VR.m4a' },
+  B: { label: 'B — パレート解', sub: '最適化で得た配置', file: 'V5_KNEE.m4a' },
 };
 
 function fmt(sec: number): string {
@@ -25,6 +27,15 @@ export default function ABPlayer() {
   const [playing, setPlaying] = useState(false);
   const [cur, setCur] = useState(0);
   const [dur, setDur] = useState(0);
+  const [piece, setPiece] = useState<Piece>('mozart');
+
+  // Switching the source piece reloads both <audio> elements; reset transport.
+  useEffect(() => {
+    aRef.current?.pause();
+    bRef.current?.pause();
+    setPlaying(false);
+    setCur(0);
+  }, [piece]);
 
   const elOf = (s: Side) => (s === 'A' ? aRef.current : bRef.current);
 
@@ -77,7 +88,7 @@ export default function ABPlayer() {
         <audio
           key={s}
           ref={s === 'A' ? aRef : bRef}
-          src={TRACKS[s].src}
+          src={audioSrc(piece, TRACKS[s].file)}
           preload="metadata"
           onLoadedMetadata={(e) => {
             if (s === active) setDur(e.currentTarget.duration);
@@ -92,6 +103,10 @@ export default function ABPlayer() {
           <track kind="captions" />
         </audio>
       ))}
+
+      <Box sx={{ mb: 2 }}>
+        <PieceToggle value={piece} onChange={setPiece} />
+      </Box>
 
       <Box sx={{ display: 'flex', gap: 1, mb: 2 }}>
         {(['A', 'B'] as Side[]).map((s) => {
