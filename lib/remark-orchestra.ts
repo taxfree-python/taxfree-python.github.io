@@ -1,8 +1,6 @@
 import { visit } from 'unist-util-visit';
 import type { Html, Paragraph, Root } from 'mdast';
-
-/** Widget names that lib/../components/orchestra/PostContent.tsx knows how to render. */
-const KNOWN_WIDGETS = new Set(['LayoutViewer', 'EvolutionReplay', 'ABPlayer']);
+import { isOrchestraWidgetName } from './orchestra-widgets';
 
 /**
  * Remark plugin: turn `{{<orchestra name="LayoutViewer">}}` shortcodes into a
@@ -25,7 +23,7 @@ export function remarkOrchestra(): (tree: Root) => void {
       if (!match) return;
 
       const name = match[1];
-      if (name === undefined || !KNOWN_WIDGETS.has(name)) return;
+      if (name === undefined || !isOrchestraWidgetName(name)) return;
 
       const htmlNode: Html = {
         type: 'html',

@@ -1,18 +1,6 @@
-'use client';
-
-import { Fragment, type ComponentType, type ReactNode } from 'react';
-import LayoutViewer from './LayoutViewer';
-import EvolutionReplay from './EvolutionReplay';
-import ABPlayer from './ABPlayer';
-
-const REGISTRY: Record<string, ComponentType> = {
-  LayoutViewer,
-  EvolutionReplay,
-  ABPlayer,
-};
-
-// Matches the placeholder emitted by lib/remark-orchestra.ts (after sanitisation).
-const PLACEHOLDER = /<div[^>]*data-orchestra-widget="([^"]+)"[^>]*><\/div>/g;
+import { Fragment, type ReactNode } from 'react';
+import OrchestraWidget from './OrchestraWidget';
+import { createOrchestraPlaceholderRegex, isOrchestraWidgetName } from '@/lib/orchestra-widgets';
 
 type Props = {
   html: string;
@@ -28,16 +16,16 @@ export default function PostContent({ html }: Props) {
   let lastIndex = 0;
   let key = 0;
   let match: RegExpExecArray | null;
+  const placeholder = createOrchestraPlaceholderRegex();
 
-  PLACEHOLDER.lastIndex = 0;
-  while ((match = PLACEHOLDER.exec(html)) !== null) {
+  while ((match = placeholder.exec(html)) !== null) {
     const chunk = html.slice(lastIndex, match.index);
     if (chunk) {
       nodes.push(<div key={key++} dangerouslySetInnerHTML={{ __html: chunk }} />);
     }
-    const Widget = REGISTRY[match[1]!];
-    if (Widget) {
-      nodes.push(<Widget key={key++} />);
+    const name = match[1];
+    if (name !== undefined && isOrchestraWidgetName(name)) {
+      nodes.push(<OrchestraWidget key={key++} name={name} />);
     }
     lastIndex = match.index + match[0].length;
   }
