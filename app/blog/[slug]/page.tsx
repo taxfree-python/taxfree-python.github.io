@@ -3,10 +3,18 @@ import Link from 'next/link';
 import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
+import { hasOrchestraPlaceholders } from '@/lib/orchestra-widgets';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+const postContentClassName = `prose prose-lg dark:prose-invert max-w-none
+  prose-headings:text-gray-900 dark:prose-headings:text-white
+  prose-p:text-gray-700 dark:prose-p:text-gray-300
+  prose-a:text-blue-600 dark:prose-a:text-blue-400
+  prose-code:text-gray-900 dark:prose-code:text-gray-100
+  prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900`;
 
 export async function generateStaticParams() {
   return getPostSlugs();
@@ -54,6 +62,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function BlogPost({ params }: PageProps) {
   const { slug } = await params;
   const post = await getPost(slug);
+  const PostContent = hasOrchestraPlaceholders(post.contentHtml)
+    ? (await import('@/components/orchestra/PostContent')).default
+    : null;
 
   return (
     <Box
@@ -166,15 +177,13 @@ export default async function BlogPost({ params }: PageProps) {
             </Typography>
           </Box>
 
-          <div
-            className="prose prose-lg dark:prose-invert max-w-none
-              prose-headings:text-gray-900 dark:prose-headings:text-white
-              prose-p:text-gray-700 dark:prose-p:text-gray-300
-              prose-a:text-blue-600 dark:prose-a:text-blue-400
-              prose-code:text-gray-900 dark:prose-code:text-gray-100
-              prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
+          {PostContent ? (
+            <div className={postContentClassName}>
+              <PostContent html={post.contentHtml} />
+            </div>
+          ) : (
+            <div className={postContentClassName} dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+          )}
         </Box>
       </Container>
     </Box>
