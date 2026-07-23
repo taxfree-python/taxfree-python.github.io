@@ -55,13 +55,6 @@ export type Publication = {
   links?: LabeledLink[];
 };
 
-// ---- Skills (data/skills.yaml) ----
-
-export type Skill = {
-  name: string;
-  experience?: string;
-};
-
 // ---- Profile (data/profile.ts) ----
 
 export type HeroSubtitle = {

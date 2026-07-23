@@ -25,15 +25,16 @@ export function CertificationsSection({ content }: CertificationsSectionProps) {
   };
 
   return (
-    <Container maxWidth="md" component="section" sx={{ py: 6 }}>
+    <Container maxWidth="md" component="section" sx={{ pt: 3, pb: 10 }}>
       <Typography
-        variant="h4"
-        component="h2"
-        gutterBottom
+        variant="h6"
+        component="h3"
         sx={{
-          mb: 4,
-          fontWeight: 400,
-          letterSpacing: '-0.02em'
+          mb: 2,
+          fontWeight: 500,
+          letterSpacing: '-0.01em',
+          color: 'text.secondary',
+          fontSize: '1rem'
         }}
       >
         {content.title}

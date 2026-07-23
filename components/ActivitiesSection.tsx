@@ -92,19 +92,6 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
 
   return (
     <Container maxWidth="md" component="section" sx={{ pt: 6, pb: 3 }}>
-      <Typography
-        variant="h4"
-        component="h2"
-        gutterBottom
-        sx={{
-          mb: 4,
-          fontWeight: 400,
-          letterSpacing: '-0.02em'
-        }}
-      >
-        Experience
-      </Typography>
-
       <Stack spacing={6}>
         {ACTIVITY_CATEGORIES.map((category) => {
           const categoryActivities = groupedActivities[category];
