@@ -120,8 +120,7 @@ export function DynamicSubtitle({ content }: DynamicSubtitleProps) {
         fontWeight: 500,
         letterSpacing: '-0.01em',
         minHeight: '1.6em',
-        fontFamily:
-          '"JetBrains Mono", "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace',
+        fontFamily: 'var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace',
       }}
     >
       <Box component="span" sx={{ whiteSpace: 'pre', color: 'text.primary' }}>
