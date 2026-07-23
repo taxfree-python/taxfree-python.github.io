@@ -10,7 +10,7 @@ type HeroSectionProps = {
 export function HeroSection({ content }: HeroSectionProps) {
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6, textAlign: 'center' }}>
-      <Typography variant="h1" component="h1" gutterBottom sx={{ fontSize: { xs: '2rem', md: '2.5rem' }, mb: 3 }}>
+      <Typography variant="h1" component="h1" gutterBottom sx={{ mb: 3 }}>
         {content.title}
       </Typography>
       <DynamicSubtitle content={content.subtitle} />

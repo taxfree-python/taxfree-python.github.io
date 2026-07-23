@@ -4,6 +4,7 @@ import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
 import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 import { hasOrchestraPlaceholders } from '@/lib/orchestra-widgets';
+import { fontFamilyMono } from '@/lib/theme';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -118,7 +119,7 @@ export default async function BlogPost({ params }: PageProps) {
               '&:hover': { textDecoration: 'underline' },
             },
             '& code': {
-              fontFamily: 'var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace',
+              fontFamily: fontFamilyMono,
               backgroundColor: 'rgba(255,255,255,0.06)',
               borderRadius: 1,
               px: 0.5,
@@ -130,7 +131,7 @@ export default async function BlogPost({ params }: PageProps) {
               borderRadius: 2,
               p: 2,
               overflowX: 'auto',
-              fontFamily: 'var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace',
+              fontFamily: fontFamilyMono,
               color: 'text.primary',
             },
             '& ul, & ol': {

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Box, Typography } from '@mui/material';
 import type { HeroSubtitle } from '@/types';
+import { fontFamilyMono } from '@/lib/theme';
 
 const HOLD_MS = 1800;
 const DELETE_MS = 60;
@@ -118,9 +119,8 @@ export function DynamicSubtitle({ content }: DynamicSubtitleProps) {
         color: 'text.secondary',
         mb: 3,
         fontWeight: 500,
-        letterSpacing: '-0.01em',
         minHeight: '1.6em',
-        fontFamily: 'var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace',
+        fontFamily: fontFamilyMono,
       }}
     >
       <Box component="span" sx={{ whiteSpace: 'pre', color: 'text.primary' }}>

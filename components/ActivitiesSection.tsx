@@ -100,14 +100,11 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
           return (
             <Box key={category}>
               <Typography
-                variant="h6"
+                variant="subtitle2"
                 component="h3"
                 sx={{
                   mb: 2,
-                  fontWeight: 500,
-                  letterSpacing: '-0.01em',
                   color: 'text.secondary',
-                  fontSize: '1rem'
                 }}
               >
                 {categoryLabels[category]}
@@ -131,11 +128,8 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
                       }}
                     >
                       <Typography
-                        variant="body1"
-                        sx={{
-                          fontWeight: 500,
-                          letterSpacing: '-0.01em'
-                        }}
+                        variant="subtitle1"
+                        component="p"
                       >
                         {activity.title}
                       </Typography>
@@ -172,7 +166,6 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
                           color="text.secondary"
                           sx={{
                             lineHeight: 1.7,
-                            letterSpacing: '-0.01em'
                           }}
                         >
                           {renderTextWithLinks(activity.description)}
@@ -195,7 +188,6 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
               textTransform: 'none',
               color: 'text.primary',
               fontWeight: 400,
-              letterSpacing: '-0.01em',
               '&:hover': {
                 backgroundColor: 'transparent',
                 textDecoration: 'underline',

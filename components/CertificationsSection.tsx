@@ -27,14 +27,11 @@ export function CertificationsSection({ content }: CertificationsSectionProps) {
   return (
     <Container maxWidth="md" component="section" sx={{ pt: 3, pb: 10 }}>
       <Typography
-        variant="h6"
+        variant="subtitle2"
         component="h3"
         sx={{
           mb: 2,
-          fontWeight: 500,
-          letterSpacing: '-0.01em',
           color: 'text.secondary',
-          fontSize: '1rem'
         }}
       >
         {content.title}
@@ -58,11 +55,8 @@ export function CertificationsSection({ content }: CertificationsSectionProps) {
               }}
             >
               <Typography
-                variant="body1"
-                sx={{
-                  fontWeight: 500,
-                  letterSpacing: '-0.01em'
-                }}
+                variant="subtitle1"
+                component="p"
               >
                 {certification.name}
               </Typography>
@@ -105,7 +99,6 @@ export function CertificationsSection({ content }: CertificationsSectionProps) {
                     color="text.secondary"
                     sx={{
                       lineHeight: 1.7,
-                      letterSpacing: '-0.01em',
                       fontVariantNumeric: 'tabular-nums'
                     }}
                   >

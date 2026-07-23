@@ -2,6 +2,8 @@
 
 import { createTheme } from '@mui/material/styles';
 
+export const fontFamilyMono = 'var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace';
+
 export const theme = createTheme({
   palette: {
     mode: 'dark',
@@ -47,9 +49,13 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: 'var(--font-geist-sans), system-ui, sans-serif',
+    allVariants: {
+      letterSpacing: '-0.01em',
+    },
     h1: {
-      fontSize: '2.25rem',
       fontWeight: 700,
+      fontSize: '2rem',
+      '@media (min-width:900px)': { fontSize: '2.5rem' },
     },
     h2: {
       fontSize: '1.875rem',
@@ -58,6 +64,16 @@ export const theme = createTheme({
     h3: {
       fontSize: '1.5rem',
       fontWeight: 600,
+    },
+    subtitle1: {
+      fontSize: '1rem',
+      lineHeight: 1.6,
+      fontWeight: 500,
+    },
+    subtitle2: {
+      fontSize: '1rem',
+      lineHeight: 1.6,
+      fontWeight: 500,
     },
     body1: {
       fontSize: '1rem',

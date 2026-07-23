@@ -59,7 +59,6 @@ export function BlogList({ posts }: BlogListProps) {
                 textTransform: 'none',
                 color: 'text.primary',
                 fontWeight: 400,
-                letterSpacing: '-0.01em',
                 '&:hover': {
                   backgroundColor: 'transparent',
                   textDecoration: 'underline',
