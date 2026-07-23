@@ -73,7 +73,7 @@ export default async function BlogPost({ params }: PageProps) {
         bgcolor: 'background.default',
       }}
     >
-      <Container maxWidth="md" component="section" sx={{ py: 6 }}>
+      <Container maxWidth="md" component="section" sx={{ pt: 4, pb: 6 }}>
         <MuiLink
           component={Link}
           href="/blog"

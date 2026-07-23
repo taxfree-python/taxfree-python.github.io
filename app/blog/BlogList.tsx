@@ -35,7 +35,7 @@ export function BlogList({ posts }: BlogListProps) {
         bgcolor: 'background.default',
       }}
     >
-      <Container maxWidth="md" component="section" sx={{ py: 6, pb: 10 }}>
+      <Container maxWidth="md" component="section" sx={{ pt: 4, pb: 10 }}>
         <Stack spacing={2}>
           {posts.slice(0, displayCount).map((post) => (
             <BlogPostCard
@@ -52,7 +52,7 @@ export function BlogList({ posts }: BlogListProps) {
         </Stack>
 
         {displayCount < posts.length && (
-          <Box sx={{ mt: 6, textAlign: 'center' }}>
+          <Box sx={{ mt: 2, textAlign: 'center' }}>
             <Button
               onClick={() => setDisplayCount((prev) => prev + POSTS_PER_PAGE)}
               sx={{

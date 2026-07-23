@@ -91,7 +91,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
   }
 
   return (
-    <Container maxWidth="md" component="section" sx={{ pt: 6, pb: 3 }}>
+    <Container maxWidth="md" component="section" sx={{ pt: 4, pb: 3 }}>
       <Stack spacing={6}>
         {ACTIVITY_CATEGORIES.map((category) => {
           const categoryActivities = groupedActivities[category];
@@ -188,7 +188,7 @@ export function ActivitiesSection({ activities, allActivities = [] }: Activities
       </Stack>
 
       {hasMore && (
-        <Box sx={{ mt: 3, textAlign: 'center' }}>
+        <Box sx={{ mt: 2, textAlign: 'center' }}>
           <Button
             onClick={() => setShowAll((currentShowAll) => !currentShowAll)}
             sx={{
