@@ -27,6 +27,7 @@ export function Header() {
     >
       <Container maxWidth="md">
         <Toolbar
+          disableGutters
           sx={{
             justifyContent: isHome ? 'flex-end' : 'space-between',
             gap: 2,
@@ -61,7 +62,7 @@ export function Header() {
                 <Typography
                   variant="body1"
                   sx={{
-                    color: 'text.secondary',
+                    color: 'text.primary',
                     '&:hover': {
                       color: 'primary.main',
                     },
