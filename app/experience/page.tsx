@@ -44,7 +44,7 @@ export default function ExperiencePage() {
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
       <ActivitiesSection activities={featuredActivities} allActivities={activities} />
-      <CertificationsSection content={certificationsContent} />
+      <CertificationsSection {...certificationsContent} />
     </Box>
   );
 }

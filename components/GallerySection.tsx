@@ -5,14 +5,14 @@ import { GalleryEmptyState } from './GalleryEmptyState';
 
 type GallerySectionProps = {
   works: GalleryWork[];
-  showTitle?: boolean;
+  title?: string;
 };
 
 function formatMonth(date: string): string {
   return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
 }
 
-export function GallerySection({ works, showTitle = true }: GallerySectionProps) {
+export function GallerySection({ works, title }: GallerySectionProps) {
   // 作品が0件の場合はEmptyStateを表示
   if (works.length === 0) {
     return <GalleryEmptyState />;
@@ -20,9 +20,9 @@ export function GallerySection({ works, showTitle = true }: GallerySectionProps)
 
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6 }}>
-      {showTitle && (
+      {title && (
         <Typography variant="h2" component="h2" gutterBottom sx={{ mb: 4 }}>
-          Gallery
+          {title}
         </Typography>
       )}
 

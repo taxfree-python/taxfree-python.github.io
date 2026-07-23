@@ -37,5 +37,5 @@ export const metadata: Metadata = {
 export default function GalleryPage() {
   const works = getGalleryWorks();
 
-  return <GallerySection works={works} showTitle />;
+  return <GallerySection works={works} title="Gallery" />;
 }
