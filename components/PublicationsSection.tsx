@@ -25,19 +25,7 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
   if (sortedPublications.length === 0) return null;
 
   return (
-    <Container maxWidth="md" component="section" sx={{ py: 6 }}>
-      <Typography
-        variant="h4"
-        component="h2"
-        gutterBottom
-        sx={{
-          mb: 4,
-          fontWeight: 400,
-          letterSpacing: '-0.02em'
-        }}
-      >
-        Publications & Presentations
-      </Typography>
+    <Container maxWidth="md" component="section" sx={{ pt: 6, pb: 10 }}>
       <Stack spacing={2}>
         {sortedPublications.map((publication) => (
           <Box

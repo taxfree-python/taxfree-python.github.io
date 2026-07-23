@@ -6,7 +6,8 @@ import { AppBar, Toolbar, Container, Typography, Box } from '@mui/material';
 
 const navLinks = [
   { href: '/blog', label: 'Blog' },
-  { href: '/cv', label: 'CV' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/publications', label: 'Publications' },
   // 製作中のため一時的に非表示
   // { href: '/gallery', label: 'Gallery' },
 ] as const;

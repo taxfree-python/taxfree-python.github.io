@@ -6,7 +6,8 @@ Next.js + React + TypeScriptで実装した個人サイト
 
 - **ホーム** (`/`) - 自己紹介と最新ブログ記事
 - **Blog** (`/blog`) - 技術ブログ
-- **CV** (`/cv`) - スキル、職歴、資格
+- **Experience** (`/experience`) - 職歴、資格
+- **Publications** (`/publications`) - 論文・発表
 - **Gallery** (`/gallery`) - 作品ギャラリー ⚠️ 準備中のため一時非表示
 
 > **Note:** Gallery機能は実装済みですが、作品準備中のためナビゲーションから一時的に非表示にしています。
@@ -42,9 +43,10 @@ http://localhost:3000 でサイトが表示されます。
 │   │   ├── page.tsx          # ブログ一覧
 │   │   └── [slug]/
 │   │       └── page.tsx      # ブログ記事詳細
-│   ├── cv/
-│   │   ├── page.tsx          # CVページ
-│   │   └── CVClient.tsx      # CVクライアントコンポーネント
+│   ├── experience/
+│   │   └── page.tsx          # 職歴・資格ページ
+│   ├── publications/
+│   │   └── page.tsx          # 論文・発表ページ
 │   ├── gallery/
 │   │   └── page.tsx          # ギャラリーページ
 │   └── globals.css
@@ -56,19 +58,16 @@ http://localhost:3000 でサイトが表示されます。
 │   └── posts/                # Markdown形式のブログ記事
 ├── data/                     # 外部化されたコンテンツデータ
 │   ├── profile.ts            # プロフィール情報
-│   ├── skills.yaml           # スキル情報
 │   ├── activities.yaml       # 職歴・プロジェクト
 │   └── gallery.yaml          # ギャラリー作品データ
 ├── lib/                      # データ取得関数
 │   ├── posts.ts              # ブログ記事処理
-│   ├── skills.ts             # スキルデータ処理
 │   ├── activities.ts         # 職歴データ処理
 │   └── gallery.ts            # ギャラリーデータ処理
 ├── public/                   # 静的ファイル
 │   └── images/
 │       └── gallery/          # ギャラリー画像置き場
 └── types/                    # TypeScript の型定義
-    ├── skills.ts
     ├── activities.ts
     ├── gallery.ts
     └── ...
@@ -113,10 +112,9 @@ npm run build
 - SNSリンク (GitHub, Twitter, LinkedIn)
 - 資格情報
 
-### スキル・職歴
+### 職歴
 
 YAMLファイルを編集してコンテンツを更新：
-- `data/skills.yaml` - スキル情報
 - `data/activities.yaml` - 職歴・プロジェクト
 
 ## Gallery機能の有効化
@@ -156,7 +154,8 @@ works:
 ```typescript
 const navLinks = [
   { href: '/blog', label: 'Blog' },
-  { href: '/cv', label: 'CV' },
+  { href: '/experience', label: 'Experience' },
+  { href: '/publications', label: 'Publications' },
   { href: '/gallery', label: 'Gallery' },  // ← コメントを外す
 ];
 ```

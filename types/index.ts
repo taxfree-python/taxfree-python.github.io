@@ -38,6 +38,7 @@ export type Activity = {
   period: CalendarPeriod;
   description: string;
   category: ActivityCategory;
+  featured?: boolean;
 };
 
 // ---- Publications (data/publications.yaml) ----
@@ -53,13 +54,6 @@ export type Publication = {
   type: PublicationType;
   date: CalendarDate;
   links?: LabeledLink[];
-};
-
-// ---- Skills (data/skills.yaml) ----
-
-export type Skill = {
-  name: string;
-  experience?: string;
 };
 
 // ---- Profile (data/profile.ts) ----
