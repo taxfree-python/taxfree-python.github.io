@@ -38,6 +38,7 @@ export type Activity = {
   period: CalendarPeriod;
   description: string;
   category: ActivityCategory;
+  featured?: boolean;
 };
 
 // ---- Publications (data/publications.yaml) ----

@@ -6,14 +6,6 @@ import { siteConfig } from '@/config/site';
 import { ActivitiesSection } from '@/components/ActivitiesSection';
 import { CertificationsSection } from '@/components/CertificationsSection';
 
-const mainExperienceIds: ReadonlySet<string> = new Set([
-  'pfn-education-project-engineer',
-  'riken-bdr-part-timer',
-  'layerx-ai-workforce-intern',
-  'autonomous-lab-scheduling',
-  'doctor-car-data-analysis',
-]);
-
 const experienceDescription = 'Work history, research projects, and language certifications';
 
 export const metadata: Metadata = {
@@ -47,11 +39,11 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   const activities = getActivities();
-  const mainExperiences = activities.filter((activity) => mainExperienceIds.has(activity.id));
+  const featuredActivities = activities.filter((activity) => activity.featured);
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-      <ActivitiesSection activities={mainExperiences} allActivities={activities} />
+      <ActivitiesSection activities={featuredActivities} allActivities={activities} />
       <CertificationsSection content={certificationsContent} />
     </Box>
   );
