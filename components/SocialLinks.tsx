@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import Link from 'next/link';
 import { Box, Typography } from '@mui/material';
 import type { LabeledLink } from '@/types';
@@ -8,29 +9,43 @@ type SocialLinksProps = {
 
 export function SocialLinks({ links }: SocialLinksProps) {
   return (
-    <Box display="flex" gap={3} justifyContent="center" flexWrap="wrap">
-      {links.map((link) => (
-        <Link
-          key={link.url}
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ textDecoration: 'none' }}
-        >
-          <Typography
-            variant="body1"
-            sx={{
-              color: 'text.secondary',
-              '&:hover': {
-                color: 'primary.main',
-              },
-              transition: 'color 0.2s',
-              fontWeight: 500,
-            }}
-          >
-            {link.label}
-          </Typography>
-        </Link>
+    <Box
+      display="flex"
+      gap={2}
+      justifyContent="center"
+      alignItems="center"
+      flexWrap="wrap"
+      sx={{
+        fontFamily: 'var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace',
+      }}
+    >
+      {links.map((link, index) => (
+        <Fragment key={link.url}>
+          {index > 0 && (
+            <Typography component="span" aria-hidden="true" sx={{ color: 'grey.700', fontFamily: 'inherit' }}>
+              ·
+            </Typography>
+          )}
+          <Link href={link.url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+            <Typography
+              variant="body2"
+              component="span"
+              sx={{
+                color: 'grey.500',
+                fontFamily: 'inherit',
+                textTransform: 'lowercase',
+                transition: 'color 0.2s',
+                '&:hover': {
+                  color: 'text.primary',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: '0.3em',
+                },
+              }}
+            >
+              {link.label}
+            </Typography>
+          </Link>
+        </Fragment>
       ))}
     </Box>
   );
