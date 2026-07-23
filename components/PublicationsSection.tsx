@@ -1,5 +1,3 @@
-'use client';
-
 import { Container, Typography, Box, Stack, Link } from '@mui/material';
 import type { Publication, PublicationType } from '@/types';
 import { calendarDateValue, formatCalendarDate } from '@/lib/date';

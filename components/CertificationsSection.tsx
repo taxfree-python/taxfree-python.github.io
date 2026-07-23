@@ -2,14 +2,15 @@
 
 import { useState } from 'react';
 import { Container, Typography, Box, Stack, Collapse } from '@mui/material';
-import type { CertificationsContent } from '@/types';
+import type { Certification } from '@/types';
 import { formatCalendarDate } from '@/lib/date';
 
 type CertificationsSectionProps = {
-  content: CertificationsContent;
+  title: string;
+  certifications: Certification[];
 };
 
-export function CertificationsSection({ content }: CertificationsSectionProps) {
+export function CertificationsSection({ title, certifications }: CertificationsSectionProps) {
   const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
 
   const toggleExpanded = (name: string) => {
@@ -34,10 +35,10 @@ export function CertificationsSection({ content }: CertificationsSectionProps) {
           color: 'text.secondary',
         }}
       >
-        {content.title}
+        {title}
       </Typography>
       <Stack spacing={2}>
-        {content.certifications.map((certification) => (
+        {certifications.map((certification) => (
           <Box key={certification.name}>
             <Box
               onClick={() => toggleExpanded(certification.name)}

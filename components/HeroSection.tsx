@@ -1,20 +1,22 @@
 import { Container, Typography } from '@mui/material';
-import type { HeroContent } from '@/types';
+import type { HeroSubtitle, LabeledLink } from '@/types';
 import { SocialLinks } from './SocialLinks';
 import { DynamicSubtitle } from './DynamicSubtitle';
 
 type HeroSectionProps = {
-  content: HeroContent;
+  title: string;
+  subtitle: HeroSubtitle;
+  socialLinks: LabeledLink[];
 };
 
-export function HeroSection({ content }: HeroSectionProps) {
+export function HeroSection({ title, subtitle, socialLinks }: HeroSectionProps) {
   return (
     <Container maxWidth="md" component="section" sx={{ py: 6, textAlign: 'center' }}>
       <Typography variant="h1" component="h1" gutterBottom sx={{ mb: 3 }}>
-        {content.title}
+        {title}
       </Typography>
-      <DynamicSubtitle content={content.subtitle} />
-      <SocialLinks links={content.socialLinks} />
+      <DynamicSubtitle {...subtitle} />
+      <SocialLinks links={socialLinks} />
     </Container>
   );
 }

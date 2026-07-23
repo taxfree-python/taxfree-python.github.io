@@ -12,9 +12,7 @@ const TYPE_MS = 80;
 const WIPE_PAUSE_MS = 400;
 const SWAP_PAUSE_MS = 200;
 
-type DynamicSubtitleProps = {
-  content: HeroSubtitle;
-};
+type DynamicSubtitleProps = HeroSubtitle;
 
 type CycleStep = readonly [number, number];
 
@@ -46,8 +44,7 @@ function compose(x: string, connector: string, y: string): string {
   return `${x} ${connector} ${y}`;
 }
 
-export function DynamicSubtitle({ content }: DynamicSubtitleProps) {
-  const { xOptions, yOptions, connector } = content;
+export function DynamicSubtitle({ xOptions, yOptions, connector }: DynamicSubtitleProps) {
   const [text, setText] = useState(() => compose(xOptions[0], connector, yOptions[0]));
 
   useEffect(() => {
