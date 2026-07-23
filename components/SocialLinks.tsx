@@ -2,6 +2,7 @@ import { Fragment } from 'react';
 import Link from 'next/link';
 import { Box, Typography } from '@mui/material';
 import type { LabeledLink } from '@/types';
+import { fontFamilyMono } from '@/lib/theme';
 
 type SocialLinksProps = {
   links: LabeledLink[];
@@ -16,7 +17,7 @@ export function SocialLinks({ links }: SocialLinksProps) {
       alignItems="center"
       flexWrap="wrap"
       sx={{
-        fontFamily: 'var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace',
+        fontFamily: fontFamilyMono,
       }}
     >
       {links.map((link, index) => (

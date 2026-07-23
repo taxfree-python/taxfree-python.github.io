@@ -24,7 +24,6 @@ export function BlogPostCard({ slug, title, date }: BlogPostCardProps) {
           component="h3"
           sx={{
             fontWeight: 600,
-            letterSpacing: '-0.01em',
             mb: 0.5,
             color: 'text.primary',
             '&:hover': {

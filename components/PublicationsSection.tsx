@@ -44,11 +44,8 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
               }}
             >
               <Typography
-                variant="body1"
-                sx={{
-                  fontWeight: 500,
-                  letterSpacing: '-0.01em'
-                }}
+                variant="subtitle1"
+                component="p"
               >
                 {publication.title}
               </Typography>
@@ -67,7 +64,7 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{ mt: 0.5, letterSpacing: '-0.01em' }}
+              sx={{ mt: 0.5 }}
             >
               {publication.authors.map((author, index) => (
                 <Box component="span" key={author}>
@@ -84,7 +81,7 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
             <Typography
               variant="body2"
               color="text.secondary"
-              sx={{ mt: 0.25, letterSpacing: '-0.01em' }}
+              sx={{ mt: 0.25 }}
             >
               {publication.venue} ({typeLabels[publication.type]})
               {publication.links?.map((link) => (
