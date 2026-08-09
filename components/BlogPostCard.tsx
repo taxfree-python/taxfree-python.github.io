@@ -20,10 +20,9 @@ export function BlogPostCard({ slug, title, date }: BlogPostCardProps) {
     >
       <Link href={`/blog/${slug}`} style={{ textDecoration: 'none' }}>
         <Typography
-          variant="h6"
+          variant="subtitle1"
           component="h3"
           sx={{
-            fontWeight: 600,
             mb: 0.5,
             color: 'text.primary',
             '&:hover': {
