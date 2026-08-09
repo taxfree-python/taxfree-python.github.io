@@ -40,6 +40,7 @@ export function Header() {
                 component="div"
                 fontWeight="bold"
                 sx={{
+                  fontSize: { xs: '1.25rem', sm: '1.5rem' },
                   color: 'text.primary',
                   '&:hover': {
                     color: 'primary.main',
@@ -62,6 +63,7 @@ export function Header() {
                 <Typography
                   variant="body1"
                   sx={{
+                    fontSize: { xs: '0.875rem', sm: '1rem' },
                     color: 'text.primary',
                     '&:hover': {
                       color: 'primary.main',
