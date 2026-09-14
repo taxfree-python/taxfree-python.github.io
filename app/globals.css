@@ -10,12 +10,15 @@
 .katex-display {
   font-size: 0.98em;
   margin: 1.25rem 0;
-  text-align: left;
+  text-align: center;
   overflow-x: auto;
 }
 
 .katex-display > .katex {
-  display: inline-block;
+  position: relative;
+  display: block;
+  width: max-content;
+  min-width: 100%;
   padding: 0.35rem 0;
 }
 
