@@ -4,7 +4,7 @@ import { createArticleBlockRegex } from './article-blocks';
 
 describe('getPost', () => {
   it('renders the orchestra article through the generic block slot', async () => {
-    const post = await getPost('2026-07-06-orchestra-layout-optimization');
+    const post = await getPost('2026-07-06');
     expect(post.contentHtml.match(/<div data-block="[^"]+"><\/div>/g)).toHaveLength(3);
     for (const name of ['LayoutViewer', 'EvolutionReplay', 'ABPlayer']) {
       expect(post.contentHtml).toContain(`<div data-block="${name}"></div>`);
