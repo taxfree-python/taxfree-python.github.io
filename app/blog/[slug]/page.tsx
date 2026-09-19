@@ -14,6 +14,7 @@ type PageProps = {
 /** Articles that embed React blocks, mapped to the module exporting them. */
 const articleBlocks: Record<string, () => Promise<{ blocks: ArticleBlocks }>> = {
   '2026-07-06-orchestra-layout-optimization': () => import('@/components/orchestra/blocks'),
+  '2026-09-19': () => import('@/components/jev-bench/blocks'),
 };
 
 const postContentClassName = `prose prose-lg dark:prose-invert max-w-none
