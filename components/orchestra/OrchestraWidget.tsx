@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic';
 import { Box, CircularProgress } from '@mui/material';
 import type { ComponentType } from 'react';
-import type { OrchestraWidgetName } from '@/lib/orchestra-widgets';
 
 function WidgetLoading() {
   return (
@@ -26,11 +25,13 @@ function WidgetLoading() {
   );
 }
 
-const WIDGETS: Record<OrchestraWidgetName, ComponentType> = {
+const WIDGETS = {
   LayoutViewer: dynamic(() => import('./LayoutViewer'), { loading: WidgetLoading, ssr: false }),
   EvolutionReplay: dynamic(() => import('./EvolutionReplay'), { loading: WidgetLoading, ssr: false }),
   ABPlayer: dynamic(() => import('./ABPlayer'), { loading: WidgetLoading, ssr: false }),
-};
+} satisfies Record<string, ComponentType>;
+
+export type OrchestraWidgetName = keyof typeof WIDGETS;
 
 type Props = {
   name: OrchestraWidgetName;
