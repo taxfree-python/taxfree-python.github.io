@@ -9,7 +9,7 @@ const slug = '2026-09-19';
 describe('jev bench article integration', () => {
   it('renders only blocks the article registers, with escaped currency', async () => {
     const post = await getPost(slug);
-    expect(post.draft).toBe(true);
+    expect(post.draft).toBe(false);
     const used = [...post.contentHtml.matchAll(createArticleBlockRegex())].map((match) => match[1]!);
     expect(used).toEqual(['accuracy']);
     for (const name of used) expect(jevBlockNames as readonly string[]).toContain(name);
@@ -21,15 +21,9 @@ describe('jev bench article integration', () => {
     expect(new Set(ids).size).toBe(ids.length);
   });
 
-  it('keeps the draft out of production routes and listings', () => {
+  it('is routed and listed in production', () => {
     vi.stubEnv('NODE_ENV', 'production');
-    expect(getPostSlugs().some((post) => post.slug === slug)).toBe(false);
-    expect(getPosts().some((post) => post.slug === slug)).toBe(false);
-  });
-
-  it('allows the draft URL in development, without putting it in the list', () => {
-    vi.stubEnv('NODE_ENV', 'development');
     expect(getPostSlugs().some((post) => post.slug === slug)).toBe(true);
-    expect(getPosts().some((post) => post.slug === slug)).toBe(false);
+    expect(getPosts().some((post) => post.slug === slug)).toBe(true);
   });
 });
