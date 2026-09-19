@@ -189,7 +189,7 @@ export async function getPost(slug: string): Promise<Post> {
       math: ['xmlns', 'display'],
       annotation: ['encoding'],
       iframe: ['src', 'width', 'height', 'style', 'title', 'aria-label'],
-      div: ['style', 'data-orchestra-widget', 'data-qa-examples', 'data-qa-figure'],
+      div: ['style', 'data-orchestra-widget', 'data-qa-examples', 'data-qa-figure', 'data-jev-figure'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
     // Restrict CSS properties on div and iframe elements to prevent CSS injection attacks

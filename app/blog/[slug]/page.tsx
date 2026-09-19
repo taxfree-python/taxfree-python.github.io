@@ -2,12 +2,20 @@ import { getPost, getPostSlugs } from '@/lib/posts';
 import Link from 'next/link';
 import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import { siteConfig } from '@/config/site';
 import { hasOrchestraPlaceholders } from '@/lib/orchestra-widgets';
 import { fontFamilyMono } from '@/lib/theme';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
+};
+
+type PostContentComponent = (props: { html: string }) => ReactNode;
+
+/** Articles whose HTML is rendered through figure-aware components. */
+const articleContent: Record<string, () => Promise<{ default: PostContentComponent }>> = {
+  '2026-09-19': () => import('@/components/jev-bench/PostContent'),
 };
 
 const postContentClassName = `prose prose-lg dark:prose-invert max-w-none
@@ -63,7 +71,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function BlogPost({ params }: PageProps) {
   const { slug } = await params;
   const post = await getPost(slug);
-  const PostContent = hasOrchestraPlaceholders(post.contentHtml)
+  const loadArticleContent = articleContent[slug];
+  const PostContent = loadArticleContent
+    ? (await loadArticleContent()).default
+    : hasOrchestraPlaceholders(post.contentHtml)
     ? (await import('@/components/orchestra/PostContent')).default
     : null;
 
@@ -97,6 +108,7 @@ export default async function BlogPost({ params }: PageProps) {
 
         <Box
           component="article"
+          data-figure-article={loadArticleContent ? '' : undefined}
           sx={{
             mt: 2,
             '& h1, & h2, & h3, & h4, & h5, & h6': {
@@ -108,6 +120,7 @@ export default async function BlogPost({ params }: PageProps) {
             '& h1': { fontSize: '2rem' },
             '& h2': { fontSize: '1.6rem' },
             '& h3': { fontSize: '1.3rem' },
+            '&[data-figure-article] h4': { fontSize: '1.1rem' },
             '& p': {
               color: 'text.secondary',
               lineHeight: 1.8,
@@ -134,6 +147,76 @@ export default async function BlogPost({ params }: PageProps) {
               fontFamily: fontFamilyMono,
               color: 'text.primary',
             },
+            '&[data-figure-article] pre code': {
+              backgroundColor: 'transparent',
+              p: 0,
+            },
+            '&[data-figure-article] .katex-display': {
+              fontSize: '1.2rem',
+              my: 3,
+            },
+            '&[data-figure-article] .article-figure': {
+              my: 3,
+            },
+            '&[data-figure-article] .article-figure svg': {
+              display: 'block',
+              width: '100%',
+              height: 'auto',
+            },
+            '&[data-figure-article] .article-figure-mobile': {
+              display: 'none',
+            },
+            '@media (max-width: 600px)': {
+              '&[data-figure-article] .article-figure-desktop': { display: 'none' },
+              '&[data-figure-article] .article-figure-mobile': { display: 'block' },
+            },
+            '&[data-figure-article] h2, &[data-figure-article] h3, &[data-figure-article] h4': {
+              scrollMarginTop: '96px',
+            },
+            '& .article-toc': {
+              my: 4,
+              py: 2,
+              borderTop: '1px solid',
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+              '& p': { mb: 1, color: 'text.primary' },
+              '& ol': { mb: 0, pl: 3 },
+              '& ul': { mt: 0.5, mb: 1, pl: 2.5 },
+              '& li': { mb: 0.5, fontSize: '0.9375rem' },
+              '& a': { color: 'text.secondary' },
+            },
+            '&[data-figure-article] .article-table': {
+              overflowX: 'auto',
+            },
+            '&[data-figure-article] p > code, &[data-figure-article] li > code': {
+              overflowWrap: 'anywhere',
+            },
+            '&[data-figure-article] table': {
+              width: '100%',
+              borderCollapse: 'collapse',
+              fontSize: '0.9375rem',
+              lineHeight: 1.7,
+              my: 3,
+            },
+            '&[data-figure-article] th, &[data-figure-article] td': {
+              textAlign: 'left',
+              verticalAlign: 'top',
+              px: { xs: 0.5, sm: 2 },
+              py: 1,
+              overflowWrap: 'break-word',
+              '&:first-child': { pl: 0 },
+              '&:last-child': { pr: 0 },
+            },
+            '&[data-figure-article] th': {
+              color: 'text.primary',
+              fontWeight: 500,
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+            },
+            '&[data-figure-article] td': {
+              color: 'text.secondary',
+              fontVariantNumeric: 'tabular-nums',
+            },
             '& ul, & ol': {
               color: 'text.secondary',
               pl: 3,
@@ -158,6 +241,11 @@ export default async function BlogPost({ params }: PageProps) {
           }}
         >
           <Box component="header" sx={{ mb: 4 }}>
+            {post.draft && (
+              <Typography variant="caption" color="text.secondary">
+                DRAFT · ローカルプレビュー
+              </Typography>
+            )}
             <Typography
               variant="h4"
               component="h1"
