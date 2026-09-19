@@ -7,9 +7,12 @@ import remarkMath from 'remark-math';
 import remarkRehype from 'remark-rehype';
 import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
+import { rehypeTableWrap } from './rehype-table-wrap';
 import sanitizeHtml from 'sanitize-html';
 import { remarkEmbedPdf } from './remark-embed-pdf';
 import { remarkOrchestra } from './remark-orchestra';
+import { remarkToc } from './remark-toc';
+import { inlineArticleFigures } from './inline-figures';
 import { assert } from '@/lib/assert';
 import { ensureObject, toOptionalBoolean, toOptionalString } from '@/lib/validation';
 import type { Post, PostMeta } from '@/types';
@@ -98,7 +101,7 @@ export function getPostSlugs(): { slug: string }[] {
   return getPostFileNames()
     .filter((fileName) => {
       const { metadata } = readMarkdownPost(fileName);
-      return !metadata.draft;
+      return !metadata.draft || process.env.NODE_ENV === 'development';
     })
     .map((fileName) => ({
       slug: getSlugFromFileName(fileName),
@@ -111,6 +114,7 @@ export async function getPost(slug: string): Promise<Post> {
   const processedContent = await remark()
     .use(remarkEmbedPdf)
     .use(remarkOrchestra)
+    .use(remarkToc)
     .use(remarkMath)
     .use(remarkGfm)
     // Allow raw HTML from remark plugins (e.g., remarkEmbedPdf) to pass through.
@@ -122,10 +126,13 @@ export async function getPost(slug: string): Promise<Post> {
         '\\*': '\\ast',
       },
     })
+    .use(rehypeTableWrap)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
   const rawContentHtml = processedContent.toString();
   const contentHtml = sanitizeHtml(rawContentHtml, {
+    // KaTeX uses inline SVG with case-sensitive attributes for radicals.
+    parser: { lowerCaseAttributeNames: false },
     allowedTags: sanitizeHtml.defaults.allowedTags.concat([
       'h1',
       'h2',
@@ -157,17 +164,32 @@ export async function getPost(slug: string): Promise<Post> {
       'munder',
       'munderover',
       'iframe',
+      'img',
+      'picture',
+      'source',
+      'svg',
+      'path',
       'div',
+      'nav',
     ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
       '*': ['class', 'style', 'aria-hidden', 'aria-label'],
       a: ['href', 'name', 'target', 'rel'],
+      h1: ['id'],
+      h2: ['id'],
+      h3: ['id'],
+      h4: ['id'],
+      h5: ['id'],
+      h6: ['id'],
       img: ['src', 'alt'],
+      source: ['srcset', 'media', 'type'],
+      svg: ['xmlns', 'width', 'height', 'viewBox', 'preserveAspectRatio'],
+      path: ['d'],
       math: ['xmlns', 'display'],
       annotation: ['encoding'],
       iframe: ['src', 'width', 'height', 'style', 'title', 'aria-label'],
-      div: ['style', 'data-orchestra-widget'],
+      div: ['style', 'data-orchestra-widget', 'data-qa-examples', 'data-qa-figure'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
     // Restrict CSS properties on div and iframe elements to prevent CSS injection attacks
@@ -196,7 +218,7 @@ export async function getPost(slug: string): Promise<Post> {
 
   return {
     slug,
-    contentHtml,
+    contentHtml: inlineArticleFigures(contentHtml, slug),
     ...metadata,
   };
 }
