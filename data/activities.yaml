@@ -239,3 +239,13 @@
   achievements:
     - "継続的な勉強会の開催"
     - "コミュニティの参加者拡大に貢献"
+-
+  id: "pycon-kyushu-2019"
+  category: "community"
+  title: "PyCon JP Kyushu 2019 運営メンバー"
+  period:
+    start:
+      year: 2018
+    end:
+      year: 2019
+  description: "企画担当としてタイムテーブルやCfPを策定"
