@@ -89,18 +89,3 @@ export const formatCalendarDate = (
 
   return parts.join('/');
 };
-
-export const formatCalendarPeriod = (period: CalendarPeriod): { start: string; end: string } => {
-  return {
-    start: formatCalendarDate(period.start),
-    end: period.end === undefined ? 'Present' : formatCalendarDate(period.end),
-  };
-};
-
-export const calendarPeriodStartValue = (period: CalendarPeriod): number => {
-  return calendarDateValue(period.start);
-};
-
-export const calendarPeriodEndValue = (period: CalendarPeriod): number => {
-  return period.end === undefined ? Number.POSITIVE_INFINITY : calendarDateValue(period.end);
-};

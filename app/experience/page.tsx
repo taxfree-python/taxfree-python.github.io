@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
 import { Box } from '@mui/material';
 import { getActivities } from '@/lib/activities';
-import { certificationsContent } from '@/data/profile';
 import { siteConfig } from '@/config/site';
 import { ActivitiesSection } from '@/components/ActivitiesSection';
-import { CertificationsSection } from '@/components/CertificationsSection';
 
-const experienceDescription = 'Work history, research projects, and language certifications';
+const experienceDescription = 'Work and research experience';
 
 export const metadata: Metadata = {
   title: `Experience - ${siteConfig.name}`,
@@ -39,12 +37,10 @@ export const metadata: Metadata = {
 
 export default function ExperiencePage() {
   const activities = getActivities();
-  const featuredActivities = activities.filter((activity) => activity.featured);
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-      <ActivitiesSection activities={featuredActivities} allActivities={activities} />
-      <CertificationsSection {...certificationsContent} />
+      <ActivitiesSection activities={activities} />
     </Box>
   );
 }
