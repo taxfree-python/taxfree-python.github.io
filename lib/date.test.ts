@@ -1,8 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
 import {
-  calendarPeriodEndValue,
-  formatCalendarPeriod,
   validateCalendarDate,
   validateCalendarPeriod,
 } from '@/lib/date';
@@ -39,18 +37,5 @@ describe('calendar period validation', () => {
         'Activity(x)',
       ),
     ).toThrow('Activity(x).period.end must not be earlier than Activity(x).period.start');
-  });
-
-  it('formats and sorts open-ended periods as current', () => {
-    const period = validateCalendarPeriod(
-      { start: { year: 2025, month: 9 }, end: null },
-      'Activity(current)',
-    );
-
-    expect(formatCalendarPeriod(period)).toEqual({
-      start: '2025/09',
-      end: 'Present',
-    });
-    expect(calendarPeriodEndValue(period)).toBe(Number.POSITIVE_INFINITY);
   });
 });

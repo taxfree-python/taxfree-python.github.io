@@ -12,7 +12,6 @@ describe('validateActivity', () => {
           start: { year: 2026, month: 1 },
           end: null,
         },
-        description: 'Applied R&D',
         category: 'work',
       }),
     ).toEqual({
@@ -21,20 +20,8 @@ describe('validateActivity', () => {
       period: {
         start: { year: 2026, month: 1 },
       },
-      description: 'Applied R&D',
       category: 'work',
     });
-  });
-
-  it('allows description to be omitted', () => {
-    const activity = validateActivity({
-      id: 'luup-data-scientist-intern',
-      title: 'Luup Data Scientist Intern',
-      period: { start: { year: 2024, month: 6 } },
-      category: 'work',
-    });
-
-    expect(activity.description).toBeUndefined();
   });
 
   it('rejects unknown categories', () => {
