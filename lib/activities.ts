@@ -4,7 +4,7 @@ import { cache } from 'react';
 import YAML from 'yaml';
 
 import { ACTIVITY_CATEGORIES, type Activity } from '@/types';
-import { ensureObject, toEnum, toOptionalBoolean, toString } from '@/lib/validation';
+import { ensureObject, toEnum, toOptionalString, toString } from '@/lib/validation';
 import { validateCalendarPeriod } from '@/lib/date';
 
 const activitiesFilePath = path.join(process.cwd(), 'data', 'activities.yaml');
@@ -18,13 +18,12 @@ export const validateActivity = (raw: unknown): Activity => {
     id,
     title: toString(obj.title, `${context}.title`),
     period: validateCalendarPeriod(obj.period, context),
-    description: toString(obj.description, `${context}.description`),
     category: toEnum(obj.category, ACTIVITY_CATEGORIES, `${context}.category`),
   };
 
-  const featured = toOptionalBoolean(obj.featured, `${context}.featured`);
-  if (featured !== undefined) {
-    activity.featured = featured;
+  const description = toOptionalString(obj.description, `${context}.description`);
+  if (description !== undefined) {
+    activity.description = description;
   }
 
   return activity;

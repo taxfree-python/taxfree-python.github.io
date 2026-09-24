@@ -29,16 +29,15 @@ export type LabeledLink = {
 
 // ---- Activities (data/activities.yaml) ----
 
-export const ACTIVITY_CATEGORIES = ['work', 'research', 'others'] as const;
+export const ACTIVITY_CATEGORIES = ['work', 'research', 'community'] as const;
 export type ActivityCategory = (typeof ACTIVITY_CATEGORIES)[number];
 
 export type Activity = {
   id: string;
   title: string;
   period: CalendarPeriod;
-  description: string;
   category: ActivityCategory;
-  featured?: boolean;
+  description?: string;
 };
 
 // ---- Publications (data/publications.yaml) ----
@@ -68,19 +67,6 @@ export type HeroContent = {
   title: string;
   subtitle: HeroSubtitle;
   socialLinks: LabeledLink[];
-};
-
-export type Certification = {
-  name: string;
-  issuer: string;
-  acquiredDate: CalendarDate;
-  score?: string;
-  description?: string;
-};
-
-export type CertificationsContent = {
-  title: string;
-  certifications: Certification[];
 };
 
 // ---- Blog posts (content/posts/*.md) ----

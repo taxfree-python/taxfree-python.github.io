@@ -1,203 +1,72 @@
-'use client';
-
-import { useState, type ReactNode } from 'react';
-import { Container, Typography, Box, Stack, Button, Collapse, Link } from '@mui/material';
-import { ACTIVITY_CATEGORIES, type Activity, type ActivityCategory } from '@/types';
-import { calendarPeriodEndValue, calendarPeriodStartValue, formatCalendarPeriod } from '@/lib/date';
+import { Container, Typography, Box, Stack } from '@mui/material';
+import { ACTIVITY_CATEGORIES, type Activity, type ActivityCategory, type CalendarPeriod } from '@/types';
 
 type ActivitiesSectionProps = {
   activities: Activity[];
-  allActivities?: Activity[];
 };
 
 const categoryLabels: Record<ActivityCategory, string> = {
   work: 'Work',
   research: 'Research',
-  others: 'Others',
+  community: 'Community',
 };
 
-// Markdown-style inline links: [label](https://example.com)
-const markdownLinkPattern = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
-
-// Render text with markdown-style links as clickable anchors, keeping surrounding text intact.
-function renderTextWithLinks(text: string) {
-  const nodes: ReactNode[] = [];
-  let lastIndex = 0;
-  markdownLinkPattern.lastIndex = 0;
-
-  let match: RegExpExecArray | null;
-  while ((match = markdownLinkPattern.exec(text)) !== null) {
-    const [full, label, url] = match;
-    if (match.index > lastIndex) {
-      nodes.push(text.slice(lastIndex, match.index));
-    }
-    nodes.push(
-      <Link key={match.index} href={url} target="_blank" rel="noopener noreferrer">
-        {label}
-      </Link>,
-    );
-    lastIndex = match.index + full.length;
-  }
-
-  if (lastIndex < text.length) {
-    nodes.push(text.slice(lastIndex));
-  }
-
-  return nodes;
+// Year-only period end, e.g. "present" or "2025". Single-year periods keep the
+// "start – end" shape so every row lines up.
+function formatEndYear(period: CalendarPeriod): string {
+  return period.end === undefined ? 'present' : `${period.end.year}`;
 }
 
-export function ActivitiesSection({ activities, allActivities = [] }: ActivitiesSectionProps) {
-  const [showAll, setShowAll] = useState(false);
-  const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
-
-  const displayedActivities = showAll ? allActivities : activities;
-  const hasMore = allActivities.length > activities.length;
-
-  const toggleExpanded = (id: string) => {
-    setExpandedIds((currentIds) => {
-      const nextIds = new Set(currentIds);
-      if (nextIds.has(id)) {
-        nextIds.delete(id);
-      } else {
-        nextIds.add(id);
-      }
-      return nextIds;
-    });
-  };
-
-  // Sort activities by end date (most recent first, ongoing activities at top)
-  const sortedActivities = [...displayedActivities].sort((a, b) => {
-    const endA = calendarPeriodEndValue(a.period);
-    const endB = calendarPeriodEndValue(b.period);
-
-    if (endA !== endB) {
-      return endB - endA; // Descending order (most recent first)
-    }
-
-    // If end dates are the same, sort by start date (most recent first)
-    const startA = calendarPeriodStartValue(a.period);
-    const startB = calendarPeriodStartValue(b.period);
-    return startB - startA;
-  });
-
-  // Group activities by category
-  const groupedActivities: Record<ActivityCategory, Activity[]> = {
-    work: [],
-    research: [],
-    others: [],
-  };
-  for (const activity of sortedActivities) {
-    groupedActivities[activity.category].push(activity);
-  }
+export function ActivitiesSection({ activities }: ActivitiesSectionProps) {
+  // Sort by the years shown (end year desc, ongoing first, then start year desc)
+  // so the order matches what the reader sees rather than hidden months.
+  const endYear = (period: CalendarPeriod) => period.end?.year ?? Infinity;
+  const sortedActivities = [...activities].sort(
+    (a, b) => endYear(b.period) - endYear(a.period) || b.period.start.year - a.period.start.year,
+  );
 
   return (
-    <Container maxWidth="md" component="section" sx={{ pt: 4, pb: 3 }}>
+    <Container maxWidth="md" component="section" sx={{ pt: 4, pb: 10 }}>
       <Stack spacing={6}>
-        {ACTIVITY_CATEGORIES.map((category) => {
-          const categoryActivities = groupedActivities[category];
-          if (categoryActivities.length === 0) return null;
-
-          return (
-            <Box key={category}>
-              <Typography
-                variant="subtitle2"
-                component="h3"
-                sx={{
-                  mb: 2,
-                  color: 'text.secondary',
-                }}
-              >
-                {categoryLabels[category]}
-              </Typography>
-              <Stack spacing={2}>
-                {categoryActivities.map((activity) => (
-                  <Box key={activity.id}>
-                    <Box
-                      onClick={() => toggleExpanded(activity.id)}
+        {ACTIVITY_CATEGORIES.map((category) => (
+          <Box key={category}>
+            <Typography variant="body2" component="h2" sx={{ mb: 2, color: 'text.secondary' }}>
+              {categoryLabels[category]}
+            </Typography>
+            <Stack spacing={2}>
+              {sortedActivities
+                .filter((activity) => activity.category === category)
+                .map((activity) => (
+                  <Box
+                    key={activity.id}
+                    sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 2 }}
+                  >
+                    <Typography variant="subtitle1" component="p" sx={{ minWidth: 0, flex: '1 1 auto' }}>
+                      {activity.title}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      component="span"
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'baseline',
-                        py: 1,
-                        borderBottom: '1px solid',
-                        borderColor: 'divider',
-                        cursor: 'pointer',
-                        '&:hover': {
-                          backgroundColor: 'action.hover',
-                        }
+                        flexShrink: 0,
+                        display: 'inline-grid',
+                        gridTemplateColumns: 'auto auto 4.5em',
+                        columnGap: '0.4em',
+                        color: 'text.secondary',
+                        whiteSpace: 'nowrap',
+                        fontVariantNumeric: 'tabular-nums',
                       }}
                     >
-                      <Typography
-                        variant="subtitle1"
-                        component="p"
-                      >
-                        {activity.title}
-                      </Typography>
-                      <Box
-                        sx={{
-                          ml: 2,
-                          display: 'inline-grid',
-                          gridTemplateColumns: 'auto auto auto',
-                          columnGap: '0.4em',
-                          alignItems: 'baseline',
-                          fontVariantNumeric: 'tabular-nums',
-                          whiteSpace: 'nowrap',
-                          color: 'text.secondary',
-                          fontSize: (theme) => theme.typography.body2.fontSize,
-                          lineHeight: (theme) => theme.typography.body2.lineHeight,
-                        }}
-                      >
-                        {(() => {
-                          const { start, end } = formatCalendarPeriod(activity.period);
-                          return (
-                            <>
-                              <Box component="span" sx={{ textAlign: 'right' }}>{start}</Box>
-                              <Box component="span">-</Box>
-                              <Box component="span" sx={{ textAlign: 'right', minWidth: '4em' }}>{end}</Box>
-                            </>
-                          );
-                        })()}
-                      </Box>
-                    </Box>
-                    <Collapse in={expandedIds.has(activity.id)}>
-                      <Box sx={{ py: 2, pl: 2 }}>
-                        <Typography
-                          variant="body1"
-                          color="text.secondary"
-                          sx={{
-                            lineHeight: 1.7,
-                          }}
-                        >
-                          {renderTextWithLinks(activity.description)}
-                        </Typography>
-                      </Box>
-                    </Collapse>
+                      <span>{activity.period.start.year}</span>
+                      <span>–</span>
+                      <span>{formatEndYear(activity.period)}</span>
+                    </Typography>
                   </Box>
                 ))}
-              </Stack>
-            </Box>
-          );
-        })}
+            </Stack>
+          </Box>
+        ))}
       </Stack>
-
-      {hasMore && (
-        <Box sx={{ mt: 2, textAlign: 'center' }}>
-          <Button
-            onClick={() => setShowAll((currentShowAll) => !currentShowAll)}
-            sx={{
-              textTransform: 'none',
-              color: 'text.primary',
-              fontWeight: 400,
-              '&:hover': {
-                backgroundColor: 'transparent',
-                textDecoration: 'underline',
-              }
-            }}
-          >
-            {showAll ? '← Show Less' : 'View All Experience →'}
-          </Button>
-        </Box>
-      )}
     </Container>
   );
 }
