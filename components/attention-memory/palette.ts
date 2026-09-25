@@ -14,3 +14,10 @@ export const roleColors: Record<Role, string> = {
   same_fact_b: '#b7d0d7',
   other_fact: '#c1ad7f',
 };
+
+/** Question names shared by the schematics and the data figures. */
+export const questionLabels: Record<Role, string> = {
+  same_fact_a: 'Q1 · same fact',
+  same_fact_b: 'Q2 · paraphrase',
+  other_fact: 'Q3 · other fact',
+};

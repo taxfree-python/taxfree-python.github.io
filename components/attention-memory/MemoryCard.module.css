@@ -23,6 +23,7 @@
 .tripletRole { color: #969991; font-size: 11px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .04em; }
 .tripletAnswer { margin-top: 10px; color: #c1ad7f; font-size: 13px; }
 .effectValues { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #363934; }
+.effectValues3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .effectValues > div { padding: 12px 14px; font-variant-numeric: tabular-nums; }
 .effectValues > div + div { border-left: 1px solid #363934; }
 .effectValues span, .effectValues small { display: block; color: #969991; font-size: 11px; }
@@ -42,4 +43,7 @@
   .effectValues { grid-template-columns: 1fr 1fr; }
   .effectValues > div:nth-child(3) { border-left: 0; border-top: 1px solid #363934; }
   .effectValues > div:nth-child(4) { border-top: 1px solid #363934; }
+  .effectValues3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .effectValues3 > div { padding: 10px 8px; }
+  .effectValues3 > div:nth-child(3) { border-left: 1px solid #363934; border-top: 0; }
 }
