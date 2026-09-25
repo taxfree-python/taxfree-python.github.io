@@ -18,13 +18,13 @@ export const cardTriplets = cardData.triplets as FactTripletCard[];
 type WithSingleLayer = FollowupTriplet & { singleLayerA: NonNullable<FollowupTriplet['singleLayerA']> };
 
 /** Built by scripts/attention-memory/build_followup_data.py (the earlier 10 triplets); do not edit
- * by hand. No block reads it any more; kept for its data test. */
+ * by hand. Backs `local-loss` and `write-layers`, which need the single-layer run. */
 export const followup = followupData as unknown as { layers: number[]; localLoss: LocalLossRow[]; triplets: WithSingleLayer[] };
 
 /**
  * Built by scripts/attention-memory/build_followup_data_final31.py from the frozen 31-triplet set;
- * do not edit by hand. Backs `local-loss`, `passage-removal` and `write-layers`. `layers`,
- * `localLoss` and the triplets' singleLayer* fields are null until the single-layer run is in.
+ * do not edit by hand. Backs `passage-removal`. `layers`, `localLoss` and the triplets'
+ * singleLayer* fields are null: that run was not done for this set.
  */
 export const followup31 = final31Data as unknown as {
   singleLayerRun: boolean;
@@ -53,6 +53,6 @@ export const blockNames = [
  * Registered but not yet embedded: the path-patching figures. Move each name into `blockNames`
  * (at its place in reading order) once content/posts/2026-09-14.md uses it.
  */
-export const pendingBlockNames = ['patching-paths'] as const;
+export const pendingBlockNames = ['patching-paths', 'patching-layers'] as const;
 
 export type BlockName = typeof blockNames[number] | typeof pendingBlockNames[number];

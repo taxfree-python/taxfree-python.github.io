@@ -1,0 +1,1819 @@
+{
+ "sources": [
+  {
+   "path": "olmo/results/final31-report-20260926/report.json",
+   "sha256": "c37874a5aad30dc55bef8334a929965c4986b0955e1929239e8094c0cce15dae"
+  }
+ ],
+ "notes": {
+  "cohort": "31 triplets / 93 questions: counterfactuals v6 FROZEN_SELECTION_ok31 (clean passages only)",
+  "delta": "Δlog p of the SQuAD answer string (nats) vs the unmodified run, teacher-forced.",
+  "D": "Δ(other_fact) − mean(Δ(same_fact_a), Δ(same_fact_b))",
+  "localLoss": "per-GDN-layer median over 93 questions of question-token loss / loss of the reference state; before: S=0, prefix: all pre-question writes removed (offline), passage: passage writes removed in that layer, A: span A writes removed in that layer",
+  "control": "fixed control rule (expanded_native.py controls) applied to every triplet",
+  "singleLayer": "NOT RUN: the single-layer step (final31-single-layer-20260926) was not executed; layers, localLoss and all singleLayer* fields are null"
+ },
+ "singleLayerRun": false,
+ "layers": null,
+ "localLoss": null,
+ "triplets": [
+  {
+   "id": "Amazon_rainforest__p3__105-111",
+   "title": "Amazon_rainforest",
+   "targetWriteText": "21,000",
+   "questions": [
+    {
+     "id": "572841772ca10214002da1a6",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "572a0bfaaf94a219006aa779",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "5725c41eec44d21400f3d50f",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.5891711711883545,
+      "same_fact_b": -0.7878202795982361,
+      "other_fact": 0.08292865753173828
+     },
+     "D": 0.7714243829250336
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.13459888100624084,
+      "same_fact_b": -0.00991746038198471,
+      "other_fact": 0.16970157623291016
+     },
+     "D": 0.24195974692702293,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -10.039856910705566,
+      "same_fact_b": -2.3541996479034424,
+      "other_fact": -9.111316680908203
+     },
+     "D": -2.9142884016036987
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -4.740274429321289,
+      "same_fact_b": -2.7735681533813477,
+      "other_fact": -11.075437545776367
+     },
+     "D": -7.318516254425049
+    }
+   }
+  },
+  {
+   "id": "Amazon_rainforest__p6__64-85",
+   "title": "Amazon_rainforest",
+   "targetWriteText": "Francisco de Orellana",
+   "questions": [
+    {
+     "id": "5725cbb289a1e219009abed2",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "5729edd56aef051400155112",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "5729edd56aef051400155116",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.3917348384857178,
+      "same_fact_b": -0.2871505618095398,
+      "other_fact": 0.1757347583770752
+     },
+     "D": 0.515177458524704
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.0087042897939682,
+      "same_fact_b": -0.004824367351830006,
+      "other_fact": -0.004044532775878906
+     },
+     "D": 0.002719795797020197,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -6.203877925872803,
+      "same_fact_b": -5.680994987487793,
+      "other_fact": -9.076784133911133
+     },
+     "D": -3.134347677230835
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -3.4596304893493652,
+      "same_fact_b": -2.8845722675323486,
+      "other_fact": -7.887736797332764
+     },
+     "D": -4.715635418891907
+    }
+   }
+  },
+  {
+   "id": "American_Broadcasting_Company__p2__768-788",
+   "title": "American_Broadcasting_Company",
+   "targetWriteText": "Citadel Broadcasting",
+   "questions": [
+    {
+     "id": "57267f1cdd62a815002e8741",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "57267f1cdd62a815002e8744",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "57267f1cdd62a815002e8742",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -2.203822135925293,
+      "same_fact_b": -2.1881861686706543,
+      "other_fact": -0.008395329117774963
+     },
+     "D": 2.1876088231801987
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.016485102474689484,
+      "same_fact_b": -0.009127579629421234,
+      "other_fact": 0.006983265280723572
+     },
+     "D": 0.01978960633277893,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -8.347563743591309,
+      "same_fact_b": -8.570008277893066,
+      "other_fact": -4.289834499359131
+     },
+     "D": 4.168951511383057
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -7.325169086456299,
+      "same_fact_b": -7.004750728607178,
+      "other_fact": -7.481557369232178
+     },
+     "D": -0.31659746170043945
+    }
+   }
+  },
+  {
+   "id": "Civil_disobedience__p4__0-8",
+   "title": "Civil_disobedience",
+   "targetWriteText": "LeGrande",
+   "questions": [
+    {
+     "id": "572807802ca10214002d9bf8",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "5728d7c54b864d1900164f4c",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "5728d7c54b864d1900164f4f",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -11.16761302947998,
+      "same_fact_b": -11.437212944030762,
+      "other_fact": -0.03565722703933716
+     },
+     "D": 11.266755759716034
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.0001765349879860878,
+      "same_fact_b": 0.0010071061551570892,
+      "other_fact": 0.0055100396275520325
+     },
+     "D": 0.005094754043966532,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -16.37669563293457,
+      "same_fact_b": -18.107568740844727,
+      "other_fact": -7.238734722137451
+     },
+     "D": 10.003397464752197
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -19.872774124145508,
+      "same_fact_b": -18.911270141601562,
+      "other_fact": -9.436145782470703
+     },
+     "D": 9.955876350402832
+    }
+   }
+  },
+  {
+   "id": "Economic_inequality__p9__505-517",
+   "title": "Economic_inequality",
+   "targetWriteText": "$105 billion",
+   "questions": [
+    {
+     "id": "5727f16c3acd2414000df05c",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "5729e1e36aef0514001550bd",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "5729e1e36aef0514001550ba",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -1.30746591091156,
+      "same_fact_b": -2.644298553466797,
+      "other_fact": -0.0034613609313964844
+     },
+     "D": 1.972420871257782
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": 0.038581639528274536,
+      "same_fact_b": 0.017886772751808167,
+      "other_fact": 0.02249324321746826
+     },
+     "D": -0.00574096292257309,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -5.2302751541137695,
+      "same_fact_b": -6.349461078643799,
+      "other_fact": -8.06456470489502
+     },
+     "D": -2.2746965885162354
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -6.164064407348633,
+      "same_fact_b": -5.8712239265441895,
+      "other_fact": -8.35866641998291
+     },
+     "D": -2.341022253036499
+    }
+   }
+  },
+  {
+   "id": "Force__p26__293-308",
+   "title": "Force",
+   "targetWriteText": "Albert Einstein",
+   "questions": [
+    {
+     "id": "5737898f1c45671900574498",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "5737898f1c45671900574499",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "5737898f1c45671900574496",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -1.1201382875442505,
+      "same_fact_b": -1.4931527376174927,
+      "other_fact": -0.004101414233446121
+     },
+     "D": 1.3025440983474255
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.004723742604255676,
+      "same_fact_b": -0.003496512770652771,
+      "other_fact": -0.0035078413784503937
+     },
+     "D": 0.00060228630900383,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -2.567518472671509,
+      "same_fact_b": -5.109248638153076,
+      "other_fact": -8.893320083618164
+     },
+     "D": -5.054936528205872
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -1.1878234148025513,
+      "same_fact_b": -5.196508884429932,
+      "other_fact": -5.825307846069336
+     },
+     "D": -2.6331416964530945
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p1__106-110",
+   "title": "Nikola_Tesla",
+   "targetWriteText": "1884",
+   "questions": [
+    {
+     "id": "56df9ee138dc421700152108",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56e0b9d57aa994140058e6c1",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56df9ee138dc42170015210c",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.12511122226715088,
+      "same_fact_b": -0.15516149997711182,
+      "other_fact": -0.03232288360595703
+     },
+     "D": 0.10781347751617432
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.006825387477874756,
+      "same_fact_b": -0.14523905515670776,
+      "other_fact": -0.05553311109542847
+     },
+     "D": 0.020499110221862793,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -2.6829946041107178,
+      "same_fact_b": -9.541996002197266,
+      "other_fact": -9.400371551513672
+     },
+     "D": -3.28787624835968
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -2.3799519538879395,
+      "same_fact_b": -7.687715530395508,
+      "other_fact": -7.355236053466797
+     },
+     "D": -2.3214023113250732
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p2__188-192",
+   "title": "Nikola_Tesla",
+   "targetWriteText": "1893",
+   "questions": [
+    {
+     "id": "56dfa01738dc42170015211d",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56e0bab7231d4119001ac35c",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56e0bab7231d4119001ac35d",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -2.3630337715148926,
+      "same_fact_b": -1.9357355833053589,
+      "other_fact": -0.17225170135498047
+     },
+     "D": 1.9771329760551453
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.045345842838287354,
+      "same_fact_b": -0.01446792483329773,
+      "other_fact": 0.029863357543945312
+     },
+     "D": 0.059770241379737854,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -6.141367435455322,
+      "same_fact_b": -7.355321884155273,
+      "other_fact": -1.0266599655151367
+     },
+     "D": 5.721684694290161
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -8.348799705505371,
+      "same_fact_b": -6.598867416381836,
+      "other_fact": -0.8723344802856445
+     },
+     "D": 6.601499080657959
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p3__399-403",
+   "title": "Nikola_Tesla",
+   "targetWriteText": "1943",
+   "questions": [
+    {
+     "id": "56dfa0d84a1a83140091ebb7",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56e0bb9f7aa994140058e6cc",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56e0bb9f7aa994140058e6cf",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.07931883633136749,
+      "same_fact_b": -0.08331086486577988,
+      "other_fact": -0.03258448839187622
+     },
+     "D": 0.048730362206697464
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": 0.08456150442361832,
+      "same_fact_b": 0.0743291825056076,
+      "other_fact": -0.06919997930526733
+     },
+     "D": -0.1486453227698803,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -1.9710125923156738,
+      "same_fact_b": -1.7117265462875366,
+      "other_fact": -11.050830841064453
+     },
+     "D": -9.209461271762848
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -4.240284442901611,
+      "same_fact_b": -4.319672107696533,
+      "other_fact": -15.017589569091797
+     },
+     "D": -10.737611293792725
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p20__50-74",
+   "title": "Nikola_Tesla",
+   "targetWriteText": "Thomas Commerford Martin",
+   "questions": [
+    {
+     "id": "56e057e1231d4119001ac047",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56e0dbb57aa994140058e779",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56e057e1231d4119001ac046",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -9.525320053100586,
+      "same_fact_b": -9.009003639221191,
+      "other_fact": 0.18514561653137207
+     },
+     "D": 9.45230746269226
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": 0.028564421460032463,
+      "same_fact_b": 0.007093858905136585,
+      "other_fact": 0.1178441047668457
+     },
+     "D": 0.10001496458426118,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -19.207569122314453,
+      "same_fact_b": -20.36941146850586,
+      "other_fact": -40.59662628173828
+     },
+     "D": -20.808135986328125
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -20.56836700439453,
+      "same_fact_b": -19.257143020629883,
+      "other_fact": -43.34504699707031
+     },
+     "D": -23.432291984558105
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p24__9-28",
+   "title": "Nikola_Tesla",
+   "targetWriteText": "George Westinghouse",
+   "questions": [
+    {
+     "id": "56e07c86231d4119001ac1cd",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56e0ecd37aa994140058e7d5",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56e07c86231d4119001ac1d0",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -2.6877198219299316,
+      "same_fact_b": -3.459373712539673,
+      "other_fact": 0.02214658260345459
+     },
+     "D": 3.095693349838257
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.0020435291808098555,
+      "same_fact_b": -0.006222887896001339,
+      "other_fact": 0.1842632293701172
+     },
+     "D": 0.18839643790852278,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -3.8211677074432373,
+      "same_fact_b": -5.48283052444458,
+      "other_fact": -12.62778091430664
+     },
+     "D": -7.975781798362732
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -2.9605600833892822,
+      "same_fact_b": -5.9569783210754395,
+      "other_fact": -14.278677940368652
+     },
+     "D": -9.819908738136292
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p27__31-33",
+   "title": "Nikola_Tesla",
+   "targetWriteText": "35",
+   "questions": [
+    {
+     "id": "56e08a1f7aa994140058e5da",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56e0ef90231d4119001ac46a",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56e08a1f7aa994140058e5dd",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.026634633541107178,
+      "same_fact_b": -0.03480151295661926,
+      "other_fact": 0.004692196846008301
+     },
+     "D": 0.03541027009487152
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": 0.00019249320030212402,
+      "same_fact_b": 0.013937026262283325,
+      "other_fact": -0.03302469849586487
+     },
+     "D": -0.04008945822715759,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -4.43559455871582,
+      "same_fact_b": -5.861020565032959,
+      "other_fact": -6.763876914978027
+     },
+     "D": -1.6155693531036377
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -4.818951606750488,
+      "same_fact_b": -4.492395877838135,
+      "other_fact": -14.860406875610352
+     },
+     "D": -10.20473313331604
+    }
+   }
+  },
+  {
+   "id": "Rhine__p2__113-117",
+   "title": "Rhine",
+   "targetWriteText": "1939",
+   "questions": [
+    {
+     "id": "572f567cb2c2fd1400568040",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "572fe393947a6a140053cdbb",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "572f567cb2c2fd1400568043",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.9573389887809753,
+      "same_fact_b": -0.9595590233802795,
+      "other_fact": 0.034412384033203125
+     },
+     "D": 0.9928613901138306
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.005602292716503143,
+      "same_fact_b": -0.011944204568862915,
+      "other_fact": 0.023017078638076782
+     },
+     "D": 0.03179032728075981,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -4.2384233474731445,
+      "same_fact_b": -4.080019950866699,
+      "other_fact": -14.100959777832031
+     },
+     "D": -9.94173812866211
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -7.06689453125,
+      "same_fact_b": -7.562762260437012,
+      "other_fact": -15.946402549743652
+     },
+     "D": -8.631574153900146
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p1__77-87",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Cam Newton",
+   "questions": [
+    {
+     "id": "56be4e1facb8001400a502f6",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56bead5a3aeaaa14008c91ed",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56bead5a3aeaaa14008c91ec",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.2976873517036438,
+      "same_fact_b": -0.31285524368286133,
+      "other_fact": 0.03596428036689758
+     },
+     "D": 0.34123557806015015
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.014927230775356293,
+      "same_fact_b": -0.02228483557701111,
+      "other_fact": -0.019617080688476562
+     },
+     "D": -0.001011047512292862,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -10.759282112121582,
+      "same_fact_b": -11.663955688476562,
+      "other_fact": -2.9776878356933594
+     },
+     "D": 8.233931064605713
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -3.0442841053009033,
+      "same_fact_b": -8.039643287658691,
+      "other_fact": -6.8773016929626465
+     },
+     "D": -1.3353379964828491
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p2__248-258",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Von Miller",
+   "questions": [
+    {
+     "id": "56d204ade7d4791d00902603",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d601e41c85041400946ed1",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56be4eafacb8001400a50304",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.3515928089618683,
+      "same_fact_b": -0.19284287095069885,
+      "other_fact": -0.02774500846862793
+     },
+     "D": 0.24447283148765564
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.012516193091869354,
+      "same_fact_b": -0.013575844466686249,
+      "other_fact": -0.0949404239654541
+     },
+     "D": -0.0818944051861763,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -8.749828338623047,
+      "same_fact_b": -4.766651153564453,
+      "other_fact": -7.149720191955566
+     },
+     "D": -0.3914804458618164
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -4.449951648712158,
+      "same_fact_b": -3.9109435081481934,
+      "other_fact": -3.2409563064575195
+     },
+     "D": 0.9394912719726562
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p3__0-3",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "CBS",
+   "questions": [
+    {
+     "id": "56be5333acb8001400a5030a",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56beaf5e3aeaaa14008c91fd",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56bf1ae93aeaaa14008c951f",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.2270699441432953,
+      "same_fact_b": -0.35954564809799194,
+      "other_fact": 0.1768258810043335
+     },
+     "D": 0.4701336771249771
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.005709931254386902,
+      "same_fact_b": 0.011058077216148376,
+      "other_fact": -0.04907900094985962
+     },
+     "D": -0.051753073930740356,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -1.5257015228271484,
+      "same_fact_b": -1.4658056497573853,
+      "other_fact": -4.835958003997803
+     },
+     "D": -3.340204417705536
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -4.591596603393555,
+      "same_fact_b": -6.185371398925781,
+      "other_fact": -11.022869110107422
+     },
+     "D": -5.634385108947754
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p7__113-125",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "$1.2 billion",
+   "questions": [
+    {
+     "id": "56be5523acb8001400a5032f",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56beb2153aeaaa14008c9227",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56d6f0770d65d2140019826a",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -5.399417877197266,
+      "same_fact_b": -5.399417877197266,
+      "other_fact": 0.12307360768318176
+     },
+     "D": 5.522491484880447
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.021571658551692963,
+      "same_fact_b": -0.021571658551692963,
+      "other_fact": 0.029213428497314453
+     },
+     "D": 0.050785087049007416,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -4.465513229370117,
+      "same_fact_b": -4.465513229370117,
+      "other_fact": -2.523052453994751
+     },
+     "D": 1.9424607753753662
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -3.706847667694092,
+      "same_fact_b": -3.706847667694092,
+      "other_fact": -4.440154552459717
+     },
+     "D": -0.733306884765625
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p9__324-328",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "1978",
+   "questions": [
+    {
+     "id": "56beb3083aeaaa14008c923d",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56bf2afe3aeaaa14008c9543",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56beb3083aeaaa14008c9240",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -3.7826201915740967,
+      "same_fact_b": -4.070389270782471,
+      "other_fact": -0.08653998374938965
+     },
+     "D": 3.839964747428894
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.003665417432785034,
+      "same_fact_b": -0.0005740299820899963,
+      "other_fact": -0.011655569076538086
+     },
+     "D": -0.00953584536910057,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -1.5537729263305664,
+      "same_fact_b": -6.327008247375488,
+      "other_fact": -6.78832483291626
+     },
+     "D": -2.8479342460632324
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -4.170358657836914,
+      "same_fact_b": -5.247108459472656,
+      "other_fact": -7.67860221862793
+     },
+     "D": -2.9698686599731445
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p10__197-202",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "3,837",
+   "questions": [
+    {
+     "id": "56d6f2960d65d21400198288",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d997cddc89441400fdb587",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56bf6b303aeaaa14008c960f",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -3.035489559173584,
+      "same_fact_b": -3.155075788497925,
+      "other_fact": 0.002858087420463562
+     },
+     "D": 3.098140761256218
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": 0.08789509534835815,
+      "same_fact_b": 0.5115731954574585,
+      "other_fact": -0.00041165947914123535
+     },
+     "D": -0.30014580488204956,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -16.46917724609375,
+      "same_fact_b": -16.91902732849121,
+      "other_fact": -5.731064319610596
+     },
+     "D": 10.963037967681885
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -13.419322967529297,
+      "same_fact_b": -12.481884002685547,
+      "other_fact": -5.0618438720703125
+     },
+     "D": 7.888759613037109
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p11__124-126",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "24",
+   "questions": [
+    {
+     "id": "56d6f3500d65d21400198290",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d9992fdc89441400fdb59c",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56d6f3500d65d21400198294",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.002931833267211914,
+      "same_fact_b": -0.004605785012245178,
+      "other_fact": 0.016430288553237915
+     },
+     "D": 0.02019909769296646
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": 0.002772856503725052,
+      "same_fact_b": 0.004024077206850052,
+      "other_fact": 0.0014143884181976318
+     },
+     "D": -0.00198407843708992,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -9.133273124694824,
+      "same_fact_b": -9.146723747253418,
+      "other_fact": -10.219488143920898
+     },
+     "D": -1.0794897079467773
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -7.582716941833496,
+      "same_fact_b": -5.026914119720459,
+      "other_fact": -8.435334205627441
+     },
+     "D": -2.130518674850464
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p13__44-48",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "67.9",
+   "questions": [
+    {
+     "id": "56beb57b3aeaaa14008c9279",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56bf38383aeaaa14008c956b",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56d99c44dc89441400fdb5da",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -13.062963485717773,
+      "same_fact_b": -12.312944412231445,
+      "other_fact": 0.0015085674822330475
+     },
+     "D": 12.689462516456842
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.15346956253051758,
+      "same_fact_b": 0.030720233917236328,
+      "other_fact": -0.007711175829172134
+     },
+     "D": 0.05366348847746849,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -13.378691673278809,
+      "same_fact_b": -11.125015258789062,
+      "other_fact": -8.830363273620605
+     },
+     "D": 3.42149019241333
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -5.729211330413818,
+      "same_fact_b": -6.40057373046875,
+      "other_fact": -6.874658107757568
+     },
+     "D": -0.8097655773162842
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p19__149-153",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "1998",
+   "questions": [
+    {
+     "id": "56beb90c3aeaaa14008c92c7",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d7096b0d65d214001982fc",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56beb90c3aeaaa14008c92c9",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.22398483753204346,
+      "same_fact_b": -0.6400512456893921,
+      "other_fact": 0.03153691440820694
+     },
+     "D": 0.4635549560189247
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.018787585198879242,
+      "same_fact_b": -0.018426761031150818,
+      "other_fact": 0.007113471627235413
+     },
+     "D": 0.025720644742250443,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -2.929497241973877,
+      "same_fact_b": -2.9979310035705566,
+      "other_fact": -4.841965198516846
+     },
+     "D": -1.878251075744629
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -3.524286985397339,
+      "same_fact_b": -2.709122896194458,
+      "other_fact": -4.626018047332764
+     },
+     "D": -1.5093131065368652
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p20__99-104",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Elway",
+   "questions": [
+    {
+     "id": "56beb97c3aeaaa14008c92de",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56bf6c3e3aeaaa14008c9617",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56d709ef0d65d21400198306",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -9.167228698730469,
+      "same_fact_b": -6.444018840789795,
+      "other_fact": -0.008469581604003906
+     },
+     "D": 7.797154188156128
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": 0.005736041814088821,
+      "same_fact_b": -0.0003754943609237671,
+      "other_fact": -0.39140844345092773
+     },
+     "D": -0.39408871717751026,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -3.405008554458618,
+      "same_fact_b": -5.583198547363281,
+      "other_fact": -3.7519302368164062
+     },
+     "D": 0.7421733140945435
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -5.9669976234436035,
+      "same_fact_b": -6.214277744293213,
+      "other_fact": -5.728798866271973
+     },
+     "D": 0.36183881759643555
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p38__438-450",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Jason Bourne",
+   "questions": [
+    {
+     "id": "56bec4343aeaaa14008c93a9",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d723560d65d214001983ae",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56d9bf70dc89441400fdb77b",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -7.1472368240356445,
+      "same_fact_b": -5.6551289558410645,
+      "other_fact": 0.028270453214645386
+     },
+     "D": 6.429453343153
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.4822026491165161,
+      "same_fact_b": -0.41417843103408813,
+      "other_fact": 0.03280022740364075
+     },
+     "D": 0.48099076747894287,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -9.342578887939453,
+      "same_fact_b": -12.354475975036621,
+      "other_fact": -0.732772946357727
+     },
+     "D": 10.11575448513031
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -9.051512718200684,
+      "same_fact_b": -13.762649536132812,
+      "other_fact": -5.002054214477539
+     },
+     "D": 6.405026912689209
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p39__0-12",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Westwood One",
+   "questions": [
+    {
+     "id": "56bec4a33aeaaa14008c93b1",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d723ad0d65d214001983b4",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56d9c049dc89441400fdb791",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -2.950941801071167,
+      "same_fact_b": -7.79646635055542,
+      "other_fact": 0.06338262557983398
+     },
+     "D": 5.437086701393127
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.005926990881562233,
+      "same_fact_b": 7.74608924984932e-05,
+      "other_fact": -0.22408580780029297
+     },
+     "D": -0.2211610428057611,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -4.130318641662598,
+      "same_fact_b": -12.721396446228027,
+      "other_fact": -22.04817008972168
+     },
+     "D": -13.622312545776367
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -6.685128688812256,
+      "same_fact_b": -16.63813591003418,
+      "other_fact": -25.2664737701416
+     },
+     "D": -13.604841470718384
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p40__303-313",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Mick Mixon",
+   "questions": [
+    {
+     "id": "56bec5233aeaaa14008c93d3",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d724620d65d214001983c1",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56bec5233aeaaa14008c93d2",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -4.835234642028809,
+      "same_fact_b": -4.444962978363037,
+      "other_fact": 0.01743289828300476
+     },
+     "D": 4.657531708478928
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.0007010418921709061,
+      "same_fact_b": -0.0011109281331300735,
+      "other_fact": -0.0016824901103973389
+     },
+     "D": -0.0007765050977468491,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -17.13286018371582,
+      "same_fact_b": -17.333452224731445,
+      "other_fact": -14.22559642791748
+     },
+     "D": 3.0075597763061523
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -20.42029571533203,
+      "same_fact_b": -19.759033203125,
+      "other_fact": -14.557600975036621
+     },
+     "D": 5.5320634841918945
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p43__49-58",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Lady Gaga",
+   "questions": [
+    {
+     "id": "56d20650e7d4791d00902614",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d7253b0d65d214001983d4",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56bec6ac3aeaaa14008c9401",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.35392796993255615,
+      "same_fact_b": -0.19332678616046906,
+      "other_fact": 0.0197402685880661
+     },
+     "D": 0.2933676466345787
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.006883256137371063,
+      "same_fact_b": -0.0013657808303833008,
+      "other_fact": -0.0023069679737091064
+     },
+     "D": 0.0018175505101680756,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -7.297799587249756,
+      "same_fact_b": -5.7720465660095215,
+      "other_fact": -2.3798069953918457
+     },
+     "D": 4.155116081237793
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -3.7527875900268555,
+      "same_fact_b": -4.266947269439697,
+      "other_fact": -4.841418743133545
+     },
+     "D": -0.8315513134002686
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p50__144-148",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Ealy",
+   "questions": [
+    {
+     "id": "56bec9e83aeaaa14008c945f",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d7261e0d65d214001983e1",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56d7261e0d65d214001983e4",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -3.4008309841156006,
+      "same_fact_b": -1.2585822343826294,
+      "other_fact": -0.2041034698486328
+     },
+     "D": 2.125603139400482
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.020135700702667236,
+      "same_fact_b": -0.0006335917860269547,
+      "other_fact": -0.01038360595703125
+     },
+     "D": 1.0402873158454895e-06,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -18.506906509399414,
+      "same_fact_b": -17.761150360107422,
+      "other_fact": -15.426563262939453
+     },
+     "D": 2.707465171813965
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -14.032893180847168,
+      "same_fact_b": -12.14443302154541,
+      "other_fact": -16.737302780151367
+     },
+     "D": -3.648639678955078
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p51__167-173",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Miller",
+   "questions": [
+    {
+     "id": "56d726b60d65d214001983ea",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d9cb47dc89441400fdb833",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56d726b60d65d214001983ee",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.05087165907025337,
+      "same_fact_b": -0.7705334424972534,
+      "other_fact": 0.005988389253616333
+     },
+     "D": 0.41669094003736973
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": 0.005093015730381012,
+      "same_fact_b": 0.012906849384307861,
+      "other_fact": -0.007960796356201172
+     },
+     "D": -0.01696072891354561,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -10.961156845092773,
+      "same_fact_b": -7.437798023223877,
+      "other_fact": -8.044066429138184
+     },
+     "D": 1.1554110050201416
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -7.0598039627075195,
+      "same_fact_b": -6.857879638671875,
+      "other_fact": -7.572847843170166
+     },
+     "D": -0.6140060424804688
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p52__92-99",
+   "title": "Super_Bowl_50",
+   "targetWriteText": "Sanders",
+   "questions": [
+    {
+     "id": "56d7270c0d65d214001983f7",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "56d9ccacdc89441400fdb842",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "56becaf93aeaaa14008c9484",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.3191030025482178,
+      "same_fact_b": -0.012819960713386536,
+      "other_fact": 0.054350435733795166
+     },
+     "D": 0.22031191736459732
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": -0.03339475393295288,
+      "same_fact_b": -0.013115674257278442,
+      "other_fact": 0.0040961503982543945
+     },
+     "D": 0.027351364493370056,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -8.107205390930176,
+      "same_fact_b": -6.049047946929932,
+      "other_fact": -7.54841423034668
+     },
+     "D": -0.470287561416626
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -9.111635208129883,
+      "same_fact_b": -8.761574745178223,
+      "other_fact": -8.271902084350586
+     },
+     "D": 0.6647028923034668
+    }
+   }
+  },
+  {
+   "id": "University_of_Chicago__p27__129-142",
+   "title": "University_of_Chicago",
+   "targetWriteText": "Larry Ellison",
+   "questions": [
+    {
+     "id": "57286951ff5b5019007da20f",
+     "role": "same_fact_a"
+    },
+    {
+     "id": "57286951ff5b5019007da210",
+     "role": "same_fact_b"
+    },
+    {
+     "id": "57286951ff5b5019007da212",
+     "role": "other_fact"
+    }
+   ],
+   "singleLayerA": null,
+   "singleLayerSumA": null,
+   "singleLayerControl": null,
+   "singleLayerSumControl": null,
+   "allLayer": {
+    "A": {
+     "delta": {
+      "same_fact_a": -0.640928328037262,
+      "same_fact_b": -0.7111665606498718,
+      "other_fact": 0.000820644199848175
+     },
+     "D": 0.6768680885434151
+    },
+    "control": {
+     "delta": {
+      "same_fact_a": 0.002797813154757023,
+      "same_fact_b": 0.001953232567757368,
+      "other_fact": -0.001693878322839737
+     },
+     "D": -0.004069401184096932,
+     "fixed": true
+    },
+    "passage": {
+     "delta": {
+      "same_fact_a": -7.085545539855957,
+      "same_fact_b": -12.017566680908203,
+      "other_fact": -7.215030670166016
+     },
+     "D": 2.3365254402160645
+    },
+    "prefix": {
+     "delta": {
+      "same_fact_a": -0.6149725914001465,
+      "same_fact_b": -7.944427013397217,
+      "other_fact": -4.850794792175293
+     },
+     "D": -0.5710949897766113
+    }
+   }
+  }
+ ]
+}
