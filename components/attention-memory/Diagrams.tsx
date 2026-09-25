@@ -33,7 +33,7 @@ type Span = [number, number];
 function Passage({ x, y, h, a }: { x: Span; y: number; h: number; a: Span }) {
   return (
     <g>
-      <rect x={x[0]} y={y} width={x[1] - x[0]} height={h} fill="none" stroke={palette.rule} strokeWidth={0.9} />
+      <rect x={x[0]} y={y} width={x[1] - x[0]} height={h} fill="none" stroke={palette.muted} strokeWidth={0.9} />
       <text x={x[0] + 8} y={y + h / 2} dominantBaseline="central" fill={palette.muted}>passage</text>
       <rect x={a[0]} y={y + 3} width={a[1] - a[0]} height={h - 6} fill={palette.state} opacity={0.5} />
       <SvgTex x={(a[0] + a[1]) / 2} y={y + h / 2} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
@@ -110,7 +110,7 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
       {Array.from({ length: l.passageCells }, (_, i) => (
         <g key={`p${i}`}>
           <rect x={cellX(0, i)} y={l.rowY} width={l.cell} height={l.cell} fill={isA(i) ? palette.state : 'none'} opacity={isA(i) ? 0.5 : 1}
-            stroke={palette.rule} strokeWidth={0.9} />
+            stroke={palette.muted} strokeWidth={0.9} />
           <Arrow x1={cellX(0, i) + l.cell / 2} y1={rowBottom} x2={target(i)} y2={stateTop}
             color={isA(i) ? palette.rule : palette.muted} dashed={isA(i)} />
         </g>
@@ -118,7 +118,7 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
       <SvgTex x={aMidX} y={rowMid} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
       {Array.from({ length: l.questionCells }, (_, i) => (
         <g key={`q${i}`}>
-          <rect x={cellX(l.questionX, i)} y={l.rowY} width={l.cell} height={l.cell} fill="none" stroke={palette.rule} strokeWidth={0.9} />
+          <rect x={cellX(l.questionX, i)} y={l.rowY} width={l.cell} height={l.cell} fill="none" stroke={palette.muted} strokeWidth={0.9} />
           <Arrow x1={source(i)} y1={stateTop} x2={cellX(l.questionX, i) + l.cell / 2} y2={rowBottom} color={palette.muted} />
         </g>
       ))}
