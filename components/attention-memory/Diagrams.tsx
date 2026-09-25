@@ -27,19 +27,6 @@ function Arrow({ x1, y1, x2, y2, color = palette.muted, dashed = false }: { x1: 
   );
 }
 
-type Span = [number, number];
-
-/** Passage box with span A highlighted; identical wherever it appears. */
-function Passage({ x, y, h, a }: { x: Span; y: number; h: number; a: Span }) {
-  return (
-    <g>
-      <rect x={x[0]} y={y} width={x[1] - x[0]} height={h} fill="none" stroke={palette.muted} strokeWidth={0.9} />
-      <text x={x[0] + 8} y={y + h / 2} dominantBaseline="central" fill={palette.muted}>passage</text>
-      <rect x={a[0]} y={y + 3} width={a[1] - a[0]} height={h - 6} fill={palette.state} opacity={0.5} />
-      <SvgTex x={(a[0] + a[1]) / 2} y={y + h / 2} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
-    </g>
-  );
-}
 
 /** Positions 1–6, an ellipsis, then t, so the last box does not read as t = 8. */
 const tokenLabels = ['1', '2', '3', '4', '5', '6', '\\cdots', 't'];
@@ -278,40 +265,68 @@ function OnlineLearning({ mobile }: { mobile: boolean }) {
   );
 }
 
+/**
+ * Figure 4: boxes are states only; an edge is "read these tokens and update the state".
+ * The passage edge carries a strip of token cells with span A shaded, as in figure 6.
+ */
 const independentLayout = {
-  desktop: { width: 800, offset: 110, rowGap: 44, boxH: 28, s0: [0, 44] as Span, passage: [64, 300] as Span, a: [178, 222] as Span, question: [360, 530] as Span, answer: 556 },
-  mobile: { width: 340, offset: 0, rowGap: 36, boxH: 24, s0: [0, 28] as Span, passage: [40, 150] as Span, a: [88, 110] as Span, question: [184, 282] as Span, answer: 294 },
+  desktop: { width: 800, rowGap: 46, state: 40, s0X: 70, spX: 400, cell: 12, gap: 3, cells: 12, aCells: [6, 7], fanX: 450, qEnd: 650 },
+  mobile: { width: 340, rowGap: 40, state: 30, s0X: 4, spX: 164, cell: 8, gap: 2, cells: 10, aCells: [5, 6], fanX: 204, qEnd: 290 },
 };
+
+/** A small fixed-size state: the same grid-in-a-square used for S in figure 6. */
+function StateBox({ x, y, size, tex }: { x: number; y: number; size: number; tex: string }) {
+  const grid = [1, 2, 3].map(i => (size * i) / 4);
+  return (
+    <g>
+      <g stroke={palette.rule} strokeWidth={0.6}>
+        {grid.map(g => <line key={`v${g}`} x1={x + g} y1={y} x2={x + g} y2={y + size} />)}
+        {grid.map(g => <line key={`h${g}`} x1={x} y1={y + g} x2={x + size} y2={y + g} />)}
+      </g>
+      <rect x={x} y={y} width={size} height={size} fill="#0d0d0d" fillOpacity={0.6} stroke={palette.state} strokeWidth={0.9} />
+      <SvgTex x={x + size / 2} y={y + size / 2} anchor="middle" tex={tex} color={palette.ink} />
+    </g>
+  );
+}
 
 function IndependentQuestions({ mobile }: { mobile: boolean }) {
   const l = mobile ? independentLayout.mobile : independentLayout.desktop;
-  const top = 4;
-  const height = top * 2 + l.rowGap * 2 + l.boxH;
-  const sharedY = top + l.rowGap;
-  const sharedMid = sharedY + l.boxH / 2;
+  const top = 12;
+  const rowMid = (index: number) => top + l.state / 2 + index * l.rowGap;
+  const mid = rowMid(1);
+  const height = rowMid(2) + l.state / 2 + 6;
+  const step = l.cell + l.gap;
+  const stripWidth = l.cells * step - l.gap;
+  const edgeStart = l.s0X + l.state;
+  const stripX = (edgeStart + l.spX) / 2 - stripWidth / 2;
+  const stripY = mid - l.cell - 6;
+  const aStart = stripX + l.aCells[0]! * step;
+  const aEnd = stripX + (l.aCells[l.aCells.length - 1]! + 1) * step - l.gap;
+  const spRight = l.spX + l.state;
   return (
     <svg viewBox={`0 0 ${l.width} ${height}`} role="img" style={svgStyle(mobile)}
-      aria-label="同じ初期 state から共通の passage を読み、そこから 3 つの質問に分かれて回答する。">
-      <g transform={`translate(${l.offset} 0)`}>
-      <rect x={l.s0[0] + 0.5} y={sharedY} width={l.s0[1] - l.s0[0] - 1} height={l.boxH} fill="none" stroke={palette.state} strokeWidth={0.9} />
-      <SvgTex x={(l.s0[0] + l.s0[1]) / 2} y={sharedMid} anchor="middle" tex="S_0" color={palette.ink} />
-      <Arrow x1={l.s0[1]} y1={sharedMid} x2={l.passage[0]} y2={sharedMid} />
-      <Passage x={l.passage} y={sharedY} h={l.boxH} a={l.a} />
+      aria-label="初期 state から passage を読んで state を更新し、その state から 3 つの質問に分かれて回答する。">
+      <StateBox x={l.s0X} y={mid - l.state / 2} size={l.state} tex="S_0" />
+      <Arrow x1={edgeStart + 4} y1={mid} x2={l.spX - 4} y2={mid} />
+      {Array.from({ length: l.cells }, (_, i) => {
+        const inA = l.aCells.includes(i);
+        return <rect key={i} x={stripX + i * step} y={stripY} width={l.cell} height={l.cell}
+          fill={inA ? palette.state : 'none'} opacity={inA ? 0.6 : 1} stroke={palette.muted} strokeWidth={0.7} />;
+      })}
+      <text x={stripX} y={stripY - 8} fill={palette.muted}>passage</text>
+      <SvgTex x={(aStart + aEnd) / 2} y={mid + 14} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
+      <StateBox x={l.spX} y={mid - l.state / 2} size={l.state} tex="S_P" />
       {roles.map((role, index) => {
-        const y = top + index * l.rowGap;
-        const mid = y + l.boxH / 2;
+        const y = rowMid(index);
         return (
           <g key={role}>
-            <Arrow x1={l.passage[1]} y1={sharedMid} x2={l.question[0]} y2={mid} />
-            <rect x={l.question[0]} y={y} width={l.question[1] - l.question[0]} height={l.boxH} fill="none"
-              stroke={roleColors[role]} strokeWidth={0.9} />
-            <text x={l.question[0] + 8} y={mid} dominantBaseline="central" fill={palette.ink}>{questionLabels[role]}</text>
-            <Arrow x1={l.question[1]} y1={mid} x2={l.answer - 6} y2={mid} />
-            <text x={l.answer} y={mid} dominantBaseline="central" fill={palette.muted}>answer</text>
+            <line x1={spRight + 4} y1={mid} x2={l.fanX} y2={y} stroke={palette.muted} strokeWidth={0.9} />
+            <Arrow x1={l.fanX} y1={y} x2={l.qEnd} y2={y} />
+            <text x={(l.fanX + l.qEnd) / 2} y={y - 7} textAnchor="middle" fill={roleColors[role]}>{questionLabels[role]}</text>
+            <text x={l.qEnd + 8} y={y} dominantBaseline="central" fill={palette.muted}>answer</text>
           </g>
         );
       })}
-      </g>
     </svg>
   );
 }
