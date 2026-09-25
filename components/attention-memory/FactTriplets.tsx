@@ -3,6 +3,7 @@
 import { useMemo, useRef, useState } from 'react';
 import CaseNavigation from './CaseNavigation';
 import PassageText from './PassageText';
+import { Tex } from './TeX';
 import styles from './MemoryCard.module.css';
 import { roleColors as colors, roles, type Role } from './palette';
 
@@ -33,7 +34,7 @@ export function FactTripletExamples({ triplets }: { triplets: FactTriplet[] }) {
     <CaseNavigation title={`${triplet.title} · ${triplet.category}`} index={index} count={triplets.length}
       onChange={next => { setIndex(next); if (passage.current) passage.current.scrollTop = 0; }} unit="triplet" />
     <div className={styles.resultBody}>
-      <div className={styles.label}>Passage · interval A</div>
+      <div className={styles.label}>Passage · interval <Tex tex="\mathcal{A}" /></div>
       <div className={styles.passage} ref={passage} tabIndex={0} aria-label="入力文書">
         <PassageText text={triplet.passage} answer={triplet.targetWriteText} />
       </div>
@@ -161,7 +162,7 @@ export function FactTripletFigure({ triplets, kind }: { triplets: FactTriplet[];
   return <section className={`${styles.card} ${styles.figureCard}`} aria-label={kind === 'loss' ? '更新前局所回帰損失' : '書き込み停止の効果'} data-triplet={triplet.id}>
     <CaseNavigation title={`${triplet.title} · ${triplet.category}`} index={index} count={triplets.length} onChange={selectTriplet} unit="triplet" />
     <div className={styles.sample}>
-      <div className={styles.label}>Interval A · answer annotation</div>
+      <div className={styles.label}>Interval <Tex tex="\mathcal{A}" /> · answer annotation</div>
       <div><code>{triplet.targetWriteText}</code></div>
     </div>
     {kind === 'effect' && <div className={styles.layerNavigation}>

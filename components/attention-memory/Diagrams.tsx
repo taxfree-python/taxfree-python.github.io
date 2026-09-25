@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 import { Figure } from '@/components/article/Figure';
 import { palette, roleColors, roles, type Role } from './palette';
+import { SvgTex } from './TeX';
 
 const questionLabels: Record<Role, string> = {
   same_fact_a: 'Q1 · same fact',
@@ -35,14 +36,14 @@ function Passage({ x, y, h, a }: { x: Span; y: number; h: number; a: Span }) {
       <rect x={x[0]} y={y} width={x[1] - x[0]} height={h} fill="none" stroke={palette.rule} strokeWidth={0.9} />
       <text x={x[0] + 8} y={y + h / 2} dominantBaseline="central" fill={palette.muted}>passage</text>
       <rect x={a[0]} y={y + 3} width={a[1] - a[0]} height={h - 6} fill={palette.state} opacity={0.5} />
-      <text x={(a[0] + a[1]) / 2} y={y + h / 2} dominantBaseline="central" textAnchor="middle" fill={palette.ink} fontStyle="italic">A</text>
+      <SvgTex x={(a[0] + a[1]) / 2} y={y + h / 2} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
     </g>
   );
 }
 
 const independentLayout = {
-  desktop: { width: 800, rowGap: 44, boxH: 28, s0: [0, 44] as Span, passage: [64, 440] as Span, a: [232, 276] as Span, question: [500, 670] as Span, answer: 696 },
-  mobile: { width: 340, rowGap: 36, boxH: 24, s0: [0, 28] as Span, passage: [40, 170] as Span, a: [104, 126] as Span, question: [196, 290] as Span, answer: 302 },
+  desktop: { width: 800, offset: 110, rowGap: 44, boxH: 28, s0: [0, 44] as Span, passage: [64, 300] as Span, a: [178, 222] as Span, question: [360, 530] as Span, answer: 556 },
+  mobile: { width: 340, offset: 0, rowGap: 36, boxH: 24, s0: [0, 28] as Span, passage: [40, 150] as Span, a: [88, 110] as Span, question: [184, 282] as Span, answer: 294 },
 };
 
 function IndependentQuestions({ mobile }: { mobile: boolean }) {
@@ -54,10 +55,9 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
   return (
     <svg viewBox={`0 0 ${l.width} ${height}`} role="img" style={svgStyle(mobile)}
       aria-label="同じ初期 state から共通の passage を読み、そこから 3 つの質問に分かれて回答する。">
+      <g transform={`translate(${l.offset} 0)`}>
       <rect x={l.s0[0] + 0.5} y={sharedY} width={l.s0[1] - l.s0[0] - 1} height={l.boxH} fill="none" stroke={palette.state} strokeWidth={0.9} />
-      <text x={(l.s0[0] + l.s0[1]) / 2} y={sharedMid} dominantBaseline="central" textAnchor="middle" fill={palette.ink}>
-        <tspan fontStyle="italic">S</tspan>₀
-      </text>
+      <SvgTex x={(l.s0[0] + l.s0[1]) / 2} y={sharedMid} anchor="middle" tex="S_0" color={palette.ink} />
       <Arrow x1={l.s0[1]} y1={sharedMid} x2={l.passage[0]} y2={sharedMid} />
       <Passage x={l.passage} y={sharedY} h={l.boxH} a={l.a} />
       {roles.map((role, index) => {
@@ -74,13 +74,14 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
           </g>
         );
       })}
+      </g>
     </svg>
   );
 }
 
 const interventionLayout = {
-  desktop: { width: 800, boxH: 28, passage: [0, 460] as Span, a: [202, 248] as Span, question: [480, 640] as Span, answer: 666, stateX: 350, stateY: 72, stateSize: 40, predictY: 166, predictX: [0, 110, 330, 550], predictRows: false },
-  mobile: { width: 340, boxH: 24, passage: [0, 200] as Span, a: [110, 134] as Span, question: [212, 286] as Span, answer: 300, stateX: 158, stateY: 62, stateSize: 32, predictY: 140, predictX: [0, 0, 0, 0], predictRows: true },
+  desktop: { width: 800, cell: 26, gap: 4, passageCells: 12, aCells: [6, 7], questionX: 440, questionCells: 5, rowY: 22, stateX: 318, stateY: 96, stateSize: 72, predictY: 214, predictX: [0, 110, 330, 550], predictRows: false },
+  mobile: { width: 340, cell: 16, gap: 3, passageCells: 8, aCells: [4, 5], questionX: 196, questionCells: 4, rowY: 18, stateX: 132, stateY: 74, stateSize: 52, predictY: 168, predictX: [0, 0, 0, 0], predictRows: true },
 };
 
 /** Down arrow for a drop in likelihood, a flat dash for little change. */
@@ -92,52 +93,63 @@ function Change({ x, y, drop }: { x: number; y: number; drop: boolean }) {
 
 function WriteIntervention({ mobile }: { mobile: boolean }) {
   const l = mobile ? interventionLayout.mobile : interventionLayout.desktop;
-  const mid = l.boxH / 2 + 1;
-  const writeX = (l.a[0] + l.a[1]) / 2;
-  const tokenBottom = 1 + l.boxH;
+  const step = l.cell + l.gap;
+  const cellX = (x0: number, i: number) => x0 + i * step;
+  const questionEnd = cellX(l.questionX, l.questionCells) - l.gap;
+  const answerX = questionEnd + 26;
+  const rowBottom = l.rowY + l.cell;
+  const rowMid = l.rowY + l.cell / 2;
+  const stateTop = l.stateY;
   const stateMid = l.stateY + l.stateSize / 2;
   const stateRight = l.stateX + l.stateSize;
-  const readX = (l.question[0] + l.question[1]) / 2;
-  const cross = { x: (writeX + l.stateX) / 2, y: (tokenBottom + stateMid) / 2 };
+  const isA = (i: number) => l.aCells.includes(i);
+  const aMidX = (cellX(0, l.aCells[0]!) + cellX(0, l.aCells[l.aCells.length - 1]!) + l.cell) / 2;
+  const target = (i: number) => l.stateX + ((i + 0.5) / l.passageCells) * l.stateSize;
+  const cross = { x: (aMidX + target(l.aCells[0]!)) / 2 + 4, y: (rowBottom + stateTop) / 2 };
   const rowStep = 20;
   const height = l.predictRows ? l.predictY + rowStep * 3 + 4 : l.predictY + 10;
-  const cells = [1, 2, 3].map(i => l.stateX + (l.stateSize * i) / 4);
+  const grid = [1, 2, 3].map(i => (l.stateSize * i) / 4);
   return (
     <svg viewBox={`0 0 ${l.width} ${height}`} role="img" style={svgStyle(mobile)}
-      aria-label="区間 A の delta update が固定サイズの state S に書き込み、質問が S を読み出して回答する。区間 A で β = 0 とすると、同じ事実の 2 問では正答の尤度が下がり、別の事実の 1 問ではほとんど変わらない。">
-      <Passage x={l.passage} y={1} h={l.boxH} a={l.a} />
-      <rect x={l.question[0]} y={1} width={l.question[1] - l.question[0]} height={l.boxH} fill="none" stroke={palette.rule} strokeWidth={0.9} />
-      <text x={readX} y={mid} dominantBaseline="central" textAnchor="middle" fill={palette.ink}>question</text>
-      <Arrow x1={l.question[1]} y1={mid} x2={l.answer - 6} y2={mid} />
-      <text x={l.answer} y={mid} dominantBaseline="central" fill={palette.muted}>answer</text>
+      aria-label="passage のすべての token が固定サイズの state S に書き込み、質問の token が S を読み出して回答する。区間 𝒜 の token だけ β = 0 として書き込みを止めると、同じ事実の 2 問では正答の尤度が下がり、別の事実の 1 問ではほとんど変わらない。">
+      <text x={0} y={l.rowY - 8} fill={palette.muted}>passage</text>
+      <text x={l.questionX} y={l.rowY - 8} fill={palette.muted}>question</text>
+      {Array.from({ length: l.passageCells }, (_, i) => (
+        <g key={`p${i}`}>
+          <rect x={cellX(0, i)} y={l.rowY} width={l.cell} height={l.cell} fill={isA(i) ? palette.state : 'none'} opacity={isA(i) ? 0.5 : 1}
+            stroke={palette.rule} strokeWidth={0.9} />
+          <Arrow x1={cellX(0, i) + l.cell / 2} y1={rowBottom} x2={target(i)} y2={stateTop}
+            color={isA(i) ? palette.state : palette.rule} />
+        </g>
+      ))}
+      <SvgTex x={aMidX} y={rowMid} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
+      {Array.from({ length: l.questionCells }, (_, i) => (
+        <g key={`q${i}`}>
+          <rect x={cellX(l.questionX, i)} y={l.rowY} width={l.cell} height={l.cell} fill="none" stroke={palette.rule} strokeWidth={0.9} />
+          <Arrow x1={stateRight} y1={stateMid} x2={cellX(l.questionX, i) + l.cell / 2} y2={rowBottom} color={palette.rule} />
+        </g>
+      ))}
+      <Arrow x1={questionEnd + 4} y1={rowMid} x2={answerX - 6} y2={rowMid} />
+      <text x={answerX} y={rowMid} dominantBaseline="central" fill={palette.muted}>answer</text>
 
       {/* One fixed-size matrix, not a lane along the sequence */}
       <g stroke={palette.rule} strokeWidth={0.6}>
-        {cells.map(c => <line key={`v${c}`} x1={c} y1={l.stateY} x2={c} y2={l.stateY + l.stateSize} />)}
-        {cells.map(c => <line key={`h${c}`} x1={l.stateX} y1={c - l.stateX + l.stateY} x2={stateRight} y2={c - l.stateX + l.stateY} />)}
+        {grid.map(g => <line key={`v${g}`} x1={l.stateX + g} y1={l.stateY} x2={l.stateX + g} y2={l.stateY + l.stateSize} />)}
+        {grid.map(g => <line key={`h${g}`} x1={l.stateX} y1={l.stateY + g} x2={stateRight} y2={l.stateY + g} />)}
       </g>
-      <rect x={l.stateX} y={l.stateY} width={l.stateSize} height={l.stateSize} fill="none" stroke={palette.state} strokeWidth={0.9} />
-      <text x={l.stateX + l.stateSize / 2} y={stateMid} dominantBaseline="central" textAnchor="middle" fill={palette.ink} fontStyle="italic">S</text>
-      <text x={l.stateX + l.stateSize / 2} y={l.stateY + l.stateSize + 12} dominantBaseline="central" textAnchor="middle" fill={palette.muted}>
-        <tspan fontStyle="italic">d</tspan><tspan fontSize="0.75em" dy="0.3em">k</tspan><tspan dy="-0.3em"> × </tspan><tspan fontStyle="italic">d</tspan><tspan fontSize="0.75em" dy="0.3em">v</tspan>
-      </text>
+      <rect x={l.stateX} y={l.stateY} width={l.stateSize} height={l.stateSize} fill="#0d0d0d" fillOpacity={0.6} stroke={palette.state} strokeWidth={0.9} />
+      <SvgTex x={l.stateX + l.stateSize / 2} y={stateMid} anchor="middle" tex="S" color={palette.ink} />
+      <SvgTex x={l.stateX + l.stateSize / 2} y={l.stateY + l.stateSize + 14} anchor="middle" tex="d_k \times d_v" color={palette.muted} />
 
-      <Arrow x1={writeX} y1={tokenBottom} x2={l.stateX} y2={stateMid} color={palette.state} />
       <g stroke={palette.ink} strokeWidth={1.4}>
         <line x1={cross.x - 5} y1={cross.y - 5} x2={cross.x + 5} y2={cross.y + 5} />
         <line x1={cross.x - 5} y1={cross.y + 5} x2={cross.x + 5} y2={cross.y - 5} />
       </g>
-      <text x={cross.x - 12} y={cross.y + 4} dominantBaseline="central" textAnchor="end" fill={palette.ink}>
-        <tspan fontStyle="italic">β</tspan> = 0
-      </text>
-      <text x={cross.x + 10} y={cross.y - 8} dominantBaseline="central" fill={palette.muted}>write</text>
+      <SvgTex x={cross.x + 10} y={cross.y} tex="\beta = 0" color={palette.ink} />
+      <text x={0} y={(rowBottom + stateTop) / 2 + 14} fill={palette.muted}>write</text>
+      <text x={questionEnd - 20} y={(rowBottom + stateTop) / 2 + 14} fill={palette.muted}>read</text>
 
-      <Arrow x1={stateRight} y1={stateMid} x2={readX} y2={tokenBottom} />
-      <text x={(stateRight + readX) / 2 + 10} y={cross.y + 4} dominantBaseline="central" fill={palette.muted}>read</text>
-
-      <text x={l.predictX[0]} y={l.predictY} dominantBaseline="central" fill={palette.muted}>
-        Δ log <tspan fontStyle="italic">p</tspan>
-      </text>
+      <SvgTex x={l.predictX[0]!} y={l.predictY} tex="\Delta \log p" color={palette.muted} />
       {roles.map((role, index) => {
         const x = l.predictRows ? 0 : l.predictX[index + 1]!;
         const y = l.predictRows ? l.predictY + rowStep * (index + 1) : l.predictY;
