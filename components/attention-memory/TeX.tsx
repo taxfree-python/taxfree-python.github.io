@@ -5,6 +5,8 @@ export function Tex({ tex }: { tex: string }) {
   return <span dangerouslySetInnerHTML={{ __html: katex.renderToString(tex, { throwOnError: true }) }} />;
 }
 
+/** Figure math is set a step larger than figure text; KaTeX's own 1.21em alone read too small. */
+const mathScale = 1.2;
 const boxWidth = 160;
 const boxHeight = 28;
 
@@ -16,7 +18,7 @@ export function SvgTex({ x, y, tex, anchor = 'start', color, scale = 1 }: {
   const justify = anchor === 'start' ? 'flex-start' : anchor === 'middle' ? 'center' : 'flex-end';
   return (
     <foreignObject x={left} y={y - boxHeight / 2} width={boxWidth} height={boxHeight} overflow="visible">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: justify, height: '100%', color, whiteSpace: 'nowrap', fontSize: `${scale}em` }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: justify, height: '100%', color, whiteSpace: 'nowrap', fontSize: `${scale * mathScale}em` }}>
         <Tex tex={tex} />
       </div>
     </foreignObject>
