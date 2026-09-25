@@ -1,4 +1,4 @@
-import { FactTripletExamples, FactTripletFigure } from './FactTriplets';
+import { FactTripletExamples } from './FactTriplets';
 import { DecayFunctionsFigure } from './DecayPlot';
 import { IndependentQuestionsFigure, MemoryFigure, OnlineLearningFigure, WriteInterventionFigure } from './Diagrams';
 import { LocalLossFigure, PassageRemovalFigure } from './Followup';
@@ -13,9 +13,7 @@ export const blocks: Record<BlockName, ArticleBlocks[string]> = {
   'decay-functions': DecayFunctionsFigure,
   triplets: () => <FactTripletExamples triplets={triplets} />,
   'independent-questions': IndependentQuestionsFigure,
-  'triplet-loss': () => <FactTripletFigure triplets={triplets} kind="loss" />,
   'write-intervention': WriteInterventionFigure,
-  'triplet-effect': () => <FactTripletFigure triplets={triplets} kind="effect" />,
   'local-loss': () => <LocalLossFigure rows={followup.localLoss} />,
   'passage-removal': () => <PassageRemovalFigure triplets={followup.triplets} />,
   'write-layers': () => <WriteLayersFigure triplets={followup.triplets} />,

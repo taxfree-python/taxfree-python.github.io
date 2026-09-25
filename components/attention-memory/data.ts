@@ -15,15 +15,10 @@ export const blockNames = [
   'decay-functions',
   'triplets',
   'independent-questions',
-  'triplet-loss',
+  'local-loss',
+  'passage-removal',
   'write-intervention',
-  'triplet-effect',
+  'write-layers',
 ] as const;
 
-/**
- * Registered but not yet embedded: figures for the follow-up experiments. Move each name into
- * `blockNames` (at its place in reading order) once the markdown uses it.
- */
-export const pendingBlockNames = ['local-loss', 'passage-removal', 'write-layers'] as const;
-
-export type BlockName = typeof blockNames[number] | typeof pendingBlockNames[number];
+export type BlockName = typeof blockNames[number];

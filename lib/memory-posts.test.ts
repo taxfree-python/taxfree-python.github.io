@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getPost, getPosts, getPostSlugs } from './posts';
 import { createArticleBlockRegex } from './article-blocks';
-import { blockNames, followup, pendingBlockNames } from '@/components/attention-memory/data';
+import { blockNames, followup } from '@/components/attention-memory/data';
 import followupJson from '@/content/data/attention-memory-followup.json';
 
 afterEach(() => vi.unstubAllEnvs());
@@ -21,10 +21,9 @@ describe('attention memory article integration', () => {
   it('numbers figure captions consecutively and centers every caption', async () => {
     const post = await getPost(slug);
     const figures = [...post.contentHtml.matchAll(/<p class="article-caption">図 (\d+)\./g)].map((match) => Number(match[1]));
-    expect(figures).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    expect(figures).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
     const tables = [...post.contentHtml.matchAll(/<p class="article-caption">表 (\d+)\./g)].map((match) => Number(match[1]));
-    expect(tables).toEqual([1, 2, 3, 4]);
-    expect(post.contentHtml).toContain('図 7 の 3 本の線');
+    expect(tables).toEqual([1, 2, 3, 4, 5, 6]);
   });
 
   it('renders KaTeX without errors', async () => {
@@ -42,7 +41,7 @@ describe('attention memory article integration', () => {
     const toc = post.contentHtml.match(/<nav class="article-toc"[\s\S]*?<\/nav>/)?.[0];
     expect(toc).toBeDefined();
     expect(toc).toContain('Olmo Hybrid を使った観察</a><ul>');
-    expect(post.contentHtml).toContain('<h3 id="section-書き込みと正答列の尤度">書き込みと正答列の尤度</h3>');
+    expect(post.contentHtml).toContain('<h3 id="section-答えの書き込み-1-層と全層">答えの書き込み：1 層と全層</h3>');
     const links = [...toc!.matchAll(/href="#([^"]+)"/g)].map((match) => decodeURIComponent(match[1]!));
     expect(links.length).toBeGreaterThan(10);
     for (const link of links) expect(ids).toContain(link);
@@ -63,10 +62,6 @@ describe('attention memory article integration', () => {
 });
 
 describe('attention memory follow-up data', () => {
-  it('keeps pending blocks out of the embedded list until the markdown uses them', () => {
-    expect(pendingBlockNames.filter((name) => (blockNames as readonly string[]).includes(name))).toEqual([]);
-  });
-
   it('has every value the follow-up figures and the all-layer table read', () => {
     expect(followupJson.sources.map((source) => source.sha256)).toSatisfy((hashes: string[]) => hashes.every((h) => /^[0-9a-f]{64}$/.test(h)));
     expect(followup.layers).toHaveLength(24);
