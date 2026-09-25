@@ -67,7 +67,7 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
           <g key={role}>
             <Arrow x1={l.passage[1]} y1={sharedMid} x2={l.question[0]} y2={mid} />
             <rect x={l.question[0]} y={y} width={l.question[1] - l.question[0]} height={l.boxH} fill="none"
-              stroke={roleColors[role]} strokeWidth={0.9} strokeDasharray={role === 'same_fact_b' ? '4 3' : undefined} />
+              stroke={roleColors[role]} strokeWidth={0.9} />
             <text x={l.question[0] + 8} y={mid} dominantBaseline="central" fill={palette.ink}>{questionLabels[role]}</text>
             <Arrow x1={l.question[1]} y1={mid} x2={l.answer - 6} y2={mid} />
             <text x={l.answer} y={mid} dominantBaseline="central" fill={palette.muted}>answer</text>
@@ -80,16 +80,9 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
 }
 
 const interventionLayout = {
-  desktop: { width: 800, cell: 26, gap: 4, passageCells: 12, aCells: [6, 7], questionX: 440, questionCells: 5, rowY: 22, stateX: 346, stateY: 100, stateSize: 84, predictY: 230, predictX: [0, 110, 330, 550], predictRows: false },
-  mobile: { width: 340, cell: 16, gap: 3, passageCells: 8, aCells: [4, 5], questionX: 196, questionCells: 4, rowY: 18, stateX: 146, stateY: 74, stateSize: 56, predictY: 168, predictX: [0, 0, 0, 0], predictRows: true },
+  desktop: { width: 800, cell: 26, gap: 4, passageCells: 12, aCells: [6, 7], questionX: 440, questionCells: 5, rowY: 22, stateX: 346, stateY: 100, stateSize: 84 },
+  mobile: { width: 340, cell: 16, gap: 3, passageCells: 8, aCells: [4, 5], questionX: 196, questionCells: 4, rowY: 18, stateX: 146, stateY: 74, stateSize: 56 },
 };
-
-/** Down arrow for a drop in likelihood, a flat dash for little change. */
-function Change({ x, y, drop }: { x: number; y: number; drop: boolean }) {
-  return drop
-    ? <Arrow x1={x + 5} y1={y - 7} x2={x + 5} y2={y + 6} color={palette.ink} />
-    : <line x1={x} y1={y} x2={x + 10} y2={y} stroke={palette.ink} strokeWidth={0.9} />;
-}
 
 function WriteIntervention({ mobile }: { mobile: boolean }) {
   const l = mobile ? interventionLayout.mobile : interventionLayout.desktop;
@@ -107,12 +100,11 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
   const target = (i: number) => l.stateX + ((i + 0.5) / l.passageCells) * l.stateSize * 0.6;
   const source = (i: number) => l.stateX + l.stateSize * (0.7 + (0.25 * (i + 0.5)) / l.questionCells);
   const cross = { x: (aMidX + target(l.aCells[0]!)) / 2 + 4, y: (rowBottom + stateTop) / 2 };
-  const rowStep = 20;
-  const height = l.predictRows ? l.predictY + rowStep * 3 + 4 : l.predictY + 10;
+  const height = l.stateY + l.stateSize + 28;
   const grid = [1, 2, 3].map(i => (l.stateSize * i) / 4);
   return (
     <svg viewBox={`0 0 ${l.width} ${height}`} role="img" style={svgStyle(mobile)}
-      aria-label="passage のすべての token が固定サイズの state S に書き込み、質問の token が S を読み出して回答する。区間 𝒜 の token だけ β = 0 として書き込みを止めると、同じ事実の 2 問では正答の尤度が下がり、別の事実の 1 問ではほとんど変わらない。">
+      aria-label="passage のすべての token が固定サイズの state S に書き込み、質問の token が S を読み出して回答する。区間 𝒜 の token だけ β = 0 として書き込みを止める。">
       <text x={0} y={l.rowY - 8} fill={palette.muted}>passage</text>
       <text x={l.questionX} y={l.rowY - 8} fill={palette.muted}>question</text>
       {Array.from({ length: l.passageCells }, (_, i) => (
@@ -150,17 +142,6 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
       <text x={0} y={(rowBottom + stateTop) / 2 + 14} fill={palette.muted}>write</text>
       <text x={questionEnd - 20} y={(rowBottom + stateTop) / 2 + 14} fill={palette.muted}>read</text>
 
-      <SvgTex x={l.predictX[0]!} y={l.predictY} tex="\Delta \log p" color={palette.muted} />
-      {roles.map((role, index) => {
-        const x = l.predictRows ? 0 : l.predictX[index + 1]!;
-        const y = l.predictRows ? l.predictY + rowStep * (index + 1) : l.predictY;
-        return (
-          <g key={role}>
-            <Change x={x} y={y} drop={role !== 'other_fact'} />
-            <text x={x + 18} y={y} dominantBaseline="central" fill={roleColors[role]}>{questionLabels[role]}</text>
-          </g>
-        );
-      })}
     </svg>
   );
 }
