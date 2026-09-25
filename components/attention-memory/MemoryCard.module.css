@@ -10,8 +10,11 @@
 .label { color: #969991; font-size: 12px; margin-bottom: 6px; }
 .passage { height: 192px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #363934 transparent; line-height: 1.8; white-space: pre-wrap; padding-right: 8px; }
 .answerMark { background: rgb(193 173 127 / 16%); color: inherit; padding: 0; }
-.footer { display: flex; align-items: center; gap: 10px; justify-content: space-between; min-height: 68px; border-top: 1px solid #363934; padding: 10px 20px; font-size: 13px; }
+.mentionMark { background: none; color: inherit; padding: 0; text-decoration: underline; text-decoration-style: dotted; text-decoration-color: #6f736d; text-underline-offset: 3px; }
+.footer { display: flex; align-items: center; gap: 10px; justify-content: space-between; min-height: 68px; border-top: 1px solid #363934; padding: 10px 20px; font-size: 13px; flex-wrap: wrap; row-gap: 4px; }
 .footer a { flex-shrink: 0; font-size: 12px; }
+.replacementLine { min-width: 0; flex: 1 1 auto; overflow-wrap: anywhere; }
+.otherMentionsNote { color: #969991; }
 .sample { padding: 12px 20px 16px; border-top: 1px solid #363934; line-height: 1.7; }
 .resultBody { padding: 16px 20px; border-top: 1px solid #363934; line-height: 1.7; }
 .figureCard :global(.article-figure) { margin: 0; padding: 8px 12px 12px; }
