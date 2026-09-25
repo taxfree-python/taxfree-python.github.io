@@ -171,6 +171,9 @@ export async function getPost(slug: string): Promise<Post> {
       annotation: ['encoding'],
       iframe: ['src', 'width', 'height', 'style', 'title', 'aria-label'],
       div: ['style', 'data-block'],
+      // Preserve markdown column alignment (remark-gfm emits it as the legacy `align` attribute)
+      td: ['align'],
+      th: ['align'],
     },
     allowedSchemes: ['http', 'https', 'mailto'],
     // Restrict CSS properties on div and iframe elements to prevent CSS injection attacks

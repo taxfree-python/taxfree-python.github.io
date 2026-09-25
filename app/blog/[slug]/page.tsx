@@ -168,20 +168,20 @@ export default async function BlogPost({ params }: PageProps) {
             '&[data-figure-article] h2, &[data-figure-article] h3, &[data-figure-article] h4': {
               scrollMarginTop: '96px',
             },
-            '&[data-figure-article] .article-table': {
-              overflowX: 'auto',
-            },
             '&[data-figure-article] p > code, &[data-figure-article] li > code': {
               overflowWrap: 'anywhere',
             },
-            '&[data-figure-article] table': {
+            '& .article-table': {
+              overflowX: 'auto',
+            },
+            '& table': {
               width: '100%',
               borderCollapse: 'collapse',
               fontSize: '0.9375rem',
               lineHeight: 1.7,
               my: 3,
             },
-            '&[data-figure-article] th, &[data-figure-article] td': {
+            '& th, & td': {
               textAlign: 'left',
               verticalAlign: 'top',
               px: { xs: 0.5, sm: 2 },
@@ -190,13 +190,16 @@ export default async function BlogPost({ params }: PageProps) {
               '&:first-child': { pl: 0 },
               '&:last-child': { pr: 0 },
             },
-            '&[data-figure-article] th': {
+            // Respect markdown column alignment (`:---:`/`---:`), which survives as the `align` attribute
+            '& th[align="center"], & td[align="center"]': { textAlign: 'center' },
+            '& th[align="right"], & td[align="right"]': { textAlign: 'right' },
+            '& th': {
               color: 'text.primary',
               fontWeight: 500,
               borderBottom: '1px solid',
               borderColor: 'divider',
             },
-            '&[data-figure-article] td': {
+            '& td': {
               color: 'text.secondary',
               fontVariantNumeric: 'tabular-nums',
             },
