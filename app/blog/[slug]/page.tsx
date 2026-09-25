@@ -171,6 +171,9 @@ export default async function BlogPost({ params }: PageProps) {
             '&[data-figure-article] p > code, &[data-figure-article] li > code': {
               overflowWrap: 'anywhere',
             },
+            '& p.article-caption': {
+              textAlign: 'center',
+            },
             '& .article-table': {
               overflowX: 'auto',
             },
