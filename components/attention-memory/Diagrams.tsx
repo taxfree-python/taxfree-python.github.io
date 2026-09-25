@@ -41,27 +41,28 @@ function Passage({ x, y, h, a }: { x: Span; y: number; h: number; a: Span }) {
 }
 
 const independentLayout = {
-  desktop: { width: 800, rowGap: 48, boxH: 28, s0: [0, 44] as Span, passage: [64, 500] as Span, a: [262, 306] as Span, question: [520, 690] as Span, answer: 716 },
-  mobile: { width: 340, rowGap: 40, boxH: 24, s0: [0, 28] as Span, passage: [40, 168] as Span, a: [110, 132] as Span, question: [180, 284] as Span, answer: 298 },
+  desktop: { width: 800, rowGap: 48, boxH: 28, s0: [0, 44] as Span, passage: [84, 500] as Span, a: [262, 306] as Span, question: [520, 690] as Span, answer: 716 },
+  mobile: { width: 340, rowGap: 40, boxH: 24, s0: [0, 28] as Span, passage: [52, 168] as Span, a: [110, 132] as Span, question: [180, 284] as Span, answer: 298 },
 };
 
 function IndependentQuestions({ mobile }: { mobile: boolean }) {
   const l = mobile ? independentLayout.mobile : independentLayout.desktop;
   const top = 4;
   const height = top * 2 + l.rowGap * 2 + l.boxH;
+  const s0Mid = top + l.rowGap + l.boxH / 2;
   return (
     <svg viewBox={`0 0 ${l.width} ${height}`} role="img" style={svgStyle(mobile)}
-      aria-label="3 問はそれぞれ同じ初期 state から、共通の passage、異なる質問、回答の順に処理される。">
+      aria-label="同じ初期 state から 3 問に分かれ、それぞれ共通の passage、異なる質問、回答の順に処理される。">
+      <rect x={l.s0[0] + 0.5} y={s0Mid - l.boxH / 2} width={l.s0[1] - l.s0[0] - 1} height={l.boxH} fill="none" stroke={palette.state} strokeWidth={0.9} />
+      <text x={(l.s0[0] + l.s0[1]) / 2} y={s0Mid} dominantBaseline="central" textAnchor="middle" fill={palette.ink}>
+        <tspan fontStyle="italic">S</tspan>₀
+      </text>
       {roles.map((role, index) => {
         const y = top + index * l.rowGap;
         const mid = y + l.boxH / 2;
         return (
           <g key={role}>
-            <rect x={l.s0[0] + 0.5} y={y} width={l.s0[1] - l.s0[0] - 1} height={l.boxH} fill="none" stroke={palette.state} strokeWidth={0.9} />
-            <text x={(l.s0[0] + l.s0[1]) / 2} y={mid} dominantBaseline="central" textAnchor="middle" fill={palette.ink}>
-              <tspan fontStyle="italic">S</tspan>₀
-            </text>
-            <Arrow x1={l.s0[1]} y1={mid} x2={l.passage[0]} y2={mid} />
+            <Arrow x1={l.s0[1]} y1={s0Mid} x2={l.passage[0]} y2={mid} />
             <Passage x={l.passage} y={y} h={l.boxH} a={l.a} />
             <Arrow x1={l.passage[1]} y1={mid} x2={l.question[0]} y2={mid} />
             <rect x={l.question[0]} y={y} width={l.question[1] - l.question[0]} height={l.boxH} fill="none"
@@ -77,8 +78,8 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
 }
 
 const interventionLayout = {
-  desktop: { width: 800, boxH: 28, passage: [0, 460] as Span, a: [202, 248] as Span, question: [480, 640] as Span, answer: 666, stateY: 96, readX: 560, predictY: 166, predictX: [0, 110, 330, 550], predictRows: false },
-  mobile: { width: 340, boxH: 24, passage: [0, 200] as Span, a: [110, 134] as Span, question: [212, 286] as Span, answer: 300, stateY: 80, readX: 249, predictY: 140, predictX: [0, 0, 0, 0], predictRows: true },
+  desktop: { width: 800, boxH: 28, passage: [0, 460] as Span, a: [202, 248] as Span, question: [480, 640] as Span, answer: 666, stateX: 350, stateY: 72, stateSize: 40, predictY: 166, predictX: [0, 110, 330, 550], predictRows: false },
+  mobile: { width: 340, boxH: 24, passage: [0, 200] as Span, a: [110, 134] as Span, question: [212, 286] as Span, answer: 300, stateX: 158, stateY: 62, stateSize: 32, predictY: 140, predictX: [0, 0, 0, 0], predictRows: true },
 };
 
 /** Down arrow for a drop in likelihood, a flat dash for little change. */
@@ -93,33 +94,45 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
   const mid = l.boxH / 2 + 1;
   const writeX = (l.a[0] + l.a[1]) / 2;
   const tokenBottom = 1 + l.boxH;
-  const gapMid = (tokenBottom + l.stateY) / 2;
+  const stateMid = l.stateY + l.stateSize / 2;
+  const stateRight = l.stateX + l.stateSize;
+  const readX = (l.question[0] + l.question[1]) / 2;
+  const cross = { x: (writeX + l.stateX) / 2, y: (tokenBottom + stateMid) / 2 };
   const rowStep = 20;
   const height = l.predictRows ? l.predictY + rowStep * 3 + 4 : l.predictY + 10;
+  const cells = [1, 2, 3].map(i => l.stateX + (l.stateSize * i) / 4);
   return (
     <svg viewBox={`0 0 ${l.width} ${height}`} role="img" style={svgStyle(mobile)}
-      aria-label="区間 A の delta update が state S に書き込み、質問が S を読み出して回答する。区間 A で β = 0 とすると、同じ事実の 2 問では正答の尤度が下がり、別の事実の 1 問ではほとんど変わらない。">
+      aria-label="区間 A の delta update が固定サイズの state S に書き込み、質問が S を読み出して回答する。区間 A で β = 0 とすると、同じ事実の 2 問では正答の尤度が下がり、別の事実の 1 問ではほとんど変わらない。">
       <Passage x={l.passage} y={1} h={l.boxH} a={l.a} />
       <rect x={l.question[0]} y={1} width={l.question[1] - l.question[0]} height={l.boxH} fill="none" stroke={palette.rule} strokeWidth={0.9} />
-      <text x={(l.question[0] + l.question[1]) / 2} y={mid} dominantBaseline="central" textAnchor="middle" fill={palette.ink}>question</text>
+      <text x={readX} y={mid} dominantBaseline="central" textAnchor="middle" fill={palette.ink}>question</text>
       <Arrow x1={l.question[1]} y1={mid} x2={l.answer - 6} y2={mid} />
       <text x={l.answer} y={mid} dominantBaseline="central" fill={palette.muted}>answer</text>
 
-      <rect x={0.5} y={l.stateY} width={l.question[1] - 0.5} height={l.boxH} fill="none" stroke={palette.state} strokeWidth={0.9} />
-      <text x={10} y={l.stateY + l.boxH / 2} dominantBaseline="central" fill={palette.ink} fontStyle="italic">S</text>
-
-      <Arrow x1={writeX} y1={tokenBottom} x2={writeX} y2={l.stateY} color={palette.state} />
-      <text x={writeX + 10} y={gapMid} dominantBaseline="central" fill={palette.muted}>write</text>
-      <g stroke={palette.ink} strokeWidth={1.4}>
-        <line x1={writeX - 5} y1={gapMid - 5} x2={writeX + 5} y2={gapMid + 5} />
-        <line x1={writeX - 5} y1={gapMid + 5} x2={writeX + 5} y2={gapMid - 5} />
+      {/* One fixed-size matrix, not a lane along the sequence */}
+      <g stroke={palette.rule} strokeWidth={0.6}>
+        {cells.map(c => <line key={`v${c}`} x1={c} y1={l.stateY} x2={c} y2={l.stateY + l.stateSize} />)}
+        {cells.map(c => <line key={`h${c}`} x1={l.stateX} y1={c - l.stateX + l.stateY} x2={stateRight} y2={c - l.stateX + l.stateY} />)}
       </g>
-      <text x={writeX - 12} y={gapMid} dominantBaseline="central" textAnchor="end" fill={palette.ink}>
-        <tspan fontStyle="italic">β</tspan> = 0
+      <rect x={l.stateX} y={l.stateY} width={l.stateSize} height={l.stateSize} fill="none" stroke={palette.state} strokeWidth={0.9} />
+      <text x={l.stateX + l.stateSize / 2} y={stateMid} dominantBaseline="central" textAnchor="middle" fill={palette.ink} fontStyle="italic">S</text>
+      <text x={l.stateX + l.stateSize / 2} y={l.stateY + l.stateSize + 12} dominantBaseline="central" textAnchor="middle" fill={palette.muted}>
+        <tspan fontStyle="italic">d</tspan><tspan fontSize="0.75em" dy="0.3em">k</tspan><tspan dy="-0.3em"> × </tspan><tspan fontStyle="italic">d</tspan><tspan fontSize="0.75em" dy="0.3em">v</tspan>
       </text>
 
-      <Arrow x1={l.readX} y1={l.stateY} x2={l.readX} y2={tokenBottom} />
-      <text x={l.readX + 10} y={gapMid} dominantBaseline="central" fill={palette.muted}>read</text>
+      <Arrow x1={writeX} y1={tokenBottom} x2={l.stateX} y2={stateMid} color={palette.state} />
+      <g stroke={palette.ink} strokeWidth={1.4}>
+        <line x1={cross.x - 5} y1={cross.y - 5} x2={cross.x + 5} y2={cross.y + 5} />
+        <line x1={cross.x - 5} y1={cross.y + 5} x2={cross.x + 5} y2={cross.y - 5} />
+      </g>
+      <text x={cross.x - 12} y={cross.y + 4} dominantBaseline="central" textAnchor="end" fill={palette.ink}>
+        <tspan fontStyle="italic">β</tspan> = 0
+      </text>
+      <text x={cross.x + 10} y={cross.y - 8} dominantBaseline="central" fill={palette.muted}>write</text>
+
+      <Arrow x1={stateRight} y1={stateMid} x2={readX} y2={tokenBottom} />
+      <text x={(stateRight + readX) / 2 + 10} y={cross.y + 4} dominantBaseline="central" fill={palette.muted}>read</text>
 
       <text x={l.predictX[0]} y={l.predictY} dominantBaseline="central" fill={palette.muted}>
         Δ log <tspan fontStyle="italic">p</tspan>
