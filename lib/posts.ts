@@ -11,6 +11,7 @@ import sanitizeHtml from 'sanitize-html';
 import { remarkEmbedPdf } from './remark-embed-pdf';
 import { remarkArticleBlocks } from './article-blocks';
 import { rehypeTableWrap } from './rehype-table-wrap';
+import { rehypeCaptions } from './rehype-captions';
 import { assert } from '@/lib/assert';
 import { ensureObject, toOptionalBoolean, toOptionalString } from '@/lib/validation';
 import type { Post, PostMeta } from '@/types';
@@ -125,6 +126,7 @@ export async function getPost(slug: string): Promise<Post> {
       },
     })
     .use(rehypeTableWrap)
+    .use(rehypeCaptions)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
   const rawContentHtml = processedContent.toString();
