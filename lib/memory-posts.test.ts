@@ -1,8 +1,9 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getPost, getPosts, getPostSlugs } from './posts';
 import { createArticleBlockRegex } from './article-blocks';
-import { blockNames, followup } from '@/components/attention-memory/data';
+import { blockNames, followup, patching, pendingBlockNames } from '@/components/attention-memory/data';
 import followupJson from '@/content/data/attention-memory-followup.json';
+import patchingJson from '@/content/data/attention-memory-patching.json';
 
 afterEach(() => vi.unstubAllEnvs());
 const slug = '2026-09-14';
@@ -75,5 +76,28 @@ describe('attention memory follow-up data', () => {
       }
     }
     expect(followup.triplets.filter((triplet) => triplet.allLayer.control.fixed).map((triplet) => triplet.id)).toEqual(['highest-court']);
+  });
+});
+
+describe('attention memory path-patching data', () => {
+  // blocks.tsx is typed Record<BlockName, ...>, so every pending name is registered.
+  it('does not embed the pending blocks yet', async () => {
+    const post = await getPost(slug);
+    for (const name of pendingBlockNames) expect(post.contentHtml).not.toContain(`data-block="${name}"`);
+  });
+
+  it('has recovery for the 62 Q1/Q2 questions and overall medians that match them', () => {
+    expect(patchingJson.sources.every((source) => /^[0-9a-f]{64}$/.test(source.sha256))).toBe(true);
+    expect(patching.questions).toHaveLength(62);
+    const median = (values: number[]) => {
+      const sorted = [...values].sort((a, b) => a - b);
+      return (sorted[30]! + sorted[31]!) / 2;
+    };
+    for (const direction of ['denoise', 'noise'] as const) {
+      for (const kind of ['gdn', 'attn'] as const) {
+        expect(patching.overall[direction][kind].overQuestions.median).toBeCloseTo(median(patching.questions.map((q) => q.recovery[direction][kind])), 12);
+      }
+      for (const q of patching.questions) expect(q.recovery[direction].both).toBeCloseTo(1, 9);
+    }
   });
 });

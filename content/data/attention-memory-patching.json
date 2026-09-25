@@ -1,0 +1,3192 @@
+{
+ "sources": [
+  {
+   "path": "olmo/results/path-patch-all-layer-v6ok31-20260926/metadata.json",
+   "sha256": "d4cd9c2263488e11aa8523129163ff581d8d959dd3c6ee24e946d38e44642345"
+  },
+  {
+   "path": "olmo/results/path-patch-all-layer-v6ok31-20260926/questions/*.json",
+   "files": 93,
+   "sha256": "87319065aebcf3675cec8eae488d84e397c4adc330d85da87a4cdaa419951a56",
+   "digest": "sha256 over sorted lines '<file name> <sha256>\\n'"
+  },
+  {
+   "path": "olmo/results/path-patch-all-layer-v6ok31-20260926-report/report.json",
+   "sha256": "0c3825734024abf6324b65ef9970b4537ca1c599620692af07af9fd5f4a26398"
+  }
+ ],
+ "notes": {
+  "cohort": "31 triplets / 93 questions (counterfactuals v6 FROZEN_SELECTION_ok31); recovery for the 62 Q1/Q2 questions",
+  "LD": "log p(r) - log p(r'), teacher forced, r = clean answer, r' = counterfactual answer",
+  "recovery": "denoise = (LD - LD_cf)/(LD_clean - LD_cf) with CF tokens and the clean run's path patched in; noise = (LD_clean - LD)/(LD_clean - LD_cf) with clean tokens and the CF run's path patched in",
+  "kinds": "gdn: GDN recurrent state + short-conv buffers; gdn_state_only: state only; attn: softmax K/V at the changed positions; both: gdn + attn (recovery 1 by construction, checked)",
+  "triplet": "median of the triplet's Q1 and Q2",
+  "otherFact": "Q3 has r == r' (LD = 0); delta = log p(r) of the patched row minus its receiver run (denoise: CF run, noise: clean run)",
+  "singleLayer": "not available yet: singleLayer is null"
+ },
+ "gdnLayers": [
+  0,
+  1,
+  2,
+  4,
+  5,
+  6,
+  8,
+  9,
+  10,
+  12,
+  13,
+  14,
+  16,
+  17,
+  18,
+  20,
+  21,
+  22,
+  24,
+  25,
+  26,
+  28,
+  29,
+  30
+ ],
+ "attnLayers": [
+  3,
+  7,
+  11,
+  15,
+  19,
+  23,
+  27,
+  31
+ ],
+ "overall": {
+  "denoise": {
+   "gdn": {
+    "overQuestions": {
+     "median": 0.15633370016885242,
+     "p10": 0.004782188045387708,
+     "p90": 0.3153298666472531,
+     "n": 62
+    },
+    "medianOverTriplets": 0.15771973129794603
+   },
+   "gdn_state_only": {
+    "overQuestions": {
+     "median": 0.1432865827381472,
+     "p10": 0.005446353973945446,
+     "p90": 0.23912910300359672,
+     "n": 62
+    },
+    "medianOverTriplets": 0.14732312388080498
+   },
+   "attn": {
+    "overQuestions": {
+     "median": 0.8397969430350262,
+     "p10": 0.6782033139458618,
+     "p90": 0.9863203485445766,
+     "n": 62
+    },
+    "medianOverTriplets": 0.8440914073107937
+   },
+   "both": {
+    "overQuestions": {
+     "median": 1.0,
+     "p10": 1.0,
+     "p90": 1.0,
+     "n": 62
+    },
+    "medianOverTriplets": 1.0
+   }
+  },
+  "noise": {
+   "gdn": {
+    "overQuestions": {
+     "median": 0.16192637696967666,
+     "p10": 0.013679651455423318,
+     "p90": 0.3217966860541382,
+     "n": 62
+    },
+    "medianOverTriplets": 0.1559085926892063
+   },
+   "gdn_state_only": {
+    "overQuestions": {
+     "median": 0.12351691195186312,
+     "p10": 0.0073282730398824495,
+     "p90": 0.25087986712203464,
+     "n": 62
+    },
+    "medianOverTriplets": 0.11557840212765144
+   },
+   "attn": {
+    "overQuestions": {
+     "median": 0.8435372273825581,
+     "p10": 0.684670133352747,
+     "p90": 0.9952178119546123,
+     "n": 62
+    },
+    "medianOverTriplets": 0.842280268702054
+   },
+   "both": {
+    "overQuestions": {
+     "median": 1.0,
+     "p10": 1.0,
+     "p90": 1.0,
+     "n": 62
+    },
+    "medianOverTriplets": 1.0
+   }
+  },
+  "denoiseSum": {
+   "median": 0.9969610125956937,
+   "p10": 0.895225610490416,
+   "p90": 1.045981509719341,
+   "n": 62
+  }
+ },
+ "triplets": [
+  {
+   "id": "Amazon_rainforest__p3__105-111",
+   "title": "Amazon_rainforest",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.021307171138126572,
+     "gdn_state_only": 0.018370652369213196,
+     "attn": 0.9784861317264819,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.021513868273518054,
+     "gdn_state_only": 0.008527039746031065,
+     "attn": 0.9786928288618735,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Amazon_rainforest__p6__64-85",
+   "title": "Amazon_rainforest",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.15633370016885242,
+     "gdn_state_only": 0.14732312388080498,
+     "attn": 0.8369336679725397,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.17288459471708326,
+     "gdn_state_only": 0.2507513177815644,
+     "attn": 0.8435372273825581,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "American_Broadcasting_Company__p2__768-788",
+   "title": "American_Broadcasting_Company",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.2131732216186767,
+     "gdn_state_only": 0.18195566116665518,
+     "attn": 0.6978903369730118,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.3021096630269882,
+     "gdn_state_only": 0.20747951297848108,
+     "attn": 0.7868267783813233,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Civil_disobedience__p4__0-8",
+   "title": "Civil_disobedience",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.2702090756530475,
+     "gdn_state_only": 0.18527237626039286,
+     "attn": 0.7046278172316454,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.2953721827683546,
+     "gdn_state_only": 0.2300728299369443,
+     "attn": 0.7297909243469525,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Economic_inequality__p9__505-517",
+   "title": "Economic_inequality",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.003785348179430952,
+     "gdn_state_only": 0.009932710636386708,
+     "attn": 0.9814414265364352,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.018558573463564813,
+     "gdn_state_only": 0.012848039557313987,
+     "attn": 0.996214651820569,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Force__p26__293-308",
+   "title": "Force",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.20833848451013787,
+     "gdn_state_only": 0.22514043644154136,
+     "attn": 0.6873715282617812,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.3126284717382188,
+     "gdn_state_only": 0.18176181682713724,
+     "attn": 0.7916615154898621,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p1__106-110",
+   "title": "Nikola_Tesla",
+   "recovery": {
+    "denoise": {
+     "gdn": -0.006481352440932867,
+     "gdn_state_only": 0.018028832378110232,
+     "attn": 0.95202595639309,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.04797404360691003,
+     "gdn_state_only": 0.03965440868436401,
+     "attn": 1.0064813524409328,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p20__50-74",
+   "title": "Nikola_Tesla",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.21242837695057415,
+     "gdn_state_only": 0.19231477304571637,
+     "attn": 0.8305034621046098,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.1694965378953902,
+     "gdn_state_only": 0.15106876575066863,
+     "attn": 0.7875716230494259,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p24__9-28",
+   "title": "Nikola_Tesla",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.28785153347539183,
+     "gdn_state_only": 0.2748885511735099,
+     "attn": 0.7338307480062067,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.25977583381705804,
+     "gdn_state_only": 0.4066695603781669,
+     "attn": 0.7134328116957288,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p27__31-33",
+   "title": "Nikola_Tesla",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.037982381703404317,
+     "gdn_state_only": 0.0035930060292646447,
+     "attn": 0.8861228303953823,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.11387716960461775,
+     "gdn_state_only": 0.023742191314816134,
+     "attn": 0.9620176182965956,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p2__188-192",
+   "title": "Nikola_Tesla",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.09043428073104615,
+     "gdn_state_only": 0.06691863323406683,
+     "attn": 0.8922128408104466,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.10778715918955345,
+     "gdn_state_only": 0.03136199655199347,
+     "attn": 0.9095657192689539,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Nikola_Tesla__p3__399-403",
+   "title": "Nikola_Tesla",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.08071378093474409,
+     "gdn_state_only": 0.04479973953176286,
+     "attn": 0.9511884774066786,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.048811522593321485,
+     "gdn_state_only": 0.024004073004414865,
+     "attn": 0.9192862190652559,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Rhine__p2__113-117",
+   "title": "Rhine",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.03197657409242681,
+     "gdn_state_only": 0.024065130265107836,
+     "attn": 0.9839711651817731,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.016028834818226916,
+     "gdn_state_only": 0.010309617131690499,
+     "attn": 0.9680234259075732,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p10__197-202",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.044543379368574,
+     "gdn_state_only": 0.03764033694695156,
+     "attn": 0.9322906183669973,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.06770938163300264,
+     "gdn_state_only": 0.051399194435105794,
+     "attn": 0.955456620631426,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p11__124-126",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.008380179705753766,
+     "gdn_state_only": 0.005003310208766723,
+     "attn": 0.9934943917355505,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.006505608264449465,
+     "gdn_state_only": 0.0024830562134172274,
+     "attn": 0.9916198202942462,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p13__44-48",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": -0.03131731323748725,
+     "gdn_state_only": -0.000978057059402987,
+     "attn": 0.9955323133842799,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.00446768661572008,
+     "gdn_state_only": 0.004609155657652866,
+     "attn": 1.031317313237487,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p19__149-153",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.0025407491423847395,
+     "gdn_state_only": 0.024175138173922986,
+     "attn": 1.0708381847547104,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": -0.07083818475471035,
+     "gdn_state_only": 0.004918364008591897,
+     "attn": 0.9974592508576152,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p1__77-87",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.23267650753778957,
+     "gdn_state_only": 0.21789961334881436,
+     "attn": 0.8188480267158529,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.18115197328414706,
+     "gdn_state_only": 0.13741628176401233,
+     "attn": 0.7673234924622104,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p20__99-104",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.15771973129794603,
+     "gdn_state_only": 0.19690530560797367,
+     "attn": 0.8440914073107937,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.1559085926892063,
+     "gdn_state_only": 0.11557840212765144,
+     "attn": 0.842280268702054,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p2__248-258",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.16626968118347762,
+     "gdn_state_only": 0.16072813893695603,
+     "attn": 0.8666999405642885,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.1333000594357116,
+     "gdn_state_only": 0.14759378379329335,
+     "attn": 0.8337303188165224,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p38__438-450",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.1939815829788895,
+     "gdn_state_only": 0.12526917579774918,
+     "attn": 0.853460160678976,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.14653983932102393,
+     "gdn_state_only": 0.19119087605882695,
+     "attn": 0.8060184170211104,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p39__0-12",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.12331241693287262,
+     "gdn_state_only": 0.16046431241632958,
+     "attn": 0.6989006939658959,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.3010993060341041,
+     "gdn_state_only": 0.2474956424719637,
+     "attn": 0.8766875830671274,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p3__0-3",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.4254940751110244,
+     "gdn_state_only": 0.1484525108875518,
+     "attn": 0.5910781739092892,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.4089218260907108,
+     "gdn_state_only": 0.15396611540957136,
+     "attn": 0.5745059248889757,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p40__303-313",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.16040542824870807,
+     "gdn_state_only": 0.1573496523604066,
+     "attn": 0.7364514440124195,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.26354855598758054,
+     "gdn_state_only": 0.12531618638111486,
+     "attn": 0.8395945717512918,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p43__49-58",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.4274378216363904,
+     "gdn_state_only": 0.3868983844470011,
+     "attn": 0.48024825678143723,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.5197517432185628,
+     "gdn_state_only": 0.3685472893977986,
+     "attn": 0.5725621783636097,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p50__144-148",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.3129014056756274,
+     "gdn_state_only": 0.29130229919741546,
+     "attn": 0.8354609964281356,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.1645390035718644,
+     "gdn_state_only": 0.04918414760897479,
+     "attn": 0.6870985943243726,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p51__167-173",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.18803918111279277,
+     "gdn_state_only": 0.11878968148803383,
+     "attn": 0.7035513349037829,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.29644866509621715,
+     "gdn_state_only": 0.16472697839927058,
+     "attn": 0.8119608188872072,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p52__92-99",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.4156901838760356,
+     "gdn_state_only": 0.2004031342049098,
+     "attn": 0.6927907253903287,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.30720927460967135,
+     "gdn_state_only": 0.11283316472377472,
+     "attn": 0.5843098161239644,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p7__113-125",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.008606413415494117,
+     "gdn_state_only": 0.0053700618763371216,
+     "attn": 0.9595526548724458,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.04044734512755416,
+     "gdn_state_only": 0.03395630517613332,
+     "attn": 0.9913935865845059,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "Super_Bowl_50__p9__324-328",
+   "title": "Super_Bowl_50",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.0337064521218768,
+     "gdn_state_only": 0.026925069172621243,
+     "attn": 0.9824102002070074,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.017589799792992532,
+     "gdn_state_only": 0.01697321661494732,
+     "attn": 0.9662935478781232,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "University_of_Chicago__p27__129-142",
+   "title": "University_of_Chicago",
+   "recovery": {
+    "denoise": {
+     "gdn": 0.17638893160825517,
+     "gdn_state_only": 0.1599336916279386,
+     "attn": 0.799140298276692,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.20085970172330792,
+     "gdn_state_only": 0.17623498922749609,
+     "attn": 0.8236110683917448,
+     "both": 1.0
+    }
+   }
+  }
+ ],
+ "questions": [
+  {
+   "id": "572841772ca10214002da1a6",
+   "triplet": "Amazon_rainforest__p3__105-111",
+   "title": "Amazon_rainforest",
+   "role": "same_fact_a",
+   "LD_clean": 24.880937190480836,
+   "LD_cf": -14.617459045373835,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.016042213321716906,
+     "gdn_state_only": 0.017727637312743967,
+     "attn": 0.9803648394401392,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.01963516055986084,
+     "gdn_state_only": 0.011758858879687698,
+     "attn": 0.983957786678283,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "572a0bfaaf94a219006aa779",
+   "triplet": "Amazon_rainforest__p3__105-111",
+   "title": "Amazon_rainforest",
+   "role": "same_fact_b",
+   "LD_clean": 25.94120588127953,
+   "LD_cf": -14.804144754627487,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.026572128954536242,
+     "gdn_state_only": 0.019013667425682428,
+     "attn": 0.9766074240128247,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.023392575987175264,
+     "gdn_state_only": 0.005295220612374433,
+     "attn": 0.9734278710454638,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "5725cbb289a1e219009abed2",
+   "triplet": "Amazon_rainforest__p6__64-85",
+   "title": "Amazon_rainforest",
+   "role": "same_fact_a",
+   "LD_clean": 39.39414037802635,
+   "LD_cf": -17.042170689383056,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.15615805406449354,
+     "gdn_state_only": 0.14759602019037377,
+     "attn": 0.8413569183650377,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.16594759762549904,
+     "gdn_state_only": 0.25059063110597657,
+     "attn": 0.8445393903542291,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "5729edd56aef051400155112",
+   "triplet": "Amazon_rainforest__p6__64-85",
+   "title": "Amazon_rainforest",
+   "role": "same_fact_b",
+   "LD_clean": 38.97327078576927,
+   "LD_cf": -16.97521269986464,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.1565093462732113,
+     "gdn_state_only": 0.14705022757123618,
+     "attn": 0.8325104175800417,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.17982159180866747,
+     "gdn_state_only": 0.2509120044571522,
+     "attn": 0.842535064410887,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "57267f1cdd62a815002e8741",
+   "triplet": "American_Broadcasting_Company__p2__768-788",
+   "title": "American_Broadcasting_Company",
+   "role": "same_fact_a",
+   "LD_clean": 28.4974418154452,
+   "LD_cf": -17.060062018223107,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.26562696714750705,
+     "gdn_state_only": 0.21146012008531764,
+     "attn": 0.6286773006016846,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.37132269939831547,
+     "gdn_state_only": 0.2681166405905558,
+     "attn": 0.734373032852493,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "57267f1cdd62a815002e8744",
+   "triplet": "American_Broadcasting_Company__p2__768-788",
+   "title": "American_Broadcasting_Company",
+   "role": "same_fact_b",
+   "LD_clean": 28.06758347293362,
+   "LD_cf": -18.53169480629731,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.16071947608984635,
+     "gdn_state_only": 0.15245120224799272,
+     "attn": 0.7671033733443391,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.23289662665566094,
+     "gdn_state_only": 0.14684238536640637,
+     "attn": 0.8392805239101536,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "572807802ca10214002d9bf8",
+   "triplet": "Civil_disobedience__p4__0-8",
+   "title": "Civil_disobedience",
+   "role": "same_fact_a",
+   "LD_clean": 30.444061872782186,
+   "LD_cf": -23.78152256780595,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.2602379036379705,
+     "gdn_state_only": 0.17841243626778033,
+     "attn": 0.6985393646887329,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.3014606353112671,
+     "gdn_state_only": 0.22845419920248394,
+     "attn": 0.7397620963620295,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "5728d7c54b864d1900164f4c",
+   "triplet": "Civil_disobedience__p4__0-8",
+   "title": "Civil_disobedience",
+   "role": "same_fact_b",
+   "LD_clean": 30.60028201766545,
+   "LD_cf": -24.40996341542632,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.2801802476681246,
+     "gdn_state_only": 0.1921323162530054,
+     "attn": 0.7107162697745579,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.28928373022544207,
+     "gdn_state_only": 0.23169146067140467,
+     "attn": 0.7198197523318753,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "5727f16c3acd2414000df05c",
+   "triplet": "Economic_inequality__p9__505-517",
+   "title": "Economic_inequality",
+   "role": "same_fact_a",
+   "LD_clean": 17.40641958010383,
+   "LD_cf": -14.393647956196219,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.004730411627056602,
+     "gdn_state_only": 0.010694355107382992,
+     "attn": 0.9783916355381328,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.021608364461867213,
+     "gdn_state_only": 0.014432076972035605,
+     "attn": 0.9952695883729434,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "5729e1e36aef0514001550bd",
+   "triplet": "Economic_inequality__p9__505-517",
+   "title": "Economic_inequality",
+   "role": "same_fact_b",
+   "LD_clean": 20.782866060064407,
+   "LD_cf": -18.392803355294745,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.0028402847318053015,
+     "gdn_state_only": 0.009171066165390426,
+     "attn": 0.9844912175347376,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.015508782465262414,
+     "gdn_state_only": 0.011264002142592369,
+     "attn": 0.9971597152681947,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "5737898f1c45671900574498",
+   "triplet": "Force__p26__293-308",
+   "title": "Force",
+   "role": "same_fact_a",
+   "LD_clean": 26.08643563836813,
+   "LD_cf": -12.457794794318033,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.1904158189772446,
+     "gdn_state_only": 0.211017300481104,
+     "attn": 0.6974865114051589,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.3025134885948411,
+     "gdn_state_only": 0.17126817683249415,
+     "attn": 0.8095841810227554,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "5737898f1c45671900574499",
+   "triplet": "Force__p26__293-308",
+   "title": "Force",
+   "role": "same_fact_b",
+   "LD_clean": 24.48609952069819,
+   "LD_cf": -11.844237182434881,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.22626115004303113,
+     "gdn_state_only": 0.23926357240197868,
+     "attn": 0.6772565451184035,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.32274345488159645,
+     "gdn_state_only": 0.19225545682178033,
+     "attn": 0.7737388499569688,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56df9ee138dc421700152108",
+   "triplet": "Nikola_Tesla__p1__106-110",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_a",
+   "LD_clean": 13.360535015504865,
+   "LD_cf": -14.833444190415321,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.005248175810367654,
+     "gdn_state_only": 0.022601565930055897,
+     "attn": 0.9573790595004045,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.04262094049959554,
+     "gdn_state_only": 0.03694304745884187,
+     "attn": 0.9947518241896324,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56e0b9d57aa994140058e6c1",
+   "triplet": "Nikola_Tesla__p1__106-110",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_b",
+   "LD_clean": 14.759514757228317,
+   "LD_cf": -12.850021311547607,
+   "recovery": {
+    "denoise": {
+     "gdn": -0.018210880692233387,
+     "gdn_state_only": 0.013456098826164567,
+     "attn": 0.9466728532857754,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.05332714671422451,
+     "gdn_state_only": 0.04236576990988616,
+     "attn": 1.0182108806922334,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56e057e1231d4119001ac047",
+   "triplet": "Nikola_Tesla__p20__50-74",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_a",
+   "LD_clean": 23.740684017901913,
+   "LD_cf": -22.80979396859766,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.22385460509920252,
+     "gdn_state_only": 0.207336479653802,
+     "attn": 0.8227699565042049,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.17723004349579505,
+     "gdn_state_only": 0.16032265551442848,
+     "attn": 0.7761453949007975,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56e0dbb57aa994140058e779",
+   "triplet": "Nikola_Tesla__p20__50-74",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_b",
+   "LD_clean": 27.292268934933418,
+   "LD_cf": -20.800458952271583,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.2010021488019458,
+     "gdn_state_only": 0.17729306643763076,
+     "attn": 0.8382369677050147,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.16176303229498534,
+     "gdn_state_only": 0.1418148759869088,
+     "attn": 0.7989978511980542,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56e07c86231d4119001ac1cd",
+   "triplet": "Nikola_Tesla__p24__9-28",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_a",
+   "LD_clean": 22.58443344110856,
+   "LD_cf": -11.29007412341889,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.27758306564266755,
+     "gdn_state_only": 0.2714956003728119,
+     "attn": 0.7407017963766347,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.25322760331325844,
+     "gdn_state_only": 0.4018400380044098,
+     "attn": 0.7217159535711235,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56e0ecd37aa994140058e7d5",
+   "triplet": "Nikola_Tesla__p24__9-28",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_b",
+   "LD_clean": 22.290902056338382,
+   "LD_cf": -10.345734971750062,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.29812000130811606,
+     "gdn_state_only": 0.2782815019742079,
+     "attn": 0.7269596996357787,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.2663240643208576,
+     "gdn_state_only": 0.4114990827519241,
+     "attn": 0.7051496698203341,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56e08a1f7aa994140058e5da",
+   "triplet": "Nikola_Tesla__p27__31-33",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_a",
+   "LD_clean": 12.999999701976776,
+   "LD_cf": -12.255859807133675,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.03899546602449353,
+     "gdn_state_only": 0.0025520339321718484,
+     "attn": 0.8821437005025148,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.11785629949748522,
+     "gdn_state_only": 0.02552007263806604,
+     "attn": 0.9610045339755064,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56e0ef90231d4119001ac46a",
+   "triplet": "Nikola_Tesla__p27__31-33",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_b",
+   "LD_clean": 13.051757782697678,
+   "LD_cf": -12.513488322496414,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.0369692973823151,
+     "gdn_state_only": 0.004633978126357441,
+     "attn": 0.8901019602882497,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.10989803971175029,
+     "gdn_state_only": 0.021964309991566226,
+     "attn": 0.9630307026176849,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56dfa01738dc42170015211d",
+   "triplet": "Nikola_Tesla__p2__188-192",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_a",
+   "LD_clean": 14.347961781546474,
+   "LD_cf": -5.995221349730855,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.10723868562826623,
+     "gdn_state_only": 0.07323080522334809,
+     "attn": 0.896302271141541,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.10369772885845902,
+     "gdn_state_only": 0.03345549916631124,
+     "attn": 0.8927613143717338,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56e0bab7231d4119001ac35c",
+   "triplet": "Nikola_Tesla__p2__188-192",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_b",
+   "LD_clean": 14.732181413273793,
+   "LD_cf": -6.946997855149675,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.07362987583382608,
+     "gdn_state_only": 0.06060646124478558,
+     "attn": 0.8881234104793521,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.1118765895206479,
+     "gdn_state_only": 0.029268493937675694,
+     "attn": 0.9263701241661739,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56dfa0d84a1a83140091ebb7",
+   "triplet": "Nikola_Tesla__p3__399-403",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_a",
+   "LD_clean": 18.997726116525882,
+   "LD_cf": -6.535683262714883,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.08278007035126375,
+     "gdn_state_only": 0.04718681734436592,
+     "attn": 0.9506749224707562,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.04932507752924376,
+     "gdn_state_only": 0.027313074793693368,
+     "attn": 0.9172199296487362,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56e0bb9f7aa994140058e6cc",
+   "triplet": "Nikola_Tesla__p3__399-403",
+   "title": "Nikola_Tesla",
+   "role": "same_fact_b",
+   "LD_clean": 19.64278173167986,
+   "LD_cf": -6.190669103147229,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.07864749151822442,
+     "gdn_state_only": 0.042412661719159805,
+     "attn": 0.9517020323426008,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.048297967657399216,
+     "gdn_state_only": 0.020695071215136362,
+     "attn": 0.9213525084817755,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "572f567cb2c2fd1400568040",
+   "triplet": "Rhine__p2__113-117",
+   "title": "Rhine",
+   "role": "same_fact_a",
+   "LD_clean": 13.309187502614805,
+   "LD_cf": -9.780323150924232,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.0313311395478186,
+     "gdn_state_only": 0.02325726112272092,
+     "attn": 0.9814693918569235,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.018530608143076506,
+     "gdn_state_only": 0.007314729456689915,
+     "attn": 0.9686688604521814,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "572fe393947a6a140053cdbb",
+   "triplet": "Rhine__p2__113-117",
+   "title": "Rhine",
+   "role": "same_fact_b",
+   "LD_clean": 13.104842798133177,
+   "LD_cf": -8.683607747756469,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.032622008637035016,
+     "gdn_state_only": 0.024872999407494753,
+     "attn": 0.9864729385066227,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.013527061493377322,
+     "gdn_state_only": 0.013304504806691084,
+     "attn": 0.967377991362965,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d6f2960d65d21400198288",
+   "triplet": "Super_Bowl_50__p10__197-202",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 15.998695600777864,
+   "LD_cf": -20.106301079678815,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.04412850786952512,
+     "gdn_state_only": 0.036620489614681034,
+     "attn": 0.9409850314994948,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.05901496850050524,
+     "gdn_state_only": 0.042172233340606866,
+     "attn": 0.9558714921304748,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d997cddc89441400fdb587",
+   "triplet": "Super_Bowl_50__p10__197-202",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 15.244876092649065,
+   "LD_cf": -19.261119977221824,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.044958250867622875,
+     "gdn_state_only": 0.03866018427922209,
+     "attn": 0.9235962052344999,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.07640379476550004,
+     "gdn_state_only": 0.06062615552960472,
+     "attn": 0.9550417491323772,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d6f3500d65d21400198290",
+   "triplet": "Super_Bowl_50__p11__124-126",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 12.843750301748514,
+   "LD_cf": -11.359374761581421,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.012588743517980852,
+     "gdn_state_only": 0.0061329828524203656,
+     "attn": 0.9935442062421255,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.006455793757874479,
+     "gdn_state_only": 0.0025823120852453614,
+     "attn": 0.9874112564820191,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d9992fdc89441400fdb59c",
+   "triplet": "Super_Bowl_50__p11__124-126",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 14.04687511920929,
+   "LD_cf": -12.171874582767487,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.004171615893526679,
+     "gdn_state_only": 0.003873637565113081,
+     "attn": 0.9934445772289755,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.006555422771024452,
+     "gdn_state_only": 0.002383800341589094,
+     "attn": 0.9958283841064733,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56beb57b3aeaaa14008c9279",
+   "triplet": "Super_Bowl_50__p13__44-48",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 13.162800546153449,
+   "LD_cf": -14.092763351975009,
+   "recovery": {
+    "denoise": {
+     "gdn": -0.03208784203902768,
+     "gdn_state_only": -0.001297921550054911,
+     "attn": 0.9980739470684543,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.0019260529315456656,
+     "gdn_state_only": 0.0017681460266904747,
+     "attn": 1.0320878420390276,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56bf38383aeaaa14008c956b",
+   "triplet": "Super_Bowl_50__p13__44-48",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 11.922933767549694,
+   "LD_cf": -14.485415717237629,
+   "recovery": {
+    "denoise": {
+     "gdn": -0.030546784435946814,
+     "gdn_state_only": -0.000658192568751063,
+     "attn": 0.9929906797001055,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.007009320299894494,
+     "gdn_state_only": 0.0074501652886152575,
+     "attn": 1.0305467844359468,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56beb90c3aeaaa14008c92c7",
+   "triplet": "Super_Bowl_50__p19__149-153",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 18.750609895971138,
+   "LD_cf": -12.761147631128551,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.03585473400214019,
+     "gdn_state_only": 0.03170530925442443,
+     "attn": 1.0837877768817643,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": -0.08378777688176442,
+     "gdn_state_only": 0.006435138822344111,
+     "attn": 0.9641452659978598,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d7096b0d65d214001982fc",
+   "triplet": "Super_Bowl_50__p19__149-153",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 20.125162231357535,
+   "LD_cf": -12.809675958895241,
+   "recovery": {
+    "denoise": {
+     "gdn": -0.03077323571737071,
+     "gdn_state_only": 0.01664496709342154,
+     "attn": 1.0578885926276562,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": -0.05788859262765629,
+     "gdn_state_only": 0.0034015891948396826,
+     "attn": 1.0307732357173707,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56be4e1facb8001400a502f6",
+   "triplet": "Super_Bowl_50__p1__77-87",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 26.18460466642864,
+   "LD_cf": -13.795296436175704,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.23929008971497298,
+     "gdn_state_only": 0.22029668275740752,
+     "attn": 0.8312009113923037,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.16879908860769632,
+     "gdn_state_only": 0.13250266555131435,
+     "attn": 0.760709910285027,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56bead5a3aeaaa14008c91ed",
+   "triplet": "Super_Bowl_50__p1__77-87",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 25.75249871611595,
+   "LD_cf": -12.99288784712553,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.22606292536060615,
+     "gdn_state_only": 0.2155025439402212,
+     "attn": 0.8064951420394022,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.19350485796059783,
+     "gdn_state_only": 0.14232989797671028,
+     "attn": 0.7739370746393939,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56beb97c3aeaaa14008c92de",
+   "triplet": "Super_Bowl_50__p20__99-104",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 19.784942408106872,
+   "LD_cf": -13.91437723665149,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.154303510153821,
+     "gdn_state_only": 0.19592784027291435,
+     "attn": 0.8502725362659554,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.1497274637340446,
+     "gdn_state_only": 0.10880251483747357,
+     "attn": 0.8456964898461791,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56bf6c3e3aeaaa14008c9617",
+   "triplet": "Super_Bowl_50__p20__99-104",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 19.639476167678367,
+   "LD_cf": -12.681047387974104,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.1611359524420711,
+     "gdn_state_only": 0.197882770943033,
+     "attn": 0.837910278355632,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.16208972164436797,
+     "gdn_state_only": 0.1223542894178293,
+     "attn": 0.8388640475579289,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d204ade7d4791d00902603",
+   "triplet": "Super_Bowl_50__p2__248-258",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 30.616155038878787,
+   "LD_cf": -13.967851910565514,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.15876278954451942,
+     "gdn_state_only": 0.15762708718434706,
+     "attn": 0.868046759540601,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.13195324045939907,
+     "gdn_state_only": 0.15321682309215062,
+     "attn": 0.8412372104554806,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d601e41c85041400946ed1",
+   "triplet": "Super_Bowl_50__p2__248-258",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 29.093075563083403,
+   "LD_cf": -14.131890531338286,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.1737765728224358,
+     "gdn_state_only": 0.163829190689565,
+     "attn": 0.865353121587976,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.1346468784120241,
+     "gdn_state_only": 0.1419707444944361,
+     "attn": 0.8262234271775643,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56bec4343aeaaa14008c93a9",
+   "triplet": "Super_Bowl_50__p38__438-450",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 29.589128841705133,
+   "LD_cf": -11.827472491015214,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.20284030810097836,
+     "gdn_state_only": 0.13616630473375843,
+     "attn": 0.8312844294161229,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.1687155705838771,
+     "gdn_state_only": 0.21045042226347022,
+     "attn": 0.7971596918990216,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d723560d65d214001983ae",
+   "triplet": "Super_Bowl_50__p38__438-450",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 29.345292723615785,
+   "LD_cf": -11.417909206516924,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.18512285785680063,
+     "gdn_state_only": 0.11437204686173993,
+     "attn": 0.8756358919418292,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.12436410805817079,
+     "gdn_state_only": 0.17193132985418372,
+     "attn": 0.8148771421431994,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56bec4a33aeaaa14008c93b1",
+   "triplet": "Super_Bowl_50__p39__0-12",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 35.13445623306325,
+   "LD_cf": -11.695507476862986,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.10082100946661221,
+     "gdn_state_only": 0.14420727929348706,
+     "attn": 0.6994370298379325,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.30056297016206746,
+     "gdn_state_only": 0.2514486047171361,
+     "attn": 0.8991789905333878,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d723ad0d65d214001983b4",
+   "triplet": "Super_Bowl_50__p39__0-12",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 36.70742327510379,
+   "LD_cf": -17.430738318013027,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.14580382439913303,
+     "gdn_state_only": 0.17672134553917207,
+     "attn": 0.6983643580938592,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.3016356419061408,
+     "gdn_state_only": 0.2435426802267913,
+     "attn": 0.8541961756008669,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56be5333acb8001400a5030a",
+   "triplet": "Super_Bowl_50__p3__0-3",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 12.453124783933163,
+   "LD_cf": -10.093749701976776,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.43970893651677984,
+     "gdn_state_only": 0.15453913559229618,
+     "attn": 0.600485106245965,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.39951489375403504,
+     "gdn_state_only": 0.14622312939981444,
+     "attn": 0.5602910634832202,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56beaf5e3aeaaa14008c91fd",
+   "triplet": "Super_Bowl_50__p3__0-3",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 12.625000461935997,
+   "LD_cf": -10.093749806284904,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.41127921370526893,
+     "gdn_state_only": 0.14236588618280738,
+     "attn": 0.5816712415726133,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.41832875842738665,
+     "gdn_state_only": 0.1617091014193283,
+     "attn": 0.5887207862947311,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56bec5233aeaaa14008c93d3",
+   "triplet": "Super_Bowl_50__p40__303-313",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 29.61554869345855,
+   "LD_cf": -20.12397924382458,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.1668608762226565,
+     "gdn_state_only": 0.1615666903322769,
+     "attn": 0.7454841590644227,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.2545158409355773,
+     "gdn_state_only": 0.12595283827633275,
+     "attn": 0.8331391237773434,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d724620d65d214001983c1",
+   "triplet": "Super_Bowl_50__p40__303-313",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 31.71840713689744,
+   "LD_cf": -20.670038712731184,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.15394998027475967,
+     "gdn_state_only": 0.15313261438853631,
+     "attn": 0.7274187289604161,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.27258127103958385,
+     "gdn_state_only": 0.12467953448589696,
+     "attn": 0.8460500197252403,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d20650e7d4791d00902614",
+   "triplet": "Super_Bowl_50__p43__49-58",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 22.33377409982495,
+   "LD_cf": -14.687074157875031,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.4238940786937023,
+     "gdn_state_only": 0.383103772490587,
+     "attn": 0.46890840502761405,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.5310915949723859,
+     "gdn_state_only": 0.3635158295663389,
+     "attn": 0.5761059213062977,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d7253b0d65d214001983d4",
+   "triplet": "Super_Bowl_50__p43__49-58",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 21.164161803782918,
+   "LD_cf": -14.509479640168138,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.43098156457907844,
+     "gdn_state_only": 0.39069299640341515,
+     "attn": 0.49158810853526036,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.5084118914647396,
+     "gdn_state_only": 0.3735787492292584,
+     "attn": 0.5690184354209216,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56bec9e83aeaaa14008c945f",
+   "triplet": "Super_Bowl_50__p50__144-148",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 21.135554878041148,
+   "LD_cf": -18.65674559958279,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.3098658294610953,
+     "gdn_state_only": 0.31333516371589265,
+     "attn": 0.8334998725510877,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.16650012744891232,
+     "gdn_state_only": 0.05181928673150093,
+     "attn": 0.6901341705389047,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d7261e0d65d214001983e1",
+   "triplet": "Super_Bowl_50__p50__144-148",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 21.27930703945458,
+   "LD_cf": -19.273716179886833,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.3159369818901595,
+     "gdn_state_only": 0.26926943467893827,
+     "attn": 0.8374221203051835,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.16257787969481652,
+     "gdn_state_only": 0.046549008486448655,
+     "attn": 0.6840630181098405,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d726b60d65d214001983ea",
+   "triplet": "Super_Bowl_50__p51__167-173",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 20.071712788194418,
+   "LD_cf": -14.405492910242174,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.1735858281992285,
+     "gdn_state_only": 0.10333049804890707,
+     "attn": 0.7596221083597925,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.24037789164020745,
+     "gdn_state_only": 0.13181627814708158,
+     "attn": 0.8264141718007715,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d9cb47dc89441400fdb833",
+   "triplet": "Super_Bowl_50__p51__167-173",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 20.967506125569344,
+   "LD_cf": -14.182824981980957,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.20249253402635706,
+     "gdn_state_only": 0.1342488649271606,
+     "attn": 0.6474805614477732,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.3525194385522268,
+     "gdn_state_only": 0.1976376786514596,
+     "attn": 0.797507465973643,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d7270c0d65d214001983f7",
+   "triplet": "Super_Bowl_50__p52__92-99",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 22.272616609930992,
+   "LD_cf": -17.296443974541035,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.34155369732955654,
+     "gdn_state_only": 0.16288738999166066,
+     "attn": 0.6867242333929859,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.3132757666070141,
+     "gdn_state_only": 0.1314635183060224,
+     "attn": 0.6584463026704435,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56d9ccacdc89441400fdb842",
+   "triplet": "Super_Bowl_50__p52__92-99",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 21.851271092891693,
+   "LD_cf": -15.811693148105405,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.4898266704225147,
+     "gdn_state_only": 0.23791887841815892,
+     "attn": 0.6988572173876714,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.3011427826123286,
+     "gdn_state_only": 0.09420281114152704,
+     "attn": 0.5101733295774853,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56be5523acb8001400a5032f",
+   "triplet": "Super_Bowl_50__p7__113-125",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 14.143339483547607,
+   "LD_cf": -11.202773337368853,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.008606413415494117,
+     "gdn_state_only": 0.0053700618763371216,
+     "attn": 0.9595526548724458,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.04044734512755416,
+     "gdn_state_only": 0.03395630517613332,
+     "attn": 0.9913935865845059,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56beb2153aeaaa14008c9227",
+   "triplet": "Super_Bowl_50__p7__113-125",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 14.143339483547607,
+   "LD_cf": -11.202773337368853,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.008606413415494117,
+     "gdn_state_only": 0.0053700618763371216,
+     "attn": 0.9595526548724458,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.04044734512755416,
+     "gdn_state_only": 0.03395630517613332,
+     "attn": 0.9913935865845059,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56beb3083aeaaa14008c923d",
+   "triplet": "Super_Bowl_50__p9__324-328",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_a",
+   "LD_clean": 14.582386098831194,
+   "LD_cf": -10.939491622208152,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.025202563594136893,
+     "gdn_state_only": 0.02279625964001475,
+     "attn": 0.9798733615278522,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.02012663847214778,
+     "gdn_state_only": 0.018560066455124972,
+     "attn": 0.9747974364058631,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "56bf2afe3aeaaa14008c9543",
+   "triplet": "Super_Bowl_50__p9__324-328",
+   "title": "Super_Bowl_50",
+   "role": "same_fact_b",
+   "LD_clean": 14.963071886653779,
+   "LD_cf": -12.148157716030255,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.0422103406496167,
+     "gdn_state_only": 0.031053878705227737,
+     "attn": 0.9849470388861628,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.015052961113837282,
+     "gdn_state_only": 0.015386366774769667,
+     "attn": 0.9577896593503833,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "57286951ff5b5019007da20f",
+   "triplet": "University_of_Chicago__p27__129-142",
+   "title": "University_of_Chicago",
+   "role": "same_fact_a",
+   "LD_clean": 26.0479016424797,
+   "LD_cf": -13.377063343883492,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.16501773335108658,
+     "gdn_state_only": 0.1720981504303783,
+     "attn": 0.7802453069518693,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.2197546930481306,
+     "gdn_state_only": 0.18061713427026266,
+     "attn": 0.8349822666489134,
+     "both": 1.0
+    }
+   }
+  },
+  {
+   "id": "57286951ff5b5019007da210",
+   "triplet": "University_of_Chicago__p27__129-142",
+   "title": "University_of_Chicago",
+   "role": "same_fact_b",
+   "LD_clean": 26.38202251002076,
+   "LD_cf": -13.979736005188897,
+   "recovery": {
+    "denoise": {
+     "gdn": 0.18776012986542376,
+     "gdn_state_only": 0.14776923282549892,
+     "attn": 0.8180352896015147,
+     "both": 1.0
+    },
+    "noise": {
+     "gdn": 0.18196471039848525,
+     "gdn_state_only": 0.1718528441847295,
+     "attn": 0.8122398701345762,
+     "both": 1.0
+    }
+   }
+  }
+ ],
+ "otherFact": {
+  "summary": {
+   "denoise": {
+    "gdn": {
+     "median": 0.0067337751388549805,
+     "p10": -0.04338954342529178,
+     "p90": 0.09097378409933299,
+     "n": 31
+    },
+    "gdn_state_only": {
+     "median": -0.00011904060374945402,
+     "p10": -0.06898910645395517,
+     "p90": 0.041991745005361736,
+     "n": 31
+    },
+    "attn": {
+     "median": -0.0015321895480155945,
+     "p10": -0.03059931145980954,
+     "p90": 0.03442198038101196,
+     "n": 31
+    },
+    "both": {
+     "median": 0.0012278089416213334,
+     "p10": -0.07852256298065186,
+     "p90": 0.11695320892613381,
+     "n": 31
+    }
+   },
+   "noise": {
+    "gdn": {
+     "median": -0.002629756534588523,
+     "p10": -0.13972648128401488,
+     "p90": 0.06287771463394165,
+     "n": 31
+    },
+    "gdn_state_only": {
+     "median": -0.000665457861032337,
+     "p10": -0.045874595642089844,
+     "p90": 0.052281699143350124,
+     "n": 31
+    },
+    "attn": {
+     "median": 0.0017858445644378662,
+     "p10": -0.05040896213176893,
+     "p90": 0.03533536195755005,
+     "n": 31
+    },
+    "both": {
+     "median": -0.0012278089416213334,
+     "p10": -0.11695320892613381,
+     "p90": 0.07852256298065186,
+     "n": 31
+    }
+   },
+   "cfMinusClean": {
+    "median": -0.0012278089416213334,
+    "p10": -0.11695320892613381,
+    "p90": 0.07852256298065186,
+    "n": 31
+   }
+  },
+  "questions": [
+   {
+    "id": "5725c41eec44d21400f3d50f",
+    "triplet": "Amazon_rainforest__p3__105-111",
+    "logp_clean": -10.210935097944457,
+    "logp_cf": -10.402535772882402,
+    "logp": {
+     "denoise": {
+      "gdn": -10.221705485106213,
+      "gdn_state_only": -10.309547789773205,
+      "attn": -10.395827640371863,
+      "both": -10.210935097944457
+     },
+     "noise": {
+      "gdn": -10.395827640371863,
+      "gdn_state_only": -10.318811443605227,
+      "attn": -10.221705485106213,
+      "both": -10.402535772882402
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.18083028777618892,
+      "gdn_state_only": 0.09298798310919665,
+      "attn": 0.006708132510539144,
+      "both": 0.19160067493794486
+     },
+     "noise": {
+      "gdn": -0.18489254242740571,
+      "gdn_state_only": -0.10787634566077031,
+      "attn": -0.010770387161755934,
+      "both": -0.19160067493794486
+     }
+    }
+   },
+   {
+    "id": "5729edd56aef051400155116",
+    "triplet": "Amazon_rainforest__p6__64-85",
+    "logp_clean": -1.6740365338046104,
+    "logp_cf": -1.6424279331986327,
+    "logp": {
+     "denoise": {
+      "gdn": -1.6798493667156436,
+      "gdn_state_only": -1.600436188193271,
+      "attn": -1.664013616507873,
+      "both": -1.6740365338046104
+     },
+     "noise": {
+      "gdn": -1.6815189319313504,
+      "gdn_state_only": -1.6922589909809176,
+      "attn": -1.6617110543156741,
+      "both": -1.6424279331986327
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.03742143351701088,
+      "gdn_state_only": 0.041991745005361736,
+      "attn": -0.021585683309240267,
+      "both": -0.0316086006059777
+     },
+     "noise": {
+      "gdn": -0.007482398126740009,
+      "gdn_state_only": -0.018222457176307216,
+      "attn": 0.012325479488936253,
+      "both": 0.0316086006059777
+     }
+    }
+   },
+   {
+    "id": "57267f1cdd62a815002e8742",
+    "triplet": "American_Broadcasting_Company__p2__768-788",
+    "logp_clean": -0.16997367143630981,
+    "logp_cf": -0.1601189821958542,
+    "logp": {
+     "denoise": {
+      "gdn": -0.15976452827453613,
+      "gdn_state_only": -0.16207678616046906,
+      "attn": -0.16894859075546265,
+      "both": -0.16997367143630981
+     },
+     "noise": {
+      "gdn": -0.16894859075546265,
+      "gdn_state_only": -0.15868070721626282,
+      "attn": -0.15976452827453613,
+      "both": -0.1601189821958542
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.0003544539213180542,
+      "gdn_state_only": -0.001957803964614868,
+      "attn": -0.00882960855960846,
+      "both": -0.009854689240455627
+     },
+     "noise": {
+      "gdn": 0.001025080680847168,
+      "gdn_state_only": 0.011292964220046997,
+      "attn": 0.010209143161773682,
+      "both": 0.009854689240455627
+     }
+    }
+   },
+   {
+    "id": "5728d7c54b864d1900164f4f",
+    "triplet": "Civil_disobedience__p4__0-8",
+    "logp_clean": -0.10590361514186952,
+    "logp_cf": -0.11517063548672013,
+    "logp": {
+     "denoise": {
+      "gdn": -0.09901640216412488,
+      "gdn_state_only": -0.09266427758848295,
+      "attn": -0.11399745800008532,
+      "both": -0.10590361514186952
+     },
+     "noise": {
+      "gdn": -0.11399745800008532,
+      "gdn_state_only": -0.11866313048813026,
+      "attn": -0.09901640216412488,
+      "both": -0.11517063548672013
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.016154233322595246,
+      "gdn_state_only": 0.022506357898237184,
+      "attn": 0.0011731774866348132,
+      "both": 0.009267020344850607
+     },
+     "noise": {
+      "gdn": -0.008093842858215794,
+      "gdn_state_only": -0.012759515346260741,
+      "attn": 0.006887212977744639,
+      "both": -0.009267020344850607
+     }
+    }
+   },
+   {
+    "id": "5729e1e36aef0514001550ba",
+    "triplet": "Economic_inequality__p9__505-517",
+    "logp_clean": -0.4834838937094901,
+    "logp_cf": -0.48292787026730366,
+    "logp": {
+     "denoise": {
+      "gdn": -0.49009256053250283,
+      "gdn_state_only": -0.4906131774187088,
+      "attn": -0.48842607098049484,
+      "both": -0.4834838937094901
+     },
+     "noise": {
+      "gdn": -0.48842607098049484,
+      "gdn_state_only": -0.49068306109984405,
+      "attn": -0.49009256053250283,
+      "both": -0.48292787026730366
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.0071646902651991695,
+      "gdn_state_only": -0.007685307151405141,
+      "attn": -0.005498200713191181,
+      "both": -0.0005560234421864152
+     },
+     "noise": {
+      "gdn": -0.004942177271004766,
+      "gdn_state_only": -0.007199167390353978,
+      "attn": -0.006608666823012754,
+      "both": 0.0005560234421864152
+     }
+    }
+   },
+   {
+    "id": "5737898f1c45671900574496",
+    "triplet": "Force__p26__293-308",
+    "logp_clean": -0.05498370554414578,
+    "logp_cf": -0.06218231952516362,
+    "logp": {
+     "denoise": {
+      "gdn": -0.04781853937311098,
+      "gdn_state_only": -0.055044137086952105,
+      "attn": -0.06729675977840088,
+      "both": -0.05498370554414578
+     },
+     "noise": {
+      "gdn": -0.06729675977840088,
+      "gdn_state_only": -0.05889784952159971,
+      "attn": -0.04781853937311098,
+      "both": -0.06218231952516362
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.014363780152052641,
+      "gdn_state_only": 0.0071381824382115155,
+      "attn": -0.005114440253237262,
+      "both": 0.007198613981017843
+     },
+     "noise": {
+      "gdn": -0.012313054234255105,
+      "gdn_state_only": -0.003914143977453932,
+      "attn": 0.007165166171034798,
+      "both": -0.007198613981017843
+     }
+    }
+   },
+   {
+    "id": "56df9ee138dc42170015210c",
+    "triplet": "Nikola_Tesla__p1__106-110",
+    "logp_clean": -0.6540958483237773,
+    "logp_cf": -0.6802125789690763,
+    "logp": {
+     "denoise": {
+      "gdn": -0.6282979117240757,
+      "gdn_state_only": -0.6646080170758069,
+      "attn": -0.6500145213212818,
+      "both": -0.6540958483237773
+     },
+     "noise": {
+      "gdn": -0.6500145213212818,
+      "gdn_state_only": -0.6823579010087997,
+      "attn": -0.6282979117240757,
+      "both": -0.6802125789690763
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.0519146672450006,
+      "gdn_state_only": 0.01560456189326942,
+      "attn": 0.030198057647794485,
+      "both": 0.026116730645298958
+     },
+     "noise": {
+      "gdn": 0.004081327002495527,
+      "gdn_state_only": -0.028262052685022354,
+      "attn": 0.025797936599701643,
+      "both": -0.026116730645298958
+     }
+    }
+   },
+   {
+    "id": "56e057e1231d4119001ac046",
+    "triplet": "Nikola_Tesla__p20__50-74",
+    "logp_clean": -3.2781814411646337,
+    "logp_cf": -3.2312709322941373,
+    "logp": {
+     "denoise": {
+      "gdn": -3.3285904032964027,
+      "gdn_state_only": -3.271230085963907,
+      "attn": -3.1411035081982845,
+      "both": -3.2781814411646337
+     },
+     "noise": {
+      "gdn": -3.1411035081982845,
+      "gdn_state_only": -3.1734130779805128,
+      "attn": -3.3285904032964027,
+      "both": -3.2312709322941373
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.09731947100226535,
+      "gdn_state_only": -0.039959153669769876,
+      "attn": 0.09016742409585277,
+      "both": -0.046910508870496415
+     },
+     "noise": {
+      "gdn": 0.13707793296634918,
+      "gdn_state_only": 0.10476836318412097,
+      "attn": -0.05040896213176893,
+      "both": 0.046910508870496415
+     }
+    }
+   },
+   {
+    "id": "56e07c86231d4119001ac1d0",
+    "triplet": "Nikola_Tesla__p24__9-28",
+    "logp_clean": -1.7478834938956425,
+    "logp_cf": -1.9229482824448496,
+    "logp": {
+     "denoise": {
+      "gdn": -1.8319744983455166,
+      "gdn_state_only": -1.7516686208546162,
+      "attn": -2.0126940687187016,
+      "both": -1.7478834938956425
+     },
+     "noise": {
+      "gdn": -1.8876099751796573,
+      "gdn_state_only": -1.9460469597252086,
+      "attn": -1.8637287655146793,
+      "both": -1.9229482824448496
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.09097378409933299,
+      "gdn_state_only": 0.17127966159023345,
+      "attn": -0.08974578627385199,
+      "both": 0.17506478854920715
+     },
+     "noise": {
+      "gdn": -0.13972648128401488,
+      "gdn_state_only": -0.19816346582956612,
+      "attn": -0.1158452716190368,
+      "both": -0.17506478854920715
+     }
+    }
+   },
+   {
+    "id": "56e08a1f7aa994140058e5dd",
+    "triplet": "Nikola_Tesla__p27__31-33",
+    "logp_clean": -0.48277281410992146,
+    "logp_cf": -0.47115747071802616,
+    "logp": {
+     "denoise": {
+      "gdn": -0.4785061366856098,
+      "gdn_state_only": -0.4807308092713356,
+      "attn": -0.47268966026604176,
+      "both": -0.48277281410992146
+     },
+     "noise": {
+      "gdn": -0.47268966026604176,
+      "gdn_state_only": -0.46913824044167995,
+      "attn": -0.4785061366856098,
+      "both": -0.47115747071802616
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.007348665967583656,
+      "gdn_state_only": -0.00957333855330944,
+      "attn": -0.0015321895480155945,
+      "both": -0.011615343391895294
+     },
+     "noise": {
+      "gdn": 0.0100831538438797,
+      "gdn_state_only": 0.0136345736682415,
+      "attn": 0.004266677424311638,
+      "both": 0.011615343391895294
+     }
+    }
+   },
+   {
+    "id": "56e0bab7231d4119001ac35d",
+    "triplet": "Nikola_Tesla__p2__188-192",
+    "logp_clean": -8.164957046508789,
+    "logp_cf": -7.993427753448486,
+    "logp": {
+     "denoise": {
+      "gdn": -7.956677436828613,
+      "gdn_state_only": -8.159732818603516,
+      "attn": -8.323366165161133,
+      "both": -8.164957046508789
+     },
+     "noise": {
+      "gdn": -8.323366165161133,
+      "gdn_state_only": -8.210831642150879,
+      "attn": -7.956677436828613,
+      "both": -7.993427753448486
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.03675031661987305,
+      "gdn_state_only": -0.1663050651550293,
+      "attn": -0.3299384117126465,
+      "both": -0.17152929306030273
+     },
+     "noise": {
+      "gdn": -0.15840911865234375,
+      "gdn_state_only": -0.045874595642089844,
+      "attn": 0.20827960968017578,
+      "both": 0.17152929306030273
+     }
+    }
+   },
+   {
+    "id": "56e0bb9f7aa994140058e6cf",
+    "triplet": "Nikola_Tesla__p3__399-403",
+    "logp_clean": -0.9669737265212461,
+    "logp_cf": -1.08392693544738,
+    "logp": {
+     "denoise": {
+      "gdn": -0.992587557528168,
+      "gdn_state_only": -1.0447641896316782,
+      "attn": -1.0836836829548702,
+      "both": -0.9669737265212461
+     },
+     "noise": {
+      "gdn": -1.0836836829548702,
+      "gdn_state_only": -1.002505550859496,
+      "attn": -0.992587557528168,
+      "both": -1.08392693544738
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.09133937791921198,
+      "gdn_state_only": 0.03916274581570178,
+      "attn": 0.00024325249250978231,
+      "both": 0.11695320892613381
+     },
+     "noise": {
+      "gdn": -0.11670995643362403,
+      "gdn_state_only": -0.03553182433824986,
+      "attn": -0.025613831006921828,
+      "both": -0.11695320892613381
+     }
+    }
+   },
+   {
+    "id": "572f567cb2c2fd1400568043",
+    "triplet": "Rhine__p2__113-117",
+    "logp_clean": -0.4933328707702458,
+    "logp_cf": -0.5730047629913315,
+    "logp": {
+     "denoise": {
+      "gdn": -0.5577588079031557,
+      "gdn_state_only": -0.5424933565082029,
+      "attn": -0.48270301742013544,
+      "both": -0.4933328707702458
+     },
+     "noise": {
+      "gdn": -0.48270301742013544,
+      "gdn_state_only": -0.5012823765864596,
+      "attn": -0.5577588079031557,
+      "both": -0.5730047629913315
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.015245955088175833,
+      "gdn_state_only": 0.030511406483128667,
+      "attn": 0.09030174557119608,
+      "both": 0.07967189222108573
+     },
+     "noise": {
+      "gdn": 0.010629853350110352,
+      "gdn_state_only": -0.007949505816213787,
+      "attn": -0.0644259371329099,
+      "both": -0.07967189222108573
+     }
+    }
+   },
+   {
+    "id": "56bf6b303aeaaa14008c960f",
+    "triplet": "Super_Bowl_50__p10__197-202",
+    "logp_clean": -0.0800836905837059,
+    "logp_cf": -0.0809379555284977,
+    "logp": {
+     "denoise": {
+      "gdn": -0.07734650000929832,
+      "gdn_state_only": -0.07855086028575897,
+      "attn": -0.08408445492386818,
+      "both": -0.0800836905837059
+     },
+     "noise": {
+      "gdn": -0.08408445492386818,
+      "gdn_state_only": -0.07945277541875839,
+      "attn": -0.07734650000929832,
+      "both": -0.0809379555284977
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.0035914555191993713,
+      "gdn_state_only": 0.0023870952427387238,
+      "attn": -0.0031464993953704834,
+      "both": 0.0008542649447917938
+     },
+     "noise": {
+      "gdn": -0.004000764340162277,
+      "gdn_state_only": 0.0006309151649475098,
+      "attn": 0.0027371905744075775,
+      "both": -0.0008542649447917938
+     }
+    }
+   },
+   {
+    "id": "56d6f3500d65d21400198294",
+    "triplet": "Super_Bowl_50__p11__124-126",
+    "logp_clean": -0.2896233396604657,
+    "logp_cf": -0.28093540109694004,
+    "logp": {
+     "denoise": {
+      "gdn": -0.29121946450322866,
+      "gdn_state_only": -0.2728176647797227,
+      "attn": -0.27772240340709686,
+      "both": -0.2896233396604657
+     },
+     "noise": {
+      "gdn": -0.27772240340709686,
+      "gdn_state_only": -0.27874074736610055,
+      "attn": -0.29121946450322866,
+      "both": -0.28093540109694004
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.010284063406288624,
+      "gdn_state_only": 0.00811773631721735,
+      "attn": 0.003212997689843178,
+      "both": -0.008687938563525677
+     },
+     "noise": {
+      "gdn": 0.011900936253368855,
+      "gdn_state_only": 0.010882592294365168,
+      "attn": -0.001596124842762947,
+      "both": 0.008687938563525677
+     }
+    }
+   },
+   {
+    "id": "56d99c44dc89441400fdb5da",
+    "triplet": "Super_Bowl_50__p13__44-48",
+    "logp_clean": -0.04263962240656838,
+    "logp_cf": -0.04386743134818971,
+    "logp": {
+     "denoise": {
+      "gdn": -0.04382987495046109,
+      "gdn_state_only": -0.043986471951939166,
+      "attn": -0.044723423197865486,
+      "both": -0.04263962240656838
+     },
+     "noise": {
+      "gdn": -0.044723423197865486,
+      "gdn_state_only": -0.043305080267600715,
+      "attn": -0.04382987495046109,
+      "both": -0.04386743134818971
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 3.755639772862196e-05,
+      "gdn_state_only": -0.00011904060374945402,
+      "attn": -0.0008559918496757746,
+      "both": 0.0012278089416213334
+     },
+     "noise": {
+      "gdn": -0.002083800791297108,
+      "gdn_state_only": -0.000665457861032337,
+      "attn": -0.0011902525438927114,
+      "both": -0.0012278089416213334
+     }
+    }
+   },
+   {
+    "id": "56beb90c3aeaaa14008c92c9",
+    "triplet": "Super_Bowl_50__p19__149-153",
+    "logp_clean": -0.13918301463127136,
+    "logp_cf": -0.14240197837352753,
+    "logp": {
+     "denoise": {
+      "gdn": -0.13566820323467255,
+      "gdn_state_only": -0.1395726203918457,
+      "attn": -0.15144024789333344,
+      "both": -0.13918301463127136
+     },
+     "noise": {
+      "gdn": -0.15144024789333344,
+      "gdn_state_only": -0.14287889003753662,
+      "attn": -0.13566820323467255,
+      "both": -0.14240197837352753
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.0067337751388549805,
+      "gdn_state_only": 0.0028293579816818237,
+      "attn": -0.009038269519805908,
+      "both": 0.0032189637422561646
+     },
+     "noise": {
+      "gdn": -0.012257233262062073,
+      "gdn_state_only": -0.003695875406265259,
+      "attn": 0.003514811396598816,
+      "both": -0.0032189637422561646
+     }
+    }
+   },
+   {
+    "id": "56bead5a3aeaaa14008c91ec",
+    "triplet": "Super_Bowl_50__p1__77-87",
+    "logp_clean": -0.19136492908000946,
+    "logp_cf": -0.20181061327457428,
+    "logp": {
+     "denoise": {
+      "gdn": -0.1895790845155716,
+      "gdn_state_only": -0.20524948835372925,
+      "attn": -0.2033860683441162,
+      "both": -0.19136492908000946
+     },
+     "noise": {
+      "gdn": -0.2033860683441162,
+      "gdn_state_only": -0.19672729074954987,
+      "attn": -0.1895790845155716,
+      "both": -0.20181061327457428
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.012231528759002686,
+      "gdn_state_only": -0.0034388750791549683,
+      "attn": -0.0015754550695419312,
+      "both": 0.01044568419456482
+     },
+     "noise": {
+      "gdn": -0.01202113926410675,
+      "gdn_state_only": -0.005362361669540405,
+      "attn": 0.0017858445644378662,
+      "both": -0.01044568419456482
+     }
+    }
+   },
+   {
+    "id": "56d709ef0d65d21400198306",
+    "triplet": "Super_Bowl_50__p20__99-104",
+    "logp_clean": -5.776676188921556,
+    "logp_cf": -6.1097846096381545,
+    "logp": {
+     "denoise": {
+      "gdn": -5.81720466632396,
+      "gdn_state_only": -5.811628006398678,
+      "attn": -5.995131886564195,
+      "both": -5.776676188921556
+     },
+     "noise": {
+      "gdn": -5.995131886564195,
+      "gdn_state_only": -6.078645722009242,
+      "attn": -5.81720466632396,
+      "both": -6.1097846096381545
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.2925799433141947,
+      "gdn_state_only": 0.2981566032394767,
+      "attn": 0.11465272307395935,
+      "both": 0.33310842071659863
+     },
+     "noise": {
+      "gdn": -0.21845569764263928,
+      "gdn_state_only": -0.3019695330876857,
+      "attn": -0.04052847740240395,
+      "both": -0.33310842071659863
+     }
+    }
+   },
+   {
+    "id": "56be4eafacb8001400a50304",
+    "triplet": "Super_Bowl_50__p2__248-258",
+    "logp_clean": -2.4462107233703136,
+    "logp_cf": -2.4615910607390106,
+    "logp": {
+     "denoise": {
+      "gdn": -2.509120342787355,
+      "gdn_state_only": -2.4813533811829984,
+      "attn": -2.4809019220992923,
+      "both": -2.4462107233703136
+     },
+     "noise": {
+      "gdn": -2.4809019220992923,
+      "gdn_state_only": -2.429080388043076,
+      "attn": -2.509120342787355,
+      "both": -2.4615910607390106
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.04752928204834461,
+      "gdn_state_only": -0.019762320443987846,
+      "attn": -0.019310861360281706,
+      "both": 0.015380337368696928
+     },
+     "noise": {
+      "gdn": -0.034691198728978634,
+      "gdn_state_only": 0.017130335327237844,
+      "attn": -0.06290961941704154,
+      "both": -0.015380337368696928
+     }
+    }
+   },
+   {
+    "id": "56d9bf70dc89441400fdb77b",
+    "triplet": "Super_Bowl_50__p38__438-450",
+    "logp_clean": -0.34844056866131723,
+    "logp_cf": -0.32176250335760415,
+    "logp": {
+     "denoise": {
+      "gdn": -0.2946838715579361,
+      "gdn_state_only": -0.3224307775963098,
+      "attn": -0.3747196369804442,
+      "both": -0.34844056866131723
+     },
+     "noise": {
+      "gdn": -0.3747196369804442,
+      "gdn_state_only": -0.3394485479220748,
+      "attn": -0.2946838715579361,
+      "both": -0.32176250335760415
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.027078631799668074,
+      "gdn_state_only": -0.0006682742387056351,
+      "attn": -0.05295713362284005,
+      "both": -0.026678065303713083
+     },
+     "noise": {
+      "gdn": -0.026279068319126964,
+      "gdn_state_only": 0.008992020739242435,
+      "attn": 0.05375669710338116,
+      "both": 0.026678065303713083
+     }
+    }
+   },
+   {
+    "id": "56d9c049dc89441400fdb791",
+    "triplet": "Super_Bowl_50__p39__0-12",
+    "logp_clean": -2.761501292232424,
+    "logp_cf": -2.6649922862416133,
+    "logp": {
+     "denoise": {
+      "gdn": -2.6774260256788693,
+      "gdn_state_only": -2.9071112301317044,
+      "attn": -2.643207589746453,
+      "both": -2.761501292232424
+     },
+     "noise": {
+      "gdn": -2.643207589746453,
+      "gdn_state_only": -2.709219593089074,
+      "attn": -2.6774260256788693,
+      "both": -2.6649922862416133
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.012433739437256008,
+      "gdn_state_only": -0.24211894389009103,
+      "attn": 0.02178469649516046,
+      "both": -0.09650900599081069
+     },
+     "noise": {
+      "gdn": 0.11829370248597115,
+      "gdn_state_only": 0.052281699143350124,
+      "attn": 0.08407526655355468,
+      "both": 0.09650900599081069
+     }
+    }
+   },
+   {
+    "id": "56bf1ae93aeaaa14008c951f",
+    "triplet": "Super_Bowl_50__p3__0-3",
+    "logp_clean": -0.7846523523330688,
+    "logp_cf": -0.706129789352417,
+    "logp": {
+     "denoise": {
+      "gdn": -0.7493169903755188,
+      "gdn_state_only": -0.7803553938865662,
+      "attn": -0.7217746376991272,
+      "both": -0.7846523523330688
+     },
+     "noise": {
+      "gdn": -0.7217746376991272,
+      "gdn_state_only": -0.7105379104614258,
+      "attn": -0.7493169903755188,
+      "both": -0.706129789352417
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.04318720102310181,
+      "gdn_state_only": -0.07422560453414917,
+      "attn": -0.015644848346710205,
+      "both": -0.07852256298065186
+     },
+     "noise": {
+      "gdn": 0.06287771463394165,
+      "gdn_state_only": 0.07411444187164307,
+      "attn": 0.03533536195755005,
+      "both": 0.07852256298065186
+     }
+    }
+   },
+   {
+    "id": "56bec5233aeaaa14008c93d2",
+    "triplet": "Super_Bowl_50__p40__303-313",
+    "logp_clean": -0.3948917166562751,
+    "logp_cf": -0.41814877808792517,
+    "logp": {
+     "denoise": {
+      "gdn": -0.4022852161433548,
+      "gdn_state_only": -0.39129644172498956,
+      "attn": -0.3911621122970246,
+      "both": -0.3948917166562751
+     },
+     "noise": {
+      "gdn": -0.3911621122970246,
+      "gdn_state_only": -0.3878708672709763,
+      "attn": -0.4022852161433548,
+      "both": -0.41814877808792517
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.015863561944570392,
+      "gdn_state_only": 0.026852336362935603,
+      "attn": 0.026986665790900588,
+      "both": 0.023257061431650072
+     },
+     "noise": {
+      "gdn": 0.0037296043592505157,
+      "gdn_state_only": 0.0070208493852987885,
+      "attn": -0.00739349948707968,
+      "both": -0.023257061431650072
+     }
+    }
+   },
+   {
+    "id": "56bec6ac3aeaaa14008c9401",
+    "triplet": "Super_Bowl_50__p43__49-58",
+    "logp_clean": -0.1929301347117871,
+    "logp_cf": -0.21189692639745772,
+    "logp": {
+     "denoise": {
+      "gdn": -0.1993570881895721,
+      "gdn_state_only": -0.20111407845979556,
+      "attn": -0.20831236522644758,
+      "both": -0.1929301347117871
+     },
+     "noise": {
+      "gdn": -0.20831236522644758,
+      "gdn_state_only": -0.20837833045516163,
+      "attn": -0.1993570881895721,
+      "both": -0.21189692639745772
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.012539838207885623,
+      "gdn_state_only": 0.010782847937662154,
+      "attn": 0.0035845611710101366,
+      "both": 0.018966791685670614
+     },
+     "noise": {
+      "gdn": -0.015382230514660478,
+      "gdn_state_only": -0.015448195743374527,
+      "attn": -0.006426953477784991,
+      "both": -0.018966791685670614
+     }
+    }
+   },
+   {
+    "id": "56d7261e0d65d214001983e4",
+    "triplet": "Super_Bowl_50__p50__144-148",
+    "logp_clean": -2.399986200267449,
+    "logp_cf": -2.3449429750908166,
+    "logp": {
+     "denoise": {
+      "gdn": -2.3883325185161084,
+      "gdn_state_only": -2.3697394700720906,
+      "attn": -2.375542286550626,
+      "both": -2.399986200267449
+     },
+     "noise": {
+      "gdn": -2.375542286550626,
+      "gdn_state_only": -2.3968676559161395,
+      "attn": -2.3883325185161084,
+      "both": -2.3449429750908166
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.04338954342529178,
+      "gdn_state_only": -0.02479649498127401,
+      "attn": -0.03059931145980954,
+      "both": -0.055043225176632404
+     },
+     "noise": {
+      "gdn": 0.024443913716822863,
+      "gdn_state_only": 0.003118544351309538,
+      "attn": 0.011653681751340628,
+      "both": 0.055043225176632404
+     }
+    }
+   },
+   {
+    "id": "56d726b60d65d214001983ee",
+    "triplet": "Super_Bowl_50__p51__167-173",
+    "logp_clean": -0.2715968889242504,
+    "logp_cf": -0.25920558543293737,
+    "logp": {
+     "denoise": {
+      "gdn": -0.24950212822295725,
+      "gdn_state_only": -0.26406087548821233,
+      "attn": -0.27159444548306055,
+      "both": -0.2715968889242504
+     },
+     "noise": {
+      "gdn": -0.27159444548306055,
+      "gdn_state_only": -0.2647157254687045,
+      "attn": -0.24950212822295725,
+      "both": -0.25920558543293737
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.009703457209980115,
+      "gdn_state_only": -0.004855290055274963,
+      "attn": -0.012388860050123185,
+      "both": -0.01239130349131301
+     },
+     "noise": {
+      "gdn": 2.443441189825535e-06,
+      "gdn_state_only": 0.006881163455545902,
+      "attn": 0.022094760701293126,
+      "both": 0.01239130349131301
+     }
+    }
+   },
+   {
+    "id": "56becaf93aeaaa14008c9484",
+    "triplet": "Super_Bowl_50__p52__92-99",
+    "logp_clean": -0.40960420947521925,
+    "logp_cf": -0.29923287546262145,
+    "logp": {
+     "denoise": {
+      "gdn": -0.41804718878120184,
+      "gdn_state_only": -0.3682219819165766,
+      "attn": -0.2765250992961228,
+      "both": -0.40960420947521925
+     },
+     "noise": {
+      "gdn": -0.2765250992961228,
+      "gdn_state_only": -0.3350157472305,
+      "attn": -0.41804718878120184,
+      "both": -0.29923287546262145
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.11881431331858039,
+      "gdn_state_only": -0.06898910645395517,
+      "attn": 0.02270777616649866,
+      "both": -0.1103713340125978
+     },
+     "noise": {
+      "gdn": 0.13307911017909646,
+      "gdn_state_only": 0.07458846224471927,
+      "attn": -0.00844297930598259,
+      "both": 0.1103713340125978
+     }
+    }
+   },
+   {
+    "id": "56d6f0770d65d2140019826a",
+    "triplet": "Super_Bowl_50__p7__113-125",
+    "logp_clean": -0.5635923027293757,
+    "logp_cf": -0.5624667878291802,
+    "logp": {
+     "denoise": {
+      "gdn": -0.5466477750451304,
+      "gdn_state_only": -0.5601676576625323,
+      "attn": -0.5662220592639642,
+      "both": -0.5635923027293757
+     },
+     "noise": {
+      "gdn": -0.5662220592639642,
+      "gdn_state_only": -0.5605234381946502,
+      "attn": -0.5466477750451304,
+      "both": -0.5624667878291802
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.015819012784049846,
+      "gdn_state_only": 0.0022991301666479558,
+      "attn": -0.0037552714347839355,
+      "both": -0.0011255149001954123
+     },
+     "noise": {
+      "gdn": -0.002629756534588523,
+      "gdn_state_only": 0.003068864534725435,
+      "attn": 0.01694452768424526,
+      "both": 0.0011255149001954123
+     }
+    }
+   },
+   {
+    "id": "56beb3083aeaaa14008c9240",
+    "triplet": "Super_Bowl_50__p9__324-328",
+    "logp_clean": -0.68242347240448,
+    "logp_cf": -0.7065313458442688,
+    "logp": {
+     "denoise": {
+      "gdn": -0.7290322184562683,
+      "gdn_state_only": -0.7173632979393005,
+      "attn": -0.6721093654632568,
+      "both": -0.68242347240448
+     },
+     "noise": {
+      "gdn": -0.6721093654632568,
+      "gdn_state_only": -0.6980706453323364,
+      "attn": -0.7290322184562683,
+      "both": -0.7065313458442688
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": -0.02250087261199951,
+      "gdn_state_only": -0.010831952095031738,
+      "attn": 0.03442198038101196,
+      "both": 0.02410787343978882
+     },
+     "noise": {
+      "gdn": 0.010314106941223145,
+      "gdn_state_only": -0.015647172927856445,
+      "attn": -0.04660874605178833,
+      "both": -0.02410787343978882
+     }
+    }
+   },
+   {
+    "id": "57286951ff5b5019007da212",
+    "triplet": "University_of_Chicago__p27__129-142",
+    "logp_clean": -0.012871594779426232,
+    "logp_cf": -0.01415674034069525,
+    "logp": {
+     "denoise": {
+      "gdn": -0.012751700483931927,
+      "gdn_state_only": -0.014913074155629147,
+      "attn": -0.015200822970655281,
+      "both": -0.012871594779426232
+     },
+     "noise": {
+      "gdn": -0.015200822970655281,
+      "gdn_state_only": -0.012878472216470982,
+      "attn": -0.012751700483931927,
+      "both": -0.01415674034069525
+     }
+    },
+    "delta": {
+     "denoise": {
+      "gdn": 0.0014050398567633238,
+      "gdn_state_only": -0.0007563338149338961,
+      "attn": -0.0010440826299600303,
+      "both": 0.0012851455612690188
+     },
+     "noise": {
+      "gdn": -0.002329228191229049,
+      "gdn_state_only": -6.877437044749968e-06,
+      "attn": 0.00011989429549430497,
+      "both": -0.0012851455612690188
+     }
+    }
+   }
+  ]
+ },
+ "singleLayer": null
+}
