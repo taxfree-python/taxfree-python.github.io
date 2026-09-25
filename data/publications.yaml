@@ -1,5 +1,35 @@
 ---
 -
+  id: "ds2026-ideation-diversity"
+  title: "On the Effects of Reasoning Effort and Prompt-Based Diversification on Scientific Ideation Diversity"
+  authors:
+    - "Yu Chinen"
+    - "Haruka Ozaki"
+  venue: "29th International Conference on Discovery Science (DS 2026)"
+  type: "poster"
+  date:
+    year: 2026
+    month: 10
+  links:
+    -
+      label: "Accepted papers"
+      url: "https://discovery-science.org/accepted-papers/"
+-
+  id: "ai4x-2026-evolving-collaborative-research-ideas"
+  title: "Evolving Collaborative Research Ideas with Multi-Agent Grounding in Lab-Specific Contexts and Literature"
+  authors:
+    - "Yu Chinen"
+    - "Haruka Ozaki"
+  venue: "AI4X – Accelerate Conference 2026"
+  type: "oral"
+  date:
+    year: 2026
+    month: 6
+  links:
+    -
+      label: "OpenReview"
+      url: "https://openreview.net/forum?id=RDTccqN78N"
+-
   id: "jsai2026-collaborative-idea-evolution"
   title: "multi-agentシステムによるラボ固有知識と文献に基づく共同研究アイディアの進化的生成"
   authors:
@@ -67,18 +97,3 @@
   date:
     year: 2025
     month: 3
--
-  id: "ai4x-2026-evolving-collaborative-research-ideas"
-  title: "Evolving Collaborative Research Ideas with Multi-Agent Grounding in Lab-Specific Contexts and Literature"
-  authors:
-    - "Yu Chinen"
-    - "Haruka Ozaki"
-  venue: "AI4X – Accelerate Conference 2026"
-  type: "oral"
-  date:
-    year: 2026
-    month: 6
-  links:
-    -
-      label: "OpenReview"
-      url: "https://openreview.net/forum?id=RDTccqN78N"
