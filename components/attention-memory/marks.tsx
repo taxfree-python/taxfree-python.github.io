@@ -39,3 +39,25 @@ export function QuestionLegend({ x, y, mobile, line = false }: { x: number; y: n
     })}
   </g>;
 }
+
+/**
+ * Deterministic beeswarm: points in x order, each at the smallest vertical offset where it
+ * overlaps no point placed so far.
+ */
+export function swarm(xs: number[], r: number): number[] {
+  const order = xs.map((x, i) => ({ x, i })).sort((a, b) => a.x - b.x || a.i - b.i);
+  const placed: { x: number; y: number }[] = [];
+  const out: number[] = [];
+  const minDist = 2 * r + 0.3;
+  for (const { x, i } of order) {
+    for (let k = 0; ; k++) {
+      const dy = (k % 2 === 1 ? 1 : -1) * Math.ceil(k / 2) * r * 0.8;
+      if (placed.every(p => Math.abs(p.x - x) >= minDist || Math.hypot(p.x - x, p.y - dy) >= minDist)) {
+        placed.push({ x, y: dy });
+        out[i] = dy;
+        break;
+      }
+    }
+  }
+  return out;
+}

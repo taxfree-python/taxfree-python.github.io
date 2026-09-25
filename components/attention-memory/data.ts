@@ -1,8 +1,11 @@
 import tripletData from '@/content/data/attention-memory-triplets.json';
 import cardData from '@/content/data/attention-memory-card.json';
 import followupData from '@/content/data/attention-memory-followup.json';
+import final31Data from '@/content/data/attention-memory-followup-final31.json';
+import patchingData from '@/content/data/attention-memory-patching.json';
 import type { FactTriplet, FactTripletCard } from './FactTriplets';
 import type { FollowupTriplet, LocalLossRow } from './Followup';
+import type { PatchingData } from './Patching';
 
 /** The 10 hand-picked triplets used by FactTripletFigure's loss/effect plots (unused by
  * any block currently wired into content/posts/2026-09-14.md; kept for that figure's type). */
@@ -12,8 +15,26 @@ export const triplets = tripletData.triplets as FactTriplet[];
  * set; do not edit by hand. Backs the `triplets` block's FactTripletExamples card. */
 export const cardTriplets = cardData.triplets as FactTripletCard[];
 
-/** Built by scripts/attention-memory/build_followup_data.py; do not edit by hand. */
-export const followup = followupData as unknown as { layers: number[]; localLoss: LocalLossRow[]; triplets: FollowupTriplet[] };
+type WithSingleLayer = FollowupTriplet & { singleLayerA: NonNullable<FollowupTriplet['singleLayerA']> };
+
+/** Built by scripts/attention-memory/build_followup_data.py (the earlier 10 triplets); do not edit
+ * by hand. No block reads it any more; kept for its data test. */
+export const followup = followupData as unknown as { layers: number[]; localLoss: LocalLossRow[]; triplets: WithSingleLayer[] };
+
+/**
+ * Built by scripts/attention-memory/build_followup_data_final31.py from the frozen 31-triplet set;
+ * do not edit by hand. Backs `local-loss`, `passage-removal` and `write-layers`. `layers`,
+ * `localLoss` and the triplets' singleLayer* fields are null until the single-layer run is in.
+ */
+export const followup31 = final31Data as unknown as {
+  singleLayerRun: boolean;
+  layers: number[] | null;
+  localLoss: LocalLossRow[] | null;
+  triplets: FollowupTriplet[];
+};
+
+/** Built by scripts/attention-memory/build_patching_data.py; do not edit by hand. */
+export const patching = patchingData as unknown as PatchingData;
 
 /** Every block content/posts/2026-09-14.md embeds, in reading order. */
 export const blockNames = [
@@ -28,4 +49,10 @@ export const blockNames = [
   'write-layers',
 ] as const;
 
-export type BlockName = typeof blockNames[number];
+/**
+ * Registered but not yet embedded: the path-patching figures. Move each name into `blockNames`
+ * (at its place in reading order) once content/posts/2026-09-14.md uses it.
+ */
+export const pendingBlockNames = ['patching-paths'] as const;
+
+export type BlockName = typeof blockNames[number] | typeof pendingBlockNames[number];
