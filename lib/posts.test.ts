@@ -17,6 +17,14 @@ describe('getPost', () => {
     expect(used.sort()).toEqual(['ABPlayer', 'EvolutionReplay', 'LayoutViewer']);
   });
 
+  it('wraps tables for scrolling and keeps their column alignment', async () => {
+    const post = await getPost('2026-09-19');
+    expect(post.contentHtml).toContain('<div class="article-table"><table>');
+    // The GPQA-Diamond/MMLU-Pro table right-aligns its numeric columns with `---:`.
+    expect(post.contentHtml).toContain('<th align="right">GPQA-Diamond</th>');
+    expect(post.contentHtml).toContain('<td align="right">96.1</td>');
+  });
+
   it('routes drafts only in development and never lists them', () => {
     const draftSlug = '2023-08-29';
 
