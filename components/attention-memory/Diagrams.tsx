@@ -1,13 +1,7 @@
 import type { CSSProperties } from 'react';
 import { Figure } from '@/components/article/Figure';
-import { palette, roleColors, roles, type Role } from './palette';
+import { palette, questionLabels, roleColors, roles } from './palette';
 import { SvgTex } from './TeX';
-
-const questionLabels: Record<Role, string> = {
-  same_fact_a: 'Q1 · same fact',
-  same_fact_b: 'Q2 · paraphrase',
-  other_fact: 'Q3 · other fact',
-};
 
 function svgStyle(mobile: boolean): CSSProperties {
   return { width: '100%', height: 'auto', display: 'block', fontFamily: 'inherit', fontSize: mobile ? 11 : 13 };
@@ -270,8 +264,8 @@ function OnlineLearning({ mobile }: { mobile: boolean }) {
  * The passage edge carries a strip of token cells with span A shaded, as in figure 6.
  */
 const independentLayout = {
-  desktop: { width: 800, rowGap: 46, state: 40, s0X: 70, spX: 400, cell: 12, gap: 3, cells: 12, aCells: [6, 7], fanX: 450, qEnd: 650 },
-  mobile: { width: 340, rowGap: 40, state: 30, s0X: 4, spX: 164, cell: 8, gap: 2, cells: 10, aCells: [5, 6], fanX: 204, qEnd: 290 },
+  desktop: { width: 800, rowGap: 46, state: 40, s0X: 70, spX: 400, cell: 12, gap: 3, cells: 12, aCells: [6, 7], fanX: 520, qEnd: 690 },
+  mobile: { width: 340, rowGap: 40, state: 30, s0X: 4, spX: 164, cell: 8, gap: 2, cells: 10, aCells: [5, 6], fanX: 232, qEnd: 292 },
 };
 
 /** A small fixed-size state: the same grid-in-a-square used for S in figure 6. */
@@ -291,7 +285,7 @@ function StateBox({ x, y, size, tex }: { x: number; y: number; size: number; tex
 
 function IndependentQuestions({ mobile }: { mobile: boolean }) {
   const l = mobile ? independentLayout.mobile : independentLayout.desktop;
-  const top = 12;
+  const top = 16;
   const rowMid = (index: number) => top + l.state / 2 + index * l.rowGap;
   const mid = rowMid(1);
   const height = rowMid(2) + l.state / 2 + 6;
@@ -313,8 +307,9 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
         return <rect key={i} x={stripX + i * step} y={stripY} width={l.cell} height={l.cell}
           fill={inA ? palette.state : 'none'} opacity={inA ? 0.6 : 1} stroke={palette.muted} strokeWidth={0.7} />;
       })}
-      <text x={stripX} y={stripY - 8} fill={palette.muted}>passage</text>
-      <SvgTex x={(aStart + aEnd) / 2} y={mid + 14} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
+      {/* The edge reads the whole passage; A is only marked inside it */}
+      <SvgTex x={(aStart + aEnd) / 2} y={stripY - 10} anchor="middle" tex="\mathcal{A}" color={palette.ink} scale={0.85} />
+      <text x={(edgeStart + l.spX) / 2} y={mid + 16} textAnchor="middle" dominantBaseline="central" fill={palette.muted}>passage</text>
       <StateBox x={l.spX} y={mid - l.state / 2} size={l.state} tex="S_P" />
       {roles.map((role, index) => {
         const y = rowMid(index);

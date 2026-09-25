@@ -6,6 +6,7 @@ import PassageText from './PassageText';
 import { Tex } from './TeX';
 import styles from './MemoryCard.module.css';
 import { roleColors as colors, roles, type Role } from './palette';
+import { QuestionMark } from './marks';
 
 type Question = { id: string; role: Role; question: string; answer: string };
 type Layer = {
@@ -58,13 +59,9 @@ function axes(width: number, height: number) {
 }
 
 function PlotLegend({ showAll = false, mobile }: { showAll?: boolean; mobile: boolean }) {
-  const entries: { label: string; color: string; dashed?: boolean; pointOnly?: boolean }[] = [
+  const entries: { label: string; color: string; role?: Role; pointOnly?: boolean }[] = [
     ...(showAll ? [{ label: 'All 30 questions', color: '#6f736d', pointOnly: true }] : []),
-    ...roles.map(role => ({
-      label: roleLabels[role],
-      color: colors[role],
-      dashed: role === 'same_fact_b',
-    })),
+    ...roles.map(role => ({ label: roleLabels[role], color: colors[role], role })),
   ];
   let cursor = 62;
   return <g aria-label="Legend">
@@ -75,7 +72,10 @@ function PlotLegend({ showAll = false, mobile }: { showAll?: boolean; mobile: bo
       return <g key={entry.label}>
         {entry.pointOnly
           ? <circle cx={x + 7} cy={legendY} r={2.2} fill={entry.color} opacity=".7" />
-          : <line x1={x} x2={x + 15} y1={legendY} y2={legendY} stroke={entry.color} strokeWidth="1.8" strokeDasharray={entry.dashed ? '4 3' : undefined} />}
+          : <g>
+            <line x1={x} x2={x + 15} y1={legendY} y2={legendY} stroke={entry.color} strokeWidth="1.8" />
+            <QuestionMark role={entry.role!} cx={x + 7.5} cy={legendY} r={3} />
+          </g>}
         <text x={x + 21} y={legendY + 4} fill={entry.color}>{entry.label}</text>
       </g>;
     })}
@@ -111,9 +111,8 @@ function LossPlot({ triplet, all, mobile }: { triplet: FactTriplet; all: FactTri
       <circle key={`${layer}-${i}`} cx={x(layer)} cy={y(value)} r={mobile ? 1.1 : 1.35} fill="#6f736d" opacity="0.22" />))}
     {roles.map(role => <g key={role}>
       <polyline fill="none" stroke={colors[role]} strokeWidth={role === 'other_fact' ? 1.6 : 1.8}
-        strokeDasharray={role === 'same_fact_b' ? '4 3' : undefined}
         points={triplet.layers.map(layer => `${x(layer.index)},${y(layer.lossBefore[role])}`).join(' ')} />
-      {triplet.layers.map(layer => <circle key={layer.index} cx={x(layer.index)} cy={y(layer.lossBefore[role])} r={2.2} fill="#0d0d0d" stroke={colors[role]} strokeWidth="1.3" />)}
+      {triplet.layers.map(layer => <QuestionMark key={layer.index} role={role} cx={x(layer.index)} cy={y(layer.lossBefore[role])} r={2.4} />)}
     </g>)}
     {[0, 5, 10, 15, 20, 25, 30].map(tick => <text key={tick} x={x(tick)} y={box.bottom + 22} textAnchor="middle" fill="#969991">{tick}</text>)}
     <text x={(box.left + box.right) / 2} y={height - 8} textAnchor="middle" fill="#969991">Layer index</text>
@@ -139,9 +138,8 @@ function EffectPlot({ triplet, selected, mobile }: { triplet: FactTriplet; selec
     <text x={box.right - 4} y={y(0) - 7} textAnchor="end" fill="#969991">No change</text>
     {roles.map(role => <g key={role}>
       <polyline fill="none" stroke={colors[role]} strokeWidth={role === 'other_fact' ? 1.6 : 1.8}
-        strokeDasharray={role === 'same_fact_b' ? '4 3' : undefined}
         points={triplet.layers.map(layer => `${x(layer.index)},${y(layer.deltaLogp[role])}`).join(' ')} />
-      <circle cx={x(selectedLayer.index)} cy={y(selectedLayer.deltaLogp[role])} r={3.4} fill="#0d0d0d" stroke={colors[role]} strokeWidth="1.6" />
+      <QuestionMark role={role} cx={x(selectedLayer.index)} cy={y(selectedLayer.deltaLogp[role])} r={3.6} />
     </g>)}
     <line x1={x(selectedLayer.index)} x2={x(selectedLayer.index)} y1={box.top} y2={box.bottom} stroke="#969991" opacity=".5" strokeDasharray="2 4" />
     {[0, 5, 10, 15, 20, 25, 30].map(tick => <text key={tick} x={x(tick)} y={box.bottom + 22} textAnchor="middle" fill="#969991">{tick}</text>)}

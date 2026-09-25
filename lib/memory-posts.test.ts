@@ -1,7 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getPost, getPosts, getPostSlugs } from './posts';
 import { createArticleBlockRegex } from './article-blocks';
-import { blockNames } from '@/components/attention-memory/data';
+import { blockNames, followup, pendingBlockNames } from '@/components/attention-memory/data';
+import followupJson from '@/content/data/attention-memory-followup.json';
 
 afterEach(() => vi.unstubAllEnvs());
 const slug = '2026-09-14';
@@ -58,5 +59,26 @@ describe('attention memory article integration', () => {
     vi.stubEnv('NODE_ENV', 'development');
     expect(getPostSlugs().some((post) => post.slug === slug)).toBe(true);
     expect(getPosts().some((post) => post.slug === slug)).toBe(false);
+  });
+});
+
+describe('attention memory follow-up data', () => {
+  it('keeps pending blocks out of the embedded list until the markdown uses them', () => {
+    expect(pendingBlockNames.filter((name) => (blockNames as readonly string[]).includes(name))).toEqual([]);
+  });
+
+  it('has every value the follow-up figures and the all-layer table read', () => {
+    expect(followupJson.sources.map((source) => source.sha256)).toSatisfy((hashes: string[]) => hashes.every((h) => /^[0-9a-f]{64}$/.test(h)));
+    expect(followup.layers).toHaveLength(24);
+    expect(followup.localLoss.map((row) => row.layer)).toEqual(followup.layers);
+    expect(followup.triplets).toHaveLength(10);
+    for (const triplet of followup.triplets) {
+      expect(triplet.singleLayerA.map((row) => row.layer)).toEqual(followup.layers);
+      for (const variant of ['A', 'control', 'passage'] as const) {
+        const { delta, D } = triplet.allLayer[variant];
+        expect(D).toBeCloseTo(delta.other_fact - (delta.same_fact_a + delta.same_fact_b) / 2, 9);
+      }
+    }
+    expect(followup.triplets.filter((triplet) => triplet.allLayer.control.fixed).map((triplet) => triplet.id)).toEqual(['highest-court']);
   });
 });
