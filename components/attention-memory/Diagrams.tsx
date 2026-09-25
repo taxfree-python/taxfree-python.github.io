@@ -14,14 +14,14 @@ function svgStyle(mobile: boolean): CSSProperties {
 }
 
 /** Thin line with an open head at (x2, y2), in the style of the matplotlib schematics. */
-function Arrow({ x1, y1, x2, y2, color = palette.muted }: { x1: number; y1: number; x2: number; y2: number; color?: string }) {
+function Arrow({ x1, y1, x2, y2, color = palette.muted, dashed = false }: { x1: number; y1: number; x2: number; y2: number; color?: string; dashed?: boolean }) {
   const angle = Math.atan2(y2 - y1, x2 - x1);
   const head = 5;
   const wing = (sign: number) =>
     `${x2 - head * Math.cos(angle + sign * 0.5)},${y2 - head * Math.sin(angle + sign * 0.5)}`;
   return (
     <g stroke={color} strokeWidth={0.9} fill="none">
-      <line x1={x1} y1={y1} x2={x2} y2={y2} />
+      <line x1={x1} y1={y1} x2={x2} y2={y2} strokeDasharray={dashed ? '3 3' : undefined} />
       <polyline points={`${wing(-1)} ${x2},${y2} ${wing(1)}`} />
     </g>
   );
@@ -80,8 +80,8 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
 }
 
 const interventionLayout = {
-  desktop: { width: 800, cell: 26, gap: 4, passageCells: 12, aCells: [6, 7], questionX: 440, questionCells: 5, rowY: 22, stateX: 318, stateY: 96, stateSize: 72, predictY: 214, predictX: [0, 110, 330, 550], predictRows: false },
-  mobile: { width: 340, cell: 16, gap: 3, passageCells: 8, aCells: [4, 5], questionX: 196, questionCells: 4, rowY: 18, stateX: 132, stateY: 74, stateSize: 52, predictY: 168, predictX: [0, 0, 0, 0], predictRows: true },
+  desktop: { width: 800, cell: 26, gap: 4, passageCells: 12, aCells: [6, 7], questionX: 440, questionCells: 5, rowY: 22, stateX: 346, stateY: 100, stateSize: 84, predictY: 230, predictX: [0, 110, 330, 550], predictRows: false },
+  mobile: { width: 340, cell: 16, gap: 3, passageCells: 8, aCells: [4, 5], questionX: 196, questionCells: 4, rowY: 18, stateX: 146, stateY: 74, stateSize: 56, predictY: 168, predictX: [0, 0, 0, 0], predictRows: true },
 };
 
 /** Down arrow for a drop in likelihood, a flat dash for little change. */
@@ -104,7 +104,8 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
   const stateRight = l.stateX + l.stateSize;
   const isA = (i: number) => l.aCells.includes(i);
   const aMidX = (cellX(0, l.aCells[0]!) + cellX(0, l.aCells[l.aCells.length - 1]!) + l.cell) / 2;
-  const target = (i: number) => l.stateX + ((i + 0.5) / l.passageCells) * l.stateSize;
+  const target = (i: number) => l.stateX + ((i + 0.5) / l.passageCells) * l.stateSize * 0.6;
+  const source = (i: number) => l.stateX + l.stateSize * (0.7 + (0.25 * (i + 0.5)) / l.questionCells);
   const cross = { x: (aMidX + target(l.aCells[0]!)) / 2 + 4, y: (rowBottom + stateTop) / 2 };
   const rowStep = 20;
   const height = l.predictRows ? l.predictY + rowStep * 3 + 4 : l.predictY + 10;
@@ -119,14 +120,14 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
           <rect x={cellX(0, i)} y={l.rowY} width={l.cell} height={l.cell} fill={isA(i) ? palette.state : 'none'} opacity={isA(i) ? 0.5 : 1}
             stroke={palette.rule} strokeWidth={0.9} />
           <Arrow x1={cellX(0, i) + l.cell / 2} y1={rowBottom} x2={target(i)} y2={stateTop}
-            color={isA(i) ? palette.state : palette.rule} />
+            color={isA(i) ? palette.rule : palette.muted} dashed={isA(i)} />
         </g>
       ))}
       <SvgTex x={aMidX} y={rowMid} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
       {Array.from({ length: l.questionCells }, (_, i) => (
         <g key={`q${i}`}>
           <rect x={cellX(l.questionX, i)} y={l.rowY} width={l.cell} height={l.cell} fill="none" stroke={palette.rule} strokeWidth={0.9} />
-          <Arrow x1={stateRight} y1={stateMid} x2={cellX(l.questionX, i) + l.cell / 2} y2={rowBottom} color={palette.rule} />
+          <Arrow x1={source(i)} y1={stateTop} x2={cellX(l.questionX, i) + l.cell / 2} y2={rowBottom} color={palette.muted} />
         </g>
       ))}
       <Arrow x1={questionEnd + 4} y1={rowMid} x2={answerX - 6} y2={rowMid} />
@@ -138,7 +139,7 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
         {grid.map(g => <line key={`h${g}`} x1={l.stateX} y1={l.stateY + g} x2={stateRight} y2={l.stateY + g} />)}
       </g>
       <rect x={l.stateX} y={l.stateY} width={l.stateSize} height={l.stateSize} fill="#0d0d0d" fillOpacity={0.6} stroke={palette.state} strokeWidth={0.9} />
-      <SvgTex x={l.stateX + l.stateSize / 2} y={stateMid} anchor="middle" tex="S" color={palette.ink} />
+      <SvgTex x={l.stateX + l.stateSize / 2} y={stateMid} anchor="middle" tex="S" color={palette.ink} scale={1.8} />
       <SvgTex x={l.stateX + l.stateSize / 2} y={l.stateY + l.stateSize + 14} anchor="middle" tex="d_k \times d_v" color={palette.muted} />
 
       <g stroke={palette.ink} strokeWidth={1.4}>

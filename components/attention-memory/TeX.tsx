@@ -9,14 +9,14 @@ const boxWidth = 160;
 const boxHeight = 28;
 
 /** KaTeX inside an SVG, anchored like an SVG text element with dominantBaseline="central". */
-export function SvgTex({ x, y, tex, anchor = 'start', color }: {
-  x: number; y: number; tex: string; anchor?: 'start' | 'middle' | 'end'; color: string;
+export function SvgTex({ x, y, tex, anchor = 'start', color, scale = 1 }: {
+  x: number; y: number; tex: string; anchor?: 'start' | 'middle' | 'end'; color: string; scale?: number;
 }) {
   const left = anchor === 'start' ? x : anchor === 'middle' ? x - boxWidth / 2 : x - boxWidth;
   const justify = anchor === 'start' ? 'flex-start' : anchor === 'middle' ? 'center' : 'flex-end';
   return (
     <foreignObject x={left} y={y - boxHeight / 2} width={boxWidth} height={boxHeight} overflow="visible">
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: justify, height: '100%', color, whiteSpace: 'nowrap' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: justify, height: '100%', color, whiteSpace: 'nowrap', fontSize: `${scale}em` }}>
         <Tex tex={tex} />
       </div>
     </foreignObject>
