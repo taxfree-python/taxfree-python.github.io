@@ -133,6 +133,8 @@ export async function getPost(slug: string): Promise<Post> {
     .process(content);
   const rawContentHtml = processedContent.toString();
   const contentHtml = sanitizeHtml(rawContentHtml, {
+    // KaTeX draws radicals as inline SVG whose viewBox attribute is case-sensitive.
+    parser: { lowerCaseAttributeNames: false },
     allowedTags: sanitizeHtml.defaults.allowedTags.concat([
       'h1',
       'h2',
@@ -166,6 +168,8 @@ export async function getPost(slug: string): Promise<Post> {
       'iframe',
       'div',
       'nav',
+      'svg',
+      'path',
     ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
@@ -180,6 +184,8 @@ export async function getPost(slug: string): Promise<Post> {
       h6: ['id'],
       img: ['src', 'alt'],
       math: ['xmlns', 'display'],
+      svg: ['xmlns', 'width', 'height', 'viewBox', 'preserveAspectRatio'],
+      path: ['d'],
       annotation: ['encoding'],
       iframe: ['src', 'width', 'height', 'style', 'title', 'aria-label'],
       div: ['style', 'data-block'],
