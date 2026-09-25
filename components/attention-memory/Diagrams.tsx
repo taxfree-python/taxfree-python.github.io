@@ -41,7 +41,9 @@ function Passage({ x, y, h, a }: { x: Span; y: number; h: number; a: Span }) {
   );
 }
 
-const tokenLabels = ['1', '2', '3', '4', '5', '6', '7', 't'];
+/** Positions 1–6, an ellipsis, then t, so the last box does not read as t = 8. */
+const tokenLabels = ['1', '2', '3', '4', '5', '6', '\\cdots', 't'];
+const isEllipsis = (p: string) => p === '\\cdots';
 
 /**
  * Figure 1, laid out as the matplotlib schematic it replaces: coordinates are that figure's
@@ -78,11 +80,13 @@ function MemoryMap({ mobile }: { mobile: boolean }) {
           const px = x - width / 2 + (i + 0.5) * dx;
           return (
             <g key={p}>
-              {[-1, 1].map(sign => (
-                <rect key={sign} x={X(px - 0.4 * dx)} y={Y(y + sign * 0.65 * height + height / 2)} width={W(0.8 * dx)} height={H(height)}
-                  fill={palette.state} opacity={0.7} />
-              ))}
-              <SvgTex x={X(px)} y={Y(y - 1.85 * height) + 6} anchor="middle" tex={p} color={palette.muted} scale={0.75} />
+              {isEllipsis(p)
+                ? [-1, 1].map(sign => <SvgTex key={sign} x={X(px)} y={Y(y + sign * 0.65 * height)} anchor="middle" tex="\cdots" color={palette.muted} />)
+                : [-1, 1].map(sign => (
+                  <rect key={sign} x={X(px - 0.4 * dx)} y={Y(y + sign * 0.65 * height + height / 2)} width={W(0.8 * dx)} height={H(height)}
+                    fill={palette.state} opacity={0.7} />
+                ))}
+              {!isEllipsis(p) && <SvgTex x={X(px)} y={Y(y - 1.85 * height) + 6} anchor="middle" tex={p} color={palette.muted} scale={0.75} />}
             </g>
           );
         })}
@@ -104,8 +108,8 @@ function MemoryMap({ mobile }: { mobile: boolean }) {
     const x = start + (i + 0.5) * step;
     return (
       <g key={p}>
-        <rect x={X(x - step * 0.42)} y={Y(0.99)} width={W(step * 0.84)} height={H(0.08)} fill="none" stroke={palette.muted} strokeWidth={0.9} />
-        <SvgTex x={X(x)} y={Y(0.95)} anchor="middle" tex={`x_{${p}}`} color={palette.ink} scale={1.05} />
+        {!isEllipsis(p) && <rect x={X(x - step * 0.42)} y={Y(0.99)} width={W(step * 0.84)} height={H(0.08)} fill="none" stroke={palette.muted} strokeWidth={0.9} />}
+        <SvgTex x={X(x)} y={Y(0.95)} anchor="middle" tex={isEllipsis(p) ? '\\cdots' : `x_{${p}}`} color={palette.ink} scale={1.05} />
       </g>
     );
   });
