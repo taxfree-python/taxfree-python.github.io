@@ -41,6 +41,239 @@ function Passage({ x, y, h, a }: { x: Span; y: number; h: number; a: Span }) {
   );
 }
 
+const tokenLabels = ['1', '2', '3', '4', '5', '6', '7', 't'];
+
+/**
+ * Figure 1, laid out as the matplotlib schematic it replaces: coordinates are that figure's
+ * axes fractions (axes at [.055, .06, .89, .81] of a 9.6 × 4.8 in or 4.5 × 6.1 in canvas).
+ */
+const memoryFrames = {
+  desktop: { width: 800, canvasH: 400, height: 336 },
+  mobile: { width: 340, canvasH: 461, height: 344 },
+};
+
+function MemoryMap({ mobile }: { mobile: boolean }) {
+  const f = mobile ? memoryFrames.mobile : memoryFrames.desktop;
+  // The dropped "SCHEMATIC" label left an empty band on top; shift everything up by it.
+  const top = mobile ? 0.085 : 0.128;
+  const X = (x: number) => f.width * (0.055 + 0.89 * x);
+  const Y = (y: number) => f.canvasH * (1 - (0.06 + 0.81 * y)) - f.canvasH * top;
+  const W = (w: number) => f.width * 0.89 * w;
+  const H = (h: number) => f.canvasH * 0.81 * h;
+  const [start, end] = mobile ? [0.14, 0.96] : [0.24, 0.76];
+  const center = (start + end) / 2;
+  const step = (end - start) / 8;
+  const line = (points: [number, number][]) => (
+    <polyline points={points.map(([x, y]) => `${X(x)},${Y(y)}`).join(' ')} fill="none" stroke={palette.muted} strokeWidth={0.9} />
+  );
+  const arrow = (x1: number, y1: number, x2: number, y2: number) => <Arrow x1={X(x1)} y1={Y(y1)} x2={X(x2)} y2={Y(y2)} />;
+  const small = mobile ? '0.8em' : '0.85em';
+  const title = mobile ? '1.1em' : '1.15em';
+
+  const cache = (x: number, y: number, width: number, height: number) => {
+    const dx = width / 8;
+    return (
+      <g>
+        {tokenLabels.map((p, i) => {
+          const px = x - width / 2 + (i + 0.5) * dx;
+          return (
+            <g key={p}>
+              {[-1, 1].map(sign => (
+                <rect key={sign} x={X(px - 0.4 * dx)} y={Y(y + sign * 0.65 * height + height / 2)} width={W(0.8 * dx)} height={H(height)}
+                  fill={palette.state} opacity={0.7} />
+              ))}
+              <SvgTex x={X(px)} y={Y(y - 1.85 * height) + 6} anchor="middle" tex={p} color={palette.muted} scale={0.75} />
+            </g>
+          );
+        })}
+        {([['K', 1], ['V', -1]] as const).map(([label, sign]) => (
+          <text key={label} x={X(x - width / 2 - 0.017)} y={Y(y + sign * 0.65 * height)} textAnchor="end" dominantBaseline="central"
+            fill={palette.muted} fontSize={small}>{label}</text>
+        ))}
+      </g>
+    );
+  };
+  const fixedSize = (x: number, y: number) => (
+    <g>
+      <SvgTex x={X(x) - 4} y={y} anchor="end" tex="d_k\times d_v" color={palette.muted} scale={0.9} />
+      <text x={X(x)} y={y} dominantBaseline="central" fill={palette.muted}>· fixed size</text>
+    </g>
+  );
+
+  const tokens = tokenLabels.map((p, i) => {
+    const x = start + (i + 0.5) * step;
+    return (
+      <g key={p}>
+        <rect x={X(x - step * 0.42)} y={Y(0.99)} width={W(step * 0.84)} height={H(0.08)} fill="none" stroke={palette.muted} strokeWidth={0.9} />
+        <SvgTex x={X(x)} y={Y(0.95)} anchor="middle" tex={`x_{${p}}`} color={palette.ink} scale={1.05} />
+      </g>
+    );
+  });
+
+  const body = mobile ? (
+    <g>
+      <text x={X(0.06)} y={Y(1.035)} dominantBaseline="central" fill={palette.muted}>Input tokens</text>
+      {tokens}
+      {line([[center, 0.91], [center, 0.86], [0.015, 0.86], [0.015, 0.265]])}
+      {[0.65, 0.265].map((y, i) => (
+        <g key={y}>
+          {arrow(0.015, y, 0.09, y)}
+          <text x={X(0.1)} y={Y(y + 0.12)} fill={palette.ink} fontSize={title}>{i === 0 ? 'Softmax attention' : 'GDN / KDA'}</text>
+          {i === 0 ? (
+            <g>
+              {cache(0.37, y, 0.48, 0.035)}
+              <text x={X(0.37)} y={Y(y - 0.11) + 5} textAnchor="middle" fill={palette.muted}>KV cache</text>
+            </g>
+          ) : (
+            <g>
+              <rect x={X(0.23)} y={Y(y + 0.055)} width={W(0.28)} height={H(0.11)} fill="none" stroke={palette.state} strokeWidth={0.9} />
+              <SvgTex x={X(0.37)} y={Y(y)} anchor="middle" tex="S_t" color={palette.ink} scale={1.6} />
+              {fixedSize(0.37 - 0.05, Y(y - 0.1) - 4)}
+            </g>
+          )}
+          {arrow(0.66, y, 0.9, y)}
+          <SvgTex x={X(0.78)} y={Y(y + 0.105) - 5} anchor="middle" tex="q_t" color={palette.muted} scale={1.1} />
+          {arrow(0.78, y + 0.082, 0.78, y + 0.007)}
+          {i === 0
+            ? <text x={X(0.78)} y={Y(y - 0.045)} textAnchor="middle" fill={palette.muted}>softmax</text>
+            : <SvgTex x={X(0.78)} y={Y(y - 0.045) - 4} anchor="middle" tex="S_t^\top q_t" color={palette.muted} />}
+          <SvgTex x={X(0.955)} y={Y(y)} anchor="middle" tex="o_t" color={palette.ink} scale={1.2} />
+        </g>
+      ))}
+    </g>
+  ) : (
+    <g>
+      <text x={X(0.04)} y={Y(0.95)} dominantBaseline="central" fill={palette.muted}>Input tokens</text>
+      {tokens}
+      {line([[center, 0.91], [center, 0.82]])}
+      {line([[0.25, 0.82], [0.75, 0.82]])}
+      {[0.25, 0.75].map((x, i) => (
+        <g key={x}>
+          {arrow(x, 0.82, x, 0.73)}
+          <text x={X(x)} y={Y(0.665)} textAnchor="middle" dominantBaseline="central" fill={palette.ink} fontSize={title}>
+            {i === 0 ? 'Softmax attention' : 'GDN / KDA'}
+          </text>
+          {i === 0 ? (
+            <g>
+              {cache(x, 0.48, 0.36, 0.042)}
+              <text x={X(x)} y={Y(0.325)} textAnchor="middle" fill={palette.muted}>KV cache</text>
+            </g>
+          ) : (
+            <g>
+              <rect x={X(x - 0.095)} y={Y(0.555)} width={W(0.19)} height={H(0.15)} fill="none" stroke={palette.state} strokeWidth={0.9} />
+              <SvgTex x={X(x)} y={Y(0.48)} anchor="middle" tex="S_t" color={palette.ink} scale={1.7} />
+              {fixedSize(x - 0.03, Y(0.325) - 4)}
+            </g>
+          )}
+          {arrow(x, 0.27, x, 0.07)}
+          <SvgTex x={X(x - 0.16)} y={Y(0.17)} anchor="middle" tex="q_t" color={palette.muted} scale={1.1} />
+          {arrow(x - 0.13, 0.17, x - 0.01, 0.17)}
+          {i === 0
+            ? <text x={X(x + 0.035)} y={Y(0.17)} dominantBaseline="central" fill={palette.muted}>softmax</text>
+            : <SvgTex x={X(x + 0.035)} y={Y(0.17)} tex="S_t^\top q_t" color={palette.muted} />}
+          <SvgTex x={X(x)} y={Y(0.01)} anchor="middle" tex="o_t" color={palette.ink} scale={1.2} />
+        </g>
+      ))}
+    </g>
+  );
+  return (
+    <svg viewBox={`0 0 ${f.width} ${f.height}`} role="img" style={svgStyle(mobile)}
+      aria-label="同じ 8 token の入力から softmax attention と GDN / KDA に分岐する。Softmax attention は token ごとの KV cache、GDN / KDA は固定サイズの状態 S を保持し、query に対する出力を計算する。">
+      {body}
+    </svg>
+  );
+}
+
+const onlineLayout = {
+  desktop: { width: 800, offset: 70, xs: [22, 200, 378, 580, 650], halfW: [22, 10, 8, 8, 10], y: 76 },
+  mobile: { width: 340, offset: 0, x: 130, ys: [16, 90, 164, 238, 280], halfH: 12 },
+};
+
+const onlineSteps = [
+  { name: 'decay', input: '\\alpha_t', out: '\\alpha_t S_{t-1}' },
+  { name: 'residual', input: 'k_t,\\ v_t', out: 'v_t-\\widetilde S_t^\\top k_t' },
+  { name: 'delta update', input: '\\beta_t,\\ k_t', out: '\\beta_t k_t e_t^\\top' },
+];
+const onlineNodes = ['S_{t-1}', '\\widetilde S_t', 'e_t', null, 'S_t'];
+
+/** Circled plus for the final sum. */
+function Sum({ x, y }: { x: number; y: number }) {
+  return (
+    <g stroke={palette.muted} strokeWidth={0.9} fill="none">
+      <circle cx={x} cy={y} r={8} />
+      <line x1={x - 4.5} y1={y} x2={x + 4.5} y2={y} />
+      <line x1={x} y1={y - 4.5} x2={x} y2={y + 4.5} />
+    </g>
+  );
+}
+
+/** Figure 2: one GDN head, one token. Each arrow is labelled below with the quantity it produces. */
+function OnlineLearning({ mobile }: { mobile: boolean }) {
+  const label = 'GDN の状態更新。前の状態から decay、residual、delta update を順につなぎ、decay 後の状態を別経路で最後の加算に渡す。';
+  if (mobile) {
+    const { x, ys, halfH, width } = onlineLayout.mobile;
+    const bypass = width - 50;
+    const height = ys[4]! + 16;
+    return (
+      <svg viewBox={`0 0 ${width} ${height}`} role="img" style={svgStyle(true)} aria-label={label}>
+        {onlineNodes.map((tex, i) => tex
+          ? <SvgTex key={i} x={x} y={ys[i]!} anchor="middle" tex={tex} color={palette.ink} scale={1.3} />
+          : <Sum key={i} x={x} y={ys[i]!} />)}
+        {ys.slice(0, -1).map((y, i) => (
+          <Arrow key={i} x1={x} y1={y + (i === 3 ? 8 : halfH)} x2={x} y2={ys[i + 1]! - (i === 2 ? 10 : halfH)} />
+        ))}
+        {onlineSteps.map((s, i) => {
+          const mid = (ys[i]! + ys[i + 1]!) / 2;
+          return (
+            <g key={s.name}>
+              <SvgTex x={x - 44} y={mid} anchor="end" tex={s.input} color={palette.muted} />
+              <Arrow x1={x - 40} y1={mid} x2={x - 3} y2={mid} />
+              <text x={x + 18} y={mid - 10} dominantBaseline="central" fill={palette.muted}>{s.name}</text>
+              <SvgTex x={x + 18} y={mid + 9} tex={s.out} color={palette.ink} />
+            </g>
+          );
+        })}
+        {/* The decayed state also goes straight to the final sum. */}
+        <g stroke={palette.muted} strokeWidth={0.9} fill="none">
+          <polyline points={`${x + 14},${ys[1]} ${bypass},${ys[1]} ${bypass},${ys[3]}`} />
+        </g>
+        <Arrow x1={bypass} y1={ys[3]!} x2={x + 9} y2={ys[3]!} />
+      </svg>
+    );
+  }
+  const { xs, halfW, y, width, offset } = onlineLayout.desktop;
+  const bypassY = y + 58;
+  const height = bypassY + 8;
+  return (
+    <svg viewBox={`0 0 ${width} ${height}`} role="img" style={svgStyle(false)} aria-label={label}>
+      <g transform={`translate(${offset} 0)`}>
+      {onlineNodes.map((tex, i) => tex
+        ? <SvgTex key={i} x={xs[i]!} y={y} anchor="middle" tex={tex} color={palette.ink} scale={1.3} />
+        : <Sum key={i} x={xs[i]!} y={y} />)}
+      {xs.slice(0, -1).map((x, i) => (
+        <Arrow key={i} x1={x + halfW[i]! + 8} y1={y} x2={xs[i + 1]! - halfW[i + 1]! - (i === 2 ? 2 : 8)} y2={y} />
+      ))}
+      {onlineSteps.map((s, i) => {
+        const mid = (xs[i]! + xs[i + 1]!) / 2;
+        return (
+          <g key={s.name}>
+            <text x={mid} y={y - 62} textAnchor="middle" dominantBaseline="central" fill={palette.muted}>{s.name}</text>
+            <SvgTex x={mid} y={y - 40} anchor="middle" tex={s.input} color={palette.muted} />
+            <Arrow x1={mid} y1={y - 30} x2={mid} y2={y - 3} />
+            <SvgTex x={mid} y={y + 22} anchor="middle" tex={s.out} color={palette.ink} />
+          </g>
+        );
+      })}
+      {/* The decayed state also goes straight to the final sum. */}
+      <g stroke={palette.muted} strokeWidth={0.9} fill="none">
+        <polyline points={`${xs[1]},${y + 16} ${xs[1]},${bypassY} ${xs[3]},${bypassY}`} />
+      </g>
+      <Arrow x1={xs[3]!} y1={bypassY} x2={xs[3]!} y2={y + 9} />
+      </g>
+    </svg>
+  );
+}
+
 const independentLayout = {
   desktop: { width: 800, offset: 110, rowGap: 44, boxH: 28, s0: [0, 44] as Span, passage: [64, 300] as Span, a: [178, 222] as Span, question: [360, 530] as Span, answer: 556 },
   mobile: { width: 340, offset: 0, rowGap: 36, boxH: 24, s0: [0, 28] as Span, passage: [40, 150] as Span, a: [88, 110] as Span, question: [184, 282] as Span, answer: 294 },
@@ -152,4 +385,12 @@ export function IndependentQuestionsFigure() {
 
 export function WriteInterventionFigure() {
   return <Figure id="write-intervention" desktop={<WriteIntervention mobile={false} />} mobile={<WriteIntervention mobile />} />;
+}
+
+export function MemoryFigure() {
+  return <Figure id="memory" desktop={<MemoryMap mobile={false} />} mobile={<MemoryMap mobile />} />;
+}
+
+export function OnlineLearningFigure() {
+  return <Figure id="online-learning" desktop={<OnlineLearning mobile={false} />} mobile={<OnlineLearning mobile />} />;
 }
