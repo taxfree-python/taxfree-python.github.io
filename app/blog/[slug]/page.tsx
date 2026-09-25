@@ -171,31 +171,37 @@ export default async function BlogPost({ params }: PageProps) {
             '&[data-figure-article] p > code, &[data-figure-article] li > code': {
               overflowWrap: 'anywhere',
             },
+            '& .article-table': {
+              overflowX: 'auto',
+            },
             '& table': {
+              width: '100%',
               borderCollapse: 'collapse',
               fontSize: '0.9375rem',
               lineHeight: 1.7,
+              my: 3,
             },
             '& th, & td': {
               textAlign: 'left',
               verticalAlign: 'top',
-              padding: '0.5em 1em',
+              px: { xs: 0.5, sm: 2 },
+              py: 1,
               overflowWrap: 'break-word',
+              '&:first-child': { pl: 0 },
+              '&:last-child': { pr: 0 },
             },
             // Respect markdown column alignment (`:---:`/`---:`), which survives as the `align` attribute
             '& th[align="center"], & td[align="center"]': { textAlign: 'center' },
             '& th[align="right"], & td[align="right"]': { textAlign: 'right' },
             '& th': {
               color: 'text.primary',
-              fontWeight: 700,
-              borderBottom: '2px solid',
+              fontWeight: 500,
+              borderBottom: '1px solid',
               borderColor: 'divider',
             },
             '& td': {
               color: 'text.secondary',
               fontVariantNumeric: 'tabular-nums',
-              borderBottom: '1px solid',
-              borderColor: 'divider',
             },
             '& ul, & ol': {
               color: 'text.secondary',
