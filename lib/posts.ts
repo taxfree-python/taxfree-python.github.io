@@ -12,6 +12,7 @@ import { remarkEmbedPdf } from './remark-embed-pdf';
 import { remarkArticleBlocks } from './article-blocks';
 import { rehypeTableWrap } from './rehype-table-wrap';
 import { rehypeCaptions } from './rehype-captions';
+import { remarkToc } from './remark-toc';
 import { assert } from '@/lib/assert';
 import { ensureObject, toOptionalBoolean, toOptionalString } from '@/lib/validation';
 import type { Post, PostMeta } from '@/types';
@@ -114,6 +115,7 @@ export async function getPost(slug: string): Promise<Post> {
   const processedContent = await remark()
     .use(remarkEmbedPdf)
     .use(remarkArticleBlocks)
+    .use(remarkToc)
     .use(remarkMath)
     .use(remarkGfm)
     // Allow raw HTML from remark plugins (e.g., remarkEmbedPdf) to pass through.
@@ -163,11 +165,19 @@ export async function getPost(slug: string): Promise<Post> {
       'munderover',
       'iframe',
       'div',
+      'nav',
     ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
       '*': ['class', 'style', 'aria-hidden', 'aria-label'],
       a: ['href', 'name', 'target', 'rel'],
+      // Anchors written by remarkToc
+      h1: ['id'],
+      h2: ['id'],
+      h3: ['id'],
+      h4: ['id'],
+      h5: ['id'],
+      h6: ['id'],
       img: ['src', 'alt'],
       math: ['xmlns', 'display'],
       annotation: ['encoding'],
