@@ -41,30 +41,31 @@ function Passage({ x, y, h, a }: { x: Span; y: number; h: number; a: Span }) {
 }
 
 const independentLayout = {
-  desktop: { width: 800, rowGap: 48, boxH: 28, s0: [0, 44] as Span, passage: [84, 500] as Span, a: [262, 306] as Span, question: [520, 690] as Span, answer: 716 },
-  mobile: { width: 340, rowGap: 40, boxH: 24, s0: [0, 28] as Span, passage: [52, 168] as Span, a: [110, 132] as Span, question: [180, 284] as Span, answer: 298 },
+  desktop: { width: 800, rowGap: 44, boxH: 28, s0: [0, 44] as Span, passage: [64, 440] as Span, a: [232, 276] as Span, question: [500, 670] as Span, answer: 696 },
+  mobile: { width: 340, rowGap: 36, boxH: 24, s0: [0, 28] as Span, passage: [40, 170] as Span, a: [104, 126] as Span, question: [196, 290] as Span, answer: 302 },
 };
 
 function IndependentQuestions({ mobile }: { mobile: boolean }) {
   const l = mobile ? independentLayout.mobile : independentLayout.desktop;
   const top = 4;
   const height = top * 2 + l.rowGap * 2 + l.boxH;
-  const s0Mid = top + l.rowGap + l.boxH / 2;
+  const sharedY = top + l.rowGap;
+  const sharedMid = sharedY + l.boxH / 2;
   return (
     <svg viewBox={`0 0 ${l.width} ${height}`} role="img" style={svgStyle(mobile)}
-      aria-label="同じ初期 state から 3 問に分かれ、それぞれ共通の passage、異なる質問、回答の順に処理される。">
-      <rect x={l.s0[0] + 0.5} y={s0Mid - l.boxH / 2} width={l.s0[1] - l.s0[0] - 1} height={l.boxH} fill="none" stroke={palette.state} strokeWidth={0.9} />
-      <text x={(l.s0[0] + l.s0[1]) / 2} y={s0Mid} dominantBaseline="central" textAnchor="middle" fill={palette.ink}>
+      aria-label="同じ初期 state から共通の passage を読み、そこから 3 つの質問に分かれて回答する。">
+      <rect x={l.s0[0] + 0.5} y={sharedY} width={l.s0[1] - l.s0[0] - 1} height={l.boxH} fill="none" stroke={palette.state} strokeWidth={0.9} />
+      <text x={(l.s0[0] + l.s0[1]) / 2} y={sharedMid} dominantBaseline="central" textAnchor="middle" fill={palette.ink}>
         <tspan fontStyle="italic">S</tspan>₀
       </text>
+      <Arrow x1={l.s0[1]} y1={sharedMid} x2={l.passage[0]} y2={sharedMid} />
+      <Passage x={l.passage} y={sharedY} h={l.boxH} a={l.a} />
       {roles.map((role, index) => {
         const y = top + index * l.rowGap;
         const mid = y + l.boxH / 2;
         return (
           <g key={role}>
-            <Arrow x1={l.s0[1]} y1={s0Mid} x2={l.passage[0]} y2={mid} />
-            <Passage x={l.passage} y={y} h={l.boxH} a={l.a} />
-            <Arrow x1={l.passage[1]} y1={mid} x2={l.question[0]} y2={mid} />
+            <Arrow x1={l.passage[1]} y1={sharedMid} x2={l.question[0]} y2={mid} />
             <rect x={l.question[0]} y={y} width={l.question[1] - l.question[0]} height={l.boxH} fill="none"
               stroke={roleColors[role]} strokeWidth={0.9} strokeDasharray={role === 'same_fact_b' ? '4 3' : undefined} />
             <text x={l.question[0] + 8} y={mid} dominantBaseline="central" fill={palette.ink}>{questionLabels[role]}</text>
