@@ -1,6 +1,6 @@
 import { Figure } from '@/components/article/Figure';
 import { palette, questionLabels, roleColors } from './palette';
-import { QuestionMark, svgStyle, swarm } from './marks';
+import { QuestionMark, signed, svgStyle, swarm } from './marks';
 
 type Direction = 'denoise' | 'noise';
 type Kind = 'gdn' | 'gdn_state_only' | 'attn' | 'both';
@@ -128,4 +128,70 @@ function PatchingPathsPlot({ data, mobile }: { data: PatchingData; mobile: boole
 
 export function PatchingPathsFigure({ data }: { data: PatchingData }) {
   return <Figure id="patching-paths" desktop={<PatchingPathsPlot data={data} mobile={false} />} mobile={<PatchingPathsPlot data={data} mobile />} />;
+}
+
+const layerTicks = [0, 5, 10, 15, 20, 25, 30];
+/** GDN layers in the state colour of the schematics, softmax layers in the page ink. */
+const layerPaths = [
+  { kind: 'gdn', label: 'GDN state', color: palette.state },
+  { kind: 'attn', label: 'softmax K/V', color: palette.ink },
+] as const;
+
+/**
+ * One layer patched at a time: median recovery over the Q1/Q2 questions per layer (dot) and
+ * its 10–90 percentile range (light bar), one panel per direction on a shared layer axis.
+ */
+function PatchingLayersPlot({ single, mobile }: { single: NonNullable<PatchingData['singleLayer']>; mobile: boolean }) {
+  const width = mobile ? 340 : 800;
+  const box = { left: mobile ? 40 : 56, right: width - (mobile ? 10 : 24) };
+  const panelHeight = mobile ? 120 : 140;
+  const panelGap = mobile ? 34 : 38;
+  const top = mobile ? 44 : 50;
+  const x = (layer: number) => box.left + (layer + 0.5) / 32 * (box.right - box.left);
+  const all = directions.flatMap(d => layerPaths.flatMap(p => single.byLayer[d][p.kind]));
+  const hi = Math.max(...all.map(s => s.p90)), lo = Math.min(0, ...all.map(s => s.p10));
+  const step = hi > 0.4 ? 0.2 : 0.1;
+  const yMax = Math.ceil(hi / step) * step, yMin = lo < -0.02 ? -Math.ceil(-lo / 0.05) * 0.05 : lo;
+  const ticks: number[] = [];
+  for (let t = Math.ceil(yMin / step - 1e-9) * step; t <= yMax + 1e-9; t += step) ticks.push(Math.round(t * 100) / 100);
+  const barWidth = mobile ? 4 : 6;
+  const panels = directions.map((direction, i) => {
+    const y0 = top + i * (panelHeight + panelGap);
+    return { direction, y0, y: (v: number) => y0 + (yMax - v) / (yMax - yMin) * panelHeight };
+  });
+  const bottom = top + 2 * panelHeight + panelGap;
+  const height = bottom + (mobile ? 42 : 46);
+  const med = (d: Direction, k: 'gdn' | 'attn') => Math.max(...single.byLayer[d][k].map(s => s.median));
+  return <svg viewBox={`0 0 ${width} ${height}`} role="img" style={svgStyle(mobile)}
+    aria-label={`1 つの layer だけで経路を入れ替えたときの、62 問の recovery の中央値と 10–90 パーセンタイル。GDN の layer の中央値は最大でも denoise ${med('denoise', 'gdn').toFixed(3)}、softmax attention の layer は最大 denoise ${med('denoise', 'attn').toFixed(2)}。`}>
+    <g aria-hidden="true">
+      {layerPaths.map((p, i) => {
+        const left = (mobile ? 8 : box.left) + i * (mobile ? 110 : 130);
+        return <g key={p.kind}>
+          <circle cx={left + 6} cy={mobile ? 12 : 14} r={3.2} fill={p.color} />
+          <text x={left + 16} y={mobile ? 12 : 14} dominantBaseline="central" fill={p.color}>{p.label}</text>
+        </g>;
+      })}
+    </g>
+    {panels.map(({ direction, y0, y }) => <g key={direction}>
+      <text x={box.left} y={y0 - 14} dominantBaseline="central" fill={palette.ink}>{direction}</text>
+      {ticks.map(t => <g key={t}>
+        <line x1={box.left} x2={box.right} y1={y(t)} y2={y(t)} stroke={t === 0 ? palette.muted : '#30342f'} strokeWidth={0.8} />
+        <text x={box.left - 8} y={y(t)} textAnchor="end" dominantBaseline="central" fill={palette.muted}>{t === 0 ? '0' : signed(t, 1)}</text>
+      </g>)}
+      {layerPaths.map(p => single.byLayer[direction][p.kind].map(s => <g key={`${p.kind}-${s.layer}`}>
+        <rect x={x(s.layer) - barWidth / 2} width={barWidth} y={y(s.p90)} height={Math.max(0.8, y(s.p10) - y(s.p90))} rx={barWidth / 2} fill={p.color} opacity={0.22} />
+        <circle cx={x(s.layer)} cy={y(s.median)} r={mobile ? 2.6 : 3.2} fill={p.color} />
+      </g>))}
+    </g>)}
+    {layerTicks.map(t => <text key={t} x={x(t)} y={bottom + 16} textAnchor="middle" dominantBaseline="central" fill={palette.muted}>{t}</text>)}
+    <text x={(box.left + box.right) / 2} y={height - 10} textAnchor="middle" dominantBaseline="central" fill={palette.muted}>Layer index</text>
+  </svg>;
+}
+
+/** Needs the single-layer run; renders nothing until that data exists. */
+export function PatchingLayersFigure({ data }: { data: PatchingData }) {
+  const single = data.singleLayer;
+  if (!single) return null;
+  return <Figure id="patching-layers" desktop={<PatchingLayersPlot single={single} mobile={false} />} mobile={<PatchingLayersPlot single={single} mobile />} />;
 }
