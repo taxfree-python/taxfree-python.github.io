@@ -23,11 +23,15 @@ type BarRowsProps = {
 
 const scaleTicks = [0, 25, 50, 75, 100];
 
-/** Horizontal accuracy bars with a chance-level tick drawn on top of each bar. */
+/**
+ * Horizontal accuracy bars. Chance level is a notch cut into the bar in the page background; a bar
+ * that stops short of chance gets a light tick past its end instead.
+ */
 export function BarRows({ rows, mobile, ariaLabel, labelInset, rightInset, labelFont }: BarRowsProps) {
   const width = mobile ? 340 : 800;
   const pitch = mobile ? 24 : 26;
   const barHeight = mobile ? 12 : 14;
+  const notchWidth = mobile ? 2 : 2.5;
   const top = mobile ? 34 : 40;
   const height = top + rows.length * pitch + 46;
   const box = axes(width, height, { left: labelInset, right: rightInset, top, bottom: 46 });
@@ -53,7 +57,9 @@ export function BarRows({ rows, mobile, ariaLabel, labelInset, rightInset, label
           <g key={row.key}>
             <text x={box.left - (mobile ? 8 : 12)} y={baseline} textAnchor="end" fill={chartColors.ink} style={{ fontFamily: labelFont }}>{row.label}</text>
             <rect x={box.left} y={barTop} width={Math.max(0, end - box.left)} height={barHeight} fill={chartColors.fill} />
-            <rect x={tick - 0.5} y={barTop - 3} width="1" height={barHeight + 6} fill={chartColors.marker} opacity="0.75" />
+            {tick < end
+              ? <rect x={tick - notchWidth / 2} y={barTop} width={notchWidth} height={barHeight} fill={chartColors.notch} />
+              : <rect x={tick - 0.5} y={barTop - 3} width="1" height={barHeight + 6} fill={chartColors.marker} opacity="0.75" />}
             <text x={valueX} y={baseline} fill={chartColors.ink}>{value}</text>
             {row.note ? <text x={width - 8} y={baseline} textAnchor="end" fill={chartColors.muted}>{row.note}</text> : null}
           </g>

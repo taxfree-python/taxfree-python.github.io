@@ -10,6 +10,8 @@ export const chartColors = {
   grid: neutral.line,
   axis: neutral.lineStrong,
   marker: neutral.text,
+  /** The chance-level notch cut into a bar: the page background, so it reads by lightness alone. */
+  notch: neutral.bg,
 } as const;
 
 export type Box = { left: number; right: number; top: number; bottom: number };
