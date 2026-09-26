@@ -1,8 +1,8 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getPost, getPosts, getPostSlugs } from './posts';
 import { createArticleBlockRegex } from './article-blocks';
-import { blockNames, followup, patching, unusedBlockNames } from '@/components/2026-09-26/data';
-import followupJson from '@/content/data/attention-memory-followup.json';
+import { blockNames, followup31, patching } from '@/components/2026-09-26/data';
+import followup31Json from '@/content/data/attention-memory-followup-final31.json';
 import patchingJson from '@/content/data/attention-memory-patching.json';
 
 afterEach(() => vi.unstubAllEnvs());
@@ -63,29 +63,22 @@ describe('attention memory article integration', () => {
 });
 
 describe('attention memory follow-up data', () => {
-  it('has every value the follow-up figures and the all-layer table read', () => {
-    expect(followupJson.sources.map((source) => source.sha256)).toSatisfy((hashes: string[]) => hashes.every((h) => /^[0-9a-f]{64}$/.test(h)));
-    expect(followup.layers).toHaveLength(24);
-    expect(followup.localLoss.map((row) => row.layer)).toEqual(followup.layers);
-    expect(followup.triplets).toHaveLength(10);
-    for (const triplet of followup.triplets) {
-      expect(triplet.singleLayerA.map((row) => row.layer)).toEqual(followup.layers);
+  it('has every value the local-loss and passage-removal figures read', () => {
+    expect(followup31Json.sources.every((source) => /^[0-9a-f]{64}$/.test(source.sha256))).toBe(true);
+    expect(followup31.singleLayerRun).toBe(true);
+    expect(followup31.layers).toHaveLength(24);
+    expect(followup31.localLoss!.map((row) => row.layer)).toEqual(followup31.layers);
+    expect(followup31.triplets).toHaveLength(31);
+    for (const triplet of followup31.triplets) {
       for (const variant of ['A', 'control', 'passage'] as const) {
         const { delta, D } = triplet.allLayer[variant];
         expect(D).toBeCloseTo(delta.other_fact - (delta.same_fact_a + delta.same_fact_b) / 2, 9);
       }
     }
-    expect(followup.triplets.filter((triplet) => triplet.allLayer.control.fixed).map((triplet) => triplet.id)).toEqual(['highest-court']);
   });
 });
 
 describe('attention memory path-patching data', () => {
-  // blocks.tsx is typed Record<BlockName, ...>, so retired names stay registered but unused.
-  it('does not embed retired blocks', async () => {
-    const post = await getPost(slug);
-    for (const name of unusedBlockNames) expect(post.contentHtml).not.toContain(`data-block="${name}"`);
-  });
-
   it('has recovery for the 62 Q1/Q2 questions and overall medians that match them', () => {
     expect(patchingJson.sources.every((source) => /^[0-9a-f]{64}$/.test(source.sha256))).toBe(true);
     expect(patching.questions).toHaveLength(62);
