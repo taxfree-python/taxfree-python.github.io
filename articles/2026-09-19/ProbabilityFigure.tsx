@@ -96,8 +96,8 @@ function PanelPlot({ panel, box, titleX, titleY, mobile }: PanelPlotProps) {
         const stackTop = y(correct + wrong);
         return (
           <g key={index}>
-            {correct > 0 ? <rect x={x} y={correctTop} width={width} height={box.bottom - correctTop} fill={chartColors.barLight} /> : null}
-            {wrong > 0 ? <rect x={x} y={stackTop} width={width} height={correctTop - stackTop} fill={chartColors.barDark} /> : null}
+            {correct > 0 ? <rect x={x} y={correctTop} width={width} height={box.bottom - correctTop} fill={chartColors.fill} /> : null}
+            {wrong > 0 ? <rect x={x} y={stackTop} width={width} height={correctTop - stackTop} fill={chartColors.fillDim} /> : null}
           </g>
         );
       })}
@@ -118,7 +118,7 @@ function ProbabilityPlot({ mobile }: ProbabilityPlotProps) {
   return (
     <svg viewBox={`0 0 ${layout.width} ${layout.height}`} role="img" aria-label={ariaLabel} style={svgStyle(mobile)}>
       <SwatchLegend
-        entries={[{ label: 'correct', fill: chartColors.barLight }, { label: 'wrong', fill: chartColors.barDark }]}
+        entries={[{ label: 'correct', fill: chartColors.fill }, { label: 'wrong', fill: chartColors.fillDim }]}
         width={layout.width}
         mobile={mobile}
       />

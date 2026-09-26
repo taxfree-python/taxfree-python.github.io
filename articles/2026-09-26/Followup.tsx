@@ -1,5 +1,5 @@
 import { Figure } from '@/components/article/Figure';
-import { palette, questionLabels, roleColors, roles, type Role } from './palette';
+import { hues, palette, questionLabels, roleColors, roles, type Role } from './palette';
 import { QuestionMark, signed, svgStyle, swarm } from './marks';
 import { SvgTex } from './TeX';
 
@@ -21,9 +21,9 @@ const layerTicks = [0, 5, 10, 15, 20, 25, 30];
  * orange so that neighbouring lines differ in hue or lightness, never in grey level alone.
  */
 const lossSeries: { key: keyof Omit<LocalLossRow, 'layer'>; tex: string; after?: string; text?: string; color: string }[] = [
-  { key: 'A', tex: '\\mathcal{A}', after: ' removed', color: '#5f8fa6' },
-  { key: 'passage', tex: '', text: 'passage removed', color: '#9cc3d0' },
-  { key: 'prefix', tex: '', text: 'prefix removed', color: '#e0b48a' },
+  { key: 'A', tex: '\\mathcal{A}', after: ' removed', color: hues.blueDeep },
+  { key: 'passage', tex: '', text: 'passage removed', color: hues.blueLight },
+  { key: 'prefix', tex: '', text: 'prefix removed', color: hues.orangeLight },
   { key: 'before', tex: 'S=0', color: palette.substitute },
 ];
 

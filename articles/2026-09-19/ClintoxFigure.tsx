@@ -18,8 +18,8 @@ function ClintoxPlot({ mobile }: ClintoxPlotProps) {
     ? axes(width, height, { left: 40, right: 10, top: 40, bottom: 48 })
     : axes(width, height, { left: 52, right: 14, top: 44, bottom: 54 });
   const groups = [
-    { key: 'nonToxic', label: `non-toxic (n = ${formatCount(clintox.nonToxic)})`, fill: chartColors.barLight, bins: clintox.pToxic.nonToxic, total: clintox.nonToxic },
-    { key: 'toxic', label: `toxic (n = ${formatCount(clintox.toxic)})`, fill: chartColors.barDark, bins: clintox.pToxic.toxic, total: clintox.toxic },
+    { key: 'nonToxic', label: `non-toxic (n = ${formatCount(clintox.nonToxic)})`, fill: chartColors.fill, bins: clintox.pToxic.nonToxic, total: clintox.nonToxic },
+    { key: 'toxic', label: `toxic (n = ${formatCount(clintox.toxic)})`, fill: chartColors.fillDim, bins: clintox.pToxic.toxic, total: clintox.toxic },
   ];
   const share = (count: number, total: number) => (total > 0 ? (count / total) * 100 : 0);
   const max = niceMax(Math.max(...groups.flatMap((group) => group.bins.map((count) => share(count, group.total)))));

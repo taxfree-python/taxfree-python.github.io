@@ -1,15 +1,17 @@
 import type { CSSProperties } from 'react';
-import { grey, neutral } from '@/lib/tokens';
+import { neutral } from '@/lib/tokens';
 
-/** Grayscale only: the article keeps every figure monochrome. */
+/** Grayscale only: the article keeps every figure monochrome. Bars come in two lightnesses. */
 export const chartColors = {
   ink: neutral.ink,
   muted: neutral.muted,
-  barLight: '#d4d4d4',
-  barDark: '#4d4d4d',
-  grid: grey[800],
+  fill: neutral.ink,
+  fillDim: '#4d4d4d',
+  grid: neutral.line,
   axis: neutral.lineStrong,
   marker: neutral.text,
+  /** The chance-level notch cut into a bar: the page background, so it reads by lightness alone. */
+  notch: neutral.bg,
 } as const;
 
 export type Box = { left: number; right: number; top: number; bottom: number };

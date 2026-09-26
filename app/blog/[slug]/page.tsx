@@ -25,13 +25,6 @@ async function loadArticleBlocks(slug: string): Promise<ArticleBlocks | null> {
   return articleModule.blocks;
 }
 
-const postContentClassName = `prose prose-lg dark:prose-invert max-w-none
-  prose-headings:text-gray-900 dark:prose-headings:text-white
-  prose-p:text-gray-700 dark:prose-p:text-gray-300
-  prose-a:text-blue-600 dark:prose-a:text-blue-400
-  prose-code:text-gray-900 dark:prose-code:text-gray-100
-  prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900`;
-
 export async function generateStaticParams() {
   return getPostSlugs();
 }
@@ -135,7 +128,7 @@ export default async function BlogPost({ params }: PageProps) {
             },
             '& code': {
               fontFamily: fontFamilyMono,
-              backgroundColor: neutral.overlayCode,
+              backgroundColor: neutral.overlaySubtle,
               borderRadius: 1,
               px: 0.5,
               py: 0.25,
@@ -275,11 +268,11 @@ export default async function BlogPost({ params }: PageProps) {
           </Box>
 
           {blocks ? (
-            <div className={postContentClassName}>
+            <div>
               <ArticleContent html={post.contentHtml} blocks={blocks} />
             </div>
           ) : (
-            <div className={postContentClassName} dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+            <div dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
           )}
         </Box>
       </Container>

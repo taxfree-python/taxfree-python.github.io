@@ -81,7 +81,7 @@ export const theme = createTheme({
           transition: 'border-color 0.2s ease, background-color 0.2s ease',
           boxShadow: 'none',
           '&:hover': {
-            borderColor: neutral.border,
+            borderColor: neutral.lineStrong,
             backgroundColor: neutral.surfaceGlassHover,
           },
         },
@@ -102,10 +102,10 @@ export const theme = createTheme({
           color: neutral.text,
         },
         outlined: {
-          borderColor: neutral.border,
+          borderColor: neutral.lineStrong,
           color: neutral.active,
           '&:hover': {
-            borderColor: neutral.borderHover,
+            borderColor: neutral.lineStrong,
             backgroundColor: neutral.overlaySubtle,
           },
         },
