@@ -11,7 +11,7 @@ build_followup_data.py (layers, localLoss, triplets[...]) for the frozen final s
 fields (title, singleLayerControl, allLayer.prefix). Every number is copied from the
 report; nothing is recomputed except consistency checks, which abort on mismatch.
 
-- final31-report-20260926/report.json  (olmo/final31_report.py over
+- final31-report-with-single-20260926/report.json  (olmo/final31_report.py over
   final31-all-layer-20260926 and final31-single-layer-20260926; controls from
   final31-controls-20260926, the fixed control rule applied to every triplet)
 """
@@ -24,7 +24,7 @@ import sys
 from pathlib import Path
 
 ROLES = ("same_fact_a", "same_fact_b", "other_fact")
-SOURCE = "final31-report-20260926/report.json"
+SOURCE = "final31-report-with-single-20260926/report.json"
 N_QUESTIONS = 93
 # Output key -> report metric name.
 RATIOS = {"before": "R_before", "prefix": "R_prefix", "passage": "R_passage", "A": "R_A"}
