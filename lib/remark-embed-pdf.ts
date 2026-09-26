@@ -1,5 +1,6 @@
 import { visit } from 'unist-util-visit';
 import type { Html, Paragraph, Root } from 'mdast';
+import { neutral } from './tokens';
 
 /**
  * Escapes HTML special characters to prevent XSS attacks
@@ -61,7 +62,7 @@ export function remarkEmbedPdf(): (tree: Root) => void {
       const htmlNode: Html = {
         type: 'html',
         value: `<div style="width: 100%; height: 600px; margin: 2rem 0;">
-  <iframe src="${escapedUrl}" width="100%" height="100%" style="border: 1px solid #ccc; border-radius: 8px;" title="${escapedTitle}" aria-label="${escapedAriaLabel}"></iframe>
+  <iframe src="${escapedUrl}" width="100%" height="100%" style="border: 1px solid ${neutral.embedBorder}; border-radius: 8px;" title="${escapedTitle}" aria-label="${escapedAriaLabel}"></iframe>
 </div>`,
       };
 

@@ -6,7 +6,12 @@ import createCache from '@emotion/cache';
 import { useServerInsertedHTML } from 'next/navigation';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
+import GlobalStyles from '@mui/material/GlobalStyles';
 import { theme } from '@/lib/theme';
+import { colorCssVariables } from '@/lib/tokens';
+
+/** lib/tokens.ts as `--color-*` custom properties, for CSS modules. Emitted with the SSR styles, so no flash. */
+const rootColorVariables = { ':root': colorCssVariables() };
 
 type ThemeRegistryProps = {
   children: ReactNode;
@@ -65,6 +70,7 @@ export function ThemeRegistry({ children }: ThemeRegistryProps) {
     <CacheProvider value={cache}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <GlobalStyles styles={rootColorVariables} />
         {children}
       </ThemeProvider>
     </CacheProvider>

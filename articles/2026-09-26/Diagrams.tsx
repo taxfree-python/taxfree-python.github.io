@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react';
 import { Figure } from '@/components/article/Figure';
 import { palette, questionLabels, roleColors, roles } from './palette';
 import { SvgTex } from './TeX';
+import { neutral } from '@/lib/tokens';
 
 function svgStyle(mobile: boolean): CSSProperties {
   return { width: '100%', height: 'auto', display: 'block', fontFamily: 'inherit', fontSize: mobile ? 11 : 13 };
@@ -277,7 +278,7 @@ function StateBox({ x, y, size, tex, scale = 1, color = palette.state }: { x: nu
         {grid.map(g => <line key={`v${g}`} x1={x + g} y1={y} x2={x + g} y2={y + size} />)}
         {grid.map(g => <line key={`h${g}`} x1={x} y1={y + g} x2={x + size} y2={y + g} />)}
       </g>
-      <rect x={x} y={y} width={size} height={size} fill="#0d0d0d" fillOpacity={0.6} stroke={color} strokeWidth={0.9} />
+      <rect x={x} y={y} width={size} height={size} fill={neutral.bg} fillOpacity={0.6} stroke={color} strokeWidth={0.9} />
       <SvgTex x={x + size / 2} y={y + size / 2} anchor="middle" tex={tex} color={palette.ink} scale={scale} />
     </g>
   );
@@ -368,12 +369,12 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
         <Arrow key={`r${i}`} x1={source(i)} y1={stateTop} x2={cellX(questionX, i) + l.cell / 2} y2={rowBottom} color={palette.muted} />
       ))}
       {Array.from({ length: l.passageCells }, (_, i) => (
-        <rect key={`p${i}`} x={cellX(passageX, i)} y={l.rowY} width={l.cell} height={l.cell} fill={isA(i) ? palette.state : '#0d0d0d'} fillOpacity={isA(i) ? 0.5 : 1}
+        <rect key={`p${i}`} x={cellX(passageX, i)} y={l.rowY} width={l.cell} height={l.cell} fill={isA(i) ? palette.state : neutral.bg} fillOpacity={isA(i) ? 0.5 : 1}
           stroke={palette.muted} strokeWidth={0.9} />
       ))}
       <SvgTex x={aMidX} y={rowMid} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
       {Array.from({ length: l.questionCells }, (_, i) => (
-        <rect key={`q${i}`} x={cellX(questionX, i)} y={l.rowY} width={l.cell} height={l.cell} fill="#0d0d0d" stroke={palette.muted} strokeWidth={0.9} />
+        <rect key={`q${i}`} x={cellX(questionX, i)} y={l.rowY} width={l.cell} height={l.cell} fill={neutral.bg} stroke={palette.muted} strokeWidth={0.9} />
       ))}
       <Arrow x1={questionEnd + 4} y1={rowMid} x2={answerX - 6} y2={rowMid} />
       <text x={answerX} y={rowMid} dominantBaseline="central" fill={palette.muted}>answer</text>
@@ -383,7 +384,7 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
         {grid.map(g => <line key={`v${g}`} x1={stateX + g} y1={l.stateY} x2={stateX + g} y2={l.stateY + l.stateSize} />)}
         {grid.map(g => <line key={`h${g}`} x1={stateX} y1={l.stateY + g} x2={stateRight} y2={l.stateY + g} />)}
       </g>
-      <rect x={stateX} y={l.stateY} width={l.stateSize} height={l.stateSize} fill="#0d0d0d" fillOpacity={0.6} stroke={palette.state} strokeWidth={0.9} />
+      <rect x={stateX} y={l.stateY} width={l.stateSize} height={l.stateSize} fill={neutral.bg} fillOpacity={0.6} stroke={palette.state} strokeWidth={0.9} />
       <SvgTex x={stateX + l.stateSize / 2} y={stateMid} anchor="middle" tex="S" color={palette.ink} scale={1.8} />
       <SvgTex x={stateX + l.stateSize / 2} y={l.stateY + l.stateSize + 14} anchor="middle" tex="d_k \times d_v" color={palette.muted} />
 

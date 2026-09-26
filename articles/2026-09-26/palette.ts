@@ -3,6 +3,8 @@ export const palette = {
   ink: '#deded8',
   muted: '#969991',
   rule: '#363934',
+  /** Grid lines of the data figures. */
+  grid: '#30342f',
   state: '#88afbc',
   /** The substituted run (P', span A') in the patching schematic: orange against the blue of P, kept apart from Q3's gold. */
   substitute: '#cf8a52',

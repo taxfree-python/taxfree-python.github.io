@@ -1,6 +1,7 @@
 'use client';
 
 import { createTheme } from '@mui/material/styles';
+import { grey, neutral } from './tokens';
 
 export const fontFamilyMono = 'var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace';
 
@@ -8,43 +9,32 @@ export const theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#e0e0e0',
-      light: '#f5f5f5',
-      dark: '#c2c2c2',
+      main: neutral.ink,
+      light: neutral.inkLight,
+      dark: neutral.inkDark,
     },
     secondary: {
-      main: '#9e9e9e',
-      light: '#bdbdbd',
-      dark: '#7a7a7a',
+      main: neutral.accent,
+      light: neutral.accentLight,
+      dark: neutral.faint,
     },
     background: {
-      default: '#0d0d0d',
-      paper: '#171717',
+      default: neutral.bg,
+      paper: neutral.surface,
     },
     text: {
-      primary: '#f2f2f2',
-      secondary: '#a8a8a8',
+      primary: neutral.text,
+      secondary: neutral.muted,
     },
-    divider: '#2a2a2a',
-    grey: {
-      50: '#f5f5f5',
-      100: '#e0e0e0',
-      200: '#cfcfcf',
-      300: '#b0b0b0',
-      400: '#9e9e9e',
-      500: '#7a7a7a',
-      600: '#545454',
-      700: '#3a3a3a',
-      800: '#262626',
-      900: '#141414',
-    },
+    divider: neutral.line,
+    grey: { ...grey },
     action: {
-      active: '#d6d6d6',
-      hover: 'rgba(255, 255, 255, 0.08)',
-      selected: 'rgba(255, 255, 255, 0.16)',
-      disabled: 'rgba(255, 255, 255, 0.3)',
-      disabledBackground: 'rgba(255, 255, 255, 0.08)',
-      focus: 'rgba(255, 255, 255, 0.2)',
+      active: neutral.active,
+      hover: neutral.overlayHover,
+      selected: neutral.overlaySelected,
+      disabled: neutral.overlayDisabled,
+      disabledBackground: neutral.overlayHover,
+      focus: neutral.overlayFocus,
     },
   },
   typography: {
@@ -86,13 +76,13 @@ export const theme = createTheme({
         root: {
           borderRadius: 8,
           border: '1px solid transparent',
-          backgroundColor: 'rgba(23, 23, 23, 0.3)',
+          backgroundColor: neutral.surfaceGlass,
           backdropFilter: 'blur(10px)',
           transition: 'border-color 0.2s ease, background-color 0.2s ease',
           boxShadow: 'none',
           '&:hover': {
-            borderColor: '#333333',
-            backgroundColor: 'rgba(23, 23, 23, 0.5)',
+            borderColor: neutral.border,
+            backgroundColor: neutral.surfaceGlassHover,
           },
         },
       },
@@ -104,19 +94,19 @@ export const theme = createTheme({
           borderRadius: 6,
         },
         colorPrimary: {
-          backgroundColor: 'rgba(229, 229, 229, 0.14)',
-          color: '#f2f2f2',
+          backgroundColor: neutral.chipPrimaryBg,
+          color: neutral.text,
         },
         colorSecondary: {
-          backgroundColor: 'rgba(158, 158, 158, 0.18)',
-          color: '#f2f2f2',
+          backgroundColor: neutral.chipSecondaryBg,
+          color: neutral.text,
         },
         outlined: {
-          borderColor: '#333333',
-          color: '#d6d6d6',
+          borderColor: neutral.border,
+          color: neutral.active,
           '&:hover': {
-            borderColor: '#4a4a4a',
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            borderColor: neutral.borderHover,
+            backgroundColor: neutral.overlaySubtle,
           },
         },
       },
@@ -129,24 +119,24 @@ export const theme = createTheme({
           transition: 'all 0.2s ease',
         },
         containedPrimary: {
-          backgroundColor: '#111111',
-          color: '#f2f2f2',
+          backgroundColor: neutral.buttonBg,
+          color: neutral.text,
           '&:hover': {
-            backgroundColor: '#1f1f1f',
+            backgroundColor: neutral.buttonBgHover,
           },
         },
         outlinedPrimary: {
-          borderColor: '#a8a8a8',
-          color: '#f2f2f2',
+          borderColor: neutral.muted,
+          color: neutral.text,
           '&:hover': {
-            borderColor: '#f2f2f2',
-            backgroundColor: 'rgba(255, 255, 255, 0.08)',
+            borderColor: neutral.text,
+            backgroundColor: neutral.overlayHover,
           },
         },
         textPrimary: {
-          color: '#f2f2f2',
+          color: neutral.text,
           '&:hover': {
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
+            backgroundColor: neutral.overlaySubtle,
           },
         },
       },

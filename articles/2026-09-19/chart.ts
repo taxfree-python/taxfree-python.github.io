@@ -1,14 +1,15 @@
 import type { CSSProperties } from 'react';
+import { grey, neutral } from '@/lib/tokens';
 
 /** Grayscale only: the article keeps every figure monochrome. */
 export const chartColors = {
-  ink: '#e0e0e0',
-  muted: '#a8a8a8',
+  ink: neutral.ink,
+  muted: neutral.muted,
   barLight: '#d4d4d4',
   barDark: '#4d4d4d',
-  grid: '#262626',
-  axis: '#3a3a3a',
-  marker: '#f2f2f2',
+  grid: grey[800],
+  axis: neutral.lineStrong,
+  marker: neutral.text,
 } as const;
 
 export type Box = { left: number; right: number; top: number; bottom: number };

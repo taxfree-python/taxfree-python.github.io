@@ -47,7 +47,7 @@ function LocalLossPlot({ rows, mobile }: { rows: LocalLossRow[]; mobile: boolean
   return <svg viewBox={`0 0 ${width} ${height}`} role="img" style={svgStyle(mobile)}
     aria-label="GDN の各層で、質問 token の局所回帰損失を 4 通りの参照 state の損失と比べた比の中央値。区間 A の書き込みを除いた state との比はほぼ 1、passage の書き込みを除くと約 0.9、prefix 全体では更に下がり、S=0 との比が最も小さい。">
     {[0, 0.25, 0.5, 0.75].map(tick => <g key={tick}>
-      <line x1={box.left} x2={box.right} y1={y(tick)} y2={y(tick)} stroke="#30342f" strokeWidth={0.8} />
+      <line x1={box.left} x2={box.right} y1={y(tick)} y2={y(tick)} stroke={palette.grid} strokeWidth={0.8} />
       <text x={box.left - 8} y={y(tick)} textAnchor="end" dominantBaseline="central" fill={palette.muted}>{tick === 0 ? '0' : tick.toFixed(2)}</text>
     </g>)}
     {/* Ratio 1: the question tokens are fit no better than by the reference state. */}
@@ -103,7 +103,7 @@ function PassageRemovalPlot({ triplets, mobile }: { triplets: FollowupTriplet[];
   return <svg viewBox={`0 0 ${width} ${height}`} role="img" style={svgStyle(mobile)}
     aria-label={`全 24 層の GDN で passage 全体の書き込みを止めたときの、${triplets.length} 組の各質問の正答列の Δlog p。中央値は Q1 ${signed(rows[0]!.med, 2)}、Q2 ${signed(rows[1]!.med, 2)}、Q3 ${signed(rows[2]!.med, 2)} nats。どの質問でも尤度が下がる。`}>
     {ticks.map(tick => <g key={tick}>
-      <line x1={x(tick)} x2={x(tick)} y1={top} y2={bottom} stroke={tick === 0 ? palette.muted : '#30342f'} strokeWidth={0.8} />
+      <line x1={x(tick)} x2={x(tick)} y1={top} y2={bottom} stroke={tick === 0 ? palette.muted : palette.grid} strokeWidth={0.8} />
       <text x={x(tick)} y={bottom + 16} textAnchor="middle" dominantBaseline="central" fill={palette.muted}>{signed(tick)}</text>
     </g>)}
     {rows.map(({ role, vs, offsets, y, up, down, med }) => <g key={role}>
