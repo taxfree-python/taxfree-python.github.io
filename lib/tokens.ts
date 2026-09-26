@@ -8,9 +8,9 @@
  * and imports a token from here only where its colour is one of these shared values. A hue moves
  * in here once shared code or a second article needs it.
  *
- * The values are the ones the site used before the tokens existed, unchanged. Near-duplicates
- * (e.g. neutral.border vs neutral.lineStrong) are deliberately kept apart: merging them changes
- * pixels and belongs in its own change, which should then only need to edit this file.
+ * Near-duplicates are merged onto one role each: a hairline is `line` or `lineStrong`, a white
+ * overlay behind text is `overlaySubtle`. Prefer an existing role over adding a grey a few steps
+ * away from it.
  */
 
 /** The dark greys of the page chrome, by role. Comments name the MUI palette slot each one fills. */
@@ -35,25 +35,19 @@ export const neutral = {
   muted: '#a8a8a8',
   /** secondary.dark, grey.500. */
   faint: '#7a7a7a',
-  /** grey.700. */
+  /** grey.700; card hover border, outlined chip border (and its hover). */
   lineStrong: '#3a3a3a',
-  /** divider. */
+  /** divider; figure grid lines and rules. */
   line: '#2a2a2a',
   /** action.active; outlined chip text. */
   active: '#d6d6d6',
-  /** Card hover border, outlined chip border. */
-  border: '#333333',
-  /** Outlined chip hover border. */
-  borderHover: '#4a4a4a',
   /** Contained primary button. */
   buttonBg: '#111111',
   buttonBgHover: '#1f1f1f',
   /** Border of an embedded PDF iframe (lib/remark-embed-pdf.ts). */
   embedBorder: '#ccc',
-  /** Chip and text-button hover; theme.action has no slot at this alpha. */
+  /** Chip and text-button hover, code backgrounds in posts; theme.action has no slot at this alpha. */
   overlaySubtle: 'rgba(255, 255, 255, 0.05)',
-  /** Inline code background in posts. */
-  overlayCode: 'rgba(255, 255, 255, 0.06)',
   /** action.hover, action.disabledBackground, outlined button hover. */
   overlayHover: 'rgba(255, 255, 255, 0.08)',
   /** action.selected. */
@@ -70,18 +64,17 @@ export const neutral = {
   chipSecondaryBg: 'rgba(158, 158, 158, 0.18)',
 } as const;
 
-/** The grey ramp MUI exposes as palette.grey. Steps that coincide with a role above point at it. */
+/**
+ * The grey ramp MUI exposes as palette.grey. Steps that coincide with a role above point at it;
+ * steps nothing reads (200, 300, 600, 900) are left to MUI's defaults.
+ */
 export const grey = {
   50: neutral.inkLight,
   100: neutral.ink,
-  200: '#cfcfcf',
-  300: '#b0b0b0',
   400: neutral.accent,
   500: neutral.faint,
-  600: '#545454',
   700: neutral.lineStrong,
   800: '#262626',
-  900: '#141414',
 } as const;
 
 export const tokens = { neutral, grey } as const;

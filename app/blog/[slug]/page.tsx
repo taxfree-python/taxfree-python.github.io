@@ -135,7 +135,7 @@ export default async function BlogPost({ params }: PageProps) {
             },
             '& code': {
               fontFamily: fontFamilyMono,
-              backgroundColor: neutral.overlayCode,
+              backgroundColor: neutral.overlaySubtle,
               borderRadius: 1,
               px: 0.5,
               py: 0.25,
