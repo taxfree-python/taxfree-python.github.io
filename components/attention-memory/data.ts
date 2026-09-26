@@ -46,13 +46,11 @@ export const blockNames = [
   'local-loss',
   'passage-removal',
   'write-intervention',
-  'write-layers',
+  'patching-paths',
+  'patching-layers',
 ] as const;
 
-/**
- * Registered but not yet embedded: the path-patching figures. Move each name into `blockNames`
- * (at its place in reading order) once content/posts/2026-09-14.md uses it.
- */
-export const pendingBlockNames = ['patching-paths', 'patching-layers'] as const;
+/** Registered but not embedded: the single-layer β=0 figure, superseded by per-layer path patching. */
+export const unusedBlockNames = ['write-layers'] as const;
 
-export type BlockName = typeof blockNames[number] | typeof pendingBlockNames[number];
+export type BlockName = typeof blockNames[number] | typeof unusedBlockNames[number];
