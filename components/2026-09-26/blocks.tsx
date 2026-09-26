@@ -16,7 +16,7 @@ export const blocks: Record<BlockName, ArticleBlocks[string]> = {
   'independent-questions': IndependentQuestionsFigure,
   'write-intervention': WriteInterventionFigure,
   // The earlier 10 triplets: the final 31 have no single-layer run.
-  'local-loss': () => <LocalLossFigure rows={followup31.localLoss ?? []} />,
+  'local-loss': () => <LocalLossFigure rows={followup31.localLoss} />,
   'passage-removal': () => <PassageRemovalFigure triplets={followup31.triplets} />,
   // Kept on the earlier 10 triplets until the article replaces it with patching-layers.
   'write-layers': () => <WriteLayersFigure triplets={followup.triplets} />,

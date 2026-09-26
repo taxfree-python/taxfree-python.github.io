@@ -20,14 +20,14 @@ export type LocalLossRow = { layer: number; before: number; prefix: number; pass
 const layerTicks = [0, 5, 10, 15, 20, 25, 30];
 
 /**
- * Reference states, from the least removed (A) to all of it (S = 0). Lightness follows that
- * order; there is no accent because no single line is the one to look at.
+ * Reference states, from the least removed (A) to all of it (S = 0). The order runs from blue to
+ * orange so that neighbouring lines differ in hue or lightness, never in grey level alone.
  */
 const lossSeries: { key: keyof Omit<LocalLossRow, 'layer'>; tex: string; after?: string; text?: string; color: string }[] = [
-  { key: 'A', tex: '\\mathcal{A}', after: ' removed', color: palette.ink },
-  { key: 'passage', tex: '', text: 'passage removed', color: '#b4b7af' },
-  { key: 'prefix', tex: '', text: 'prefix removed', color: '#8a8e86' },
-  { key: 'before', tex: 'S=0', color: '#6a6e67' },
+  { key: 'A', tex: '\\mathcal{A}', after: ' removed', color: '#5f8fa6' },
+  { key: 'passage', tex: '', text: 'passage removed', color: '#9cc3d0' },
+  { key: 'prefix', tex: '', text: 'prefix removed', color: '#e0b48a' },
+  { key: 'before', tex: 'S=0', color: palette.substitute },
 ];
 
 /** Spread labels vertically so none sit closer than `gap`, keeping them near their line ends. */
