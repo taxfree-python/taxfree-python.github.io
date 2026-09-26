@@ -1,22 +1,9 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getPost, getPosts, getPostSlugs } from './posts';
-import { createArticleBlockRegex } from './article-blocks';
 
 afterEach(() => vi.unstubAllEnvs());
 
 describe('getPost', () => {
-  it('renders the 2026-07-06 article through the generic block slot', async () => {
-    const post = await getPost('2026-07-06');
-    expect(post.contentHtml.match(/<div data-block="[^"]+"><\/div>/g)).toHaveLength(3);
-    for (const name of ['LayoutViewer', 'EvolutionReplay', 'ABPlayer']) {
-      expect(post.contentHtml).toContain(`<div data-block="${name}"></div>`);
-    }
-    expect(post.contentHtml).not.toContain('data-orchestra-widget');
-    expect(post.contentHtml).not.toContain('{{');
-    const used = [...post.contentHtml.matchAll(createArticleBlockRegex())].map((match) => match[1]!);
-    expect(used.sort()).toEqual(['ABPlayer', 'EvolutionReplay', 'LayoutViewer']);
-  });
-
   it('wraps tables for scrolling and keeps their column alignment', async () => {
     const post = await getPost('2026-09-19');
     expect(post.contentHtml).toContain('<div class="article-table"><table>');

@@ -5,7 +5,7 @@ import type { ReactElement } from 'react';
 /**
  * The interactive islands one article contributes, keyed by the name used in
  * its `{{< block name="..." >}}` shortcodes. Each article exports one of these
- * from its own `blocks` module; `app/blog/[slug]/page.tsx` maps slug -> module.
+ * from its own `blocks` module; `app/blog/[slug]/page.tsx` loads `articles/<slug>/blocks` by slug.
  */
 export type ArticleBlocks = Record<string, () => ReactElement>;
 

@@ -1,9 +1,9 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { getPost, getPosts, getPostSlugs } from './posts';
-import { createArticleBlockRegex } from './article-blocks';
-import { blockNames, followup31, patching } from '@/components/2026-09-26/data';
-import followup31Json from '@/content/data/2026-09-26/followup-final31.json';
-import patchingJson from '@/content/data/2026-09-26/patching.json';
+import { getPost, getPosts, getPostSlugs } from '@/lib/posts';
+import { createArticleBlockRegex } from '@/lib/article-blocks';
+import { blockNames, followup31, patching } from './data';
+import followup31Json from './data/followup-final31.json';
+import patchingJson from './data/patching.json';
 
 afterEach(() => vi.unstubAllEnvs());
 const slug = '2026-09-26';
