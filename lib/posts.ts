@@ -11,6 +11,8 @@ import sanitizeHtml from 'sanitize-html';
 import { remarkEmbedPdf } from './remark-embed-pdf';
 import { remarkArticleBlocks } from './article-blocks';
 import { rehypeTableWrap } from './rehype-table-wrap';
+import { rehypeCaptions } from './rehype-captions';
+import { remarkToc } from './remark-toc';
 import { assert } from '@/lib/assert';
 import { ensureObject, toOptionalBoolean, toOptionalString } from '@/lib/validation';
 import type { Post, PostMeta } from '@/types';
@@ -113,6 +115,7 @@ export async function getPost(slug: string): Promise<Post> {
   const processedContent = await remark()
     .use(remarkEmbedPdf)
     .use(remarkArticleBlocks)
+    .use(remarkToc)
     .use(remarkMath)
     .use(remarkGfm)
     // Allow raw HTML from remark plugins (e.g., remarkEmbedPdf) to pass through.
@@ -125,10 +128,13 @@ export async function getPost(slug: string): Promise<Post> {
       },
     })
     .use(rehypeTableWrap)
+    .use(rehypeCaptions)
     .use(rehypeStringify, { allowDangerousHtml: true })
     .process(content);
   const rawContentHtml = processedContent.toString();
   const contentHtml = sanitizeHtml(rawContentHtml, {
+    // KaTeX draws radicals as inline SVG whose viewBox attribute is case-sensitive.
+    parser: { lowerCaseAttributeNames: false },
     allowedTags: sanitizeHtml.defaults.allowedTags.concat([
       'h1',
       'h2',
@@ -161,13 +167,25 @@ export async function getPost(slug: string): Promise<Post> {
       'munderover',
       'iframe',
       'div',
+      'nav',
+      'svg',
+      'path',
     ]),
     allowedAttributes: {
       ...sanitizeHtml.defaults.allowedAttributes,
       '*': ['class', 'style', 'aria-hidden', 'aria-label'],
       a: ['href', 'name', 'target', 'rel'],
+      // Anchors written by remarkToc
+      h1: ['id'],
+      h2: ['id'],
+      h3: ['id'],
+      h4: ['id'],
+      h5: ['id'],
+      h6: ['id'],
       img: ['src', 'alt'],
       math: ['xmlns', 'display'],
+      svg: ['xmlns', 'width', 'height', 'viewBox', 'preserveAspectRatio'],
+      path: ['d'],
       annotation: ['encoding'],
       iframe: ['src', 'width', 'height', 'style', 'title', 'aria-label'],
       div: ['style', 'data-block'],

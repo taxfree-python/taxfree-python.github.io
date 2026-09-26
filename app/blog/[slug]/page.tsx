@@ -15,6 +15,7 @@ type PageProps = {
 const articleBlocks: Record<string, () => Promise<{ blocks: ArticleBlocks }>> = {
   '2026-07-06': () => import('@/components/2026-07-06/blocks'),
   '2026-09-19': () => import('@/components/2026-09-19/blocks'),
+  '2026-09-26': () => import('@/components/2026-09-26/blocks'),
 };
 
 const postContentClassName = `prose prose-lg dark:prose-invert max-w-none
@@ -170,6 +171,21 @@ export default async function BlogPost({ params }: PageProps) {
             },
             '&[data-figure-article] p > code, &[data-figure-article] li > code': {
               overflowWrap: 'anywhere',
+            },
+            '& .article-toc': {
+              my: 4,
+              py: 2,
+              borderTop: '1px solid',
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+              '& p': { mb: 1, color: 'text.primary' },
+              '& ol': { mb: 0, pl: 3 },
+              '& ul': { mt: 0.5, mb: 1, pl: 2.5 },
+              '& li': { mb: 0.5, fontSize: '0.9375rem' },
+              '& a': { color: 'text.secondary' },
+            },
+            '& p.article-caption': {
+              textAlign: 'center',
             },
             '& .article-table': {
               overflowX: 'auto',

@@ -1,0 +1,1085 @@
+{
+ "meta": {
+  "description": "Frozen v6 counterfactual fact triplets (judgment == \"ok\") for the attention-memory 'triplets' card.",
+  "source": {
+   "path": "/Users/yuchinen/Projects/attention-memory/olmo/results/counterfactuals-v6-20260926/counterfactuals.json",
+   "sha256": "67c7295771d9ea196f0b20e3bb9cc9dc7ff2728d99473b5b0a24a355d41a373b"
+  },
+  "selection": {
+   "path": "/Users/yuchinen/Projects/attention-memory/olmo/results/counterfactuals-v6-20260926/FROZEN_SELECTION_ok31.json",
+   "sha256": "3c26ba000afc0031a7f85edfb0932723b78e5ca01626e7c8c58e95212433a3f9"
+  },
+  "rule": "Rule 12 (added 2026-09-26, before any patching result was seen): use only triplets whose recorded reading judgment is \"ok\" (no in-passage contradiction, grammatical, entity kind consistent). Judgments were written by the CF-building agent and reviewed by the owner from table.md; triplets judged minor or broken are excluded.",
+  "order": "triplet_ids order from FROZEN_SELECTION_ok31.json, already sorted by article title then paragraph number"
+ },
+ "triplets": [
+  {
+   "id": "Amazon_rainforest__p3__105-111",
+   "title": "Amazon rainforest",
+   "paragraph": 3,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Amazon_rainforest.html",
+   "passage": "There is evidence that there have been significant changes in Amazon rainforest vegetation over the last 21,000 years through the Last Glacial Maximum (LGM) and subsequent deglaciation. Analyses of sediment deposits from Amazon basin paleolakes and from the Amazon Fan indicate that rainfall in the basin during the LGM was lower than for the present, and this was almost certainly associated with reduced moist tropical vegetation cover in the basin. There is debate, however, over how extensive this reduction was. Some scientists argue that the rainforest was reduced to small, isolated refugia separated by open forest and grassland; other scientists argue that the rainforest remained largely intact but extended less far to the north, south, and east than is seen today. This debate has proved difficult to resolve because the practical limitations of working in the rainforest mean that data sampling is biased away from the center of the Amazon basin, and both explanations are reasonably well supported by the available data.",
+   "spanA": {
+    "text": "21,000",
+    "start": 105,
+    "end": 111
+   },
+   "replacement": {
+    "text": "53,423"
+   },
+   "otherMentions": [],
+   "type": "NUM",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "There have been major changes in Amazon rainforest vegetation over the last how many years?",
+     "answer": "21,000"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Many changes in the vegetation of the amazon rainforest took place since the  Last Glacial Maximum, which was how many years ago?",
+     "answer": "21,000"
+    },
+    {
+     "role": "other_fact",
+     "question": "How are the explanations supported?",
+     "answer": "explanations are reasonably well supported"
+    }
+   ]
+  },
+  {
+   "id": "Amazon_rainforest__p6__64-85",
+   "title": "Amazon rainforest",
+   "paragraph": 6,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Amazon_rainforest.html",
+   "passage": "The first European to travel the length of the Amazon River was Francisco de Orellana in 1542. The BBC's Unnatural Histories presents evidence that Orellana, rather than exaggerating his claims as previously thought, was correct in his observations that a complex civilization was flourishing along the Amazon in the 1540s. It is believed that the civilization was later devastated by the spread of diseases from Europe, such as smallpox. Since the 1970s, numerous geoglyphs have been discovered on deforested land dating between AD 0–1250, furthering claims about Pre-Columbian civilizations. Ondemar Dias is accredited with first discovering the geoglyphs in 1977 and Alceu Ranzi with furthering their discovery after flying over Acre. The BBC's Unnatural Histories presented evidence that the Amazon rainforest, rather than being a pristine wilderness, has been shaped by man for at least 11,000 years through practices such as forest gardening and terra preta.",
+   "spanA": {
+    "text": "Francisco de Orellana",
+    "start": 64,
+    "end": 85
+   },
+   "replacement": {
+    "text": "Deke Slayton"
+   },
+   "otherMentions": [
+    {
+     "text": "Orellana",
+     "start": 148,
+     "end": 156,
+     "replacement": "Slayton"
+    }
+   ],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who was the first European to travel the Amazon River?",
+     "answer": "Francisco de Orellana"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who was the first European to travel the entire length of the Amazon River?",
+     "answer": "Francisco de Orellana"
+    },
+    {
+     "role": "other_fact",
+     "question": "For how many years was evidence shown that humans shaped the the Amazon?",
+     "answer": "11,000 years"
+    }
+   ]
+  },
+  {
+   "id": "American_Broadcasting_Company__p2__768-788",
+   "title": "American Broadcasting Company",
+   "paragraph": 2,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/American_Broadcasting_Company.html",
+   "passage": "The television network has eight owned-and-operated and over 232 affiliated television stations throughout the United States and its territories. Most Canadians have access to at least one U.S.-based ABC affiliate, either over-the-air (in areas located within proximity to the Canada–United States border) or through a cable, satellite or IPTV provider, although most ABC programs are subject to simultaneous substitution regulations imposed by the Canadian Radio-television and Telecommunications Commission that allow pay television providers to replace an American station's signal with the feed of a Canadian broadcaster to protect domestic programming rights and advertising revenue. ABC News provides news and features content for select radio stations owned by Citadel Broadcasting, which purchased the ABC Radio properties in 2007.",
+   "spanA": {
+    "text": "Citadel Broadcasting",
+    "start": 768,
+    "end": 788
+   },
+   "replacement": {
+    "text": "ONdigital"
+   },
+   "otherMentions": [],
+   "type": "ORG",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "In 2007, what company purchased ABC Radio properties?",
+     "answer": "Citadel Broadcasting"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "ABC news provides content for radio stations owned by what company?",
+     "answer": "Citadel Broadcasting"
+    },
+    {
+     "role": "other_fact",
+     "question": "How many of the network's stations are owned-and-operated?",
+     "answer": "eight"
+    }
+   ]
+  },
+  {
+   "id": "Civil_disobedience__p4__0-8",
+   "title": "Civil disobedience",
+   "paragraph": 4,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Civil_disobedience.html",
+   "passage": "LeGrande writes that \"the formulation of a single all-encompassing definition of the term is extremely difficult, if not impossible. In reviewing the voluminous literature on the subject, the student of civil disobedience rapidly finds himself surrounded by a maze of semantical problems and grammatical niceties. Like Alice in Wonderland, he often finds that specific terminology has no more (or no less) meaning than the individual orator intends it to have.\" He encourages a distinction between lawful protest demonstration, nonviolent civil disobedience, and violent civil disobedience.",
+   "spanA": {
+    "text": "LeGrande",
+    "start": 0,
+    "end": 8
+   },
+   "replacement": {
+    "text": "Wade Phillips"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who wrote that it is difficult to produce an all inclusive definition of civil disobedience?",
+     "answer": "LeGrande"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who said that writing a good description of civil disobedience is hard?",
+     "answer": "LeGrande"
+    },
+    {
+     "role": "other_fact",
+     "question": "What type of protest falls under civil disobedience without aggression?",
+     "answer": "nonviolent civil disobedience"
+    }
+   ]
+  },
+  {
+   "id": "Economic_inequality__p9__505-517",
+   "title": "Economic inequality",
+   "paragraph": 9,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Economic_inequality.html",
+   "passage": "In 2014, economists with the Standard & Poor's rating agency concluded that the widening disparity between the U.S.'s wealthiest citizens and the rest of the nation had slowed its recovery from the 2008-2009 recession and made it more prone to boom-and-bust cycles. To partially remedy the wealth gap and the resulting slow growth, S&P recommended increasing access to education. It estimated that if the average United States worker had completed just one more year of school, it would add an additional $105 billion in growth to the country's economy over five years.",
+   "spanA": {
+    "text": "$105 billion",
+    "start": 505,
+    "end": 517
+   },
+   "replacement": {
+    "text": "$680 billion"
+   },
+   "otherMentions": [],
+   "type": "NUM",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "How much potential economic growth could the United States amass if everyone went through more schooling?",
+     "answer": "$105 billion"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "If the average U.S. worker were to complete an additional year of school, what amount of growth would be generated over 5 years?",
+     "answer": "$105 billion"
+    },
+    {
+     "role": "other_fact",
+     "question": "When did economists reach a conclusion with the S&P's rating agency?",
+     "answer": "2014"
+    }
+   ]
+  },
+  {
+   "id": "Force__p26__293-308",
+   "title": "Force",
+   "paragraph": 26,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Force.html",
+   "passage": "It was only the orbit of the planet Mercury that Newton's Law of Gravitation seemed not to fully explain. Some astrophysicists predicted the existence of another planet (Vulcan) that would explain the discrepancies; however, despite some early indications, no such planet could be found. When Albert Einstein formulated his theory of general relativity (GR) he turned his attention to the problem of Mercury's orbit and found that his theory added a correction, which could account for the discrepancy. This was the first time that Newton's Theory of Gravity had been shown to be less correct than an alternative.",
+   "spanA": {
+    "text": "Albert Einstein",
+    "start": 293,
+    "end": 308
+   },
+   "replacement": {
+    "text": "Kurt Coleman"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who came up with the theory of relativity?",
+     "answer": "Albert Einstein"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who first showed that Newton's Theory of Gravity was not as correct as another theory?",
+     "answer": "Albert Einstein"
+    },
+    {
+     "role": "other_fact",
+     "question": "What planet did astrophysisist predict to explain the problems with Mercury?",
+     "answer": "Vulcan"
+    }
+   ]
+  },
+  {
+   "id": "Nikola_Tesla__p1__106-110",
+   "title": "Nikola Tesla",
+   "paragraph": 1,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Nikola_Tesla.html",
+   "passage": "Tesla gained experience in telephony and electrical engineering before emigrating to the United States in 1884 to work for Thomas Edison in New York City. He soon struck out on his own with financial backers, setting up laboratories and companies to develop a range of electrical devices. His patented AC induction motor and transformer were licensed by George Westinghouse, who also hired Tesla for a short time as a consultant. His work in the formative years of electric power development was involved in a corporate alternating current/direct current \"War of Currents\" as well as various patent battles.",
+   "spanA": {
+    "text": "1884",
+    "start": 106,
+    "end": 110
+   },
+   "replacement": {
+    "text": "1983"
+   },
+   "otherMentions": [],
+   "type": "DAT",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "In what year did Nikola Tesla emigrate to the United States?",
+     "answer": "1884"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "When did Tesla come to the US?",
+     "answer": "1884"
+    },
+    {
+     "role": "other_fact",
+     "question": "What \"war\" was Tesla involved in?",
+     "answer": "War of Currents"
+    }
+   ]
+  },
+  {
+   "id": "Nikola_Tesla__p2__188-192",
+   "title": "Nikola Tesla",
+   "paragraph": 2,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Nikola_Tesla.html",
+   "passage": "Tesla went on to pursue his ideas of wireless lighting and electricity distribution in his high-voltage, high-frequency power experiments in New York and Colorado Springs, and made early (1893) pronouncements on the possibility of wireless communication with his devices. He tried to put these ideas to practical use in an ill-fated attempt at intercontinental wireless transmission, his unfinished Wardenclyffe Tower project. In his lab he also conducted a range of experiments with mechanical oscillators/generators, electrical discharge tubes, and early X-ray imaging. He also built a wireless controlled boat, one of the first ever exhibited.",
+   "spanA": {
+    "text": "1893",
+    "start": 188,
+    "end": 192
+   },
+   "replacement": {
+    "text": "1413"
+   },
+   "otherMentions": [],
+   "type": "DAT",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "When did Tesla discover the possibility of wireless connectivity?",
+     "answer": "1893"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "When did he first mention wireless communication?",
+     "answer": "1893"
+    },
+    {
+     "role": "other_fact",
+     "question": "What remote control vehicle did he make?",
+     "answer": "boat"
+    }
+   ]
+  },
+  {
+   "id": "Nikola_Tesla__p3__399-403",
+   "title": "Nikola Tesla",
+   "paragraph": 3,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Nikola_Tesla.html",
+   "passage": "Tesla was renowned for his achievements and showmanship, eventually earning him a reputation in popular culture as an archetypal \"mad scientist\". His patents earned him a considerable amount of money, much of which was used to finance his own projects with varying degrees of success.:121,154 He lived most of his life in a series of New York hotels, through his retirement. Tesla died on 7 January 1943. His work fell into relative obscurity after his death, but in 1960 the General Conference on Weights and Measures named the SI unit of magnetic flux density the tesla in his honor. There has been a resurgence in popular interest in Tesla since the 1990s.",
+   "spanA": {
+    "text": "1943",
+    "start": 399,
+    "end": 403
+   },
+   "replacement": {
+    "text": "1543"
+   },
+   "otherMentions": [],
+   "type": "DAT",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "What year did Tesla die? ",
+     "answer": "1943"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "What year did Tesla die?",
+     "answer": "1943"
+    },
+    {
+     "role": "other_fact",
+     "question": "Other than his scientific achievements what was Tesla famous for?",
+     "answer": "showmanship"
+    }
+   ]
+  },
+  {
+   "id": "Nikola_Tesla__p20__50-74",
+   "title": "Nikola Tesla",
+   "paragraph": 20,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Nikola_Tesla.html",
+   "passage": "In 1888, the editor of Electrical World magazine, Thomas Commerford Martin (a friend and publicist), arranged for Tesla to demonstrate his alternating current system, including his induction motor, at the American Institute of Electrical Engineers (now IEEE). Engineers working for the Westinghouse Electric & Manufacturing Company reported to George Westinghouse that Tesla had a viable AC motor and related power system — something for which Westinghouse had been trying to secure patents. Westinghouse looked into getting a patent on a similar commutator-less, rotating magnetic field-based induction motor presented in a paper in March 1888 by the Italian physicist Galileo Ferraris, but decided Tesla's patent would probably control the market.",
+   "spanA": {
+    "text": "Thomas Commerford Martin",
+    "start": 50,
+    "end": 74
+   },
+   "replacement": {
+    "text": "Pierre-Auguste Renoir"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who arranged for Tesla to demonstrate his system at the IEEE?",
+     "answer": "Thomas Commerford Martin"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who edited Electrical World magazine?",
+     "answer": "Thomas Commerford Martin"
+    },
+    {
+     "role": "other_fact",
+     "question": "Why did Westinghouse not secure a patent for a similar motor?",
+     "answer": "decided Tesla's patent would probably control the market"
+    }
+   ]
+  },
+  {
+   "id": "Nikola_Tesla__p24__9-28",
+   "title": "Nikola Tesla",
+   "paragraph": 24,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Nikola_Tesla.html",
+   "passage": "In 1893, George Westinghouse won the bid to light the 1893 World's Columbian Exposition in Chicago with alternating current, beating out a General Electric bid by one million dollars. This World's Fair devoted a building to electrical exhibits. It was a key event in the history of AC power, as Westinghouse demonstrated the safety, reliability, and efficiency of a fully integrated alternating current system to the American public. At the Columbian Exposition, under a banner announcing the \"Tesla Polyphase System\", Tesla demonstrated a series of electrical effects previously performed throughout America and Europe,:76 included using high-voltage, high-frequency alternating current to light a wireless gas-discharge lamp.:79 An observer noted:",
+   "spanA": {
+    "text": "George Westinghouse",
+    "start": 9,
+    "end": 28
+   },
+   "replacement": {
+    "text": "David Graeber"
+   },
+   "otherMentions": [
+    {
+     "text": "Westinghouse",
+     "start": 295,
+     "end": 307,
+     "replacement": "Graeber"
+    }
+   ],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "In 1893, who won the bid to light the World's Columbian Exposition?",
+     "answer": "George Westinghouse"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who outbid General Electric to provide light to the World's Columbian Exposition?",
+     "answer": "George Westinghouse"
+    },
+    {
+     "role": "other_fact",
+     "question": "What did Tesla call his electrical effects in 1893?",
+     "answer": "Tesla Polyphase System"
+    }
+   ]
+  },
+  {
+   "id": "Nikola_Tesla__p27__31-33",
+   "title": "Nikola Tesla",
+   "paragraph": 27,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Nikola_Tesla.html",
+   "passage": "On 30 July 1891, at the age of 35, Tesla became a naturalized citizen of the United States, and established his South Fifth Avenue laboratory, and later another at 46 E. Houston Street, in New York. He lit electric lamps wirelessly at both locations, demonstrating the potential of wireless power transmission. In the same year, he patented the Tesla coil.",
+   "spanA": {
+    "text": "35",
+    "start": 31,
+    "end": 33
+   },
+   "replacement": {
+    "text": "17"
+   },
+   "otherMentions": [],
+   "type": "NUM",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "How old was tesla when he became a US citizen?",
+     "answer": "35"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "How old was Tesla when he became a citizen of the US?",
+     "answer": "35"
+    },
+    {
+     "role": "other_fact",
+     "question": "what did he patent in 1891? ",
+     "answer": "Tesla coil"
+    }
+   ]
+  },
+  {
+   "id": "Rhine__p2__113-117",
+   "title": "Rhine",
+   "paragraph": 2,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Rhine.html",
+   "passage": "The length of the Rhine is conventionally measured in \"Rhine-kilometers\" (Rheinkilometer), a scale introduced in 1939 which runs from the Old Rhine Bridge at Constance (0 km) to Hoek van Holland (1036.20 km). The river length is significantly shortened from the river's natural course due to number of canalisation projects completed in the 19th and 20th century.[note 7] The \"total length of the Rhine\", to the inclusion of Lake Constance and the Alpine Rhine is more difficult to measure objectively; it was cited as 1,232 kilometres (766 miles) by the Dutch Rijkswaterstaat in 2010.[note 1]",
+   "spanA": {
+    "text": "1939",
+    "start": 113,
+    "end": 117
+   },
+   "replacement": {
+    "text": "1963"
+   },
+   "otherMentions": [],
+   "type": "DAT",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "When was the scale to measure the Rhine introduced? ",
+     "answer": "1939"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "When was the measurement of the Rhine introduced? ",
+     "answer": "1939"
+    },
+    {
+     "role": "other_fact",
+     "question": "What has shortened the Rhine river? ",
+     "answer": "canalisation projects"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p1__77-87",
+   "title": "Super Bowl 50",
+   "paragraph": 1,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "The Panthers finished the regular season with a 15–1 record, and quarterback Cam Newton was named the NFL Most Valuable Player (MVP). They defeated the Arizona Cardinals 49–15 in the NFC Championship Game and advanced to their second Super Bowl appearance since the franchise was founded in 1995. The Broncos finished the regular season with a 12–4 record, and denied the New England Patriots a chance to defend their title from Super Bowl XLIX by defeating them 20–18 in the AFC Championship Game. They joined the Patriots, Dallas Cowboys, and Pittsburgh Steelers as one of four teams that have made eight appearances in the Super Bowl.",
+   "spanA": {
+    "text": "Cam Newton",
+    "start": 77,
+    "end": 87
+   },
+   "replacement": {
+    "text": "Costiff"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Which Carolina Panthers player was named Most Valuable Player?",
+     "answer": "Cam Newton"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who was this season's NFL MVP?",
+     "answer": "Cam Newton"
+    },
+    {
+     "role": "other_fact",
+     "question": "How many teams have been in the Super Bowl eight times?",
+     "answer": "four"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p2__248-258",
+   "title": "Super Bowl 50",
+   "paragraph": 2,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "The Broncos took an early lead in Super Bowl 50 and never trailed. Newton was limited by Denver's defense, which sacked him seven times and forced him into three turnovers, including a fumble which they recovered for a touchdown. Denver linebacker Von Miller was named Super Bowl MVP, recording five solo tackles, 2½ sacks, and two forced fumbles.",
+   "spanA": {
+    "text": "Von Miller",
+    "start": 248,
+    "end": 258
+   },
+   "replacement": {
+    "text": "Percy Shelley"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who won the MVP for the Super Bowl?",
+     "answer": "Von Miller"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who was the Most Valuable Player of Super Bowl 50?",
+     "answer": "Von Miller"
+    },
+    {
+     "role": "other_fact",
+     "question": "Which team held the scoring lead throughout the entire game?",
+     "answer": "Broncos"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p3__0-3",
+   "title": "Super Bowl 50",
+   "paragraph": 3,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "CBS broadcast Super Bowl 50 in the U.S., and charged an average of $5 million for a 30-second commercial during the game. The Super Bowl 50 halftime show was headlined by the British rock group Coldplay with special guest performers Beyoncé and Bruno Mars, who headlined the Super Bowl XLVII and Super Bowl XLVIII halftime shows, respectively. It was the third-most watched U.S. broadcast ever.",
+   "spanA": {
+    "text": "CBS",
+    "start": 0,
+    "end": 3
+   },
+   "replacement": {
+    "text": "WB"
+   },
+   "otherMentions": [],
+   "type": "ORG",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Which network broadcasted Super Bowl 50 in the U.S.?",
+     "answer": "CBS"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who was the broadcaster for Super Bowl 50 in the United States?",
+     "answer": "CBS"
+    },
+    {
+     "role": "other_fact",
+     "question": "What ranking does the Super Bowl 50 halftime show have on the list of most watched TV broadcasts?",
+     "answer": "third"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p7__113-125",
+   "title": "Super Bowl 50",
+   "paragraph": 7,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "On May 21, 2013, NFL owners at their spring meetings in Boston voted and awarded the game to Levi's Stadium. The $1.2 billion stadium opened in 2014. It is the first Super Bowl held in the San Francisco Bay Area since Super Bowl XIX in 1985, and the first in California since Super Bowl XXXVII took place in San Diego in 2003.",
+   "spanA": {
+    "text": "$1.2 billion",
+    "start": 113,
+    "end": 125
+   },
+   "replacement": {
+    "text": "$2.2 billion"
+   },
+   "otherMentions": [],
+   "type": "NUM",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "How much did it cost to build Levi's Stadium?",
+     "answer": "$1.2 billion"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "How much did it cost to build Levi's Stadium?",
+     "answer": "$1.2 billion"
+    },
+    {
+     "role": "other_fact",
+     "question": "When was the last Super Bowl in California?",
+     "answer": "2003"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p9__324-328",
+   "title": "Super Bowl 50",
+   "paragraph": 9,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "Despite waiving longtime running back DeAngelo Williams and losing top wide receiver Kelvin Benjamin to a torn ACL in the preseason, the Carolina Panthers had their best regular season in franchise history, becoming the seventh team to win at least 15 regular season games since the league expanded to a 16-game schedule in 1978. Carolina started the season 14–0, not only setting franchise records for the best start and the longest single-season winning streak, but also posting the best start to a season by an NFC team in NFL history, breaking the 13–0 record previously shared with the 2009 New Orleans Saints and the 2011 Green Bay Packers. With their NFC-best 15–1 regular season record, the Panthers clinched home-field advantage throughout the NFC playoffs for the first time in franchise history. Ten players were selected to the Pro Bowl (the most in franchise history) along with eight All-Pro selections.",
+   "spanA": {
+    "text": "1978",
+    "start": 324,
+    "end": 328
+   },
+   "replacement": {
+    "text": "1849"
+   },
+   "otherMentions": [],
+   "type": "DAT",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "In what year did the NFL switch to a 16-game regular season?",
+     "answer": "1978"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "What year did the league begin having schedules with 16 games in them?",
+     "answer": "1978"
+    },
+    {
+     "role": "other_fact",
+     "question": "How many Panthers were designated All-Pro?",
+     "answer": "eight"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p10__197-202",
+   "title": "Super Bowl 50",
+   "paragraph": 10,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "The Panthers offense, which led the NFL in scoring (500 points), was loaded with talent, boasting six Pro Bowl selections. Pro Bowl quarterback Cam Newton had one of his best seasons, throwing for 3,837 yards and rushing for 636, while recording a career-high and league-leading 45 total touchdowns (35 passing, 10 rushing), a career-low 10 interceptions, and a career-best quarterback rating of 99.4. Newton's leading receivers were tight end Greg Olsen, who caught a career-high 77 passes for 1,104 yards and seven touchdowns, and wide receiver Ted Ginn, Jr., who caught 44 passes for 739 yards and 10 touchdowns; Ginn also rushed for 60 yards and returned 27 punts for 277 yards. Other key receivers included veteran Jerricho Cotchery (39 receptions for 485 yards), rookie Devin Funchess (31 receptions for 473 yards and five touchdowns), and second-year receiver Corey Brown (31 receptions for 447 yards). The Panthers backfield featured Pro Bowl running back Jonathan Stewart, who led the team with 989 rushing yards and six touchdowns in 13 games, along with Pro Bowl fullback Mike Tolbert, who rushed for 256 yards and caught 18 passes for another 154 yards. Carolina's offensive line also featured two Pro Bowl selections: center Ryan Kalil and guard Trai Turner.",
+   "spanA": {
+    "text": "3,837",
+    "start": 197,
+    "end": 202
+   },
+   "replacement": {
+    "text": "7,200"
+   },
+   "otherMentions": [],
+   "type": "NUM",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "How many yards did Newton throw for in 2015?",
+     "answer": "3,837"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "how many yards did Newton get for passes in the 2015 season?",
+     "answer": "3,837"
+    },
+    {
+     "role": "other_fact",
+     "question": "Which Panthers RB scored 6 TDs in the 13 games leading up to Super Bowl 50?",
+     "answer": "Jonathan Stewart"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p11__124-126",
+   "title": "Super Bowl 50",
+   "paragraph": 11,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "The Panthers defense gave up just 308 points, ranking sixth in the league, while also leading the NFL in interceptions with 24 and boasting four Pro Bowl selections. Pro Bowl defensive tackle Kawann Short led the team in sacks with 11, while also forcing three fumbles and recovering two. Fellow lineman Mario Addison added 6½ sacks. The Panthers line also featured veteran defensive end Jared Allen, a 5-time pro bowler who was the NFL's active career sack leader with 136, along with defensive end Kony Ealy, who had 5 sacks in just 9 starts. Behind them, two of the Panthers three starting linebackers were also selected to play in the Pro Bowl: Thomas Davis and Luke Kuechly. Davis compiled 5½ sacks, four forced fumbles, and four interceptions, while Kuechly led the team in tackles (118) forced two fumbles, and intercepted four passes of his own. Carolina's secondary featured Pro Bowl safety Kurt Coleman, who led the team with a career high seven interceptions, while also racking up 88 tackles and Pro Bowl cornerback Josh Norman, who developed into a shutdown corner during the season and had four interceptions, two of which were returned for touchdowns.",
+   "spanA": {
+    "text": "24",
+    "start": 124,
+    "end": 126
+   },
+   "replacement": {
+    "text": "73"
+   },
+   "otherMentions": [],
+   "type": "NUM",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "How many interceptions are the Panthers defense credited with in 2015?",
+     "answer": "24"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "How many 2015 season interceptions did the Panthers' defense get?",
+     "answer": "24"
+    },
+    {
+     "role": "other_fact",
+     "question": "Which player had the most interceptions for the season?",
+     "answer": "Kurt Coleman"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p13__44-48",
+   "title": "Super Bowl 50",
+   "paragraph": 13,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "Manning finished the year with a career-low 67.9 passer rating, throwing for 2,249 yards and nine touchdowns, with 17 interceptions. In contrast, Osweiler threw for 1,967 yards, 10 touchdowns and six interceptions for a rating of 86.4. Veteran receiver Demaryius Thomas led the team with 105 receptions for 1,304 yards and six touchdowns, while Emmanuel Sanders caught 76 passes for 1,135 yards and six scores, while adding another 106 yards returning punts. Tight end Owen Daniels was also a big element of the passing game with 46 receptions for 517 yards. Running back C. J. Anderson was the team's leading rusher 863 yards and seven touchdowns, while also catching 25 passes for 183 yards. Running back Ronnie Hillman also made a big impact with 720 yards, five touchdowns, 24 receptions, and a 4.7 yards per carry average. Overall, the offense ranked 19th in scoring with 355 points and did not have any Pro Bowl selections.",
+   "spanA": {
+    "text": "67.9",
+    "start": 44,
+    "end": 48
+   },
+   "replacement": {
+    "text": "37.8"
+   },
+   "otherMentions": [],
+   "type": "NUM",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "What was Peyton Manning's passer rating for the season?",
+     "answer": "67.9"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "What was the passer rating for Peyton Manning that he finished out with for the season? ",
+     "answer": "67.9"
+    },
+    {
+     "role": "other_fact",
+     "question": "What was Ronnie Hillman's average yards per carry in 2015?",
+     "answer": "4.7"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p19__149-153",
+   "title": "Super Bowl 50",
+   "paragraph": 19,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "This was the first Super Bowl to feature a quarterback on both teams who was the #1 pick in their draft classes. Manning was the #1 selection of the 1998 NFL draft, while Newton was picked first in 2011. The matchup also pits the top two picks of the 2011 draft against each other: Newton for Carolina and Von Miller for Denver. Manning and Newton also set the record for the largest age difference between opposing Super Bowl quarterbacks at 13 years and 48 days (Manning was 39, Newton was 26).",
+   "spanA": {
+    "text": "1998",
+    "start": 149,
+    "end": 153
+   },
+   "replacement": {
+    "text": "1696"
+   },
+   "otherMentions": [],
+   "type": "DAT",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "When was Manning picked #1 in the NFL Draft?",
+     "answer": "1998"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Manning was the number one pick in which draft?",
+     "answer": "1998"
+    },
+    {
+     "role": "other_fact",
+     "question": "How old was Newton during Super Bowl 50?",
+     "answer": "26"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p20__99-104",
+   "title": "Super Bowl 50",
+   "paragraph": 20,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "With Rivera having been a linebacker with the Chicago Bears in Super Bowl XX, and Kubiak replacing Elway at the end of the Broncos' defeats in Super Bowls XXI and XXIV, this will be the first Super Bowl in which both head coaches played in the game themselves.",
+   "spanA": {
+    "text": "Elway",
+    "start": 99,
+    "end": 104
+   },
+   "replacement": {
+    "text": "Walter Reed"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who was replaced by Kubiak in Super Bowl XXIV?",
+     "answer": "Elway"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who did Kubiak take the place of after Super Bowl XXIV?",
+     "answer": "Elway"
+    },
+    {
+     "role": "other_fact",
+     "question": "Who was the Panthers head coach for the 2015 season?",
+     "answer": "Rivera"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p38__438-450",
+   "title": "Super Bowl 50",
+   "paragraph": 38,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "20th Century Fox, Lionsgate, Paramount Pictures, Universal Studios and Walt Disney Studios paid for movie trailers to be aired during the Super Bowl. Fox paid for Deadpool, X-Men: Apocalypse, Independence Day: Resurgence and Eddie the Eagle, Lionsgate paid for Gods of Egypt, Paramount paid for Teenage Mutant Ninja Turtles: Out of the Shadows and 10 Cloverfield Lane, Universal paid for The Secret Life of Pets and the debut trailer for Jason Bourne and Disney paid for Captain America: Civil War, The Jungle Book and Alice Through the Looking Glass.[citation needed]",
+   "spanA": {
+    "text": "Jason Bourne",
+    "start": 438,
+    "end": 450
+   },
+   "replacement": {
+    "text": "Chilaun"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "What Universal trailer debuted during the Super Bowl?",
+     "answer": "Jason Bourne"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Universal Paid for The Secret Life of Pets and which other film trailer?",
+     "answer": "Jason Bourne"
+    },
+    {
+     "role": "other_fact",
+     "question": "What famous July Fourth holiday movie did Fox pay to advertise a sequel of during the Super Bowl?",
+     "answer": "Independence Day"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p39__0-12",
+   "title": "Super Bowl 50",
+   "paragraph": 39,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "Westwood One will carry the game throughout North America, with Kevin Harlan as play-by-play announcer, Boomer Esiason and Dan Fouts as color analysts, and James Lofton and Mark Malone as sideline reporters. Jim Gray will anchor the pre-game and halftime coverage.",
+   "spanA": {
+    "text": "Westwood One",
+    "start": 0,
+    "end": 12
+   },
+   "replacement": {
+    "text": "Sky UK Limited"
+   },
+   "otherMentions": [],
+   "type": "ORG",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "What radio network carried the Super Bowl?",
+     "answer": "Westwood One"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who will carry the game throughout all of North America?",
+     "answer": "Westwood One"
+    },
+    {
+     "role": "other_fact",
+     "question": "What did Jim Gray cover?",
+     "answer": "pre-game and halftime coverage."
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p40__303-313",
+   "title": "Super Bowl 50",
+   "paragraph": 40,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "The flagship stations of each station in the markets of each team will carry their local play-by-play calls. In Denver, KOA (850 AM) and KRFX (103.5 FM) will carry the game, with Dave Logan on play-by-play and Ed McCaffrey on color commentary. In North Carolina, WBT (1110 AM) will carry the game, with Mick Mixon on play-by-play and Eugene Robinson and Jim Szoke on color commentary. WBT will also simulcast the game on its sister station WBT-FM (99.3 FM), which is based in Chester, South Carolina. As KOA and WBT are both clear-channel stations, the local broadcasts will be audible over much of the western United States after sunset (for Denver) and the eastern United States throughout the game (for Carolina). In accordance with contractual rules, the rest of the stations in the Broncos and Panthers radio networks will either carry the Westwood One feed or not carry the game at all.",
+   "spanA": {
+    "text": "Mick Mixon",
+    "start": 303,
+    "end": 313
+   },
+   "replacement": {
+    "text": "Katharina"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who did play-by-play for the WBT broadcast?",
+     "answer": "Mick Mixon"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who handled the play-by-play for WBT?",
+     "answer": "Mick Mixon"
+    },
+    {
+     "role": "other_fact",
+     "question": "In what city is WBT-FM located?",
+     "answer": "Chester, South Carolina"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p43__49-58",
+   "title": "Super Bowl 50",
+   "paragraph": 43,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "Six-time Grammy winner and Academy Award nominee Lady Gaga performed the national anthem, while Academy Award winner Marlee Matlin provided American Sign Language (ASL) translation.",
+   "spanA": {
+    "text": "Lady Gaga",
+    "start": 49,
+    "end": 58
+   },
+   "replacement": {
+    "text": "Tony Hawk"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who sang the national anthem?",
+     "answer": "Lady Gaga"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who did the National Anthem at Super Bowl 50?",
+     "answer": "Lady Gaga"
+    },
+    {
+     "role": "other_fact",
+     "question": "Into what language did Marlee Matlin translate the national anthem?",
+     "answer": "American Sign Language"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p50__144-148",
+   "title": "Super Bowl 50",
+   "paragraph": 50,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "There would be no more scoring in the third quarter, but early in the fourth, the Broncos drove to the Panthers 41-yard line. On the next play, Ealy knocked the ball out of Manning's hand as he was winding up for a pass, and then recovered it for Carolina on the 50-yard line. A 16-yard reception by Devin Funchess and a 12-yard run by Stewart then set up Gano's 39-yard field goal, cutting the Panthers deficit to one score at 16–10. The next three drives of the game would end in punts.",
+   "spanA": {
+    "text": "Ealy",
+    "start": 144,
+    "end": 148
+   },
+   "replacement": {
+    "text": "Philo"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who recovered a Manning fumble?",
+     "answer": "Ealy"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who knocked the ball out of Manning's hands on the next play?",
+     "answer": "Ealy"
+    },
+    {
+     "role": "other_fact",
+     "question": "What did the next three drives result in?",
+     "answer": "punts."
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p51__167-173",
+   "title": "Super Bowl 50",
+   "paragraph": 51,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "With 4:51 left in regulation, Carolina got the ball on their own 24-yard line with a chance to mount a game-winning drive, and soon faced 3rd-and-9. On the next play, Miller stripped the ball away from Newton, and after several players dove for it, it took a long bounce backwards and was recovered by Ward, who returned it five yards to the Panthers 4-yard line. Although several players dove into the pile to attempt to recover it, Newton did not and his lack of aggression later earned him heavy criticism. Meanwhile, Denver's offense was kept out of the end zone for three plays, but a holding penalty on cornerback Josh Norman gave the Broncos a new set of downs. Then Anderson scored on a 2-yard touchdown run and Manning completed a pass to Bennie Fowler for a 2-point conversion, giving Denver a 24–10 lead with 3:08 left and essentially putting the game away. Carolina had two more drives, but failed to get a first down on each one.",
+   "spanA": {
+    "text": "Miller",
+    "start": 167,
+    "end": 173
+   },
+   "replacement": {
+    "text": "Euler"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who stripped the ball from Newton on a 3rd and nine?",
+     "answer": "Miller"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "What was the last name of the player who took the ball away from Newton late in the fourth quarter?",
+     "answer": "Miller"
+    },
+    {
+     "role": "other_fact",
+     "question": "How much time was left in the game when Denver took the score to 24-10?",
+     "answer": "3:08"
+    }
+   ]
+  },
+  {
+   "id": "Super_Bowl_50__p52__92-99",
+   "title": "Super Bowl 50",
+   "paragraph": 52,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/Super_Bowl_50.html",
+   "passage": "Manning finished the game 13 of 23 for 141 yards with one interception and zero touchdowns. Sanders was his top receiver with six receptions for 83 yards. Anderson was the game's leading rusher with 90 yards and a touchdown, along with four receptions for 10 yards. Miller had six total tackles (five solo), 2½ sacks, and two forced fumbles. Ware had five total tackles and two sacks. Ward had seven total tackles, a fumble recovery, and an interception. McManus made all four of his field goals, making him perfect on all 11 attempts during the post-season. Newton completed 18 of 41 passes for 265 yards, with one interception. He was also the team's leading rusher with 45 yards on six carries. Brown caught four passes for 80 yards, while Ginn had four receptions for 74. Ealy was the top defensive performer for Carolina with four total tackles, three sacks, a forced fumble, a fumble recovery, and an interception. Defensive End Charles Johnson had four total tackles, a sack, and a forced fumble. Linebacker Luke Kuechly had 11 total tackles, while Thomas Davis had seven, despite playing just two weeks after breaking his right arm in the NFC title game.",
+   "spanA": {
+    "text": "Sanders",
+    "start": 92,
+    "end": 99
+   },
+   "replacement": {
+    "text": "Lenin"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who was the game's top receiver?",
+     "answer": "Sanders"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "What is the last name of the player who was Manning's top receiver for Super Bowl 50?",
+     "answer": "Sanders"
+    },
+    {
+     "role": "other_fact",
+     "question": "What player played in the Super Bowl after breaking his arm two weeks before?",
+     "answer": "Thomas Davis"
+    }
+   ]
+  },
+  {
+   "id": "University_of_Chicago__p27__129-142",
+   "title": "University of Chicago",
+   "paragraph": 27,
+   "sourceUrl": "https://rajpurkar.github.io/SQuAD-explorer/explore/1.1/dev/University_of_Chicago.html",
+   "passage": "In business, notable alumni include Microsoft CEO Satya Nadella, Oracle Corporation founder and the third richest man in America Larry Ellison, Goldman Sachs and MF Global CEO as well as former Governor of New Jersey Jon Corzine, McKinsey & Company founder and author of the first management accounting textbook James O. McKinsey, Arley D. Cathey, Bloomberg L.P. CEO Daniel Doctoroff, Credit Suisse CEO Brady Dougan, Morningstar, Inc. founder and CEO Joe Mansueto, Chicago Cubs owner and chairman Thomas S. Ricketts, and NBA commissioner Adam Silver.",
+   "spanA": {
+    "text": "Larry Ellison",
+    "start": 129,
+    "end": 142
+   },
+   "replacement": {
+    "text": "John Hurt"
+   },
+   "otherMentions": [],
+   "type": "PER",
+   "questions": [
+    {
+     "role": "same_fact_a",
+     "question": "Who was the founder of the Oracle Corporation?",
+     "answer": "Larry Ellison"
+    },
+    {
+     "role": "same_fact_b",
+     "question": "Who is the third riches man in America?",
+     "answer": "Larry Ellison"
+    },
+    {
+     "role": "other_fact",
+     "question": "Who founded McKinsey & Company?",
+     "answer": "James O. McKinsey"
+    }
+   ]
+  }
+ ]
+}
