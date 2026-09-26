@@ -305,7 +305,7 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
       {Array.from({ length: l.cells }, (_, i) => {
         const inA = l.aCells.includes(i);
         return <rect key={i} x={stripX + i * step} y={stripY} width={l.cell} height={l.cell}
-          fill={inA ? palette.state : 'none'} opacity={inA ? 0.6 : 1} stroke={palette.muted} strokeWidth={0.7} />;
+          fill={inA ? palette.state : 'none'} fillOpacity={inA ? 0.6 : 1} stroke={palette.muted} strokeWidth={0.7} />;
       })}
       {/* The edge reads the whole passage; A is only marked inside it */}
       <SvgTex x={(aStart + aEnd) / 2} y={stripY - 10} anchor="middle" tex="\mathcal{A}" color={palette.ink} scale={0.85} />
@@ -356,7 +356,7 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
       <text x={l.questionX} y={l.rowY - 8} fill={palette.muted}>question</text>
       {Array.from({ length: l.passageCells }, (_, i) => (
         <g key={`p${i}`}>
-          <rect x={cellX(0, i)} y={l.rowY} width={l.cell} height={l.cell} fill={isA(i) ? palette.state : 'none'} opacity={isA(i) ? 0.5 : 1}
+          <rect x={cellX(0, i)} y={l.rowY} width={l.cell} height={l.cell} fill={isA(i) ? palette.state : 'none'} fillOpacity={isA(i) ? 0.5 : 1}
             stroke={palette.muted} strokeWidth={0.9} />
           <Arrow x1={cellX(0, i) + l.cell / 2} y1={rowBottom} x2={target(i)} y2={stateTop}
             color={isA(i) ? palette.rule : palette.muted} dashed={isA(i)} />
