@@ -15,7 +15,7 @@ export type Layout = {
   id: string;
   label: string;
   mode: StageMode;
-  /** Filename under /public/audio/orchestra/ */
+  /** Filename under /public/audio/2026-07-06/ */
   audio: string;
   description: string;
   positions: Positions;

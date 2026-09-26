@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getPost, getPosts, getPostSlugs } from './posts';
-import { jevBlockNames } from '@/components/jev-bench/data';
+import { jevBlockNames } from '@/components/2026-09-19/data';
 import { createArticleBlockRegex } from './article-blocks';
 
 afterEach(() => vi.unstubAllEnvs());
