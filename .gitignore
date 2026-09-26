@@ -11,8 +11,9 @@ pnpm-debug.log*
 
 # dev
 references/
-memo.md
+*memo.md
 .serena/
+.claude/
 
 # generated at build time by scripts/fetch-weathering.mjs
 /data/weathering.json
