@@ -15,7 +15,7 @@ type PageProps = {
 const articleBlocks: Record<string, () => Promise<{ blocks: ArticleBlocks }>> = {
   '2026-07-06': () => import('@/components/2026-07-06/blocks'),
   '2026-09-19': () => import('@/components/2026-09-19/blocks'),
-  '2026-09-26': () => import('@/components/attention-memory/blocks'),
+  '2026-09-26': () => import('@/components/2026-09-26/blocks'),
 };
 
 const postContentClassName = `prose prose-lg dark:prose-invert max-w-none
