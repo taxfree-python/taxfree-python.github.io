@@ -22,7 +22,7 @@ describe('attention memory article integration', () => {
   it('numbers figure captions consecutively and centers every caption', async () => {
     const post = await getPost(slug);
     const figures = [...post.contentHtml.matchAll(/<p class="article-caption">図 (\d+)\./g)].map((match) => Number(match[1]));
-    expect(figures).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    expect(figures).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
     const tables = [...post.contentHtml.matchAll(/<p class="article-caption">表 (\d+)\./g)].map((match) => Number(match[1]));
     expect(tables).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });

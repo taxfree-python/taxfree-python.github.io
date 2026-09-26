@@ -1,6 +1,6 @@
 import { FactTripletExamples } from './FactTriplets';
 import { DecayFunctionsFigure } from './DecayPlot';
-import { IndependentQuestionsFigure, MemoryFigure, OnlineLearningFigure, WriteInterventionFigure } from './Diagrams';
+import { IndependentQuestionsFigure, MemoryFigure, OnlineLearningFigure, PatchingSchematicFigure, WriteInterventionFigure } from './Diagrams';
 import { LocalLossFigure, PassageRemovalFigure } from './Followup';
 import { WriteLayersFigure } from './WriteLayers';
 import { PatchingLayersFigure, PatchingPathsFigure } from './Patching';
@@ -20,6 +20,7 @@ export const blocks: Record<BlockName, ArticleBlocks[string]> = {
   'passage-removal': () => <PassageRemovalFigure triplets={followup31.triplets} />,
   // Kept on the earlier 10 triplets until the article replaces it with patching-layers.
   'write-layers': () => <WriteLayersFigure triplets={followup.triplets} />,
+  'patching-schematic': PatchingSchematicFigure,
   'patching-paths': () => <PatchingPathsFigure data={patching} />,
   'patching-layers': () => <PatchingLayersFigure data={patching} />,
 } satisfies ArticleBlocks;
