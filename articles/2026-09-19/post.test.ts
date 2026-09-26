@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { getPost, getPosts, getPostSlugs } from './posts';
-import { jevBlockNames } from '@/components/2026-09-19/data';
-import { createArticleBlockRegex } from './article-blocks';
+import { getPost, getPosts, getPostSlugs } from '@/lib/posts';
+import { jevBlockNames } from './data';
+import { createArticleBlockRegex } from '@/lib/article-blocks';
 
 afterEach(() => vi.unstubAllEnvs());
 const slug = '2026-09-19';

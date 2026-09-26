@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build content/data/2026-09-26/card.json from the frozen v6 counterfactual triplets.
+"""Build articles/2026-09-26/data/card.json from the frozen v6 counterfactual triplets.
 
 Usage:
-  python3 scripts/2026-09-26/build_card_data.py [COUNTERFACTUALS_JSON] [FROZEN_SELECTION_JSON]
+  python3 articles/2026-09-26/scripts/build_card_data.py [COUNTERFACTUALS_JSON] [FROZEN_SELECTION_JSON]
 
 Both source files are read-only; this script never writes to them. FROZEN_SELECTION_JSON
 lists the 31 triplet ids kept after judgment filtering (rule 12: judgment == "ok"), in an
@@ -30,8 +30,8 @@ COUNTERFACTUALS_DIR = Path.home() / "Projects/attention-memory/olmo/results/coun
 DEFAULT_COUNTERFACTUALS = COUNTERFACTUALS_DIR / "counterfactuals.json"
 DEFAULT_SELECTION = COUNTERFACTUALS_DIR / "FROZEN_SELECTION_ok31.json"
 
-REPO = Path(__file__).resolve().parents[2]
-OUT = REPO / "content/data/2026-09-26/card.json"
+REPO = Path(__file__).resolve().parents[3]
+OUT = REPO / "articles/2026-09-26/data/card.json"
 
 
 def sha256(path: Path) -> str:

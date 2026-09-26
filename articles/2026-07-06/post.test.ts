@@ -1,0 +1,17 @@
+import { describe, expect, it } from 'vitest';
+import { getPost } from '@/lib/posts';
+import { createArticleBlockRegex } from '@/lib/article-blocks';
+
+describe('orchestra article integration', () => {
+  it('renders the 2026-07-06 article through the generic block slot', async () => {
+    const post = await getPost('2026-07-06');
+    expect(post.contentHtml.match(/<div data-block="[^"]+"><\/div>/g)).toHaveLength(3);
+    for (const name of ['LayoutViewer', 'EvolutionReplay', 'ABPlayer']) {
+      expect(post.contentHtml).toContain(`<div data-block="${name}"></div>`);
+    }
+    expect(post.contentHtml).not.toContain('data-orchestra-widget');
+    expect(post.contentHtml).not.toContain('{{');
+    const used = [...post.contentHtml.matchAll(createArticleBlockRegex())].map((match) => match[1]!);
+    expect(used.sort()).toEqual(['ABPlayer', 'EvolutionReplay', 'LayoutViewer']);
+  });
+});

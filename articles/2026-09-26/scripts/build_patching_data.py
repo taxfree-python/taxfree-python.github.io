@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build content/data/2026-09-26/patching.json from the path-patching runs.
+"""Build articles/2026-09-26/data/patching.json from the path-patching runs.
 
 Usage:
-  python3 scripts/2026-09-26/build_patching_data.py [RESULTS_DIR]
+  python3 articles/2026-09-26/scripts/build_patching_data.py [RESULTS_DIR]
 
 RESULTS_DIR defaults to ~/Projects/attention-memory/olmo/results. Inputs (read only):
 
@@ -37,8 +37,8 @@ KINDS = ("gdn", "gdn_state_only", "attn", "both")
 SINGLE_KINDS = ("gdn", "attn")
 QA = ("same_fact_a", "same_fact_b")
 
-REPO = Path(__file__).resolve().parents[2]
-OUT = REPO / "content/data/2026-09-26/patching.json"
+REPO = Path(__file__).resolve().parents[3]
+OUT = REPO / "articles/2026-09-26/data/patching.json"
 
 
 def sha256(path: Path) -> str:

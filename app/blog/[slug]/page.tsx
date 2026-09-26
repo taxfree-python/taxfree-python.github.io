@@ -1,3 +1,5 @@
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 import { getPost, getPostSlugs } from '@/lib/posts';
 import Link from 'next/link';
 import { Container, Box, Typography, Link as MuiLink } from '@mui/material';
@@ -11,12 +13,16 @@ type PageProps = {
   params: Promise<{ slug: string }>;
 };
 
-/** Articles that embed React blocks, mapped to the module exporting them. */
-const articleBlocks: Record<string, () => Promise<{ blocks: ArticleBlocks }>> = {
-  '2026-07-06': () => import('@/components/2026-07-06/blocks'),
-  '2026-09-19': () => import('@/components/2026-09-19/blocks'),
-  '2026-09-26': () => import('@/components/2026-09-26/blocks'),
-};
+/**
+ * An article's React blocks live in `articles/<slug>/blocks.tsx`. Most posts have
+ * none, so check the file first; the template-literal import then resolves to a
+ * bundler context over every `articles/<slug>/blocks`, one lazily loaded module each.
+ */
+async function loadArticleBlocks(slug: string): Promise<ArticleBlocks | null> {
+  if (!existsSync(path.join(process.cwd(), 'articles', slug, 'blocks.tsx'))) return null;
+  const articleModule: { blocks: ArticleBlocks } = await import(`@/articles/${slug}/blocks`);
+  return articleModule.blocks;
+}
 
 const postContentClassName = `prose prose-lg dark:prose-invert max-w-none
   prose-headings:text-gray-900 dark:prose-headings:text-white
@@ -71,8 +77,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function BlogPost({ params }: PageProps) {
   const { slug } = await params;
   const post = await getPost(slug);
-  const loadBlocks = articleBlocks[slug];
-  const blocks = loadBlocks ? (await loadBlocks()).blocks : null;
+  const blocks = await loadArticleBlocks(slug);
 
   return (
     <Box
