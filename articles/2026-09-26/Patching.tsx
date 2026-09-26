@@ -176,7 +176,7 @@ function PatchingLayersPlot({ single, mobile }: { single: NonNullable<PatchingDa
     {panels.map(({ direction, y0, y }) => <g key={direction}>
       <text x={box.left} y={y0 - 14} dominantBaseline="central" fill={palette.ink}>{direction}</text>
       {ticks.map(t => <g key={t}>
-        <line x1={box.left} x2={box.right} y1={y(t)} y2={y(t)} stroke={t === 0 ? palette.muted : '#30342f'} strokeWidth={0.8} />
+        <line x1={box.left} x2={box.right} y1={y(t)} y2={y(t)} stroke={t === 0 ? palette.muted : palette.grid} strokeWidth={0.8} />
         <text x={box.left - 8} y={y(t)} textAnchor="end" dominantBaseline="central" fill={palette.muted}>{t === 0 ? '0' : signed(t, 1)}</text>
       </g>)}
       {layerPaths.map(p => single.byLayer[direction][p.kind].map(s => <g key={`${p.kind}-${s.layer}`}>

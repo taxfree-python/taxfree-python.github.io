@@ -8,6 +8,7 @@ import { siteConfig } from '@/config/site';
 import ArticleContent from '@/components/article/ArticleContent';
 import type { ArticleBlocks } from '@/lib/article-blocks';
 import { fontFamilyMono } from '@/lib/theme';
+import { neutral } from '@/lib/tokens';
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -134,14 +135,14 @@ export default async function BlogPost({ params }: PageProps) {
             },
             '& code': {
               fontFamily: fontFamilyMono,
-              backgroundColor: 'rgba(255,255,255,0.06)',
+              backgroundColor: neutral.overlayCode,
               borderRadius: 1,
               px: 0.5,
               py: 0.25,
               color: 'text.primary',
             },
             '& pre': {
-              backgroundColor: 'rgba(255,255,255,0.05)',
+              backgroundColor: neutral.overlaySubtle,
               borderRadius: 2,
               p: 2,
               overflowX: 'auto',
