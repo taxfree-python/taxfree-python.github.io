@@ -16,8 +16,8 @@ describe('jev bench article integration', () => {
     expect(post.contentHtml).not.toContain('<img ');
     expect(post.contentHtml).toContain('$1.52 でした');
     expect(post.contentHtml.match(/class="katex"/g)).toHaveLength(3);
-    expect(post.contentHtml.match(/<div class="article-table"><table>/g)).toHaveLength(2);
-    expect(post.contentHtml.match(/<p class="article-caption">(図|表) \d\./g)).toHaveLength(3);
+    expect(post.contentHtml.match(/<div class="article-table"><table>/g)).toHaveLength(3);
+    expect(post.contentHtml.match(/<p class="article-caption">(図|表) \d\./g)).toHaveLength(4);
     const ids = [...post.contentHtml.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
     expect(new Set(ids).size).toBe(ids.length);
   });
