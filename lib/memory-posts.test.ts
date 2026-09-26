@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getPost, getPosts, getPostSlugs } from './posts';
 import { createArticleBlockRegex } from './article-blocks';
-import { blockNames, followup, patching, pendingBlockNames } from '@/components/attention-memory/data';
+import { blockNames, followup, patching, unusedBlockNames } from '@/components/attention-memory/data';
 import followupJson from '@/content/data/attention-memory-followup.json';
 import patchingJson from '@/content/data/attention-memory-patching.json';
 
@@ -22,9 +22,9 @@ describe('attention memory article integration', () => {
   it('numbers figure captions consecutively and centers every caption', async () => {
     const post = await getPost(slug);
     const figures = [...post.contentHtml.matchAll(/<p class="article-caption">図 (\d+)\./g)].map((match) => Number(match[1]));
-    expect(figures).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(figures).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9]);
     const tables = [...post.contentHtml.matchAll(/<p class="article-caption">表 (\d+)\./g)].map((match) => Number(match[1]));
-    expect(tables).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(tables).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
 
   it('renders KaTeX without errors', async () => {
@@ -42,7 +42,7 @@ describe('attention memory article integration', () => {
     const toc = post.contentHtml.match(/<nav class="article-toc"[\s\S]*?<\/nav>/)?.[0];
     expect(toc).toBeDefined();
     expect(toc).toContain('Olmo Hybrid を使った観察</a><ul>');
-    expect(post.contentHtml).toContain('<h3 id="section-答えの書き込み-1-層と全層">答えの書き込み：1 層と全層</h3>');
+    expect(post.contentHtml).toContain('<h3 id="section-答えの情報はどの経路で運ばれるか">答えの情報はどの経路で運ばれるか</h3>');
     const links = [...toc!.matchAll(/href="#([^"]+)"/g)].map((match) => decodeURIComponent(match[1]!));
     expect(links.length).toBeGreaterThan(10);
     for (const link of links) expect(ids).toContain(link);
@@ -80,10 +80,10 @@ describe('attention memory follow-up data', () => {
 });
 
 describe('attention memory path-patching data', () => {
-  // blocks.tsx is typed Record<BlockName, ...>, so every pending name is registered.
-  it('does not embed the pending blocks yet', async () => {
+  // blocks.tsx is typed Record<BlockName, ...>, so retired names stay registered but unused.
+  it('does not embed retired blocks', async () => {
     const post = await getPost(slug);
-    for (const name of pendingBlockNames) expect(post.contentHtml).not.toContain(`data-block="${name}"`);
+    for (const name of unusedBlockNames) expect(post.contentHtml).not.toContain(`data-block="${name}"`);
   });
 
   it('has recovery for the 62 Q1/Q2 questions and overall medians that match them', () => {
