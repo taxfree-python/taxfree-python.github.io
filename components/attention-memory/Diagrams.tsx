@@ -269,7 +269,7 @@ const independentLayout = {
 };
 
 /** A small fixed-size state: the same grid-in-a-square used for S in figure 6. */
-function StateBox({ x, y, size, tex, scale = 1 }: { x: number; y: number; size: number; tex: string; scale?: number }) {
+function StateBox({ x, y, size, tex, scale = 1, color = palette.state }: { x: number; y: number; size: number; tex: string; scale?: number; color?: string }) {
   const grid = [1, 2, 3].map(i => (size * i) / 4);
   return (
     <g>
@@ -277,7 +277,7 @@ function StateBox({ x, y, size, tex, scale = 1 }: { x: number; y: number; size: 
         {grid.map(g => <line key={`v${g}`} x1={x + g} y1={y} x2={x + g} y2={y + size} />)}
         {grid.map(g => <line key={`h${g}`} x1={x} y1={y + g} x2={x + size} y2={y + g} />)}
       </g>
-      <rect x={x} y={y} width={size} height={size} fill="#0d0d0d" fillOpacity={0.6} stroke={palette.state} strokeWidth={0.9} />
+      <rect x={x} y={y} width={size} height={size} fill="#0d0d0d" fillOpacity={0.6} stroke={color} strokeWidth={0.9} />
       <SvgTex x={x + size / 2} y={y + size / 2} anchor="middle" tex={tex} color={palette.ink} scale={scale} />
     </g>
   );
@@ -436,13 +436,15 @@ function PatchingSchematic({ mobile }: { mobile: boolean }) {
     const kvY = below ? carrierY : carrierY + l.state - kvBlock;
     const rowEdge = below ? rowY + l.cell : rowY;
     const sMid = carrierY + l.state / 2;
+    // A and its replacement A' carry different content: shade them apart, not only by the prime
+    const spanFill = i === 0 ? palette.state : palette.muted;
     return (
       <g>
         <SvgTex x={l.labelX} y={rowY + l.cell / 2} anchor="middle" tex={i === 0 ? 'P' : "P'"} color={palette.ink} />
         {Array.from({ length: l.passageCells }, (_, c) => {
           const inA = l.span.includes(c);
           return <rect key={c} x={cellX(l.x0, c)} y={rowY} width={l.cell} height={l.cell}
-            fill={inA ? palette.state : 'none'} fillOpacity={inA ? 0.5 : 1} stroke={palette.muted} strokeWidth={0.9} />;
+            fill={inA ? spanFill : 'none'} fillOpacity={inA ? 0.5 : 1} stroke={palette.muted} strokeWidth={0.9} />;
         })}
         <SvgTex x={spanMid} y={rowY + l.cell / 2} anchor="middle" tex={i === 0 ? '\\mathcal{A}' : "\\mathcal{A}'"} color={palette.ink} scale={mobile ? 0.85 : 1} />
         {Array.from({ length: l.questionCells }, (_, c) => (
@@ -454,15 +456,15 @@ function PatchingSchematic({ mobile }: { mobile: boolean }) {
         {/* K/V entries at the span positions */}
         {l.span.map(c => [0, 1].map(k => (
           <rect key={`${c}${k}`} x={cellX(l.x0, c) + 2} y={kvY + k * (l.kvH + l.kvGap)} width={l.cell - 4} height={l.kvH}
-            fill={palette.state} fillOpacity={0.35} stroke={palette.state} strokeWidth={0.6} />
+            fill={spanFill} fillOpacity={0.35} stroke={spanFill} strokeWidth={0.6} />
         )))}
-        {/* GDN state (and conv buffer) handed on from the end of the span */}
+        {/* GDN state (and conv cache) handed on from the end of the span */}
         <polyline points={`${boundary},${rowEdge} ${boundary},${sMid}`} fill="none" stroke={palette.muted} strokeWidth={0.9} />
         <Arrow x1={boundary} y1={sMid} x2={l.stateX - 3} y2={sMid} />
-        <StateBox x={l.stateX} y={carrierY} size={l.state} tex={i === 0 ? 'S' : "S'"} scale={l.stateScale} />
+        <StateBox x={l.stateX} y={carrierY} size={l.state} tex={i === 0 ? 'S' : "S'"} scale={l.stateScale} color={spanFill} />
         {[0, 1, 2].map(k => (
           <rect key={k} x={convX + k * (l.conv + l.convGap)} y={sMid - l.conv / 2} width={l.conv} height={l.conv}
-            fill="none" stroke={palette.state} strokeWidth={0.9} />
+            fill="none" stroke={spanFill} strokeWidth={0.9} />
         ))}
       </g>
     );
