@@ -327,8 +327,8 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
 }
 
 const interventionLayout = {
-  desktop: { width: 800, cell: 26, gap: 4, passageCells: 12, aCells: [6, 7], questionX: 440, questionCells: 5, rowY: 22, stateY: 100, stateSize: 84 },
-  mobile: { width: 340, cell: 16, gap: 3, passageCells: 8, aCells: [4, 5], questionX: 196, questionCells: 4, rowY: 18, stateY: 74, stateSize: 56 },
+  desktop: { width: 800, cell: 26, gap: 4, passageCells: 12, aCells: [6, 7], questionX: 560, questionCells: 5, rowY: 22, stateY: 100, stateSize: 84 },
+  mobile: { width: 340, cell: 16, gap: 3, passageCells: 6, aCells: [3, 4], questionX: 196, questionCells: 4, rowY: 18, stateY: 74, stateSize: 56 },
 };
 
 function WriteIntervention({ mobile }: { mobile: boolean }) {
