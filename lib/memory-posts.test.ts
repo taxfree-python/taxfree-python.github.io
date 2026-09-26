@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { getPost, getPosts, getPostSlugs } from './posts';
 import { createArticleBlockRegex } from './article-blocks';
-import { blockNames, followup, patching, unusedBlockNames } from '@/components/attention-memory/data';
+import { blockNames, followup, patching, unusedBlockNames } from '@/components/2026-09-26/data';
 import followupJson from '@/content/data/attention-memory-followup.json';
 import patchingJson from '@/content/data/attention-memory-patching.json';
 
