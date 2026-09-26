@@ -18,13 +18,13 @@ export const cardTriplets = cardData.triplets as FactTripletCard[];
 type WithSingleLayer = FollowupTriplet & { singleLayerA: NonNullable<FollowupTriplet['singleLayerA']> };
 
 /** Built by scripts/attention-memory/build_followup_data.py (the earlier 10 triplets); do not edit
- * by hand. Backs `local-loss` and `write-layers`, which need the single-layer run. */
+ * by hand. Backs only the unused `write-layers` block. */
 export const followup = followupData as unknown as { layers: number[]; localLoss: LocalLossRow[]; triplets: WithSingleLayer[] };
 
 /**
  * Built by scripts/attention-memory/build_followup_data_final31.py from the frozen 31-triplet set;
- * do not edit by hand. Backs `passage-removal`. `layers`, `localLoss` and the triplets'
- * singleLayer* fields are null: that run was not done for this set.
+ * do not edit by hand. Backs `local-loss` and `passage-removal`. `layers` and `localLoss` come
+ * from the single-layer run (`singleLayerRun`); they are null if the data was built without it.
  */
 export const followup31 = final31Data as unknown as {
   singleLayerRun: boolean;
