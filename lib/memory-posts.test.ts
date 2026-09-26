@@ -6,7 +6,7 @@ import followupJson from '@/content/data/attention-memory-followup.json';
 import patchingJson from '@/content/data/attention-memory-patching.json';
 
 afterEach(() => vi.unstubAllEnvs());
-const slug = '2026-09-14';
+const slug = '2026-09-26';
 
 describe('attention memory article integration', () => {
   it('embeds every figure as a registered block, in order', async () => {

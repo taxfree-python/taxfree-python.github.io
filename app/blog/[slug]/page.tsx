@@ -14,7 +14,7 @@ type PageProps = {
 /** Articles that embed React blocks, mapped to the module exporting them. */
 const articleBlocks: Record<string, () => Promise<{ blocks: ArticleBlocks }>> = {
   '2026-07-06': () => import('@/components/orchestra/blocks'),
-  '2026-09-14': () => import('@/components/attention-memory/blocks'),
+  '2026-09-26': () => import('@/components/attention-memory/blocks'),
   '2026-09-19': () => import('@/components/jev-bench/blocks'),
 };
 

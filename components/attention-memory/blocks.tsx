@@ -7,7 +7,7 @@ import { PatchingLayersFigure, PatchingPathsFigure } from './Patching';
 import { cardTriplets, followup, followup31, patching, type BlockName } from './data';
 import type { ArticleBlocks } from '@/lib/article-blocks';
 
-/** Blocks for content/posts/2026-09-14.md. */
+/** Blocks for content/posts/2026-09-26.md. */
 export const blocks: Record<BlockName, ArticleBlocks[string]> = {
   memory: MemoryFigure,
   'online-learning': OnlineLearningFigure,
