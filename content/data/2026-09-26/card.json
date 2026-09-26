@@ -2,11 +2,11 @@
  "meta": {
   "description": "Frozen v6 counterfactual fact triplets (judgment == \"ok\") for the attention-memory 'triplets' card.",
   "source": {
-   "path": "/private/tmp/claude-501/-Users-yuchinen/2282bc2a-adb7-42fa-8a40-e5118a0126fd/scratchpad/counterfactuals/v6/counterfactuals.json",
+   "path": "/Users/yuchinen/Projects/attention-memory/olmo/results/counterfactuals-v6-20260926/counterfactuals.json",
    "sha256": "67c7295771d9ea196f0b20e3bb9cc9dc7ff2728d99473b5b0a24a355d41a373b"
   },
   "selection": {
-   "path": "/private/tmp/claude-501/-Users-yuchinen/2282bc2a-adb7-42fa-8a40-e5118a0126fd/scratchpad/counterfactuals/v6/FROZEN_SELECTION_ok31.json",
+   "path": "/Users/yuchinen/Projects/attention-memory/olmo/results/counterfactuals-v6-20260926/FROZEN_SELECTION_ok31.json",
    "sha256": "3c26ba000afc0031a7f85edfb0932723b78e5ca01626e7c8c58e95212433a3f9"
   },
   "rule": "Rule 12 (added 2026-09-26, before any patching result was seen): use only triplets whose recorded reading judgment is \"ok\" (no in-passage contradiction, grammatical, entity kind consistent). Judgments were written by the CF-building agent and reviewed by the owner from table.md; triplets judged minor or broken are excluded.",

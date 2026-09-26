@@ -12,7 +12,7 @@ inferred except the human-readable title (article title with underscores turned 
 and the SQuAD explorer URL built from it. Consistency checks abort the build on mismatch.
 
 - COUNTERFACTUALS_JSON  per-triplet span A / substitute / mention-edit / question records
-                         (counterfactuals/v6/counterfactuals.json)
+                         (defaults to ~/Projects/attention-memory/olmo/results/counterfactuals-v6-20260926/)
 - FROZEN_SELECTION_JSON the frozen list of 31 triplet ids, with counterfactuals.json's own
                          sha256 recorded at freeze time (FROZEN_SELECTION_ok31.json)
 """
@@ -26,9 +26,9 @@ from pathlib import Path
 ROLE_ORDER = ("same_fact_a", "same_fact_b", "other_fact")
 VALID_TYPES = {"PER", "DAT", "NUM", "ORG"}
 
-SCRATCH = Path("/private/tmp/claude-501/-Users-yuchinen/2282bc2a-adb7-42fa-8a40-e5118a0126fd/scratchpad/counterfactuals/v6")
-DEFAULT_COUNTERFACTUALS = SCRATCH / "counterfactuals.json"
-DEFAULT_SELECTION = SCRATCH / "FROZEN_SELECTION_ok31.json"
+COUNTERFACTUALS_DIR = Path.home() / "Projects/attention-memory/olmo/results/counterfactuals-v6-20260926"
+DEFAULT_COUNTERFACTUALS = COUNTERFACTUALS_DIR / "counterfactuals.json"
+DEFAULT_SELECTION = COUNTERFACTUALS_DIR / "FROZEN_SELECTION_ok31.json"
 
 REPO = Path(__file__).resolve().parents[2]
 OUT = REPO / "content/data/2026-09-26/card.json"
