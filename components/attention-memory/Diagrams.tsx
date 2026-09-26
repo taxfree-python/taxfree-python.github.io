@@ -437,7 +437,7 @@ function PatchingSchematic({ mobile }: { mobile: boolean }) {
     const rowEdge = below ? rowY + l.cell : rowY;
     const sMid = carrierY + l.state / 2;
     // A and its replacement A' carry different content: shade them apart, not only by the prime
-    const spanFill = i === 0 ? palette.state : palette.ink;
+    const spanFill = i === 0 ? palette.state : palette.substitute;
     return (
       <g>
         <SvgTex x={l.labelX} y={rowY + l.cell / 2} anchor="middle" tex={i === 0 ? 'P' : "P'"} color={palette.ink} />

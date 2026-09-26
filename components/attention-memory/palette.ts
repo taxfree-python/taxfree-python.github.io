@@ -4,6 +4,8 @@ export const palette = {
   muted: '#969991',
   rule: '#363934',
   state: '#88afbc',
+  /** The substituted run (P', span A') in the patching schematic: orange against the blue of P, kept apart from Q3's gold. */
+  substitute: '#cf8a52',
 } as const;
 
 export const roles = ['same_fact_a', 'same_fact_b', 'other_fact'] as const;
