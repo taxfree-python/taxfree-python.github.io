@@ -51,13 +51,9 @@ export type JevBenchData = {
 };
 
 /** Block names the article may embed as `{{< block name="…" >}}`. */
-export const jevBlockNames = ['accuracy', 'probability', 'seqqa', 'clintox'] as const;
+export const jevBlockNames = ['accuracy'] as const;
 
 export type JevBlockName = (typeof jevBlockNames)[number];
-
-export function isJevBlockName(name: string): name is JevBlockName {
-  return (jevBlockNames as readonly string[]).includes(name);
-}
 
 export const jevBench = raw as JevBenchData;
 

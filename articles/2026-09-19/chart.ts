@@ -1,12 +1,11 @@
 import type { CSSProperties } from 'react';
 import { neutral } from '@/lib/tokens';
 
-/** Grayscale only: the article keeps every figure monochrome. Bars come in two lightnesses. */
+/** Grayscale only: the article keeps every figure monochrome. */
 export const chartColors = {
   ink: neutral.ink,
   muted: neutral.muted,
   fill: neutral.ink,
-  fillDim: '#4d4d4d',
   grid: neutral.line,
   axis: neutral.lineStrong,
   marker: neutral.text,
@@ -24,21 +23,6 @@ export function axes(width: number, height: number, inset: Inset): Box {
 
 export function svgStyle(mobile: boolean): CSSProperties {
   return { width: '100%', height: 'auto', display: 'block', fontFamily: 'inherit', fontSize: mobile ? 11 : 13 };
-}
-
-const niceSteps = [1, 1.5, 2, 2.5, 3, 4, 5, 6, 8, 9, 10];
-
-/** Smallest round number at or above `value`, for per-panel axis maxima. */
-export function niceMax(value: number): number {
-  if (!(value > 0)) return 1;
-  const magnitude = 10 ** Math.floor(Math.log10(value));
-  const step = niceSteps.find((candidate) => value <= candidate * magnitude) ?? 10;
-  return step * magnitude;
-}
-
-/** `count + 1` evenly spaced tick values from 0 to `max`. */
-export function ticksTo(max: number, count: number): number[] {
-  return Array.from({ length: count + 1 }, (_, index) => (max * index) / count);
 }
 
 export function formatCount(value: number): string {
