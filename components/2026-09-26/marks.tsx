@@ -1,5 +1,5 @@
 import type { CSSProperties } from 'react';
-import { questionLabels, roleColors, roles, type Role } from './palette';
+import { roleColors, type Role } from './palette';
 
 export function svgStyle(mobile: boolean): CSSProperties {
   return { width: '100%', height: 'auto', display: 'block', fontFamily: 'inherit', fontSize: mobile ? 11 : 13 };
@@ -16,28 +16,6 @@ export function QuestionMark({ role, cx, cy, r = 3.2, opacity }: { role: Role; c
   return role === 'same_fact_b'
     ? <circle cx={cx} cy={cy} r={r - 0.6} fill="none" stroke={roleColors[role]} strokeWidth={1.3} opacity={opacity} />
     : <circle cx={cx} cy={cy} r={r} fill={roleColors[role]} opacity={opacity} />;
-}
-
-/** Draw order: Q3 first, then Q1, with the Q2 ring on top. */
-export const drawOrder: Role[] = ['other_fact', 'same_fact_a', 'same_fact_b'];
-
-/** A single legend row (two rows on mobile) naming the three questions. */
-export function QuestionLegend({ x, y, mobile, line = false }: { x: number; y: number; mobile: boolean; line?: boolean }) {
-  const charWidth = mobile ? 6 : 7;
-  let cursor = x;
-  return <g aria-hidden="true">
-    {roles.map((role, index) => {
-      const row = mobile && index === 2 ? 1 : 0;
-      const left = row === 1 ? x : cursor;
-      const top = y + row * 18;
-      cursor = left + questionLabels[role].length * charWidth + 38;
-      return <g key={role}>
-        {line && <line x1={left - 2} x2={left + 14} y1={top} y2={top} stroke={roleColors[role]} strokeWidth={1.6} />}
-        <QuestionMark role={role} cx={left + 6} cy={top} />
-        <text x={left + 20} y={top} dominantBaseline="central" fill={roleColors[role]}>{questionLabels[role]}</text>
-      </g>;
-    })}
-  </g>;
 }
 
 /**

@@ -1,25 +1,13 @@
-import tripletData from '@/content/data/attention-memory-triplets.json';
 import cardData from '@/content/data/attention-memory-card.json';
-import followupData from '@/content/data/attention-memory-followup.json';
 import final31Data from '@/content/data/attention-memory-followup-final31.json';
 import patchingData from '@/content/data/attention-memory-patching.json';
-import type { FactTriplet, FactTripletCard } from './FactTriplets';
+import type { FactTripletCard } from './FactTriplets';
 import type { FollowupTriplet, LocalLossRow } from './Followup';
 import type { PatchingData } from './Patching';
-
-/** The 10 hand-picked triplets used by FactTripletFigure's loss/effect plots (unused by
- * any block currently wired into content/posts/2026-09-26.md; kept for that figure's type). */
-export const triplets = tripletData.triplets as FactTriplet[];
 
 /** Built by scripts/attention-memory/build_card_data.py from the frozen v6 counterfactual
  * set; do not edit by hand. Backs the `triplets` block's FactTripletExamples card. */
 export const cardTriplets = cardData.triplets as FactTripletCard[];
-
-type WithSingleLayer = FollowupTriplet & { singleLayerA: NonNullable<FollowupTriplet['singleLayerA']> };
-
-/** Built by scripts/attention-memory/build_followup_data.py (the earlier 10 triplets); do not edit
- * by hand. Backs only the unused `write-layers` block. */
-export const followup = followupData as unknown as { layers: number[]; localLoss: LocalLossRow[]; triplets: WithSingleLayer[] };
 
 /**
  * Built by scripts/attention-memory/build_followup_data_final31.py from the frozen 31-triplet set;
@@ -51,7 +39,4 @@ export const blockNames = [
   'patching-layers',
 ] as const;
 
-/** Registered but not embedded: the single-layer β=0 figure, superseded by per-layer path patching. */
-export const unusedBlockNames = ['write-layers'] as const;
-
-export type BlockName = typeof blockNames[number] | typeof unusedBlockNames[number];
+export type BlockName = typeof blockNames[number];

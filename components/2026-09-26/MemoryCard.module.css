@@ -15,40 +15,22 @@
 .footer a { flex-shrink: 0; font-size: 12px; }
 .replacementLine { min-width: 0; flex: 1 1 auto; overflow-wrap: anywhere; }
 .otherMentionsNote { color: #969991; }
-.sample { padding: 12px 20px 16px; border-top: 1px solid #363934; line-height: 1.7; }
 .resultBody { padding: 16px 20px; border-top: 1px solid #363934; line-height: 1.7; }
-.figureCard :global(.article-figure) { margin: 0; padding: 8px 12px 12px; }
-.layerNavigation { width: 360px; max-width: calc(100% - 24px); margin: 14px auto 2px; border: 1px solid #363934; border-radius: 5px; }
-.layerNavigation .navigation { padding-top: 0; padding-bottom: 0; }
 .tripletQuestions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin: 18px -20px -16px; border-top: 1px solid #363934; }
 /* Fixed height so the card doesn't jump between triplets; longer questions scroll */
 .tripletQuestion { height: 180px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #363934 transparent; padding: 14px 16px; line-height: 1.6; }
 .tripletQuestion + .tripletQuestion { border-left: 1px solid #363934; }
 .tripletRole { color: #969991; font-size: 11px; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .04em; }
 .tripletAnswer { margin-top: 10px; color: #c1ad7f; font-size: 13px; }
-.effectValues { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #363934; }
-.effectValues3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.effectValues > div { padding: 12px 14px; font-variant-numeric: tabular-nums; }
-.effectValues > div + div { border-left: 1px solid #363934; }
-.effectValues span, .effectValues small { display: block; color: #969991; font-size: 11px; }
-.effectValues strong { display: block; margin: 4px 0 2px; font-size: 15px; font-weight: 500; }
 @media (max-width: 600px) {
   .navigation { padding: 10px 8px; gap: 2px; }
   .title { font-size: 13px; }
   .current { gap: 8px; }
   .passage { height: 176px; font-size: 14px; }
   .footer { padding: 10px 12px; }
-  .sample { padding: 12px; font-size: 14px; }
   .resultBody { padding: 14px 12px; font-size: 14px; }
-  .figureCard :global(.article-figure) { padding: 4px 0 8px; }
   .tripletQuestions { display: block; margin-left: -12px; margin-right: -12px; }
   .tripletQuestion { height: 148px; padding: 12px; }
   .footer { height: 86px; min-height: 0; }
   .tripletQuestion + .tripletQuestion { border-left: 0; border-top: 1px solid #363934; }
-  .effectValues { grid-template-columns: 1fr 1fr; }
-  .effectValues > div:nth-child(3) { border-left: 0; border-top: 1px solid #363934; }
-  .effectValues > div:nth-child(4) { border-top: 1px solid #363934; }
-  .effectValues3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .effectValues3 > div { padding: 10px 8px; }
-  .effectValues3 > div:nth-child(3) { border-left: 1px solid #363934; border-top: 0; }
 }

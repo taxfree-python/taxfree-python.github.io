@@ -4,15 +4,12 @@ import { QuestionMark, signed, svgStyle, swarm } from './marks';
 import { SvgTex } from './TeX';
 
 type ByRole = Record<Role, number>;
-export type SingleLayerDelta = { layer: number; delta: ByRole }[];
-/** One triplet of the follow-up data; the single-layer fields are null until that run exists. */
+/** One triplet of the follow-up data. */
 export type FollowupTriplet = {
   id: string;
   title?: string;
   targetWriteText: string;
   questions: { id: string; role: Role }[];
-  singleLayerA: SingleLayerDelta | null;
-  singleLayerSumA: { delta: ByRole; D: number } | null;
   allLayer: Record<'A' | 'control' | 'passage', { delta: ByRole; D: number }> & { control: { fixed: boolean } };
 };
 export type LocalLossRow = { layer: number; before: number; prefix: number; passage: number; A: number };
