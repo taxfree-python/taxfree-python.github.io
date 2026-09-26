@@ -52,7 +52,7 @@ export function BarRows({ rows, mobile, ariaLabel, labelInset, rightInset, label
         return (
           <g key={row.key}>
             <text x={box.left - (mobile ? 8 : 12)} y={baseline} textAnchor="end" fill={chartColors.ink} style={{ fontFamily: labelFont }}>{row.label}</text>
-            <rect x={box.left} y={barTop} width={Math.max(0, end - box.left)} height={barHeight} fill={chartColors.barLight} />
+            <rect x={box.left} y={barTop} width={Math.max(0, end - box.left)} height={barHeight} fill={chartColors.fill} />
             <rect x={tick - 0.5} y={barTop - 3} width="1" height={barHeight + 6} fill={chartColors.marker} opacity="0.75" />
             <text x={valueX} y={baseline} fill={chartColors.ink}>{value}</text>
             {row.note ? <text x={width - 8} y={baseline} textAnchor="end" fill={chartColors.muted}>{row.note}</text> : null}

@@ -1,10 +1,10 @@
 import { instrumentMeta, FAMILY_COLOR, type Family } from './instruments';
 import type { Positions } from './types';
 
-/** Text colour drawn on top of each family dot, chosen for contrast. */
+/** Text colour drawn on top of each family dot: whichever of white and #222 contrasts more. */
 const FAMILY_TEXT: Record<Family, string> = {
   strings: '#ffffff',
-  woodwinds: '#ffffff',
+  woodwinds: '#222222',
   brass: '#222222',
   percussion: '#222222',
 };

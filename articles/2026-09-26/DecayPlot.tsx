@@ -1,9 +1,9 @@
 import { Figure } from '@/components/article/Figure';
-import { palette } from './palette';
+import { hues, palette } from './palette';
 import { SvgTex } from './TeX';
 
 const curves = [
-  { label: 'Kimi Linear', color: '#c4aa76', g: (z: number) => -(Math.max(z, 0) + Math.log1p(Math.exp(-Math.abs(z)))) },
+  { label: 'Kimi Linear', color: hues.gold, g: (z: number) => -(Math.max(z, 0) + Math.log1p(Math.exp(-Math.abs(z)))) },
   { label: 'Kimi K3', color: palette.state, g: (z: number) => -5 / (1 + Math.exp(-z)) },
 ];
 const zTicks = [-8, -4, 0, 4, 8];

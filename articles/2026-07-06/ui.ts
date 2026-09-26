@@ -1,7 +1,8 @@
 import type { SxProps, Theme } from '@mui/material';
+import { neutral } from '@/lib/tokens';
 
-/** Neutral accent for native range inputs, legible on light and dark. */
-export const SEEK_ACCENT = '#8a8f98';
+/** Neutral accent for native range inputs: the site's secondary text grey. */
+export const SEEK_ACCENT = neutral.muted;
 
 const baseButton: SxProps<Theme> = {
   textTransform: 'none',
