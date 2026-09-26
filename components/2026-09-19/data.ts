@@ -1,4 +1,4 @@
-import raw from '@/content/data/jev-bench.json';
+import raw from '@/content/data/2026-09-19/data.json';
 
 export type JevConfidence = {
   correct: number;

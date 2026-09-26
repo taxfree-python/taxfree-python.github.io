@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build content/data/attention-memory-followup-final31.json from the final 31-triplet report.
+"""Build content/data/2026-09-26/followup-final31.json from the final 31-triplet report.
 
 Usage:
-  python3 scripts/attention-memory/build_followup_data_final31.py [RESULTS_DIR]
+  python3 scripts/2026-09-26/build_followup_data_final31.py [RESULTS_DIR]
 
 If the report has no single-layer part, single-layer fields are null.
 RESULTS_DIR defaults to ~/Projects/attention-memory/olmo/results. Same output schema as
@@ -30,7 +30,7 @@ N_QUESTIONS = 93
 RATIOS = {"before": "R_before", "prefix": "R_prefix", "passage": "R_passage", "A": "R_A"}
 
 REPO = Path(__file__).resolve().parents[2]
-OUT = REPO / "content/data/attention-memory-followup-final31.json"
+OUT = REPO / "content/data/2026-09-26/followup-final31.json"
 
 
 def sha256(path: Path) -> str:

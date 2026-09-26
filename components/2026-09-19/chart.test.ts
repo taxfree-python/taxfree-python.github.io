@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { approxTextWidth, axes, formatCount, formatPercent, niceMax, ticksTo } from './chart';
 
-describe('jev-bench chart helpers', () => {
+describe('2026-09-19 chart helpers', () => {
   it('rounds axis maxima up to readable values', () => {
     expect(niceMax(890)).toBe(900);
     expect(niceMax(7520)).toBe(8000);

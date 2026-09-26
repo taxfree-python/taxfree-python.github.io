@@ -7,8 +7,8 @@ import { Tex } from './TeX';
 import styles from './MemoryCard.module.css';
 import type { Role } from './palette';
 
-/** A triplet as read from content/data/attention-memory-card.json (built by
- * scripts/attention-memory/build_card_data.py from the frozen v6 counterfactual set). */
+/** A triplet as read from content/data/2026-09-26/card.json (built by
+ * scripts/2026-09-26/build_card_data.py from the frozen v6 counterfactual set). */
 export type FactTripletCard = {
   id: string; title: string; paragraph: number; sourceUrl: string; passage: string;
   spanA: { text: string; start: number; end: number };

@@ -5,7 +5,7 @@ import { createArticleBlockRegex } from './article-blocks';
 afterEach(() => vi.unstubAllEnvs());
 
 describe('getPost', () => {
-  it('renders the orchestra article through the generic block slot', async () => {
+  it('renders the 2026-07-06 article through the generic block slot', async () => {
     const post = await getPost('2026-07-06');
     expect(post.contentHtml.match(/<div data-block="[^"]+"><\/div>/g)).toHaveLength(3);
     for (const name of ['LayoutViewer', 'EvolutionReplay', 'ABPlayer']) {

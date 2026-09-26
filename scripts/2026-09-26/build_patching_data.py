@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build content/data/attention-memory-patching.json from the path-patching runs.
+"""Build content/data/2026-09-26/patching.json from the path-patching runs.
 
 Usage:
-  python3 scripts/attention-memory/build_patching_data.py [RESULTS_DIR]
+  python3 scripts/2026-09-26/build_patching_data.py [RESULTS_DIR]
 
 RESULTS_DIR defaults to ~/Projects/attention-memory/olmo/results. Inputs (read only):
 
@@ -38,7 +38,7 @@ SINGLE_KINDS = ("gdn", "attn")
 QA = ("same_fact_a", "same_fact_b")
 
 REPO = Path(__file__).resolve().parents[2]
-OUT = REPO / "content/data/attention-memory-patching.json"
+OUT = REPO / "content/data/2026-09-26/patching.json"
 
 
 def sha256(path: Path) -> str:
