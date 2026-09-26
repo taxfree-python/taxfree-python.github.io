@@ -459,7 +459,7 @@ function PatchingSchematic({ mobile }: { mobile: boolean }) {
         {/* GDN state (and conv buffer) handed on from the end of the span */}
         <polyline points={`${boundary},${rowEdge} ${boundary},${sMid}`} fill="none" stroke={palette.muted} strokeWidth={0.9} />
         <Arrow x1={boundary} y1={sMid} x2={l.stateX - 3} y2={sMid} />
-        <StateBox x={l.stateX} y={carrierY} size={l.state} tex={i === 0 ? 'S_P' : "S_{P'}"} scale={l.stateScale} />
+        <StateBox x={l.stateX} y={carrierY} size={l.state} tex={i === 0 ? 'S' : "S'"} scale={l.stateScale} />
         {[0, 1, 2].map(k => (
           <rect key={k} x={convX + k * (l.conv + l.convGap)} y={sMid - l.conv / 2} width={l.conv} height={l.conv}
             fill="none" stroke={palette.state} strokeWidth={0.9} />
