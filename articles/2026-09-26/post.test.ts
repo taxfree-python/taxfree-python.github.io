@@ -48,17 +48,11 @@ describe('attention memory article integration', () => {
     for (const link of links) expect(ids).toContain(link);
   });
 
-  it('keeps the draft out of production routes and listings', async () => {
-    expect((await getPost(slug)).draft).toBe(true);
+  it('is routed and listed in production', async () => {
+    expect((await getPost(slug)).draft).toBe(false);
     vi.stubEnv('NODE_ENV', 'production');
-    expect(getPostSlugs().some((post) => post.slug === slug)).toBe(false);
-    expect(getPosts().some((post) => post.slug === slug)).toBe(false);
-  });
-
-  it('allows the draft URL in development, without putting it in the list', () => {
-    vi.stubEnv('NODE_ENV', 'development');
     expect(getPostSlugs().some((post) => post.slug === slug)).toBe(true);
-    expect(getPosts().some((post) => post.slug === slug)).toBe(false);
+    expect(getPosts().some((post) => post.slug === slug)).toBe(true);
   });
 });
 
