@@ -50,21 +50,35 @@ http://localhost:3000 でサイトが表示されます。
 │   ├── gallery/
 │   │   └── page.tsx          # ギャラリーページ
 │   └── globals.css
-├── components/               # UI コンポーネント群
+├── articles/                 # 記事ごとのコード一式（記事の日付でディレクトリを切る）
+│   └── <日付>/
+│       ├── blocks.tsx        # 記事に埋め込む図の登録（{{< block name="..." >}}）
+│       ├── *.tsx, palette.ts # 図とその記事の色（記事の中では直書き OK）
+│       ├── data/             # 図のデータ
+│       ├── scripts/          # データを作るスクリプト（ある記事だけ）
+│       └── post.test.ts      # 記事のテスト
+├── components/               # どの記事・ページにも使う UI コンポーネント
 │   ├── Header.tsx            # グローバルナビゲーション
+│   ├── article/              # 記事の図の枠など、記事共通の部品
 │   ├── GallerySection.tsx    # ギャラリーコンポーネント
 │   └── ...
+├── config/
+│   └── site.ts               # サイト名などの設定
 ├── content/
-│   └── posts/                # Markdown形式のブログ記事
+│   └── posts/                # Markdown形式のブログ記事（<日付>.md）
 ├── data/                     # 外部化されたコンテンツデータ
 │   ├── profile.ts            # プロフィール情報
 │   ├── activities.yaml       # 職歴・プロジェクト
 │   └── gallery.yaml          # ギャラリー作品データ
-├── lib/                      # データ取得関数
-│   ├── posts.ts              # ブログ記事処理
+├── lib/                      # データ取得関数・共通処理
+│   ├── posts.ts              # ブログ記事処理（Markdown → HTML）
+│   ├── theme.ts              # MUI テーマ
+│   ├── tokens.ts             # 共通の色（app/・components/・lib/ はここから読む）
 │   ├── activities.ts         # 職歴データ処理
 │   └── gallery.ts            # ギャラリーデータ処理
 ├── public/                   # 静的ファイル
+│   ├── audio/<日付>/         # 記事で使う音声
+│   ├── pdfs/                 # 記事に埋め込む PDF
 │   └── images/
 │       └── gallery/          # ギャラリー画像置き場
 └── types/                    # TypeScript の型定義

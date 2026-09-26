@@ -12,7 +12,7 @@ export type ArticleBlocks = Record<string, () => ReactElement>;
 const BLOCK_NAME_PATTERN = '[A-Za-z0-9_-]+';
 
 /** Placeholder written by the remark plugin and read back by ArticleContent. */
-export const ARTICLE_BLOCK_PATTERN = `<div[^>]*\\bdata-block="(${BLOCK_NAME_PATTERN})"[^>]*>\\s*</div>`;
+const ARTICLE_BLOCK_PATTERN = `<div[^>]*\\bdata-block="(${BLOCK_NAME_PATTERN})"[^>]*>\\s*</div>`;
 
 /** A global regex carries `lastIndex`, so every scan gets its own. */
 export function createArticleBlockRegex(): RegExp {

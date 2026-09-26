@@ -18,7 +18,7 @@ const validateLink = (raw: unknown, context: string): LabeledLink => {
   };
 };
 
-export const validatePublication = (raw: unknown): Publication => {
+const validatePublication = (raw: unknown): Publication => {
   const obj = ensureObject(raw, 'Publication');
   const id = toString(obj.id, 'Publication.id');
   const context = `Publication(${id})`;
