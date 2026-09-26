@@ -327,26 +327,27 @@ function IndependentQuestions({ mobile }: { mobile: boolean }) {
 }
 
 const interventionLayout = {
-  desktop: { width: 800, cell: 26, gap: 4, passageCells: 12, aCells: [6, 7], questionX: 560, questionCells: 5, rowY: 22, stateY: 100, stateSize: 84 },
-  mobile: { width: 340, cell: 16, gap: 3, passageCells: 6, aCells: [3, 4], questionX: 196, questionCells: 4, rowY: 18, stateY: 74, stateSize: 56 },
+  desktop: { width: 800, center: 380, sideGap: 44, cell: 26, gap: 4, passageCells: 8, aCells: [4, 5], questionCells: 5, rowY: 22, stateY: 100, stateSize: 84 },
+  mobile: { width: 340, center: 160, sideGap: 22, cell: 16, gap: 3, passageCells: 6, aCells: [3, 4], questionCells: 4, rowY: 18, stateY: 74, stateSize: 56 },
 };
 
 function WriteIntervention({ mobile }: { mobile: boolean }) {
   const l = mobile ? interventionLayout.mobile : interventionLayout.desktop;
   const step = l.cell + l.gap;
   const cellX = (x0: number, i: number) => x0 + i * step;
-  const questionEnd = cellX(l.questionX, l.questionCells) - l.gap;
+  // Symmetric about the centre: passage ends and question starts at the same distance from S's axis
+  const passageX = l.center - l.sideGap - (l.passageCells * step - l.gap);
+  const questionX = l.center + l.sideGap;
+  const questionEnd = cellX(questionX, l.questionCells) - l.gap;
   const answerX = questionEnd + 26;
   const rowBottom = l.rowY + l.cell;
   const rowMid = l.rowY + l.cell / 2;
-  const passageEnd = cellX(0, l.passageCells) - l.gap;
-  // S sits midway between the centres of the passage and the question, so the write and read fans mirror each other
-  const stateX = ((passageEnd / 2 + (l.questionX + questionEnd) / 2) / 2) - l.stateSize / 2;
+  const stateX = l.center - l.stateSize / 2;
   const stateTop = l.stateY;
   const stateMid = l.stateY + l.stateSize / 2;
   const stateRight = stateX + l.stateSize;
   const isA = (i: number) => l.aCells.includes(i);
-  const aMidX = (cellX(0, l.aCells[0]!) + cellX(0, l.aCells[l.aCells.length - 1]!) + l.cell) / 2;
+  const aMidX = (cellX(passageX, l.aCells[0]!) + cellX(passageX, l.aCells[l.aCells.length - 1]!) + l.cell) / 2;
   // Writes land on the left half of S's top edge, reads leave from the right half, over equal widths
   const target = (i: number) => stateX + l.stateSize * (0.08 + (0.34 * (i + 0.5)) / l.passageCells);
   const source = (i: number) => stateX + l.stateSize * (0.58 + (0.34 * (i + 0.5)) / l.questionCells);
@@ -356,23 +357,23 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
   return (
     <svg viewBox={`0 0 ${l.width} ${height}`} role="img" style={svgStyle(mobile)}
       aria-label="passage のすべての token が固定サイズの state S に書き込み、質問の token が S を読み出して回答する。区間 𝒜 の token だけ β = 0 として書き込みを止める。">
-      <text x={0} y={l.rowY - 8} fill={palette.muted}>passage</text>
-      <text x={l.questionX} y={l.rowY - 8} fill={palette.muted}>question</text>
+      <text x={passageX} y={l.rowY - 8} fill={palette.muted}>passage</text>
+      <text x={questionX} y={l.rowY - 8} fill={palette.muted}>question</text>
       {/* Arrows first, so the cells and S draw over their ends */}
       {Array.from({ length: l.passageCells }, (_, i) => (
-        <Arrow key={`w${i}`} x1={cellX(0, i) + l.cell / 2} y1={rowBottom} x2={target(i)} y2={stateTop}
+        <Arrow key={`w${i}`} x1={cellX(passageX, i) + l.cell / 2} y1={rowBottom} x2={target(i)} y2={stateTop}
           color={isA(i) ? palette.rule : palette.muted} dashed={isA(i)} />
       ))}
       {Array.from({ length: l.questionCells }, (_, i) => (
-        <Arrow key={`r${i}`} x1={source(i)} y1={stateTop} x2={cellX(l.questionX, i) + l.cell / 2} y2={rowBottom} color={palette.muted} />
+        <Arrow key={`r${i}`} x1={source(i)} y1={stateTop} x2={cellX(questionX, i) + l.cell / 2} y2={rowBottom} color={palette.muted} />
       ))}
       {Array.from({ length: l.passageCells }, (_, i) => (
-        <rect key={`p${i}`} x={cellX(0, i)} y={l.rowY} width={l.cell} height={l.cell} fill={isA(i) ? palette.state : '#0d0d0d'} fillOpacity={isA(i) ? 0.5 : 1}
+        <rect key={`p${i}`} x={cellX(passageX, i)} y={l.rowY} width={l.cell} height={l.cell} fill={isA(i) ? palette.state : '#0d0d0d'} fillOpacity={isA(i) ? 0.5 : 1}
           stroke={palette.muted} strokeWidth={0.9} />
       ))}
       <SvgTex x={aMidX} y={rowMid} anchor="middle" tex="\mathcal{A}" color={palette.ink} />
       {Array.from({ length: l.questionCells }, (_, i) => (
-        <rect key={`q${i}`} x={cellX(l.questionX, i)} y={l.rowY} width={l.cell} height={l.cell} fill="#0d0d0d" stroke={palette.muted} strokeWidth={0.9} />
+        <rect key={`q${i}`} x={cellX(questionX, i)} y={l.rowY} width={l.cell} height={l.cell} fill="#0d0d0d" stroke={palette.muted} strokeWidth={0.9} />
       ))}
       <Arrow x1={questionEnd + 4} y1={rowMid} x2={answerX - 6} y2={rowMid} />
       <text x={answerX} y={rowMid} dominantBaseline="central" fill={palette.muted}>answer</text>
@@ -391,8 +392,8 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
         <line x1={cross.x - 5} y1={cross.y + 5} x2={cross.x + 5} y2={cross.y - 5} />
       </g>
       <SvgTex x={cross.x + 10} y={cross.y} tex="\beta = 0" color={palette.ink} />
-      <text x={0} y={(rowBottom + stateTop) / 2 + 14} fill={palette.muted}>write</text>
-      <text x={questionEnd - 20} y={(rowBottom + stateTop) / 2 + 14} fill={palette.muted}>read</text>
+      <text x={passageX} y={(rowBottom + stateTop) / 2 + 14} fill={palette.muted}>write</text>
+      <text x={questionEnd} y={(rowBottom + stateTop) / 2 + 14} textAnchor="end" fill={palette.muted}>read</text>
 
     </svg>
   );
