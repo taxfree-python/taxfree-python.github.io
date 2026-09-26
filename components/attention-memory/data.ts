@@ -46,6 +46,7 @@ export const blockNames = [
   'local-loss',
   'passage-removal',
   'write-intervention',
+  'patching-schematic',
   'patching-paths',
   'patching-layers',
 ] as const;

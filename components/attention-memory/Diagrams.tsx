@@ -269,7 +269,7 @@ const independentLayout = {
 };
 
 /** A small fixed-size state: the same grid-in-a-square used for S in figure 6. */
-function StateBox({ x, y, size, tex }: { x: number; y: number; size: number; tex: string }) {
+function StateBox({ x, y, size, tex, scale = 1 }: { x: number; y: number; size: number; tex: string; scale?: number }) {
   const grid = [1, 2, 3].map(i => (size * i) / 4);
   return (
     <g>
@@ -278,7 +278,7 @@ function StateBox({ x, y, size, tex }: { x: number; y: number; size: number; tex
         {grid.map(g => <line key={`h${g}`} x1={x} y1={y + g} x2={x + size} y2={y + g} />)}
       </g>
       <rect x={x} y={y} width={size} height={size} fill="#0d0d0d" fillOpacity={0.6} stroke={palette.state} strokeWidth={0.9} />
-      <SvgTex x={x + size / 2} y={y + size / 2} anchor="middle" tex={tex} color={palette.ink} />
+      <SvgTex x={x + size / 2} y={y + size / 2} anchor="middle" tex={tex} color={palette.ink} scale={scale} />
     </g>
   );
 }
@@ -391,6 +391,111 @@ function WriteIntervention({ mobile }: { mobile: boolean }) {
 
     </svg>
   );
+}
+
+const patchingLayout = {
+  desktop: {
+    width: 800, offset: 88, labelX: 16, x0: 44, cell: 22, gap: 4, passageCells: 14, span: [3, 4, 5], questionGap: 30, questionCells: 5,
+    rowTop: 30, kvH: 8, kvGap: 2, state: 34, conv: 9, convGap: 2, stateX: 300, arrowLen: 48, pairGap: 7, stateScale: 1,
+  },
+  mobile: {
+    width: 340, offset: 0, labelX: 10, x0: 24, cell: 14, gap: 3, passageCells: 10, span: [2, 3, 4], questionGap: 17, questionCells: 3,
+    rowTop: 26, kvH: 6, kvGap: 2, state: 26, conv: 6, convGap: 2, stateX: 180, arrowLen: 40, pairGap: 6, stateScale: 0.8,
+  },
+};
+
+/**
+ * Figure 8: the two runs of activation patching. Each run hands its carriers of span A forward: the
+ * GDN state (with the conv buffer) at the end of the span, and the softmax K/V at the span positions.
+ * Patching copies one carrier between runs; the span's own residual stream has no arrow.
+ */
+function PatchingSchematic({ mobile }: { mobile: boolean }) {
+  const l = mobile ? patchingLayout.mobile : patchingLayout.desktop;
+  const step = l.cell + l.gap;
+  const cellX = (x0: number, i: number) => x0 + i * step;
+  const passageEnd = cellX(l.x0, l.passageCells) - l.gap;
+  const questionX = passageEnd + l.questionGap;
+  const questionEnd = cellX(questionX, l.questionCells) - l.gap;
+  const spanStart = cellX(l.x0, l.span[0]!);
+  const spanEnd = cellX(l.x0, l.span[l.span.length - 1]! + 1) - l.gap;
+  const spanMid = (spanStart + spanEnd) / 2;
+  const boundary = spanEnd + l.gap / 2;
+  const kvBlock = 2 * l.kvH + l.kvGap;
+  const convWidth = 3 * l.conv + 2 * l.convGap;
+  const convX = l.stateX + l.state + 6;
+  const stateMid = (l.stateX + convX + convWidth) / 2;
+
+  const topRow = l.rowTop;
+  const topCarrier = topRow + l.cell + 6;
+  const arrowTop = topCarrier + l.state + 6;
+  const bottomCarrier = arrowTop + l.arrowLen + 6;
+  const bottomRow = bottomCarrier + l.state + 6;
+  const height = bottomRow + l.cell + 6;
+
+  const run = (rowY: number, carrierY: number, below: boolean, i: 0 | 1) => {
+    const kvY = below ? carrierY : carrierY + l.state - kvBlock;
+    const rowEdge = below ? rowY + l.cell : rowY;
+    const sMid = carrierY + l.state / 2;
+    return (
+      <g>
+        <SvgTex x={l.labelX} y={rowY + l.cell / 2} anchor="middle" tex={i === 0 ? 'P' : "P'"} color={palette.ink} />
+        {Array.from({ length: l.passageCells }, (_, c) => {
+          const inA = l.span.includes(c);
+          return <rect key={c} x={cellX(l.x0, c)} y={rowY} width={l.cell} height={l.cell}
+            fill={inA ? palette.state : 'none'} fillOpacity={inA ? 0.5 : 1} stroke={palette.muted} strokeWidth={0.9} />;
+        })}
+        <SvgTex x={spanMid} y={rowY + l.cell / 2} anchor="middle" tex={i === 0 ? '\\mathcal{A}' : "\\mathcal{A}'"} color={palette.ink} scale={mobile ? 0.85 : 1} />
+        {Array.from({ length: l.questionCells }, (_, c) => (
+          <rect key={c} x={cellX(questionX, c)} y={rowY} width={l.cell} height={l.cell} fill="none" stroke={palette.muted} strokeWidth={0.9} />
+        ))}
+        <Arrow x1={questionEnd + 4} y1={rowY + l.cell / 2} x2={questionEnd + 30} y2={rowY + l.cell / 2} />
+        <SvgTex x={questionEnd + 36} y={rowY + l.cell / 2} tex={i === 0 ? 'r' : "r'"} color={palette.ink} />
+
+        {/* K/V entries at the span positions */}
+        {l.span.map(c => [0, 1].map(k => (
+          <rect key={`${c}${k}`} x={cellX(l.x0, c) + 2} y={kvY + k * (l.kvH + l.kvGap)} width={l.cell - 4} height={l.kvH}
+            fill={palette.state} fillOpacity={0.35} stroke={palette.state} strokeWidth={0.6} />
+        )))}
+        {/* GDN state (and conv buffer) handed on from the end of the span */}
+        <polyline points={`${boundary},${rowEdge} ${boundary},${sMid}`} fill="none" stroke={palette.muted} strokeWidth={0.9} />
+        <Arrow x1={boundary} y1={sMid} x2={l.stateX - 3} y2={sMid} />
+        <StateBox x={l.stateX} y={carrierY} size={l.state} tex={i === 0 ? 'S_P' : "S_{P'}"} scale={l.stateScale} />
+        {[0, 1, 2].map(k => (
+          <rect key={k} x={convX + k * (l.conv + l.convGap)} y={sMid - l.conv / 2} width={l.conv} height={l.conv}
+            fill="none" stroke={palette.state} strokeWidth={0.9} />
+        ))}
+      </g>
+    );
+  };
+
+  const pair = (x: number, y1: number, y2: number) => (
+    <g>
+      <Arrow x1={x - l.pairGap} y1={y1} x2={x - l.pairGap} y2={y2} />
+      <Arrow x1={x + l.pairGap} y1={y2} x2={x + l.pairGap} y2={y1} />
+      <text x={x - l.pairGap - 6} y={(y1 + y2) / 2} textAnchor="end" dominantBaseline="central" fill={palette.muted}>denoise</text>
+      <text x={x + l.pairGap + 6} y={(y1 + y2) / 2} dominantBaseline="central" fill={palette.muted}>noise</text>
+    </g>
+  );
+
+  return (
+    <svg viewBox={`0 0 ${l.width} ${height}`} role="img" style={svgStyle(mobile)}
+      aria-label="P と P' の 2 つの run。区間の直後の GDN の state と畳み込みのバッファ、区間の位置の K/V のどちらかを、denoising では P から P' へ、noising では P' から P へ差し替える。">
+      <g transform={`translate(${l.offset} 0)`}>
+        <text x={l.x0} y={topRow - 8} fill={palette.muted}>passage</text>
+        <text x={questionX} y={topRow - 8} fill={palette.muted}>question</text>
+        {run(topRow, topCarrier, true, 0)}
+        {run(bottomRow, bottomCarrier, false, 1)}
+        <text x={spanStart - 6} y={topCarrier + kvBlock / 2} textAnchor="end" dominantBaseline="central" fill={palette.muted}>K/V</text>
+        <text x={convX + convWidth + 6} y={topCarrier + l.state / 2} dominantBaseline="central" fill={palette.muted}>conv</text>
+        {pair(spanMid, topCarrier + kvBlock + 4, bottomCarrier + l.state - kvBlock - 4)}
+        {pair(stateMid, arrowTop - 2, bottomCarrier - 4)}
+      </g>
+    </svg>
+  );
+}
+
+export function PatchingSchematicFigure() {
+  return <Figure id="patching-schematic" desktop={<PatchingSchematic mobile={false} />} mobile={<PatchingSchematic mobile />} />;
 }
 
 export function IndependentQuestionsFigure() {
