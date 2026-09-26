@@ -1,4 +1,4 @@
-/** Colours shared by the card, the data figures and the schematics of 2026-09-14. */
+/** Colours shared by the card, the data figures and the schematics of 2026-09-26. */
 export const palette = {
   ink: '#deded8',
   muted: '#969991',
