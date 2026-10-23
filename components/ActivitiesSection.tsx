@@ -1,4 +1,5 @@
 import { Container, Typography, Box, Stack } from '@mui/material';
+import { ActivityRow } from '@/components/ActivityRow';
 import { ACTIVITY_CATEGORIES, type Activity, type ActivityCategory, type CalendarPeriod } from '@/types';
 
 type ActivitiesSectionProps = {
@@ -11,12 +12,6 @@ const categoryLabels: Record<ActivityCategory, string> = {
   research: 'Research',
   community: 'Community',
 };
-
-// Year-only period end, e.g. "present" or "2025". Single-year periods keep the
-// "start – end" shape so every row lines up.
-function formatEndYear(period: CalendarPeriod): string {
-  return period.end === undefined ? 'present' : `${period.end.year}`;
-}
 
 export function ActivitiesSection({ activities }: ActivitiesSectionProps) {
   // Sort by the years shown (end year desc, ongoing first, then start year desc)
@@ -34,7 +29,7 @@ export function ActivitiesSection({ activities }: ActivitiesSectionProps) {
         pt: 4,
         pb: 10,
         // Print is black on white: the dark theme's greys would vanish on paper.
-        '@media print': { pt: 0, pb: 0, '& .MuiTypography-root, & ul': { color: 'common.black' } },
+        '@media print': { pt: 0, pb: 0, '& .MuiTypography-root': { color: 'common.black' } },
       }}
     >
       <Stack spacing={6}>
@@ -51,40 +46,7 @@ export function ActivitiesSection({ activities }: ActivitiesSectionProps) {
               {sortedActivities
                 .filter((activity) => activity.category === category)
                 .map((activity) => (
-                  <Box key={activity.id} sx={{ breakInside: 'avoid' }}>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 2 }}>
-                      <Typography variant="subtitle1" component="p" sx={{ minWidth: 0, flex: '1 1 auto' }}>
-                        {activity.title}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        component="span"
-                        sx={{
-                          flexShrink: 0,
-                          display: 'inline-grid',
-                          gridTemplateColumns: 'auto auto 4.5em',
-                          columnGap: '0.4em',
-                          color: 'text.secondary',
-                          whiteSpace: 'nowrap',
-                          fontVariantNumeric: 'tabular-nums',
-                        }}
-                      >
-                        <span>{activity.period.start.year}</span>
-                        <span>–</span>
-                        <span>{formatEndYear(activity.period)}</span>
-                      </Typography>
-                    </Box>
-                    {activity.details.length > 0 && (
-                      <Box
-                        component="ul"
-                        sx={{ m: 0, mt: 0.5, pl: 2.5, color: 'text.secondary', typography: 'body2', lineHeight: 1.7 }}
-                      >
-                        {activity.details.map((detail) => (
-                          <li key={detail}>{detail}</li>
-                        ))}
-                      </Box>
-                    )}
-                  </Box>
+                  <ActivityRow key={activity.id} activity={activity} />
                 ))}
             </Stack>
           </Box>
