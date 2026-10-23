@@ -39,7 +39,7 @@ export default function ExperiencePage() {
   const activities = getActivities();
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', '@media print': { bgcolor: 'common.white' } }}>
       <ActivitiesSection activities={activities} />
     </Box>
   );

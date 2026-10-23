@@ -1,5 +1,16 @@
 ---
 -
+  id: "titech-bachelor"
+  category: "education"
+  title: "東京科学大学 情報理工学院 数理・計算科学系 (学士課程)"
+  period:
+    start:
+      year: 2022
+      month: 4
+    end: null
+  details:
+    - "B2D プログラム"
+-
   id: "layerx-ai-workforce-intern"
   category: "work"
   title: "LayerX Ai Workforce R&D インターン"
@@ -10,6 +21,10 @@
     end:
       year: 2026
       month: 5
+  details:
+    - "業務プロセスを分析し、タスクを分解"
+    - "AdaptFlow、AFlow、Multi-Agent Architecture Search via Agentic Supernet などを参考に、agentic workflow の自動生成を試作"
+    - "agent のログから失敗パターンを抽出して改善"
 -
   id: "riken-bdr-part-timer"
   category: "work"
@@ -19,6 +34,10 @@
       year: 2025
       month: 9
     end: null
+  details:
+    - "文献とデータベースから研究仮説を作る AI agent の主開発者"
+    - "要約、概念抽出、新規性の分析、仮説生成の workflow を設計"
+    - "研究者と生成アイデアの妥当性・新規性を評価し、評価基準と agent の挙動を改善"
 -
   id: "preferred-robotics-intern"
   category: "work"
@@ -30,6 +49,10 @@
     end:
       year: 2025
       month: 9
+  details:
+    - "Figma MCP とコード生成モデル (Codex / Claude Code) を組み合わせ、ロボット UI を自動生成する標準 workflow を構築"
+    - "GUI コンポーネントの構成と変数定義を整理し、AI によるコーディングに向けたデザインガイドラインを作成"
+    - "社員向けに引き継ぎ文書の作成と講義・Q&A を実施"
 -
   id: "luup-data-scientist-intern"
   category: "work"
@@ -41,6 +64,8 @@
     end:
       year: 2025
       month: 10
+  details:
+    - "BigQuery と Redash によるモビリティサービスデータの分析・可視化"
 -
   id: "pfn-education-project-engineer"
   category: "work"
@@ -52,6 +77,11 @@
     end:
       year: 2025
       month: 12
+  details:
+    - "LLM を使った教育サービスの開発。教員へのインタビューからフィードバックの評価基準を作成"
+    - "LLM によるフィードバック生成の workflow を設計・実装し、出力を分析して改善"
+    - "React で UI/UX とプロトタイプを開発"
+    - "プロダクトの基本構成 (画面遷移、機能、LLM workflow の統合) を設計し、社員と本番化を進行"
 -
   id: "ai-for-science"
   category: "research"
@@ -61,6 +91,7 @@
       year: 2025
       month: 9
     end: null
+  details: []
 -
   id: "autonomous-lab-scheduling"
   category: "research"
@@ -70,6 +101,10 @@
       year: 2024
       month: 12
     end: null
+  details:
+    - "山下研 (東京科学大学) と一杉研 (東京大学) の共同研究"
+    - "資源の排他制御や順序制約を含む実験 workflow を、スケジューリング問題として定式化・最適化"
+    - "自律実験システムの運用チームと協力し、現場の制約をモデルに反映"
 -
   id: "doctor-car-data-analysis"
   category: "research"
@@ -80,6 +115,10 @@
       month: 6
     end:
       year: 2025
+  details:
+    - "救命救急センターとの共同研究"
+    - "データの前処理、可視化、探索的解析を担当"
+    - "日本集中治療医学会・日本救急医学会でのポスター発表に使われた解析"
 -
   id: "igem-tokyotech"
   category: "community"
@@ -91,6 +130,11 @@
     end:
       year: 2023
       month: 11
+  details:
+    - "2022 年と 2023 年に Silver Medal を受賞し、パリでの本大会で発表"
+    - "ODE model と Scipy によるパラメータ推定、3D-PCR のサンプル配置の最適化"
+    - "デング熱の血清型別の時系列予測 (Lasso / LSTM)"
+    - "約 200 万円の資金調達を担当"
 -
   id: "corpy-software-engineer-intern"
   category: "work"
@@ -102,6 +146,8 @@
     end:
       year: 2024
       month: 5
+  details:
+    - "英語のリモート環境で、機械学習モデル開発、組合せ最適化 (PuLP)、画像処理 (OpenCV) に従事"
 -
   id: "zest-software-engineer-intern"
   category: "work"
@@ -113,6 +159,8 @@
     end:
       year: 2023
       month: 3
+  details:
+    - "SQL と Python による介護サービスのデータ分析"
 -
   id: "pythonbeginners-okinawa"
   category: "community"
@@ -122,6 +170,7 @@
       year: 2019
     end:
       year: 2020
+  details: []
 -
   id: "pycon-kyushu-2019"
   category: "community"
@@ -131,3 +180,4 @@
       year: 2018
     end:
       year: 2019
+  details: []

@@ -20,6 +20,7 @@ export function Header() {
     <AppBar
       position="sticky"
       sx={{
+        displayPrint: 'none',
         bgcolor: 'transparent',
         backdropFilter: 'blur(8px)',
       }}
