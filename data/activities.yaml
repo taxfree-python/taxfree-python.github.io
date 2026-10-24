@@ -9,7 +9,7 @@
       month: 4
     end: null
   details:
-    - "B2Dスキームに採択され 3 年生から山下研(http://www.opt.comp.isct.ac.jp/lab/index.html)に所属"
+    - "B2Dスキームに採択され 3 年生から[山下研](http://www.opt.comp.isct.ac.jp/lab/index.html)に所属"
     - "2025/12 - 2026/11に休学"
 -
   id: "layerx-ai-workforce-intern"
@@ -49,7 +49,7 @@
       month: 9
   details:
     - "Codex / Claude Code と Figma 等を組み合わせ、ロボット UI を半自動で生成する workflow を構築"
-    - "開発した UI や workflow が RAPiiTT (https://prtimes.jp/main/html/rd/p/000000064.000115855.html) に採用"
+    - "開発した UI や workflow が [RAPiiTT](https://prtimes.jp/main/html/rd/p/000000064.000115855.html) に採用"
 -
   id: "luup-data-scientist-intern"
   category: "work"
@@ -75,7 +75,7 @@
       year: 2025
       month: 12
   details:
-    - "LLM を使った小論文添削サービス「ろんじろう」(https://ypswitch.jp/ai-syoron) をサマーインターン、その後のパートタイム期間で開発"
+    - "LLM を使った小論文添削サービス「[ろんじろう](https://ypswitch.jp/ai-syoron)」をサマーインターン、その後のパートタイム期間で開発"
     - "アドバイザーの現役の高校教諭との定期的なミーティングや市販の参考書を通して小論文添削を LLM で自動化するための手法を検討し実装"
     - "評価のための問題・回答作成、システムを実装"
 -

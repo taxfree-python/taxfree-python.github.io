@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { ButtonBase, Box, Collapse, Typography } from '@mui/material';
+import { ButtonBase, Box, Collapse, Link, Typography } from '@mui/material';
 import type { Activity, CalendarPeriod } from '@/types';
+import { splitInlineLinks } from '@/lib/inline-links';
 
 // Year-only period end, e.g. "present" or "2025". Single-year periods keep the
 // "start – end" shape so every row lines up.
@@ -108,7 +109,22 @@ export function ActivityRow({ activity }: ActivityRowProps) {
               component="p"
               sx={{ color: 'text.secondary', lineHeight: 1.7 }}
             >
-              {detail}
+              {splitInlineLinks(detail).map((segment, index) =>
+                'url' in segment ? (
+                  <Link
+                    key={index}
+                    href={segment.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    color="inherit"
+                    underline="always"
+                  >
+                    {segment.label}
+                  </Link>
+                ) : (
+                  segment.text
+                ),
+              )}
             </Typography>
           ))}
         </Box>
