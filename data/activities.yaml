@@ -9,7 +9,8 @@
       month: 4
     end: null
   details:
-    - "B2D プログラム"
+    - "B2Dスキームに採択され 3 年生から山下研(http://www.opt.comp.isct.ac.jp/lab/index.html)に所属"
+    - "2025/12 - 2026/11に休学"
 -
   id: "layerx-ai-workforce-intern"
   category: "work"
@@ -22,9 +23,7 @@
       year: 2026
       month: 5
   details:
-    - "業務プロセスを分析し、タスクを分解"
-    - "AdaptFlow、AFlow、Multi-Agent Architecture Search via Agentic Supernet などを参考に、agentic workflow の自動生成を試作"
-    - "agent のログから失敗パターンを抽出して改善"
+    - "AFlow などのワークフロー自動生成・最適化に関する研究を参考に、日本語資料タスクにおける agentic workflow の自動生成を試作し社内で発表"
 -
   id: "riken-bdr-part-timer"
   category: "work"
@@ -35,9 +34,8 @@
       month: 9
     end: null
   details:
-    - "文献とデータベースから研究仮説を作る AI agent の主開発者"
-    - "要約、概念抽出、新規性の分析、仮説生成の workflow を設計"
-    - "研究者と生成アイデアの妥当性・新規性を評価し、評価基準と agent の挙動を改善"
+    - "文献とデータベースなどの source から共同研究のアイディアを生成する multi-agent に関する研究"
+    - "LLM が生成する研究アイディアの多様性の評価と多様化させるための手法に関する研究"
 -
   id: "preferred-robotics-intern"
   category: "work"
@@ -50,9 +48,8 @@
       year: 2025
       month: 9
   details:
-    - "Figma MCP とコード生成モデル (Codex / Claude Code) を組み合わせ、ロボット UI を自動生成する標準 workflow を構築"
-    - "GUI コンポーネントの構成と変数定義を整理し、AI によるコーディングに向けたデザインガイドラインを作成"
-    - "社員向けに引き継ぎ文書の作成と講義・Q&A を実施"
+    - "Codex / Claude Code と Figma 等を組み合わせ、ロボット UI を半自動で生成する workflow を構築"
+    - "開発した UI や workflow が RAPiiTT (https://prtimes.jp/main/html/rd/p/000000064.000115855.html) に採用"
 -
   id: "luup-data-scientist-intern"
   category: "work"
@@ -78,10 +75,9 @@
       year: 2025
       month: 12
   details:
-    - "LLM を使った教育サービスの開発。教員へのインタビューからフィードバックの評価基準を作成"
-    - "LLM によるフィードバック生成の workflow を設計・実装し、出力を分析して改善"
-    - "React で UI/UX とプロトタイプを開発"
-    - "プロダクトの基本構成 (画面遷移、機能、LLM workflow の統合) を設計し、社員と本番化を進行"
+    - "LLM を使った小論文添削サービス「ろんじろう」(https://ypswitch.jp/ai-syoron) をサマーインターン、その後のパートタイム期間で開発"
+    - "アドバイザーの現役の高校教諭との定期的なミーティングや市販の参考書を通して小論文添削を LLM で自動化するための手法を検討し実装"
+    - "評価のための問題・回答作成、システムを実装"
 -
   id: "ai-for-science"
   category: "research"
@@ -101,10 +97,7 @@
       year: 2024
       month: 12
     end: null
-  details:
-    - "山下研 (東京科学大学) と一杉研 (東京大学) の共同研究"
-    - "資源の排他制御や順序制約を含む実験 workflow を、スケジューリング問題として定式化・最適化"
-    - "自律実験システムの運用チームと協力し、現場の制約をモデルに反映"
+  details: []
 -
   id: "doctor-car-data-analysis"
   category: "research"
@@ -115,10 +108,7 @@
       month: 6
     end:
       year: 2025
-  details:
-    - "救命救急センターとの共同研究"
-    - "データの前処理、可視化、探索的解析を担当"
-    - "日本集中治療医学会・日本救急医学会での発表に使われた解析"
+  details: []
 -
   id: "igem-tokyotech"
   category: "community"
