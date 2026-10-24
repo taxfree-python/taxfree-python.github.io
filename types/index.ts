@@ -29,7 +29,7 @@ export type LabeledLink = {
 
 // ---- Activities (data/activities.yaml) ----
 
-export const ACTIVITY_CATEGORIES = ['work', 'research', 'community'] as const;
+export const ACTIVITY_CATEGORIES = ['education', 'work', 'research', 'community'] as const;
 export type ActivityCategory = (typeof ACTIVITY_CATEGORIES)[number];
 
 export type Activity = {
@@ -37,6 +37,8 @@ export type Activity = {
   title: string;
   period: CalendarPeriod;
   category: ActivityCategory;
+  /** Bullet lines under the title; an empty list shows none. */
+  details: string[];
 };
 
 // ---- Publications (data/publications.yaml) ----

@@ -6,8 +6,7 @@ Next.js + React + TypeScriptで実装した個人サイト
 
 - **ホーム** (`/`) - 自己紹介と最新ブログ記事
 - **Blog** (`/blog`) - 技術ブログ
-- **Experience** (`/experience`) - 職歴、資格
-- **Publications** (`/publications`) - 論文・発表
+- **CV** (`/cv`) - 学歴、職歴、研究、論文・発表。`/experience` と `/publications` は `/cv` への転送ページ
 - **Gallery** (`/gallery`) - 作品ギャラリー ⚠️ 準備中のため一時非表示
 
 > **Note:** Gallery機能は実装済みですが、作品準備中のためナビゲーションから一時的に非表示にしています。
@@ -168,8 +167,7 @@ works:
 ```typescript
 const navLinks = [
   { href: '/blog', label: 'Blog' },
-  { href: '/experience', label: 'Experience' },
-  { href: '/publications', label: 'Publications' },
+  { href: '/cv', label: 'CV' },
   { href: '/gallery', label: 'Gallery' },  // ← コメントを外す
 ];
 ```

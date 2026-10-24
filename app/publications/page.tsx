@@ -1,46 +1,21 @@
 import type { Metadata } from 'next';
-import { Box } from '@mui/material';
-import { getPublications } from '@/lib/publications';
-import { siteConfig } from '@/config/site';
-import { PublicationsSection } from '@/components/PublicationsSection';
 
-const publicationsDescription = 'Academic publications, oral presentations, and posters';
-
+// Static export has no server redirects: old links land here and move on to /cv.
+// Metadata `other` emits <meta name>, which browsers ignore for refresh, so the
+// http-equiv tag is rendered here and React hoists it into <head>.
 export const metadata: Metadata = {
-  title: `Publications - ${siteConfig.name}`,
-  description: publicationsDescription,
-  openGraph: {
-    type: 'website',
-    locale: siteConfig.locale,
-    url: `${siteConfig.url}/publications`,
-    title: `Publications - ${siteConfig.name}`,
-    description: publicationsDescription,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage.url,
-        width: siteConfig.ogImage.width,
-        height: siteConfig.ogImage.height,
-        alt: `${siteConfig.name} Publications`,
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: siteConfig.social.twitter,
-    creator: siteConfig.social.twitter,
-    title: `Publications - ${siteConfig.name}`,
-    description: publicationsDescription,
-    images: [siteConfig.ogImage.url],
-  },
+  title: 'Moved to /cv',
+  alternates: { canonical: '/cv' },
+  robots: { index: false },
 };
 
-export default function PublicationsPage() {
-  const publications = getPublications();
-
+export default function MovedToCv() {
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default' }}>
-      <PublicationsSection publications={publications} />
-    </Box>
+    <>
+      <meta httpEquiv="refresh" content="0; url=/cv" />
+      <p>
+        Moved to <a href="/cv">/cv</a>.
+      </p>
+    </>
   );
 }

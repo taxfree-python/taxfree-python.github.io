@@ -114,15 +114,15 @@ SNS や外部リンクをボタン群で表示するコンポーネント。
 <RecentPostsSection posts={recentPosts} />
 ```
 
-### `ActivitiesSection.tsx`
-活動・プロジェクトセクション全体を表示するコンポーネント。
+### `CvSection.tsx`
+学歴・職歴・研究・論文・コミュニティをまとめた CV セクションを表示するコンポーネント。
 
 **カスタマイズ:**
 `data/activities.yaml` で活動データを編集し、`lib/activities.ts` の `getProjectsAndActivities` を通じて読み込みます。型定義は `types/activities.ts` を参照してください。
 
 **使用例:**
 ```tsx
-<ActivitiesSection activities={activities} />
+<CvSection activities={activities} publications={publications} />
 ```
 
 ## コンポーネント設計の原則
@@ -142,7 +142,7 @@ components/
 ├── BlogPostCard.tsx         # ブログカード
 ├── ActivityCard.tsx         # アクティビティカード
 ├── SkillsSection.tsx        # スキルセクション
-├── ActivitiesSection.tsx    # アクティビティセクション
+├── CvSection.tsx            # CV セクション
 ├── HeroSection.tsx          # ヒーローセクション
 ├── SocialLinks.tsx          # SNSリンク群
 ├── AboutSection.tsx         # 自己紹介セクション

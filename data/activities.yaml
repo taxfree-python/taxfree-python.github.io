@@ -1,5 +1,17 @@
 ---
 -
+  id: "titech-bachelor"
+  category: "education"
+  title: "東京科学大学 情報理工学院 数理・計算科学系 (学士課程)"
+  period:
+    start:
+      year: 2022
+      month: 4
+    end: null
+  details:
+    - "B2Dスキームに採択され 3 年生から[山下研](http://www.opt.comp.isct.ac.jp/lab/index.html)に所属"
+    - "2025/12 - 2026/11に休学"
+-
   id: "layerx-ai-workforce-intern"
   category: "work"
   title: "LayerX Ai Workforce R&D インターン"
@@ -10,6 +22,8 @@
     end:
       year: 2026
       month: 5
+  details:
+    - "AFlow などのワークフロー自動生成・最適化に関する研究を参考に、日本語資料タスクにおける agentic workflow の自動生成を試作し社内で発表"
 -
   id: "riken-bdr-part-timer"
   category: "work"
@@ -19,6 +33,9 @@
       year: 2025
       month: 9
     end: null
+  details:
+    - "文献とデータベースなどの source から共同研究のアイディアを生成する multi-agent に関する研究"
+    - "LLM が生成する研究アイディアの多様性の評価と多様化させるための手法に関する研究"
 -
   id: "preferred-robotics-intern"
   category: "work"
@@ -30,6 +47,9 @@
     end:
       year: 2025
       month: 9
+  details:
+    - "Codex / Claude Code と Figma 等を組み合わせ、ロボット UI を半自動で生成する workflow を構築"
+    - "開発した UI や workflow が [RAPiiTT](https://prtimes.jp/main/html/rd/p/000000064.000115855.html) に採用"
 -
   id: "luup-data-scientist-intern"
   category: "work"
@@ -41,6 +61,8 @@
     end:
       year: 2025
       month: 10
+  details:
+    - "BigQuery と Redash によるモビリティサービスデータの分析・可視化"
 -
   id: "pfn-education-project-engineer"
   category: "work"
@@ -52,6 +74,10 @@
     end:
       year: 2025
       month: 12
+  details:
+    - "LLM を使った小論文添削サービス「[ろんじろう](https://ypswitch.jp/ai-syoron)」をサマーインターン、その後のパートタイム期間で開発"
+    - "アドバイザーの現役の高校教諭との定期的なミーティングや市販の参考書を通して小論文添削を LLM で自動化するための手法を検討し実装"
+    - "評価のための問題・回答作成、システムを実装"
 -
   id: "ai-for-science"
   category: "research"
@@ -61,6 +87,7 @@
       year: 2025
       month: 9
     end: null
+  details: []
 -
   id: "autonomous-lab-scheduling"
   category: "research"
@@ -70,6 +97,7 @@
       year: 2024
       month: 12
     end: null
+  details: []
 -
   id: "doctor-car-data-analysis"
   category: "research"
@@ -78,8 +106,8 @@
     start:
       year: 2024
       month: 6
-    end:
-      year: 2025
+    end: null
+  details: []
 -
   id: "igem-tokyotech"
   category: "community"
@@ -91,6 +119,10 @@
     end:
       year: 2023
       month: 11
+  details:
+    - "iGEM TokyoTech 2022 に Dry チームのリーダー、2023 に Co-leader として参加"
+    - "デング熱の serotype ごとの流行予測や PCR 検査における検体配置の最適化などを担当"
+    - "活動資金約 200 万円を調達"
 -
   id: "corpy-software-engineer-intern"
   category: "work"
@@ -102,6 +134,8 @@
     end:
       year: 2024
       month: 5
+  details:
+    - "英語のリモート環境で、機械学習モデル開発、組合せ最適化 (PuLP)、画像処理 (OpenCV) に従事"
 -
   id: "zest-software-engineer-intern"
   category: "work"
@@ -113,6 +147,8 @@
     end:
       year: 2023
       month: 3
+  details:
+    - "SQL と Python による介護サービスのデータ分析"
 -
   id: "pythonbeginners-okinawa"
   category: "community"
@@ -122,6 +158,8 @@
       year: 2019
     end:
       year: 2020
+  details:
+    - "[PythonBeginners沖縄](https://python-beginners-okinawa.connpass.com/) で共同 organizer としてイベントの企画・運営を担当"
 -
   id: "pycon-kyushu-2019"
   category: "community"
@@ -131,3 +169,5 @@
       year: 2018
     end:
       year: 2019
+  details:
+    - "PyCon Kyushu in Okinawa 2019 運営メンバーとして企画や CfP の審査などを担当"
