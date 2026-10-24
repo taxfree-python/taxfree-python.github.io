@@ -1,46 +1,17 @@
 import type { Metadata } from 'next';
-import { Box } from '@mui/material';
-import { getActivities } from '@/lib/activities';
-import { siteConfig } from '@/config/site';
-import { ActivitiesSection } from '@/components/ActivitiesSection';
 
-const experienceDescription = 'Work and research experience';
-
+// Static export has no server redirects: old links land here and move on to /cv.
 export const metadata: Metadata = {
-  title: `Experience - ${siteConfig.name}`,
-  description: experienceDescription,
-  openGraph: {
-    type: 'website',
-    locale: siteConfig.locale,
-    url: `${siteConfig.url}/experience`,
-    title: `Experience - ${siteConfig.name}`,
-    description: experienceDescription,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage.url,
-        width: siteConfig.ogImage.width,
-        height: siteConfig.ogImage.height,
-        alt: `${siteConfig.name} Experience`,
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    site: siteConfig.social.twitter,
-    creator: siteConfig.social.twitter,
-    title: `Experience - ${siteConfig.name}`,
-    description: experienceDescription,
-    images: [siteConfig.ogImage.url],
-  },
+  title: 'Moved to /cv',
+  alternates: { canonical: '/cv' },
+  other: { refresh: '0; url=/cv' },
+  robots: { index: false },
 };
 
-export default function ExperiencePage() {
-  const activities = getActivities();
-
+export default function MovedToCv() {
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'background.default', '@media print': { bgcolor: 'common.white' } }}>
-      <ActivitiesSection activities={activities} />
-    </Box>
+    <p>
+      Moved to <a href="/cv">/cv</a>.
+    </p>
   );
 }

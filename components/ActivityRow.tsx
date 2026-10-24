@@ -40,7 +40,7 @@ type ActivityRowProps = {
 };
 
 /**
- * One Experience entry. With details the whole row toggles them, with no icon:
+ * One CV activity entry. With details the whole row toggles them, with no icon:
  * hovering or focusing brightens the period. Without details it is plain text.
  * Print shows every detail.
  */
