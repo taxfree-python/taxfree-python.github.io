@@ -10,37 +10,11 @@ function formatEndYear(period: CalendarPeriod): string {
   return period.end === undefined ? 'present' : `${period.end.year}`;
 }
 
-const CHEVRON_SIZE = 14;
-
-function Chevron({ open }: { open: boolean }) {
-  return (
-    <Box
-      component="svg"
-      viewBox="0 0 16 16"
-      aria-hidden
-      sx={{
-        width: CHEVRON_SIZE,
-        height: CHEVRON_SIZE,
-        fill: 'none',
-        stroke: 'currentColor',
-        strokeWidth: 1.5,
-        strokeLinecap: 'round',
-        strokeLinejoin: 'round',
-        transform: open ? 'rotate(180deg)' : 'none',
-        transition: 'transform 150ms',
-        '@media (prefers-reduced-motion: reduce)': { transition: 'none' },
-      }}
-    >
-      <path d="M3.5 6l4.5 4.5L12.5 6" />
-    </Box>
-  );
-}
-
-// Grid shared by the toggle row and the static row: title, period, chevron slot.
-// Below `sm` the period drops under the title and the chevron stays at the right edge.
+// Grid shared by the toggle row and the static row: title and period.
+// Below `sm` the period drops under the title.
 const rowGridSx = {
   display: 'grid',
-  gridTemplateColumns: { xs: '1fr 1.5rem', sm: '1fr auto 1.5rem' },
+  gridTemplateColumns: { xs: '1fr', sm: '1fr auto' },
   columnGap: 1,
   alignItems: 'baseline',
   width: '100%',
@@ -61,21 +35,15 @@ const periodSx = {
   fontVariantNumeric: 'tabular-nums',
 } as const;
 
-const chevronSlotSx = {
-  gridColumn: { xs: 2, sm: 3 },
-  gridRow: { xs: '1 / span 2', sm: 1 },
-  alignSelf: 'center',
-  justifySelf: 'end',
-  display: 'flex',
-  color: 'text.secondary',
-  '@media print': { display: 'none' },
-} as const;
-
 type ActivityRowProps = {
   activity: Activity;
 };
 
-/** One Experience entry. With details the whole row toggles them; without, it is plain text. Print shows every detail. */
+/**
+ * One Experience entry. With details the whole row toggles them, with no icon:
+ * hovering or focusing brightens the period. Without details it is plain text.
+ * Print shows every detail.
+ */
 export function ActivityRow({ activity }: ActivityRowProps) {
   const [open, setOpen] = useState(false);
   const detailsId = `activity-details-${activity.id}`;
@@ -85,7 +53,7 @@ export function ActivityRow({ activity }: ActivityRowProps) {
       <Typography variant="subtitle1" component="span" sx={titleSx}>
         {activity.title}
       </Typography>
-      <Typography variant="body2" component="span" sx={periodSx}>
+      <Typography variant="body2" component="span" className="activity-period" sx={periodSx}>
         <span>{activity.period.start.year}</span>
         <span>–</span>
         <span>{formatEndYear(activity.period)}</span>
@@ -96,10 +64,7 @@ export function ActivityRow({ activity }: ActivityRowProps) {
   if (activity.details.length === 0) {
     return (
       <Box sx={{ breakInside: 'avoid', py: { xs: 1, sm: 0 } }}>
-        <Box sx={rowGridSx}>
-          {content}
-          <Box aria-hidden sx={{ ...chevronSlotSx, width: CHEVRON_SIZE, height: CHEVRON_SIZE }} />
-        </Box>
+        <Box sx={rowGridSx}>{content}</Box>
       </Box>
     );
   }
@@ -117,15 +82,13 @@ export function ActivityRow({ activity }: ActivityRowProps) {
           py: { xs: 1, sm: 0 },
           minHeight: { xs: 44, sm: 0 },
           borderRadius: 0.5,
-          '&:hover .activity-chevron, &:focus-visible .activity-chevron': { color: 'text.primary' },
+          '& .activity-period': { transition: 'color 150ms' },
+          '&:hover .activity-period, &.Mui-focusVisible .activity-period': { color: 'text.primary' },
           '&.Mui-focusVisible': { outline: '1px solid', outlineColor: 'text.secondary', outlineOffset: 2 },
           '@media print': { cursor: 'default' },
         }}
       >
         {content}
-        <Box className="activity-chevron" sx={chevronSlotSx}>
-          <Chevron open={open} />
-        </Box>
       </ButtonBase>
       <Collapse
         in={open}
