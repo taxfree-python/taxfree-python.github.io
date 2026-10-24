@@ -106,8 +106,7 @@
     start:
       year: 2024
       month: 6
-    end:
-      year: 2025
+    end: null
   details: []
 -
   id: "igem-tokyotech"
@@ -121,10 +120,9 @@
       year: 2023
       month: 11
   details:
-    - "2022 年と 2023 年に Silver Medal を受賞し、パリでの本大会で発表"
-    - "ODE model と Scipy によるパラメータ推定、3D-PCR のサンプル配置の最適化"
-    - "デング熱の血清型別の時系列予測 (Lasso / LSTM)"
-    - "約 200 万円の資金調達を担当"
+    - "iGEM TokyoTech 2022 に Dry チームのリーダー、2023 に Co-leader として参加"
+    - "デング熱の serotype ごとの流行予測や PCR 検査における検体配置の最適化などを担当"
+    - "活動資金約 200 万円を調達"
 -
   id: "corpy-software-engineer-intern"
   category: "work"
@@ -160,7 +158,8 @@
       year: 2019
     end:
       year: 2020
-  details: []
+  details:
+    - "[PythonBeginners沖縄](https://python-beginners-okinawa.connpass.com/) で共同 organizer としてイベントの企画・運営を担当"
 -
   id: "pycon-kyushu-2019"
   category: "community"
@@ -170,4 +169,5 @@
       year: 2018
     end:
       year: 2019
-  details: []
+  details:
+    - "PyCon Kyushu in Okinawa 2019 運営メンバーとして企画や CfP の審査などを担当"
