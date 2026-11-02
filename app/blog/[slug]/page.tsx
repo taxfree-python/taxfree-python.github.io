@@ -142,7 +142,7 @@ export default async function BlogPost({ params }: PageProps) {
               fontFamily: fontFamilyMono,
               color: 'text.primary',
             },
-            '&[data-figure-article] pre code': {
+            '& pre code': {
               backgroundColor: 'transparent',
               p: 0,
             },
