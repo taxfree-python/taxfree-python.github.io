@@ -12,8 +12,8 @@
     month: 10
   links:
     -
-      label: "Accepted papers"
-      url: "https://discovery-science.org/accepted-papers/"
+      label: "Springer (LNCS)"
+      url: "https://doi.org/10.1007/978-3-032-41086-3_18"
 -
   id: "ai4x-2026-evolving-collaborative-research-ideas"
   title: "Evolving Collaborative Research Ideas with Multi-Agent Grounding in Lab-Specific Contexts and Literature"
@@ -44,6 +44,7 @@
     -
       label: "Confit"
       url: "https://pub.confit.atlas.jp/ja/event/jsai2026/presentation/5L1-OS-30-03"
+  award: "2026年度 人工知能学会全国大会 学生奨励賞"
 -
   id: "icml2026-ai4science-ideation-diversity"
   title: "On the Effects of Reasoning Effort and Prompt-Based Diversification on Scientific Ideation Diversity"

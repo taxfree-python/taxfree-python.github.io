@@ -42,6 +42,10 @@ const validatePublication = (raw: unknown): Publication => {
     );
   }
 
+  if (obj.award !== undefined) {
+    publication.award = toString(obj.award, `${context}.award`);
+  }
+
   return publication;
 };
 
