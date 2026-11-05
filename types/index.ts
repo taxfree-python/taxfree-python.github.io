@@ -54,6 +54,8 @@ export type Publication = {
   type: PublicationType;
   date: CalendarDate;
   links?: LabeledLink[];
+  /** Award given to this presentation, shown under the venue line. */
+  award?: string;
 };
 
 // ---- Profile (data/profile.ts) ----

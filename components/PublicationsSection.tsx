@@ -96,6 +96,15 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
               </Box>
             ))}
           </Typography>
+          {publication.award && (
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ mt: 0.25 }}
+            >
+              {publication.award}
+            </Typography>
+          )}
         </Box>
       ))}
     </Stack>
