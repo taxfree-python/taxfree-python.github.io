@@ -99,7 +99,7 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
           {publication.award && (
             <Typography
               variant="body2"
-              color="text.primary"
+              color="text.secondary"
               sx={{ mt: 0.25 }}
             >
               {publication.award}
