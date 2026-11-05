@@ -100,7 +100,7 @@ export function PublicationsSection({ publications }: PublicationsSectionProps) 
             <Typography
               variant="body2"
               color="text.primary"
-              sx={{ mt: 0.25, fontWeight: 500 }}
+              sx={{ mt: 0.25 }}
             >
               {publication.award}
             </Typography>
